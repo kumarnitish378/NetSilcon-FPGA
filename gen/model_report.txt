@@ -1,0 +1,16 @@
+NetSilcon-6x4 model report
+==========================
+Topology            : 4 -> 6 -> 6 -> 6 -> 6 -> 2
+Weights / biases    : 144 x int8 / 26 x int16  (1568 bits)
+Shifts per layer    : [8, 5, 6, 6, 6]
+Peak |accumulator|  : [22892, 2199, 8291, 4429, 5122]  (limit 524287, 20-bit)
+Float accuracy      : 94.95%
+Int8 accuracy       : 94.50%   (on 4000 test samples)
+Golden vectors      : 576
+
+Input encoding      : q = round(value / range * 127), clipped 0..127
+   x0 current_A  range 0..20
+   x1 voltage_V  range 0..30
+   x2 speed_rpm  range 0..6000
+   x3 temp_C     range 0..120
+Output              : y0 = healthy score, y1 = fault score  ->  FAULT if y1 > y0

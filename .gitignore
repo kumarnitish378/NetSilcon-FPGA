@@ -1,0 +1,17 @@
+# simulation and build outputs (regenerate with scripts/)
+sim/
+build/
+*.vvp
+*.vcd
+*.fs
+*.json.bak
+# Gowin EDA project folders
+impl/
+*.gprj.user
+# run logs (curated examples live in docs/logs/)
+host/logs/
+rover_sim/logs/
+# Python
+__pycache__/
+*.pyc
+.venv/

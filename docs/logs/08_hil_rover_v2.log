@@ -1,0 +1,8 @@
+HIL run 20261121_015139  port COM7  model Rover driver v2 (speed + steering) [CRC 295B]  sensors scanner  supervisor ON  safety ON  noise 0.0
+world         crashes  stuck  avg metres
+room             0/2    0/2         35.6
+corridor         0/2    0/2         25.1
+clutter          0/2    0/2         17.9
+corner_trap      0/2    0/2         23.4
+HIL chip answers: 9600   mismatches vs Python model: 0   chip latency [15] clocks   USB round trip avg 16.2 ms, max 18.8 ms
+RESULT: PASS - the real chip drove the rover and matched the Python model on every step

@@ -1,0 +1,10 @@
+NetSilcon-6x4 host run  2026-11-21T01:43:31
+mode=test port=COM7 python=3.14.4 pyserial=3.5 os=Windows-11-10.0.26300-SP0
+built-in model files (md5): {'weights.mem': '9a1084d728b7', 'biases.mem': '16d430ceba82', 'netsilcon_params.vh': 'df7f2fb58151'}
+----------------------------------------------------------------------
+Chip is running: Rover driver v2 (speed + steering) [rover, CRC 295B]  (uploaded, uploads since power-up: 4)
+Vectors: 576  mismatches: 0  chip latency: [15] clocks  total 9.79 s (16.99 ms per round trip, limited by USB serial)
+RESULT: PASS - live hardware matches the Python int8 model
+
+Log saved:  C:\fpga\NetSilcon-6x4\host\logs\20261121_014331_test.log
+Data saved: C:\fpga\NetSilcon-6x4\host\logs\20261121_014331_test.csv

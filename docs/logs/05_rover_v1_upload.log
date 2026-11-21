@@ -1,0 +1,16 @@
+NetSilcon-6x4 host run  2026-11-21T00:25:17
+mode=load port=COM7 python=3.14.4 pyserial=3.5 os=Windows-11-10.0.26300-SP0
+built-in model files (md5): {'weights.mem': '9a1084d728b7', 'biases.mem': '16d430ceba82', 'netsilcon_params.vh': 'df7f2fb58151'}
+----------------------------------------------------------------------
+Before: Chip is running: BLDC motor fault detector [motor_fault, CRC 5496]  (uploaded, uploads since power-up: 2)
+Uploading Rover driver (speed + steering) [rover, CRC F5C2]
+  file ..\models\rover.json, int8 accuracy 95.47%, shifts [6, 7, 6, 4, 5]
+load frame (204 bytes): c30000008934090101c00700011ba40001e5f7dae600008101fef2acedfeff0029ffb12300fe2b01af04fe00f355ad1d00fff86c8102fe8e000001308d00e117cf0a00128104ddf401fb143b0ec5fffcf79605471ffabbd6252df4fced0733e5fedd09d2c9f8e80603f106f713d625f26bade73cd6f9c3810ae915fad68128cfe29952bbff07bef3000ceff7f54cd23a9c040a5bfd9b10f70fb5007c0aaafeb70f4c11b805c901f308d2031203c1feb9ffdf00710022003003a802240178014e03ea0f9c020607060405f5c2
+  sent 204 bytes, chip answered after 32.0 ms: LOADED  (chip CRC F5C2, uploads since power-up: 3)
+After:  Chip is running: Rover driver (speed + steering) [rover, CRC F5C2]  (uploaded, uploads since power-up: 3)
+Quick check of the running model (64 golden vectors):
+Vectors: 64  mismatches: 0  chip latency: [15] clocks  total 1.09 s (16.96 ms per round trip, limited by USB serial)
+RESULT: PASS - the chip is now running: Rover driver (speed + steering)
+
+Log saved:  C:\fpga\NetSilcon-6x4\host\logs\20261121_002517_load.log
+Data saved: C:\fpga\NetSilcon-6x4\host\logs\20261121_002517_load.csv

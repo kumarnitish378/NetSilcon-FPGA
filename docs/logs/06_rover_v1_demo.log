@@ -1,0 +1,68 @@
+NetSilcon-6x4 host run  2026-11-21T00:25:40
+mode=demo port=COM7 python=3.14.4 pyserial=3.5 os=Windows-11-10.0.26300-SP0
+built-in model files (md5): {'weights.mem': '9a1084d728b7', 'biases.mem': '16d430ceba82', 'netsilcon_params.vh': 'df7f2fb58151'}
+----------------------------------------------------------------------
+Chip is running: Rover driver (speed + steering) [rover, CRC F5C2]  (uploaded, uploads since power-up: 3)
+
+=== 1. Open space, then a wall slowly getting closer (straight ahead) ===
+FL=4m  FR=4m  RL=4m  RR=4m
+  -> FWD    speed  +100%  steering    -2% (straight)  | chip latency 15 clocks (0.56 us) | round trip 13.9 ms | Python model MATCH
+FL=3m  FR=3m  RL=4m  RR=4m
+  -> FWD    speed  +100%  steering    -3% (straight)  | chip latency 15 clocks (0.56 us) | round trip 15.8 ms | Python model MATCH
+FL=2m  FR=2m  RL=4m  RR=4m
+  -> FWD    speed   +98%  steering   +14% (right)  | chip latency 15 clocks (0.56 us) | round trip 15.3 ms | Python model MATCH
+FL=1.5m  FR=1.5m  RL=4m  RR=4m
+  -> FWD    speed   +69%  steering   +14% (right)  | chip latency 15 clocks (0.56 us) | round trip 14.8 ms | Python model MATCH
+FL=1m  FR=1m  RL=4m  RR=4m
+  -> FWD    speed   +41%  steering   +17% (right)  | chip latency 15 clocks (0.56 us) | round trip 15.2 ms | Python model MATCH
+FL=0.8m  FR=0.8m  RL=4m  RR=4m
+  -> FWD-R  speed   +28%  steering   +27% (right)  | chip latency 15 clocks (0.56 us) | round trip 15.7 ms | Python model MATCH
+FL=0.6m  FR=0.6m  RL=4m  RR=4m
+  -> FWD    speed   +14%  steering   +23% (right)  | chip latency 15 clocks (0.56 us) | round trip 14.8 ms | Python model MATCH
+FL=0.5m  FR=0.5m  RL=4m  RR=4m
+  -> STOP   speed    +6%  steering    -1% (straight)  | chip latency 15 clocks (0.56 us) | round trip 15.6 ms | Python model MATCH
+FL=0.4m  FR=0.4m  RL=4m  RR=4m
+  -> STOP   speed    -7%  steering    -5% (straight)  | chip latency 15 clocks (0.56 us) | round trip 15.9 ms | Python model MATCH
+
+=== 2. Obstacle on the LEFT half of the path, getting closer (right side open) ===
+FL=3m  FR=4m  RL=4m  RR=4m
+  -> FWD    speed  +100%  steering    +2% (straight)  | chip latency 15 clocks (0.56 us) | round trip 16.1 ms | Python model MATCH
+FL=2m  FR=4m  RL=4m  RR=4m
+  -> FWD    speed   +98%  steering   +21% (right)  | chip latency 15 clocks (0.56 us) | round trip 15.0 ms | Python model MATCH
+FL=1.5m  FR=4m  RL=4m  RR=4m
+  -> FWD-R  speed   +71%  steering   +41% (right)  | chip latency 15 clocks (0.56 us) | round trip 14.8 ms | Python model MATCH
+FL=1m  FR=4m  RL=4m  RR=4m
+  -> FWD-R  speed   +40%  steering   +63% (right)  | chip latency 15 clocks (0.56 us) | round trip 15.6 ms | Python model MATCH
+FL=0.7m  FR=4m  RL=4m  RR=4m
+  -> FWD-R  speed   +21%  steering   +76% (right)  | chip latency 15 clocks (0.56 us) | round trip 14.8 ms | Python model MATCH
+
+=== 3. Obstacle on the RIGHT half of the path, getting closer (left side open) ===
+FL=4m  FR=3m  RL=4m  RR=4m
+  -> FWD    speed  +100%  steering    -2% (straight)  | chip latency 15 clocks (0.56 us) | round trip 14.8 ms | Python model MATCH
+FL=4m  FR=2m  RL=4m  RR=4m
+  -> FWD    speed  +100%  steering   -22% (left)  | chip latency 15 clocks (0.56 us) | round trip 15.5 ms | Python model MATCH
+FL=4m  FR=1.5m  RL=4m  RR=4m
+  -> FWD-L  speed   +71%  steering   -40% (left)  | chip latency 15 clocks (0.56 us) | round trip 15.1 ms | Python model MATCH
+FL=4m  FR=1m  RL=4m  RR=4m
+  -> FWD-L  speed   +40%  steering   -64% (left)  | chip latency 15 clocks (0.56 us) | round trip 15.0 ms | Python model MATCH
+FL=4m  FR=0.7m  RL=4m  RR=4m
+  -> FWD-L  speed   +22%  steering   -80% (left)  | chip latency 15 clocks (0.56 us) | round trip 14.7 ms | Python model MATCH
+
+=== 4. Dead end: front blocked, rear clear -> back out (3-point turn) ===
+FL=0.4m  FR=0.5m  RL=2m  RR=2m
+  -> STOP   speed    -6%  steering   -19% (left)  | chip latency 15 clocks (0.56 us) | round trip 15.2 ms | Python model MATCH
+FL=0.5m  FR=0.3m  RL=2m  RR=2m
+  -> REV-R  speed   -30%  steering   +26% (right)  | chip latency 15 clocks (0.56 us) | round trip 15.0 ms | Python model MATCH
+FL=0.4m  FR=0.4m  RL=1m  RR=1m
+  -> STOP   speed    -6%  steering    +4% (straight)  | chip latency 15 clocks (0.56 us) | round trip 16.0 ms | Python model MATCH
+
+=== 5. Boxed in: front and rear blocked -> stop ===
+FL=0.4m  FR=0.4m  RL=0.4m  RR=0.4m
+  -> STOP   speed    -4%  steering    -1% (straight)  | chip latency 15 clocks (0.56 us) | round trip 15.0 ms | Python model MATCH
+FL=0.3m  FR=0.5m  RL=0.5m  RR=0.3m
+  -> STOP   speed    +2%  steering    +0% (straight)  | chip latency 15 clocks (0.56 us) | round trip 15.7 ms | Python model MATCH
+
+RESULT: PASS - every answer matches the Python model
+
+Log saved:  C:\fpga\NetSilcon-6x4\host\logs\20261121_002540_demo.log
+Data saved: C:\fpga\NetSilcon-6x4\host\logs\20261121_002540_demo.csv

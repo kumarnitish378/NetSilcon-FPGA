@@ -1,0 +1,16 @@
+NetSilcon-6x4 host run  2026-11-20T23:53:26
+mode=load port=COM7 python=3.14.4 pyserial=3.5 os=Windows-11-10.0.26300-SP0
+built-in model files (md5): {'weights.mem': '9a1084d728b7', 'biases.mem': '16d430ceba82', 'netsilcon_params.vh': 'df7f2fb58151'}
+----------------------------------------------------------------------
+Before: Chip is running: BLDC motor fault detector [motor_fault, CRC 5496]  (built into the bitstream, uploads since power-up: 0)
+Uploading Smart irrigation controller [irrigation, CRC 8F33]
+  file ..\models\irrigation.json, int8 accuracy 97.40%, shifts [7, 6, 7, 7, 5]
+load frame (204 bytes): c37f000002cedf03f802c700030c0000c953e70cfbfd0036fcf7fc01fe020028fbf9fce72002f600167f051b03ff071baa0101390bd4fdfcf9fd23261fd5d1a166073ef4b93e56fae1db405c1401c915f610ebf3f3d63e44ce15e21810a0fd8183dee703eaf01bee4b96fbe31b48a60906eb85d6341001356acb4619212d7f4db704e9f38d089eddfb12f6157f17efdb1630fae500e90fd113b5f6ccea6affe2ffcaffd1ff09001c00bd00a6ff75ffdeff8fffed00eaffdd003800f7ff47002700ffff040007060707058f33
+  sent 204 bytes, chip answered after 31.2 ms: LOADED  (chip CRC 8F33, uploads since power-up: 1)
+After:  Chip is running: Smart irrigation controller [irrigation, CRC 8F33]  (uploaded, uploads since power-up: 1)
+Quick check of the running model (64 golden vectors):
+Vectors: 64  mismatches: 0  chip latency: [15] clocks  total 1.09 s (16.96 ms per round trip, limited by USB serial)
+RESULT: PASS - the chip is now running: Smart irrigation controller
+
+Log saved:  C:\fpga\NetSilcon-6x4\host\logs\20261120_235326_load.log
+Data saved: C:\fpga\NetSilcon-6x4\host\logs\20261120_235326_load.csv

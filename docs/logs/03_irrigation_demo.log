@@ -1,0 +1,60 @@
+NetSilcon-6x4 host run  2026-11-20T23:53:38
+mode=demo port=COM7 python=3.14.4 pyserial=3.5 os=Windows-11-10.0.26300-SP0
+built-in model files (md5): {'weights.mem': '9a1084d728b7', 'biases.mem': '16d430ceba82', 'netsilcon_params.vh': 'df7f2fb58151'}
+----------------------------------------------------------------------
+Chip is running: Smart irrigation controller [irrigation, CRC 8F33]  (uploaded, uploads since power-up: 1)
+
+=== 1. Evening, 28 C, 50 % humidity, 10 % sun: soil drying out ===
+soil=70%  air_temp=28C  humidity=50%  sunlight=10%
+  -> SKIP     scores SKIP=  21 WATER= -74  | chip latency 15 clocks (0.56 us) | round trip 14.3 ms | Python model MATCH
+soil=60%  air_temp=28C  humidity=50%  sunlight=10%
+  -> SKIP     scores SKIP=  15 WATER= -54  | chip latency 15 clocks (0.56 us) | round trip 15.4 ms | Python model MATCH
+soil=50%  air_temp=28C  humidity=50%  sunlight=10%
+  -> SKIP     scores SKIP=  11 WATER= -39  | chip latency 15 clocks (0.56 us) | round trip 15.0 ms | Python model MATCH
+soil=40%  air_temp=28C  humidity=50%  sunlight=10%
+  -> SKIP     scores SKIP=   5 WATER= -17  | chip latency 15 clocks (0.56 us) | round trip 16.0 ms | Python model MATCH
+soil=35%  air_temp=28C  humidity=50%  sunlight=10%
+  -> SKIP     scores SKIP=   2 WATER=  -7  | chip latency 15 clocks (0.56 us) | round trip 15.8 ms | Python model MATCH
+soil=30%  air_temp=28C  humidity=50%  sunlight=10%
+  -> WATER    scores SKIP=  -3 WATER=   2  | chip latency 15 clocks (0.56 us) | round trip 15.6 ms | Python model MATCH
+soil=20%  air_temp=28C  humidity=50%  sunlight=10%
+  -> WATER    scores SKIP=  -3 WATER=   4  | chip latency 15 clocks (0.56 us) | round trip 16.0 ms | Python model MATCH
+soil=10%  air_temp=28C  humidity=50%  sunlight=10%
+  -> WATER    scores SKIP=  -9 WATER=  12  | chip latency 15 clocks (0.56 us) | round trip 15.2 ms | Python model MATCH
+
+=== 2. Dry soil (25 %) through the day: sunlight rising, 35 C ===
+soil=25%  air_temp=35C  humidity=40%  sunlight=0%
+  -> WATER    scores SKIP=  -2 WATER=   1  | chip latency 15 clocks (0.56 us) | round trip 14.4 ms | Python model MATCH
+soil=25%  air_temp=35C  humidity=40%  sunlight=20%
+  -> WATER    scores SKIP=  -4 WATER=   3  | chip latency 15 clocks (0.56 us) | round trip 15.0 ms | Python model MATCH
+soil=25%  air_temp=35C  humidity=40%  sunlight=40%
+  -> WATER    scores SKIP=  -6 WATER=   6  | chip latency 15 clocks (0.56 us) | round trip 15.0 ms | Python model MATCH
+soil=25%  air_temp=35C  humidity=40%  sunlight=60%
+  -> WATER    scores SKIP=  -4 WATER=   4  | chip latency 15 clocks (0.56 us) | round trip 15.5 ms | Python model MATCH
+soil=25%  air_temp=35C  humidity=40%  sunlight=80%
+  -> SKIP     scores SKIP=   2 WATER=  -6  | chip latency 15 clocks (0.56 us) | round trip 15.5 ms | Python model MATCH
+soil=25%  air_temp=35C  humidity=40%  sunlight=100%
+  -> SKIP     scores SKIP=   2 WATER=  -6  | chip latency 15 clocks (0.56 us) | round trip 16.0 ms | Python model MATCH
+
+=== 3. Dry soil (25 %), 26 C, 30 % sun: humidity rising (rain coming) ===
+soil=25%  air_temp=26C  humidity=40%  sunlight=30%
+  -> WATER    scores SKIP=  -4 WATER=   3  | chip latency 15 clocks (0.56 us) | round trip 15.5 ms | Python model MATCH
+soil=25%  air_temp=26C  humidity=60%  sunlight=30%
+  -> WATER    scores SKIP=  -4 WATER=   3  | chip latency 15 clocks (0.56 us) | round trip 16.2 ms | Python model MATCH
+soil=25%  air_temp=26C  humidity=80%  sunlight=30%
+  -> WATER    scores SKIP=  -4 WATER=   3  | chip latency 15 clocks (0.56 us) | round trip 16.3 ms | Python model MATCH
+soil=25%  air_temp=26C  humidity=88%  sunlight=30%
+  -> WATER    scores SKIP=  -2 WATER=   0  | chip latency 15 clocks (0.56 us) | round trip 16.1 ms | Python model MATCH
+soil=25%  air_temp=26C  humidity=92%  sunlight=30%
+  -> SKIP     scores SKIP=   1 WATER=  -5  | chip latency 15 clocks (0.56 us) | round trip 16.2 ms | Python model MATCH
+soil=25%  air_temp=26C  humidity=98%  sunlight=30%
+  -> SKIP     scores SKIP=   2 WATER=  -8  | chip latency 15 clocks (0.56 us) | round trip 16.3 ms | Python model MATCH
+
+=== 4. Critically dry soil (8 %) at harsh noon, 40 C, 95 % sun ===
+soil=8%  air_temp=40C  humidity=30%  sunlight=95%
+  -> WATER    scores SKIP=  -5 WATER=   5  | chip latency 15 clocks (0.56 us) | round trip 15.9 ms | Python model MATCH
+
+RESULT: PASS - every answer matches the Python model
+
+Log saved:  C:\fpga\NetSilcon-6x4\host\logs\20261120_235338_demo.log
+Data saved: C:\fpga\NetSilcon-6x4\host\logs\20261120_235338_demo.csv

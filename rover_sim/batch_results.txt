@@ -1,0 +1,35 @@
+Network: ../models/rover_v1.json  (golden vectors verified bit-exact)
+Batch test: 20 random starts x 90 s per world | sensors: beams | un-stick supervisor OFF | safety layer ON | noise 0 cm
+world         crashes  stuck  slow escape  avg metres  avg m/s  safety active
+room             3/20  16/20        0/20         8.3     0.19          0.0 %
+corridor         0/20  18/20        0/20         9.5     0.11          0.0 %
+clutter          3/20  18/20        0/20         5.7     0.10          0.0 %
+corner_trap      2/20  18/20        0/20         4.8     0.09          0.0 %
+Network: /home/claude/ns/NetSilcon-6x4/models/rover.json  (golden vectors verified bit-exact)
+Batch test: 20 random starts x 90 s per world | sensors: beams | un-stick supervisor ON | safety layer ON | noise 0 cm
+world         crashes  stuck  slow escape  avg metres  avg m/s  safety active
+room             2/20   0/20        5/20        37.3     0.48          0.2 %
+corridor         0/20   0/20        8/20        35.6     0.40          0.0 %
+clutter         13/20   0/20        7/20        16.5     0.40          1.9 %
+corner_trap      4/20   0/20        7/20        24.4     0.32          0.2 %
+Network: ../models/rover_v1.json  (golden vectors verified bit-exact)
+Batch test: 20 random starts x 90 s per world | sensors: scanner | un-stick supervisor ON | safety layer ON | noise 0 cm
+world         crashes  stuck  slow escape  avg metres  avg m/s  safety active
+room             0/20   0/20        1/20        43.2     0.48          0.0 %
+corridor         0/20   0/20        4/20        33.0     0.37          0.0 %
+clutter          0/20   4/20       11/20        19.4     0.22         10.9 %
+corner_trap      0/20   0/20       12/20        22.2     0.25          0.0 %
+Network: /home/claude/ns/NetSilcon-6x4/models/rover.json  (golden vectors verified bit-exact)
+Batch test: 20 random starts x 90 s per world | sensors: scanner | un-stick supervisor OFF | safety layer ON | noise 0 cm
+world         crashes  stuck  slow escape  avg metres  avg m/s  safety active
+room             0/20  15/20        0/20        18.3     0.20          0.0 %
+corridor         0/20  18/20        0/20         7.9     0.09          0.0 %
+clutter          0/20  20/20        0/20         7.1     0.08          3.5 %
+corner_trap      0/20  19/20        0/20         6.3     0.07          0.0 %
+Network: /home/claude/ns/NetSilcon-6x4/models/rover.json  (golden vectors verified bit-exact)
+Batch test: 20 random starts x 90 s per world | sensors: scanner | un-stick supervisor ON | safety layer ON | noise 0 cm
+world         crashes  stuck  slow escape  avg metres  avg m/s  safety active
+room             0/20   0/20        2/20        48.2     0.54          0.0 %
+corridor         0/20   0/20        1/20        34.5     0.38          0.0 %
+clutter          0/20   0/20        5/20        27.7     0.31          0.1 %
+corner_trap      0/20   0/20        5/20        35.8     0.40          0.0 %

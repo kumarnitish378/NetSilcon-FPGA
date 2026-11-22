@@ -1,0 +1,8 @@
+Info: 	                LUT4:    3023/  20736    14%
+Info: 	                 ALU:    1710/  15552    10%
+Info: 	                 DFF:    2810/  15552    18%
+Info: 	               BSRAM:      32/     46    69%
+Info: 	     MULTADDALU18X18:       0/     24     0%
+Info: 	             MULT9X9:      64/     96    66%
+Info: Max frequency for clock 'blk[0].u_m.clk': 112.66 MHz (PASS at 27.00 MHz)
+Info: Max frequency for clock 'blk[0].u_m.clk': 322.79 MHz (PASS at 27.00 MHz)

@@ -1,0 +1,19 @@
+NetSilcon-64x6 host  2026-11-22T01:34:08  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: ns64_host.py COM7 --test
+chip runs: synthetic  CRC-32 6F4225BF  source=built-in  uploads since power-up=0   raw 5cbf25426f0000
+  ... 100/1000 done, 0 mismatches
+ERROR: expected 20 reply bytes, got 19: 2b968a04fd393ac4fd460ca8acf4d3d600c001
+Traceback (most recent call last):
+  File "C:\fpga\NetSilcon-64x6\host\ns64_host.py", line 229, in main
+    ok = run_inferences(chip, net, [v["x"] for v in tv], log, f"{d['name']} golden",
+                        [v["y"] for v in tv])
+  File "C:\fpga\NetSilcon-64x6\host\ns64_host.py", line 150, in run_inferences
+    y, am, lat, rt, raw = chip.infer(x)
+                          ~~~~~~~~~~^^^
+  File "C:\fpga\NetSilcon-64x6\host\ns64_host.py", line 121, in infer
+    r = self._read(20, 1.0)
+  File "C:\fpga\NetSilcon-64x6\host\ns64_host.py", line 107, in _read
+    raise IOError(f"expected {n} reply bytes, got {len(r)}: {r.hex()}")
+OSError: expected 20 reply bytes, got 19: 2b968a04fd393ac4fd460ca8acf4d3d600c001
+
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_013408_test.log and C:\fpga\NetSilcon-64x6\host\..\logs\20261122_013408_test.csv

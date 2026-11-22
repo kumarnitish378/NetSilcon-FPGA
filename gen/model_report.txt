@@ -1,0 +1,23 @@
+NetSilcon-64x6 shape [16, 64, 64, 64, 64, 64, 64, 16]: 22528 weights, 400 biases, 7 shifts, image 23335 bytes, 414 RAM words per lane per bank
+--- synthetic: shifts [7, 9, 8, 8, 8, 8, 7], CRC-32 6F4225BF
+layer  |acc| max  acc bits   zero %   sat %   between %   distinct values
+  L1       49147     17       30.4     7.3      62.4       128
+  L2       85449     18       33.4     0.1      66.5       128
+  L3       39362     17       32.3     0.0      67.7       127
+  L4       42812     17       30.6     0.1      69.4       128
+  L5       42763     17       32.7     0.2      67.1       128
+  L6       52242     17       32.0     0.8      67.2       128
+  L7       36695     17        0.6     7.4      92.6       256
+  self-check synthetic: PASS (numpy vs plain Python on 40 vectors, image round trip, 23335 byte addresses)
+  output classes (argmax) used: 16 of 16
+--- stress: shifts [0, 15, 13, 1, 17, 9, 7], CRC-32 732C18C9
+layer  |acc| max  acc bits   zero %   sat %   between %   distinct values
+  L1      290831     20       10.0    90.0       0.0         2
+  L2     1008128     21       50.0     0.0      50.0         6
+  L3       88599     18       50.7     0.0      49.3        10
+  L4       42636     17       53.1    46.9       0.0         2
+  L5      257557     19       78.1     0.0      21.9         3
+  L6       34306     17       45.3     0.0      54.7         6
+  L7      121663     18        0.0    62.5      37.5         8
+  self-check stress: PASS (numpy vs plain Python on 8 vectors, image round trip, 23335 byte addresses)
+RESULT: PASS

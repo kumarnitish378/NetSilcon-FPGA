@@ -1,0 +1,102 @@
+GowinSynthesis start
+Running parser ...
+Analyzing Verilog file 'C:\fpga\gowin\ns64\src\ns64_engine.v'
+Analyzing Verilog file 'C:\fpga\gowin\ns64\src\ns64_loader.v'
+Analyzing Verilog file 'C:\fpga\gowin\ns64\src\ns64_requant.v'
+Analyzing Verilog file 'C:\fpga\gowin\ns64\src\ns64_wram.v'
+Analyzing Verilog file 'C:\fpga\gowin\ns64\src\ns_uart.v'
+Analyzing Verilog file 'C:\fpga\gowin\ns64\src\tangnano20k_ns64.v'
+Analyzing included file 'C:\fpga\NetSilcon-64x6\gen\ns64_builtin.vh'("C:\fpga\gowin\ns64\src\tangnano20k_ns64.v":38)
+Back to file 'C:\fpga\gowin\ns64\src\tangnano20k_ns64.v'("C:\fpga\gowin\ns64\src\tangnano20k_ns64.v":38)
+Compiling module 'tangnano20k_ns64'("C:\fpga\gowin\ns64\src\tangnano20k_ns64.v":29)
+Compiling module 'ns_uart_rx'("C:\fpga\gowin\ns64\src\ns_uart.v":7)
+Compiling module 'ns64_loader'("C:\fpga\gowin\ns64\src\ns64_loader.v":25)
+Extracting RAM for identifier 'pbuf'("C:\fpga\gowin\ns64\src\ns64_loader.v":69)
+Compiling module 'ns64_wram'("C:\fpga\gowin\ns64\src\ns64_wram.v":31)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100000011000000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100000011000100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100000011001000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100000011001100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100000011010000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100000011010100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100000011011000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100000011011100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100000011100000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100000011100100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100010011000000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100010011000100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100010011001000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100010011001100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100010011010000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100010011010100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100010011011000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100010011011100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100010011100000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100010011100100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100100011000000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100100011000100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100100011001000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100100011001100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100100011010000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100100011010100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100100011011000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100100011011100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100100011100000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100100011100100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100110011000000101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_wram_blk(INIT=88'b0111011101101101011001010110110101011111001100110011000100101110011011010110010101101101)'("C:\fpga\gowin\ns64\src\ns64_wram.v":17)
+Extracting RAM for identifier 'm'("C:\fpga\gowin\ns64\src\ns64_wram.v":25)
+Compiling module 'ns64_engine'("C:\fpga\gowin\ns64\src\ns64_engine.v":27)
+Compiling module 'ns64_requant'("C:\fpga\gowin\ns64\src\ns64_requant.v":12)
+Compiling module 'ns_uart_tx'("C:\fpga\gowin\ns64\src\ns_uart.v":42)
+NOTE  (EX0101) : Current top module is "tangnano20k_ns64"
+[5%] Running netlist conversion ...
+Running device independent optimization ...
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...
+[30%] Inferring Phase 0 completed
+[40%] Inferring Phase 1 completed
+[50%] Inferring Phase 2 completed
+[55%] Inferring Phase 3 completed
+Running technical mapping ...
+[60%] Tech-Mapping Phase 0 completed
+[65%] Tech-Mapping Phase 1 completed
+[75%] Tech-Mapping Phase 2 completed
+[80%] Tech-Mapping Phase 3 completed
+[90%] Tech-Mapping Phase 4 completed
+[95%] Generate netlist file "C:\fpga\gowin\ns64\impl\gwsynthesis\ns64.vg" completed
+[100%] Generate report file "C:\fpga\gowin\ns64\impl\gwsynthesis\ns64_syn.rpt.html" completed
+GowinSynthesis finish

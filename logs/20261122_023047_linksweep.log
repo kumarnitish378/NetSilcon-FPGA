@@ -1,0 +1,51 @@
+NetSilcon-64x6 host  2026-11-22T02:30:47  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: ns64_host.py COM7 --linksweep 300
+chip runs: synthetic  CRC-32 6F4225BF  source=built-in  uploads since power-up=0   raw 5cbf25426f0000
+link sweep: 5 settings x 7 reply types x 300 requests, no retries
+setting: s = stop bits - 1, d = wait d*256 clocks (9.5 us per step) before every reply
+  1 stop, wait     0 clk | info C5              ( 7 B):   64 / 300 damaged
+  1 stop, wait     0 clk | inference            (20 B):    0 / 300 damaged
+  1 stop, wait     0 clk | pattern 5 x 00       ( 6 B):   30 / 300 damaged
+  1 stop, wait     0 clk | pattern 7 counting   ( 8 B):   33 / 300 damaged
+  1 stop, wait     0 clk | pattern 20 counting  (21 B):   48 / 300 damaged
+  1 stop, wait     0 clk | pattern 64 counting  (65 B):   32 / 300 damaged
+  1 stop, wait     0 clk | pattern 20 x 55      (21 B):   29 / 300 damaged
+  2 stop, wait     0 clk | info C5              ( 7 B):   49 / 300 damaged
+  2 stop, wait     0 clk | inference            (20 B):    0 / 300 damaged
+  2 stop, wait     0 clk | pattern 5 x 00       ( 6 B):   40 / 300 damaged
+  2 stop, wait     0 clk | pattern 7 counting   ( 8 B):   33 / 300 damaged
+  2 stop, wait     0 clk | pattern 20 counting  (21 B):   36 / 300 damaged
+  2 stop, wait     0 clk | pattern 64 counting  (65 B):   45 / 300 damaged
+  2 stop, wait     0 clk | pattern 20 x 55      (21 B):   50 / 300 damaged
+  1 stop, wait  2048 clk | info C5              ( 7 B):   57 / 300 damaged
+  1 stop, wait  2048 clk | inference            (20 B):    0 / 300 damaged
+  1 stop, wait  2048 clk | pattern 5 x 00       ( 6 B):   32 / 300 damaged
+  1 stop, wait  2048 clk | pattern 7 counting   ( 8 B):  298 / 300 damaged
+  1 stop, wait  2048 clk | pattern 20 counting  (21 B):   23 / 300 damaged
+  1 stop, wait  2048 clk | pattern 64 counting  (65 B):   33 / 300 damaged
+  1 stop, wait  2048 clk | pattern 20 x 55      (21 B):   50 / 300 damaged
+  2 stop, wait  2048 clk | info C5              ( 7 B):   58 / 300 damaged
+  2 stop, wait  2048 clk | inference            (20 B):    0 / 300 damaged
+  2 stop, wait  2048 clk | pattern 5 x 00       ( 6 B):   41 / 300 damaged
+  2 stop, wait  2048 clk | pattern 7 counting   ( 8 B):   41 / 300 damaged
+  2 stop, wait  2048 clk | pattern 20 counting  (21 B):   40 / 300 damaged
+  2 stop, wait  2048 clk | pattern 64 counting  (65 B):   25 / 300 damaged
+  2 stop, wait  2048 clk | pattern 20 x 55      (21 B):   33 / 300 damaged
+  1 stop, wait 16384 clk | info C5              ( 7 B):   10 / 300 damaged
+  1 stop, wait 16384 clk | inference            (20 B):    1 / 300 damaged
+  1 stop, wait 16384 clk | pattern 5 x 00       ( 6 B):    6 / 300 damaged
+  1 stop, wait 16384 clk | pattern 7 counting   ( 8 B):    2 / 300 damaged
+  1 stop, wait 16384 clk | pattern 20 counting  (21 B):    4 / 300 damaged
+  1 stop, wait 16384 clk | pattern 64 counting  (65 B):    3 / 300 damaged
+  1 stop, wait 16384 clk | pattern 20 x 55      (21 B):    4 / 300 damaged
+
+damaged replies out of 300 per cell
+setting                        info C5       inference  pattern 5 x 00  pattern 7 coun  pattern 20 cou  pattern 64 cou  pattern 20 x 5
+1 stop, wait 0 clk                  64               0              30              33              48              32              29
+2 stop, wait 0 clk                  49               0              40              33              36              45              50
+1 stop, wait 2048 clk               57               0              32             298              23              33              50
+2 stop, wait 2048 clk               58               0              41              41              40              25              33
+1 stop, wait 16384 clk              10               1               6               2               4               3               4
+chip set back to 1 stop bit, no wait (power-up setting)
+RESULT: LINK ERRORS SEEN
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_023047_linksweep.log and C:\fpga\NetSilcon-64x6\host\..\logs\20261122_023047_linksweep.csv

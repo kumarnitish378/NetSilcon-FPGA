@@ -1,0 +1,8 @@
+NetSilcon-64x6 host  2026-11-22T01:35:15  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: ns64_host.py COM7 --test --count 100
+chip runs: synthetic  CRC-32 6F4225BF  source=built-in  uploads since power-up=0   raw 5cbf25426f0000
+  ... 100/100 done, 0 mismatches
+synthetic golden: 100 inferences, 0 mismatches
+chip latency 448..448 clocks = 16.59 us at 27 MHz;  USB round trip avg 16.8 ms, max 17.3 ms
+RESULT: PASS
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_013515_test.log and C:\fpga\NetSilcon-64x6\host\..\logs\20261122_013515_test.csv

@@ -1,0 +1,9 @@
+NetSilcon-64x6 host  2026-11-22T01:34:57  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: ns64_host.py COM7 --load ..\models\stress.json --corrupt
+chip runs: synthetic  CRC-32 6F4225BF  source=built-in  uploads since power-up=0   raw 5cbf25426f0000
+model stress: 23335 image bytes, CRC-32 732C18C9, frame 23340 bytes
+  --corrupt: flipped bit 4 of byte 12345 (a layer-2 weight). The chip must refuse it.
+chip reply: REFUSED - CRC error  chip CRC-32 5C1BB492  loads=0  time 2040 ms   raw 3c0192b41b5c00
+RESULT: PASS (refused as expected)
+chip runs: synthetic  CRC-32 6F4225BF  source=built-in  uploads since power-up=0   raw 5cbf25426f0000
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_013457_load_corrupt.log

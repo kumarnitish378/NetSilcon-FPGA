@@ -1,0 +1,7 @@
+# local copies and generated build/simulation output
+backups/
+sim/
+build/
+__pycache__/
+*.pyc
+MANIFEST.txt

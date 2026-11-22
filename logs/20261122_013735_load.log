@@ -1,0 +1,9 @@
+NetSilcon-64x6 host  2026-11-22T01:37:35  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: ns64_host.py COM7 --load ..\models\synthetic.json
+  WARNING: info attempt 1/3 failed (expected 7 reply bytes, got 6: 5cc9182c7301); flushing and asking again
+chip runs: stress  CRC-32 732C18C9  source=uploaded  uploads since power-up=1   raw 5cc9182c730101
+model synthetic: 23335 image bytes, CRC-32 6F4225BF, frame 23340 bytes
+chip reply: LOADED  chip CRC-32 6F4225BF  loads=2  time 2039 ms   raw 3c00bf25426f02
+RESULT: PASS
+chip runs: synthetic  CRC-32 6F4225BF  source=uploaded  uploads since power-up=2   raw 5cbf25426f0102
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_013735_load.log

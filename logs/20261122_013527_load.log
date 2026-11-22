@@ -1,0 +1,16 @@
+NetSilcon-64x6 host  2026-11-22T01:35:27  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: ns64_host.py COM7 --load ..\models\stress.json
+ERROR: expected 7 reply bytes, got 6: 5c25426f0000
+Traceback (most recent call last):
+  File "C:\fpga\NetSilcon-64x6\host\ns64_host.py", line 217, in main
+    crc = show_info(chip, models, log)
+  File "C:\fpga\NetSilcon-64x6\host\ns64_host.py", line 140, in show_info
+    crc, src, loads, raw = chip.info()
+                           ~~~~~~~~~^^
+  File "C:\fpga\NetSilcon-64x6\host\ns64_host.py", line 112, in info
+    r = self._read(7, 1.0)
+  File "C:\fpga\NetSilcon-64x6\host\ns64_host.py", line 107, in _read
+    raise IOError(f"expected {n} reply bytes, got {len(r)}: {r.hex()}")
+OSError: expected 7 reply bytes, got 6: 5c25426f0000
+
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_013527_load.log

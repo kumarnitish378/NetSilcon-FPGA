@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="tangnano20k_ns64" Register="614" Alu="35" Lut="442" T_Register="5318(614)" T_Alu="1614(35)" T_Lut="5335(442)" T_MULT9X9="64(0)" T_Bsram="32(0)" T_Ssram="12(0)">
+ <SubModule name="u_rx" Register="41" Lut="51" T_Register="41(41)" T_Lut="51(51)"/>
+ <SubModule name="u_ld" Register="210" Alu="10" Lut="257" Ssram="12" T_Register="210(210)" T_Alu="10(10)" T_Lut="257(257)" T_Ssram="12(12)"/>
+ <SubModule name="u_ram" T_Lut="40(0)" T_Bsram="32(0)">
+  <SubModule name="ram[0].u" Lut="2" Bsram="1" T_Lut="2(2)" T_Bsram="1(1)"/>
+  <SubModule name="ram[1].u" Lut="2" Bsram="1" T_Lut="2(2)" T_Bsram="1(1)"/>
+  <SubModule name="ram[2].u" Lut="2" Bsram="1" T_Lut="2(2)" T_Bsram="1(1)"/>
+  <SubModule name="ram[3].u" Lut="2" Bsram="1" T_Lut="2(2)" T_Bsram="1(1)"/>
+  <SubModule name="ram[4].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[5].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[6].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[7].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[8].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[9].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[10].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[11].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[12].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[13].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[14].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[15].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[16].u" Lut="2" Bsram="1" T_Lut="2(2)" T_Bsram="1(1)"/>
+  <SubModule name="ram[17].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[18].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[19].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[20].u" Lut="2" Bsram="1" T_Lut="2(2)" T_Bsram="1(1)"/>
+  <SubModule name="ram[21].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[22].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[23].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[24].u" Lut="2" Bsram="1" T_Lut="2(2)" T_Bsram="1(1)"/>
+  <SubModule name="ram[25].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[26].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[27].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[28].u" Lut="2" Bsram="1" T_Lut="2(2)" T_Bsram="1(1)"/>
+  <SubModule name="ram[29].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[30].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+  <SubModule name="ram[31].u" Lut="1" Bsram="1" T_Lut="1(1)" T_Bsram="1(1)"/>
+ </SubModule>
+ <SubModule name="u_eng" Register="4383" Alu="1544" Lut="4309" MULT9X9="64" T_Register="4422(4383)" T_Alu="1569(1544)" T_Lut="4495(4309)" T_MULT9X9="64(64)">
+  <SubModule name="u_rq" Register="39" Alu="25" Lut="186" T_Register="39(39)" T_Alu="25(25)" T_Lut="186(186)"/>
+ </SubModule>
+ <SubModule name="u_tx" Register="31" Lut="50" T_Register="31(31)" T_Lut="50(50)"/>
+</Module>

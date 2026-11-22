@@ -1,0 +1,40 @@
+NetSilcon-64x6 host  2026-11-22T12:58:11  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: ns64_host.py COM7 --linksweep2 200
+chip runs: synthetic  CRC-32 6F4225BF  source=built-in  uploads since power-up=0   raw 5cbf25426f0000
+D1 0 0 -> 1d 00 00 (expected 1d 00 00)
+link sweep 2: padding [0, 4, 16] x reply length [1, 2, 3, 4, 5, 6, 7, 8, 20] x 200 requests, no retries
+  pad  0 + 3-byte request, reply  1 B:    0 / 200 damaged   first wrong byte at {}
+  pad  0 + 3-byte request, reply  2 B:    0 / 200 damaged   first wrong byte at {}
+  pad  0 + 3-byte request, reply  3 B:    0 / 200 damaged   first wrong byte at {}
+  pad  0 + 3-byte request, reply  4 B:    0 / 200 damaged   first wrong byte at {}
+  pad  0 + 3-byte request, reply  5 B:    0 / 200 damaged   first wrong byte at {}
+  pad  0 + 3-byte request, reply  6 B:    0 / 200 damaged   first wrong byte at {}
+  pad  0 + 3-byte request, reply  7 B:    0 / 200 damaged   first wrong byte at {}
+  pad  0 + 3-byte request, reply  8 B:    0 / 200 damaged   first wrong byte at {}
+  pad  0 + 3-byte request, reply 20 B:    0 / 200 damaged   first wrong byte at {}
+  pad  4 + 3-byte request, reply  1 B:    0 / 200 damaged   first wrong byte at {}
+  pad  4 + 3-byte request, reply  2 B:    0 / 200 damaged   first wrong byte at {}
+  pad  4 + 3-byte request, reply  3 B:    0 / 200 damaged   first wrong byte at {}
+  pad  4 + 3-byte request, reply  4 B:    0 / 200 damaged   first wrong byte at {}
+  pad  4 + 3-byte request, reply  5 B:    0 / 200 damaged   first wrong byte at {}
+  pad  4 + 3-byte request, reply  6 B:    0 / 200 damaged   first wrong byte at {}
+  pad  4 + 3-byte request, reply  7 B:    0 / 200 damaged   first wrong byte at {}
+  pad  4 + 3-byte request, reply  8 B:    0 / 200 damaged   first wrong byte at {}
+  pad  4 + 3-byte request, reply 20 B:    0 / 200 damaged   first wrong byte at {}
+  pad 16 + 3-byte request, reply  1 B:    0 / 200 damaged   first wrong byte at {}
+  pad 16 + 3-byte request, reply  2 B:    0 / 200 damaged   first wrong byte at {}
+  pad 16 + 3-byte request, reply  3 B:    0 / 200 damaged   first wrong byte at {}
+  pad 16 + 3-byte request, reply  4 B:    0 / 200 damaged   first wrong byte at {}
+  pad 16 + 3-byte request, reply  5 B:    0 / 200 damaged   first wrong byte at {}
+  pad 16 + 3-byte request, reply  6 B:    0 / 200 damaged   first wrong byte at {}
+  pad 16 + 3-byte request, reply  7 B:    0 / 200 damaged   first wrong byte at {}
+  pad 16 + 3-byte request, reply  8 B:    0 / 200 damaged   first wrong byte at {}
+  pad 16 + 3-byte request, reply 20 B:    0 / 200 damaged   first wrong byte at {}
+
+damaged replies out of 200   (rows: zero bytes sent before the request; columns: reply length)
+         request     1B     2B     3B     4B     5B     6B     7B     8B    20B
+         3 bytes      0      0      0      0      0      0      0      0      0
+         7 bytes      0      0      0      0      0      0      0      0      0
+        19 bytes      0      0      0      0      0      0      0      0      0
+RESULT: PASS (no damaged replies)
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_125811_linksweep2.log and C:\fpga\NetSilcon-64x6\host\..\logs\20261122_125811_linksweep2.csv

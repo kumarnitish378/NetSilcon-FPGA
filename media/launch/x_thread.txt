@@ -1,0 +1,46 @@
+My FPGA needs 31× fewer clock cycles than my laptop CPU to run the same neural network.
+
+Same int8 maths. Bit-for-bit identical answers.
+
+Here's what I built, and the part where the laptop still wins 🧵
+---
+Honest part first.
+
+Laptop: 4.09 GHz. FPGA: 27 MHz.
+So the laptop finishes first: 3.45 µs vs 16.6 µs.
+
+But the laptop burns ~14,100 cycles per answer. The FPGA needs 448.
+
+Cycles are what carry over to a real chip.
+---
+The engine: NetSilcon-64x6
+
+16 → 64×6 → 16, 22,528 int8 weights
+32 block RAMs, 64 MAC lanes
+One input broadcast per clock, one shared requantizer
+
+All on a small Tang Nano 20K. 35% of its logic.
+---
+The idea: fix the network's shape in hardware, keep the numbers loadable.
+
+New 23 KB model over USB in 2 s.
+CRC-32 checked, swapped in one clock.
+Damaged upload? Refused. The old model keeps running.
+
+Same board, new job.
+---
+Its first job: driving a robot.
+
+360° LiDAR → 16 sectors → speed + steering.
+Trained only on random rooms.
+
+Then the real FPGA drove, in the loop:
+19,200 decisions
+0 mismatches with Python
+0 crashes
+---
+Verilog, Python, trained models and every hardware log: open source.
+
+https://kumarnitish378.github.io/NetSilcon/netsilcon-64x6/
+
+What sensor decision should the next model learn? Up to 16 readings in. Reply 👇

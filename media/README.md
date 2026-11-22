@@ -19,3 +19,7 @@ Datasheet (preliminary target specification): [`NetSilcon-6x4_Datasheet.pdf`](..
 | [`social/03_fpga_drove_rover.png`](social/03_fpga_drove_rover.png) | Hardware-in-the-loop: 19,200 decisions, 0 mismatches, 0 crashes |
 | [`social/04_two_engines.png`](social/04_two_engines.png) | NetSilcon-6x4 and NetSilcon-64x6 side by side |
 
+## Launch kit (launch/)
+
+Everything for the NetSilcon-64x6 launch in one folder: the four images, the LinkedIn post and first comment,
+the X thread, the LinkedIn article, the Reddit posts and both datasheets. See [`launch/README.md`](launch/README.md).

@@ -1,0 +1,2 @@
+Specs, results and the clock-cycle comparison: https://kumarnitish378.github.io/NetSilcon/netsilcon-64x6/
+How a neural network on an FPGA works, step by step: https://kumarnitish378.github.io/NetSilcon/neural-network-on-fpga/

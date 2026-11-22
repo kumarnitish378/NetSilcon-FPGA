@@ -2,8 +2,8 @@
 
 **One fixed neural-network shape in hardware. Load new numbers and it does a new job.**
 
-Repository: **NetSilcon-FPGA**, the FPGA prototypes of the NetSilcon engines. The NetSilcon
-website lives in the separate `NetSilcon` repository.
+Repository: **NetSilcon-FPGA**, the FPGA prototypes of the NetSilcon engines. Website:
+**https://kumarnitish378.github.io/NetSilcon/** (source in the `website/` submodule).
 
 NetSilcon is a family of small neural-network inference engines for edge devices, prototyped on
 a **Sipeed Tang Nano 20K** FPGA (Gowin GW2AR-18). In every model the network **shape** is built
@@ -49,12 +49,32 @@ Videos: [demo](media/NetSilcon_Demo.mp4) · [keynote](media/NetSilcon_Keynote.mp
 - **Safe updates:** a damaged or interrupted upload is refused and the running model keeps working.
 - **Same board and pins:** Tang Nano 20K, 27 MHz clock on pin 4, UART on pins 69 / 70, LEDs on 15–20.
 
+## Working with an AI coding agent
+
+Clone with the website included, open your agent in the root folder and paste the prompt from
+[`Agent/SETUP_PROMPT.md`](Agent/SETUP_PROMPT.md). The agent reads `AGENTS.md` and the `Agent/`
+folder, checks your tools and runs the simulations before it changes anything.
+
+```bash
+git clone --recurse-submodules https://github.com/kumarnitish378/NetSilcon-FPGA.git
+```
+
+## Suggest a use case
+
+Have a sensor decision NetSilcon should learn (up to 4 inputs for NetSilcon-6x4, up to 16 for
+NetSilcon-64x6)? Message [Nitish Kumar Sharma on LinkedIn](https://www.linkedin.com/in/nitish-kumar-sharma-21801013b/)
+or open an issue.
+
 ## Repository layout
 
 ```
 LICENSE, NOTICE            Apache License 2.0 (applies to everything in this repository)
 README.md                  this overview
+AGENTS.md, CLAUDE.md       entry points for AI coding agents
+Agent/                     text summary of the project and a setup prompt for AI agents
 media/                     demo and keynote videos
+tools/sync_website.py      copies model files into the website, prints every model's facts
+website/                   the NetSilcon website (git submodule, kumarnitish378/NetSilcon)
 NetSilcon-Models/
   NetSilcon-6x4/           4 → 6×4 → 2 engine
   NetSilcon-64x6/          16 → 64×6 → 16 engine

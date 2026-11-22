@@ -1,0 +1,323 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(fonts/space-grotesk-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:SG;src:url(fonts/space-grotesk-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:PS;src:url(fonts/ibm-plex-sans-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:PS;src:url(fonts/ibm-plex-sans-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:PM;src:url(fonts/ibm-plex-mono-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:PM;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2);font-weight:500}
+:root{--ink:#0B1220;--ink2:#121C30;--ink3:#1A2742;--paper:#F2F5F9;--mut:#9AAAC1;--rule:#2A3852;--acc:#2DD4BF;--warm:#FBBF24;--red:#F87171;--blue:#60A5FA;--pink:#E879F9}
+*{box-sizing:border-box;margin:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--ink);color:var(--paper);font-family:PS}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(242,245,249,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(242,245,249,.035) 1px,transparent 1px);background-size:60px 60px}
+section{position:absolute;inset:0;display:none;padding:70px 110px}
+section.on{display:block}
+.chap{font:500 22px PM;color:var(--acc);letter-spacing:.06em;text-transform:uppercase}
+h1{font:700 64px/1.08 SG;letter-spacing:-.015em;margin-top:10px}
+h1 em{font-style:normal;color:var(--acc)}
+.st{opacity:0;transition:none}
+.st.vis{opacity:1}
+.cap{position:absolute;left:50%;transform:translateX(-50%);bottom:40px;max-width:1560px;background:rgba(11,18,32,.88);border:1px solid var(--rule);padding:14px 28px;font:400 32px/1.35 PS;text-align:center;color:#fff;border-radius:6px}
+.prog{position:absolute;left:0;bottom:0;height:6px;background:var(--acc)}
+.brand{position:absolute;right:110px;top:74px;font:700 26px SG;display:flex;gap:10px;align-items:center;color:var(--paper)}
+.brand i{width:24px;height:24px;border:3px solid var(--acc);display:inline-block;position:relative}.brand i:after{content:"";position:absolute;inset:5px;background:var(--acc)}
+.card{background:var(--ink2);border:2px solid var(--rule);border-radius:10px;padding:26px 30px}
+.card.a{border-color:var(--acc)}.card.w{border-color:var(--warm)}.card.r{border-color:var(--red)}
+.card h3{font:700 36px SG}.card p{font:400 26px/1.4 PS;color:var(--mut);margin-top:8px}
+.big{font:500 140px/1 PM;letter-spacing:-.04em}
+.mono{font-family:PM}
+.k{font:400 26px PS;color:var(--mut)}
+.row{display:flex;gap:30px;align-items:center}
+.abs{position:absolute}
+.tag{display:inline-block;font:500 22px PM;padding:6px 14px;border:2px solid var(--acc);color:var(--acc);border-radius:20px}
+/* board */
+.pcb{width:560px;height:260px;background:#1E5B3A;border:3px solid #2E7D50;border-radius:14px;position:relative}
+.pcb .chip{position:absolute;left:200px;top:60px;width:150px;height:140px;background:#111;border:2px solid #444;color:#ddd;font:500 20px PM;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pcb .usb{position:absolute;left:-26px;top:100px;width:40px;height:60px;background:#bbb;border-radius:6px}
+.pcb .pins{position:absolute;left:30px;right:30px;height:10px;background:repeating-linear-gradient(90deg,#E0B84B 0 8px,transparent 8px 22px)}
+.pcb .led{position:absolute;width:16px;height:16px;border-radius:50%}
+svg text{font-family:PS}
+</style></head><body><div class="grid"></div>
+<div class="brand"><i></i>NetSilcon</div>
+
+<!-- HOOK -->
+<section id="hook">
+  <div class="chap">Neural network on FPGA</div>
+  <div class="abs" style="left:110px;top:200px">
+    <img class="st" data-s="0" src="photos/board_usb_leds.jpg" style="width:640px;height:360px;object-fit:cover;border-radius:12px;border:2px solid var(--rule)">
+    <p class="k st" data-s="0" style="margin-top:16px">The real board: Sipeed Tang Nano 20K (Gowin GW2AR-18)</p>
+  </div>
+  <div class="abs st" data-s="1" style="left:820px;top:200px"><div class="big" style="color:var(--acc)">19,200</div><div class="k" style="font-size:32px;margin-top:10px">robot decisions · <b style="color:#fff">0 wrong answers</b></div></div>
+  <div class="abs st row" data-s="2" style="left:820px;top:470px;gap:18px">
+    <span class="tag">motor fault</span><span class="tag">irrigation</span><span class="tag">rover</span><span class="k">← one board, a new file each</span></div>
+  <div class="abs st" data-s="3" style="left:820px;top:580px;font:500 30px PM;color:var(--mut);line-height:1.8">→ how it works, step by step<br>→ real, measured numbers<br>→ where my laptop still wins</div>
+  <div class="abs st" data-s="4" style="left:110px;top:660px"><div style="font:700 110px SG">Net<span style="color:var(--acc)">Silcon</span></div><div class="k" style="font-size:30px">Nitish Kumar Sharma</div></div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="chap">01 · The problem</div><h1>Every device measures.<br><em>Few can decide.</em></h1>
+  <div class="abs row st" data-s="0" style="left:110px;top:360px;gap:28px">
+    <div class="card" style="width:390px"><h3>Ceiling fan</h3><p class="mono st" data-s="1">vibration 0.8 g<br>speed 310 rpm</p></div>
+    <div class="card" style="width:390px"><h3>Water pump</h3><p class="mono st" data-s="1">current 4.2 A<br>pressure 1.9 bar</p></div>
+    <div class="card" style="width:390px"><h3>E-scooter motor</h3><p class="mono st" data-s="1">current 18 A<br>temp 71 °C</p></div>
+    <div class="card" style="width:390px"><h3>Battery cell</h3><p class="mono st" data-s="1">3.71 V<br>temp rise 0.4 °C/min</p></div>
+  </div>
+  <div class="abs st" data-s="2" style="left:110px;top:600px;font:600 40px PS;color:var(--warm)">normal … or about to fail?</div>
+  <div class="abs st" data-s="3" style="left:110px;top:680px" ><div class="card" style="width:560px"><h3>Microcontroller</h3><p>runs the network as a program</p></div></div>
+  <div class="abs st" data-s="4" style="left:740px;top:690px">
+    <svg width="1060" height="120"><g font-size="22" fill="#F2F5F9">
+      <rect x="0" y="20" width="200" height="60" rx="8" fill="#121C30" stroke="#2A3852" stroke-width="2"/><text x="100" y="58" text-anchor="middle">read instruction</text>
+      <rect x="250" y="20" width="200" height="60" rx="8" fill="#121C30" stroke="#2A3852" stroke-width="2"/><text x="350" y="58" text-anchor="middle">1 multiply</text>
+      <rect x="500" y="20" width="200" height="60" rx="8" fill="#121C30" stroke="#2A3852" stroke-width="2"/><text x="600" y="58" text-anchor="middle">write it down</text>
+      <rect x="750" y="20" width="200" height="60" rx="8" fill="#121C30" stroke="#2A3852" stroke-width="2"/><text x="850" y="58" text-anchor="middle">next …</text>
+      <path d="M200 50h50M450 50h50M700 50h50" stroke="#9AAAC1" stroke-width="2"/></g></svg>
+    <div class="st" data-s="5" style="font:500 34px PM;color:var(--red);margin-top:6px">× thousands of steps, one at a time</div>
+  </div>
+</section>
+
+<!-- NEURON -->
+<section id="neuron">
+  <div class="chap">02 · What is a neural network?</div><h1>One neuron = <em>a weighted decision</em></h1>
+  <svg class="abs" style="left:110px;top:300px" width="1700" height="520" viewBox="0 0 1700 520">
+    <g class="st" data-s="1"><rect x="0" y="20" width="330" height="90" rx="10" fill="#121C30" stroke="#2A3852" stroke-width="2"/><text x="24" y="76" font-size="32" fill="#F2F5F9">dark clouds</text>
+      <rect x="0" y="180" width="330" height="90" rx="10" fill="#121C30" stroke="#2A3852" stroke-width="2"/><text x="24" y="236" font-size="32" fill="#F2F5F9">humidity</text>
+      <rect x="0" y="340" width="330" height="90" rx="10" fill="#121C30" stroke="#2A3852" stroke-width="2"/><text x="24" y="396" font-size="32" fill="#F2F5F9">weather report</text></g>
+    <g class="st" data-s="2"><path d="M330 65 L700 225" stroke="#2DD4BF" stroke-width="12"/><path d="M330 225 L700 225" stroke="#2DD4BF" stroke-width="3"/><path d="M330 385 L700 225" stroke="#2DD4BF" stroke-width="8"/>
+      <text x="470" y="120" font-size="30" fill="#2DD4BF" font-family="PM">w = 0.9</text><text x="470" y="212" font-size="30" fill="#2DD4BF" font-family="PM">w = 0.2</text><text x="470" y="352" font-size="30" fill="#2DD4BF" font-family="PM">w = 0.6</text></g>
+    <g class="st" data-s="3"><circle cx="760" cy="225" r="70" fill="#121C30" stroke="#2DD4BF" stroke-width="4"/><text x="760" y="240" text-anchor="middle" font-size="44" fill="#F2F5F9">Σ</text>
+      <path d="M830 225 H1000" stroke="#9AAAC1" stroke-width="3"/><text x="915" y="205" text-anchor="middle" font-size="24" fill="#9AAAC1">above the line?</text>
+      <rect x="1000" y="170" width="380" height="110" rx="12" fill="#10302F" stroke="#2DD4BF" stroke-width="3"/><text x="1190" y="238" text-anchor="middle" font-size="36" fill="#F2F5F9">take the umbrella</text></g>
+    <g class="st" data-s="4"><text x="0" y="500" font-size="38" fill="#F2F5F9" font-family="PM">y = w₁·x₁ + w₂·x₂ + w₃·x₃ + bias  →  decide</text></g>
+  </svg>
+  <svg class="abs st" data-s="5" style="left:1250px;top:560px" width="560" height="260"><g stroke="#2A3852" stroke-width="1.5" id="nn"></g></svg>
+  <div class="abs st" data-s="6" style="left:110px;top:170px;right:110px;bottom:0;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column">
+    <div style="font:700 220px/1 SG;color:var(--acc)">× and +</div><div class="k" style="font-size:44px;margin-top:20px">that is all a neural network computes</div></div>
+</section>
+
+<!-- KITCHEN -->
+<section id="kitchen">
+  <div class="chap">03 · CPU vs FPGA</div><h1>One cook, or <em>a kitchen of 64</em></h1>
+  <div class="abs card st" data-s="0" style="left:110px;top:320px;width:760px;height:480px">
+    <h3>Processor</h3><p>one step after another</p>
+    <svg width="700" height="300" style="margin-top:20px"><circle cx="60" cy="150" r="40" fill="#FBBF24"/><text x="60" y="160" text-anchor="middle" font-size="26" fill="#0B1220" font-weight="700">1</text>
+      
+      <g id="queue"></g></svg>
+  </div>
+  <div class="abs card a st" data-s="1" style="left:950px;top:320px;width:860px;height:480px">
+    <h3>FPGA</h3><p>64 lanes work in the same clock tick</p>
+    <svg width="800" height="300" style="margin-top:20px" id="cooks"></svg>
+  </div>
+  <div class="abs st" data-s="2" style="left:110px;top:830px;font:500 36px PM;color:var(--acc)">→ no instructions · a fixed number of clock ticks, every time</div>
+</section>
+
+<!-- IDEA -->
+<section id="idea">
+  <div class="chap">04 · The NetSilcon idea</div><h1 class="st" data-s="0">Hardwired network = <em style="color:var(--red)">one job forever</em></h1>
+  <div class="abs st" data-s="1" style="left:110px;top:300px">
+    <svg width="760" height="420" viewBox="0 0 760 420"><path d="M200 80 L200 340 L440 210 Z" fill="#121C30" stroke="#2DD4BF" stroke-width="4"/>
+      <text x="245" y="160" font-size="40" fill="#F2F5F9">−</text><text x="240" y="290" font-size="40" fill="#F2F5F9">+</text>
+      <path d="M60 140 H200 M60 280 H200 M440 210 H600" stroke="#9AAAC1" stroke-width="3"/>
+      <text x="320" y="400" text-anchor="middle" font-size="30" fill="#9AAAC1">the same op-amp</text></svg></div>
+  <div class="abs st" data-s="2" style="left:880px;top:330px;display:grid;gap:22px">
+    <div class="card" style="width:420px"><h3>Amplifier</h3><p>R1, R2</p></div><div class="card" style="width:420px"><h3>Filter</h3><p>R, C</p></div><div class="card" style="width:420px"><h3>Comparator</h3><p>no feedback</p></div></div>
+  <div class="abs" style="left:110px;top:300px;right:110px;bottom:0;background:var(--ink)" class="st" data-s="3"></div>
+  <div class="abs st" data-s="3" style="left:110px;top:270px;right:110px;bottom:160px;background:var(--ink)">
+    <div class="row" style="gap:40px;align-items:stretch">
+      <div class="card a" style="width:820px;height:440px"><div class="tag">fixed in hardware</div><h3 style="margin-top:20px">The shape</h3><p>inputs · layers · neurons</p>
+        <svg width="740" height="220" id="shape"></svg></div>
+      <div class="card w st" data-s="4" style="width:820px;height:440px"><div class="tag" style="border-color:var(--warm);color:var(--warm)">loaded at run time</div><h3 style="margin-top:20px">The numbers</h3><p>weights · biases · scaling shifts</p>
+        <div class="mono" style="font-size:30px;margin-top:40px;color:var(--warm)">PC ──── serial cable ────▶ FPGA<br><span style="color:var(--mut);font-size:24px">checked with a CRC, then swapped in</span></div></div>
+    </div>
+  </div>
+  <div class="abs st" data-s="5" style="left:0;right:0;top:0;bottom:0;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column">
+    <div style="font:700 120px/1.15 SG;text-align:center">Fix the shape.<br>Load the numbers.<br><span style="color:var(--acc)">New job.</span></div></div>
+</section>
+
+<!-- SIX -->
+<section id="six">
+  <div class="chap">05 · NetSilcon-6x4</div><h1>Tiny on purpose: <em>4 → 6×4 → 2</em></h1>
+  <div class="abs row st" data-s="0" style="left:110px;top:300px;gap:40px">
+    <svg width="760" height="330" id="net6"></svg>
+    <div class="st" data-s="1"><div class="big" style="color:var(--acc)">170</div><div class="k" style="font-size:32px">parameters (144 weights + 26 biases)</div>
+      <div class="big" style="margin-top:40px">15<span style="font-size:60px;color:var(--mut)"> clocks</span></div><div class="k" style="font-size:32px">per answer, every time · 0.556 µs</div></div>
+  </div>
+  <div class="abs" style="left:110px;top:270px;right:110px;bottom:150px;background:var(--ink)" ></div>
+  <div class="abs st" data-s="2" style="left:110px;top:270px;right:110px;bottom:150px;background:var(--ink);display:grid;grid-template-columns:repeat(3,1fr);gap:30px;align-content:start">
+    <div class="card r"><h3>Motor fault detector</h3><p>current · voltage · speed · temp → HEALTHY / FAULT</p><div class="mono st" data-s="4" style="font-size:30px;color:var(--acc);margin-top:20px">576 / 576 ✓</div></div>
+    <div class="card a"><h3>Irrigation controller</h3><p>soil · air temp · humidity · sun → SKIP / WATER</p><div class="mono st" data-s="4" style="font-size:30px;color:var(--acc);margin-top:20px">576 / 576 ✓</div></div>
+    <div class="card" style="border-color:var(--blue)"><h3>Rover driver</h3><p>4 LiDAR distances → speed + steering</p><div class="mono st" data-s="4" style="font-size:30px;color:var(--acc);margin-top:20px">576 / 576 ✓</div></div>
+    <div class="st" data-s="3" style="grid-column:1/4;margin-top:30px;font:500 40px PM;color:var(--warm)">same bitstream · only a 201-byte model file changes</div>
+  </div>
+  <div class="abs" style="display:none"></div>
+</section>
+
+<!-- SCALE -->
+<section id="scale">
+  <div class="chap">06 · NetSilcon-64x6</div><h1 class="st" data-s="0">Does it <em>scale?</em></h1>
+  <div class="abs st" data-s="1" style="left:110px;top:260px"><svg width="1700" height="360" id="net64"></svg></div>
+  <div class="abs st row" data-s="2" style="left:110px;top:650px;gap:80px">
+    <div><div class="big" style="font-size:110px;color:var(--acc)">22,928</div><div class="k" style="font-size:30px">parameters (22,528 weights + 400 biases)</div></div>
+    <div><div class="big" style="font-size:110px">135×</div><div class="k" style="font-size:30px">the 6x4 · same board</div></div></div>
+</section>
+
+<!-- LANES -->
+<section id="lanes">
+  <div class="chap">07 · Inside NetSilcon-64x6</div><h1>One question, <em>64 students</em></h1>
+  <div class="abs st" data-s="1" style="left:110px;top:300px"><svg width="1700" height="470" id="class"></svg></div>
+  <div class="abs st" data-s="3" style="left:110px;top:270px;right:110px;bottom:150px;background:var(--ink)"><svg width="1700" height="560" id="lanesvg"></svg></div>
+  <div class="abs st" data-s="5" style="left:110px;top:830px;font:500 32px PM;color:var(--warm)">bigger network, less logic: 35 % of the FPGA (the 6x4 uses 49 %)</div>
+</section>
+
+<!-- BANKS -->
+<section id="banks">
+  <div class="chap">08 · Safe model updates</div><h1>Two tracks, <em>one switch</em></h1>
+  <div class="abs st" data-s="0" style="left:110px;top:290px;font:500 34px PM;color:var(--mut)">new model: 23,335 bytes · about 2 seconds over USB</div>
+  <svg class="abs st" data-s="1" style="left:110px;top:350px" width="1360" height="320" viewBox="0 0 1700 400">
+    <path d="M0 110 H1700" stroke="#9AAAC1" stroke-width="6"/><path d="M0 290 H1700" stroke="#9AAAC1" stroke-width="6"/>
+    <rect x="880" y="60" width="440" height="100" rx="14" fill="#10302F" stroke="#2DD4BF" stroke-width="4"/><text x="1100" y="122" text-anchor="middle" font-size="34" fill="#F2F5F9">bank 0 · running model</text>
+    <rect x="280" y="240" width="460" height="100" rx="14" fill="#2E2712" stroke="#FBBF24" stroke-width="4"/><text x="510" y="302" text-anchor="middle" font-size="34" fill="#F2F5F9">bank 1 · new model loading</text>
+    <text x="20" y="80" font-size="26" fill="#9AAAC1">track 1</text><text x="20" y="260" font-size="26" fill="#9AAAC1">track 2</text>
+    <g class="st" data-s="2"><path d="M1400 290 L1560 110" stroke="#2DD4BF" stroke-width="10"/><text x="1480" y="380" text-anchor="middle" font-size="30" fill="#2DD4BF">switch in 1 clock</text></g>
+  </svg>
+  <div class="abs st row" data-s="3" style="left:110px;top:690px;gap:30px"><div class="card a" style="width:620px"><h3>CRC-32 good → switch</h3></div><div class="card r" style="width:900px"><h3>one byte damaged → refused</h3><p>the old model keeps working</p></div></div>
+</section>
+
+<!-- CYCLES -->
+<section id="cycles">
+  <div class="chap">09 · The numbers</div><h1>Clock cycles per answer</h1>
+  <div class="abs" style="left:110px;top:330px;width:1700px">
+    <div class="st" data-s="0"><div class="row" style="justify-content:space-between"><b style="font:600 36px PS">NetSilcon-64x6 on the FPGA</b><span class="mono" style="font-size:40px">448</span></div><div style="height:80px;background:var(--ink2);margin-top:14px;border-radius:0 8px 8px 0"><div style="width:3.2%;height:80px;background:var(--acc);border-radius:0 8px 8px 0"></div></div></div>
+    <div class="st" data-s="1" style="margin-top:60px"><div class="row" style="justify-content:space-between"><b style="font:600 36px PS">Laptop CPU, optimised C</b><span class="mono" style="font-size:40px">≈ 14,100</span></div><div style="height:80px;background:#4A586E;margin-top:14px;border-radius:0 8px 8px 0"></div></div>
+    <div class="st" data-s="2" style="margin-top:60px;font:700 120px SG;color:var(--acc)">31× fewer cycles</div>
+  </div>
+</section>
+
+<!-- HONEST -->
+<section id="honest">
+  <div class="chap">10 · The honest part</div><h1>The laptop still <em style="color:var(--warm)">wins at 27 MHz</em></h1>
+  <div class="abs row st" data-s="0" style="left:110px;top:310px;gap:40px">
+    <div class="card" style="width:800px"><h3>Laptop CPU</h3><div class="big" style="font-size:100px">4.09 GHz</div><div class="st" data-s="1"><div class="mono" style="font-size:44px;color:var(--warm);margin-top:10px">3.45 µs per answer</div></div></div>
+    <div class="card a" style="width:800px"><h3>NetSilcon on FPGA</h3><div class="big" style="font-size:100px">27 MHz</div><div class="st" data-s="1"><div class="mono" style="font-size:44px;color:var(--mut);margin-top:10px">16.6 µs per answer</div></div></div>
+  </div>
+  <div class="abs st" data-s="2" style="left:110px;top:310px;right:110px;bottom:150px;background:var(--ink)">
+    <div style="font:700 60px SG">Cycles carry over to a chip</div>
+    <div class="st" data-s="3" style="margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+      <div class="card"><p>27 MHz (tested)</p><h3 class="mono">16.6 µs</h3><p>CPU 4.8× faster</p></div>
+      <div class="card"><p>61.5 MHz (Fmax, untested)</p><h3 class="mono">7.3 µs</h3><p>CPU 2.1× faster</p></div>
+      <div class="card w"><p>130 MHz</p><h3 class="mono">3.45 µs</h3><p>equal</p></div>
+      <div class="card a"><p>500 MHz chip (assumption)</p><h3 class="mono">0.9 µs</h3><p>3.9× faster than the CPU</p></div></div>
+  </div>
+</section>
+
+<!-- ROBOT -->
+<section id="robot">
+  <div class="chap">11 · Driving a robot</div><h1>16 lidar slices in, <em>speed and steering</em> out</h1>
+  <svg class="abs st" data-s="1" style="left:110px;top:290px" width="620" height="560" id="lidar"></svg>
+  <div class="abs" style="left:820px;top:320px;display:grid;gap:26px">
+    <div class="card st" data-s="2" style="width:980px"><h3>1 · Copy the instructor</h3><p>learn from hand-written driving rules</p></div>
+    <div class="card a st" data-s="2" style="width:980px"><h3>2 · Drive, and get corrected</h3><p>the instructor labels the network's own mistakes (DAgger)</p></div>
+    <div class="card w st" data-s="3" style="width:980px"><h3>3 · Only random rooms</h3><p>no chance to memorise the test tracks</p></div>
+  </div>
+</section>
+
+<!-- HIL -->
+<section id="hil">
+  <div class="chap">12 · Hardware in the loop</div><h1>The real FPGA <em>makes every decision</em></h1>
+  <div class="abs row st" data-s="0" style="left:110px;top:300px;gap:0;align-items:center">
+    <div class="card" style="width:600px;height:260px"><h3>PC: simulated world</h3><p>a room, a 360° lidar, physics. Every 50 ms: 16 distances</p></div>
+    <div style="width:300px;text-align:center;font:500 26px PM;color:var(--mut);line-height:2"><span style="color:var(--acc);font-size:44px">→</span><br>16 slices<br>speed, steering<br><span style="color:var(--acc);font-size:44px">←</span></div>
+    <div class="card a st" data-s="1" style="width:700px;height:260px;background:linear-gradient(90deg,rgba(18,28,48,.97) 45%,rgba(18,28,48,.35)),url(photos/board_top_leds.jpg) center/cover"><h3>FPGA: the brain</h3><p style="max-width:330px">NetSilcon-64x6 on the Tang Nano 20K, 448 clock cycles per decision</p></div>
+  </div>
+  <div class="abs row st" data-s="2" style="left:110px;top:620px;gap:30px">
+    <div class="card" style="width:520px"><div class="big" style="font-size:90px">19,200</div><p>decisions</p></div>
+    <div class="card a" style="width:520px"><div class="big" style="font-size:90px;color:var(--acc)">0</div><p>mismatches with Python</p></div>
+    <div class="card a" style="width:520px"><div class="big" style="font-size:90px;color:var(--acc)">0</div><p>crashes in 8 drives</p></div>
+  </div>
+  <div class="abs st" data-s="3" style="left:110px;top:828px;font:500 28px PM;color:var(--warm)">safety stop + supervisor still on the PC → moving into the FPGA next</div>
+</section>
+
+<!-- VERIFY -->
+<section id="verify">
+  <div class="chap">13 · How I know it's right</div><h1>Bit for bit, <em>every step</em></h1>
+  <div class="abs row st" data-s="1" style="left:110px;top:320px;gap:20px">
+    <div class="card a" style="width:310px"><h3>Python</h3><p>reference model</p></div><span class="k">→</span>
+    <div class="card a" style="width:310px"><h3>Verilog</h3><p>the hardware</p></div><span class="k">→</span>
+    <div class="card a" style="width:310px"><h3>Simulation</h3><p>Icarus</p></div><span class="k">→</span>
+    <div class="card a" style="width:310px"><h3>Synthesis</h3><p>Gowin, yosys</p></div><span class="k">→</span>
+    <div class="card a" style="width:250px"><h3>Board</h3><p>Tang Nano 20K</p></div></div>
+  <div class="abs row st" data-s="2" style="left:110px;top:580px;gap:40px">
+    <div class="card"><div class="big" style="font-size:100px">3,200 / 3,200</div><p>test vectors on the FPGA, 0 mismatches</p></div>
+    <div class="card w st" data-s="3"><div class="big" style="font-size:100px;color:var(--warm)">11 / 11</div><p>deliberate bugs caught by the tests</p></div></div>
+</section>
+
+<!-- BUG -->
+<section id="bug">
+  <div class="chap">14 · A lesson</div><h1>Check the <em>whole chain</em></h1>
+  <div class="abs row" style="left:110px;top:360px;gap:30px">
+    <div class="card st" data-s="1" style="width:470px;border-color:var(--red)"><h3>PC script</h3><p>changed the serial timeout → reset the USB bridge</p></div><span class="k" style="font-size:50px">→</span>
+    <div class="card" style="width:470px;padding:0;overflow:hidden"><div style="height:170px;background:url(photos/board_closeup_chips.jpg) 44% 43%/260% auto no-repeat"></div><div style="padding:14px 24px"><h3>USB bridge</h3><p>the BL616 chip on the board</p></div></div><span class="k" style="font-size:50px">→</span>
+    <div class="card st" data-s="0" style="width:470px;border-color:var(--warm)"><h3>FPGA</h3><p>blamed for days… innocent</p></div></div>
+  <div class="abs st" data-s="2" style="left:110px;top:720px;font:700 70px SG;color:var(--acc)">Check the whole chain before you blame the hardware.</div>
+</section>
+
+<!-- USES -->
+<section id="uses">
+  <div class="chap">15 · Where it fits</div><h1>Fast, repeatable decisions <em>next to a sensor</em></h1>
+  <div class="abs st" data-s="1" style="left:110px;top:320px;right:110px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px">
+    <div class="card r"><h3>Motor &amp; pump faults</h3><p>current, vibration, temperature</p></div>
+    <div class="card w"><h3>Battery cells</h3><p>voltage drift, heating</p></div>
+    <div class="card a"><h3>Machine health</h3><p>vibration features on fans and spindles</p></div>
+    <div class="card" style="border-color:var(--blue)"><h3>Robots &amp; drones</h3><p>obstacle decisions from range sensors</p></div></div>
+  <div class="abs st" data-s="2" style="left:110px;top:680px;font:500 38px PM;color:var(--mut)">not images or language · the millions of small decisions at the sensor</div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="chap">16 · Open source</div><h1>Verilog, Python, models, <em>every log</em></h1>
+  <div class="abs st" data-s="0" style="left:110px;top:300px;font:500 40px PM;line-height:1.9">
+    <span style="color:var(--acc)">▸</span> kumarnitish378.github.io/NetSilcon<br><span style="color:var(--acc)">▸</span> github.com/kumarnitish378/NetSilcon-FPGA</div>
+  <div class="abs row st" data-s="1" style="left:110px;top:600px;gap:20px"><span class="tag">more network shapes</span><span class="k">→</span><span class="tag">new trained models</span><span class="k">→</span><span class="tag">more FPGA boards</span><span class="k">→</span><span class="tag" style="border-color:var(--warm);color:var(--warm)">a NetSilcon chip</span></div>
+  <div class="abs st" data-s="2" style="left:110px;top:690px"><div style="font:700 72px SG">What decision would <span style="color:var(--acc)">you</span> give it?</div><div class="k" style="font-size:34px;margin-top:10px">up to 16 sensor readings in · tell me in the comments</div></div>
+  <div class="abs st" data-s="0" style="right:110px;top:250px;width:560px;height:315px;border-radius:12px;border:2px solid var(--rule);background:url(photos/board_top_new.jpg) 50% 62%/175% auto no-repeat"></div><div class="abs st" data-s="4" style="right:110px;top:690px"><div class="card a" style="text-align:center;padding:24px 50px"><div style="font:700 48px SG">Subscribe</div><p>for the next build</p></div></div>
+</section>
+
+<div class="cap" id="cap"></div><div class="prog" id="prog"></div>
+
+<script>
+const S='http://www.w3.org/2000/svg';
+function el(p,t,a){const e=document.createElementNS(S,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
+function net(svg,layers,w,h,r,maxShow){const g=svg;const xs=layers.map((_,i)=>40+i*(w-80)/(layers.length-1));const pos=layers.map((n,i)=>{const m=Math.min(n,maxShow||n);return Array.from({length:m},(_,j)=>[xs[i],h/2+(j-(m-1)/2)*Math.min((h-40)/m,40)])});
+ for(let i=0;i<pos.length-1;i++)for(const a of pos[i])for(const b of pos[i+1])el(g,'line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:'#2A3852','stroke-width':1});
+ pos.forEach((L,i)=>{L.forEach(p=>el(g,'circle',{cx:p[0],cy:p[1],r:r,fill:'#121C30',stroke:'#2DD4BF','stroke-width':2}));el(g,'text',{x:xs[i],y:h+28,'text-anchor':'middle','font-size':24,fill:'#9AAAC1'}).textContent=layers[i]});}
+net(document.getElementById('nn'),[3,4,4,2],520,220,8);
+net(document.getElementById('net6'),[4,6,6,6,6,2],720,280,12);
+net(document.getElementById('shape'),[4,6,6,6,6,2],700,180,9);
+net(document.getElementById('net64'),[16,64,64,64,64,64,64,16],1680,300,4,24);
+// queue + cooks
+const q=document.getElementById('queue');for(let i=0;i<10;i++){el(q,'rect',{x:130+i*55,y:125,width:45,height:50,rx:6,fill:i==0?'#FBBF24':'#1A2742',stroke:'#2A3852'})}
+el(q,'text',{x:130,y:230,'font-size':24,fill:'#9AAAC1'}).textContent='task 1, then 2, then 3 …';
+const c=document.getElementById('cooks');for(let i=0;i<64;i++){el(c,'circle',{cx:40+(i%16)*48,cy:50+Math.floor(i/16)*60,r:18,fill:'#2DD4BF'})}
+el(c,'text',{x:40,y:290,'font-size':24,fill:'#9AAAC1'}).textContent='all 64 at the same time';
+// class: teacher + 64 students
+const cl=document.getElementById('class');el(cl,'rect',{x:0,y:150,width:300,height:140,rx:12,fill:'#2E2712',stroke:'#FBBF24','stroke-width':3});
+el(cl,'text',{x:150,y:215,'text-anchor':'middle','font-size':30,fill:'#F2F5F9'}).textContent='teacher';el(cl,'text',{x:150,y:255,'text-anchor':'middle','font-size':24,fill:'#FBBF24'}).textContent='reads one question';
+for(let i=0;i<64;i++){const x=480+(i%16)*76,y=40+Math.floor(i/16)*100;el(cl,'line',{x1:300,y1:220,x2:x,y2:y+20,stroke:'#2A3852','stroke-width':1});el(cl,'circle',{cx:x,cy:y+20,r:22,fill:'#121C30',stroke:'#2DD4BF','stroke-width':2});}
+el(cl,'text',{x:480,y:450,'font-size':26,fill:'#9AAAC1'}).textContent='each student: own answer key (weight) · adds to own score (accumulator)';
+// lanes diagram
+const L=document.getElementById('lanesvg');
+el(L,'rect',{x:0,y:220,width:250,height:100,rx:10,fill:'#121C30',stroke:'#F2F5F9','stroke-width':2});el(L,'text',{x:125,y:262,'text-anchor':'middle','font-size':30,fill:'#F2F5F9'}).textContent='input xᵢ';el(L,'text',{x:125,y:298,'text-anchor':'middle','font-size':22,fill:'#9AAAC1'}).textContent='1 per clock';
+for(let i=0;i<7;i++){const y=20+i*62;el(L,'line',{x1:250,y1:270,x2:420,y2:y+25,stroke:'#9AAAC1'});el(L,'rect',{x:420,y:y,width:430,height:50,rx:8,fill:'#121C30',stroke:'#2DD4BF','stroke-width':2,'stroke-dasharray':i==6?'6 4':''});el(L,'text',{x:635,y:y+33,'text-anchor':'middle','font-size':24,fill:'#F2F5F9'}).textContent=i==6?'lanes 6 … 63':`lane ${i}: acc += xᵢ · w`;el(L,'line',{x1:850,y1:y+25,x2:1040,y2:270,stroke:'#9AAAC1'})}
+el(L,'rect',{x:420,y:458,width:430,height:46,rx:8,fill:'#10302F',stroke:'#2DD4BF'});el(L,'text',{x:635,y:488,'text-anchor':'middle','font-size':22,fill:'#2DD4BF'}).textContent='weights from 32 block RAMs';
+const rq=document.createElementNS(S,'g');rq.setAttribute('class','st');rq.dataset.s='4';L.appendChild(rq);
+el(rq,'rect',{x:1040,y:200,width:400,height:140,rx:12,fill:'#10302F',stroke:'#2DD4BF','stroke-width':3});el(rq,'text',{x:1240,y:255,'text-anchor':'middle','font-size':32,fill:'#F2F5F9'}).textContent='shared requantizer';el(rq,'text',{x:1240,y:300,'text-anchor':'middle','font-size':24,fill:'#9AAAC1'}).textContent='no negatives · round · scale · limit';
+el(rq,'path',{d:'M1440 270 H1560 V535 H125 V320',stroke:'#2DD4BF','stroke-width':3,fill:'none','stroke-dasharray':'10 8'});el(rq,'text',{x:1000,y:525,'font-size':24,fill:'#2DD4BF'}).textContent='next layer’s inputs';
+// lidar 16 sectors
+const ld=document.getElementById('lidar');const cx=300,cy=280;for(let i=0;i<16;i++){const a0=(-180+22.5*i)*Math.PI/180,a1=a0+22.5*Math.PI/180;const R=[200,230,150,260,240,180,210,250,250,230,170,200,260,220,190,210][i];
+ el(ld,'path',{d:`M${cx} ${cy} L${cx+R*Math.sin(a0)} ${cy-R*Math.cos(a0)} A${R} ${R} 0 0 1 ${cx+R*Math.sin(a1)} ${cy-R*Math.cos(a1)} Z`,fill:i==7||i==8?'#10302F':'#121C30',stroke:'#2DD4BF','stroke-width':1.5})}
+el(ld,'rect',{x:cx-24,y:cy-32,width:48,height:64,rx:8,fill:'#60A5FA'});el(ld,'text',{x:cx,y:540,'text-anchor':'middle','font-size':26,fill:'#9AAAC1'}).textContent='16 slices of 22.5° → 16 inputs';
+function show(id,step,cap,prog){document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id==id));
+ const sec=document.getElementById(id);sec.querySelectorAll('.st').forEach(e=>e.classList.toggle('vis',(+e.dataset.s)<=step));
+ const c=document.getElementById('cap');c.textContent=cap;c.style.display=cap?'block':'none';document.getElementById('prog').style.width=(prog*100)+'%';}
+window.show=show;
+</script></body></html>

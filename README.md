@@ -22,6 +22,15 @@ op-amp, which becomes an amplifier, a filter or a comparator depending on a few 
 
 <table>
   <tr>
+    <td width="33%"><img src="media/photos/board_angle_leds.jpg" alt="Sipeed Tang Nano 20K running NetSilcon, USB-C connected, LEDs lit"></td>
+    <td width="33%"><img src="media/photos/board_top_leds.jpg" alt="Close-up of the Gowin GW2AR-18 FPGA and the BL616 USB bridge on the Tang Nano 20K"></td>
+    <td width="33%"><img src="media/photos/board_bottom_pins.jpg" alt="Tang Nano 20K bottom side with pin numbers"></td>
+  </tr>
+</table>
+<p align="center"><sub>The real hardware: our Sipeed Tang Nano 20K (Gowin GW2AR-18). All six photos: <a href="media/photos/">media/photos/</a></sub></p>
+
+<table>
+  <tr>
     <td width="50%"><img src="media/social/01_cycles_31x.png" alt="NetSilcon-64x6 needs 448 clock cycles per inference, a laptop CPU about 14,100 for the same network"></td>
     <td width="50%"><img src="media/social/02_fix_shape_new_job.png" alt="One bitstream, three model files, three jobs: motor fault detector, irrigation controller, rover driver"></td>
   </tr>
@@ -34,6 +43,9 @@ op-amp, which becomes an amplifier, a filter or a comparator depending on a few 
 ## Videos and documents
 
 <table>
+  <tr>
+    <td colspan="2" align="center"><a href="media/youtube/NetSilcon_YouTube.mp4"><img src="media/youtube/NetSilcon_YouTube_thumbnail.jpg" width="640" alt="Neural network on FPGA: the full NetSilcon explainer video"></a><br><b>Full explainer</b> · 8:49 · how it works, step by step, with the measured numbers (<a href="media/youtube/NetSilcon_YouTube.en.srt">captions</a>)</td>
+  </tr>
   <tr>
     <td width="50%" align="center"><a href="media/NetSilcon_Demo.mp4"><img src="media/NetSilcon_Demo.jpg" alt="NetSilcon demo video"></a><br><b>Demo</b> · 2:07 · the Tang Nano 20K at work</td>
     <td width="50%" align="center"><a href="media/NetSilcon_Keynote.mp4"><img src="media/NetSilcon_Keynote.jpg" alt="NetSilcon keynote video"></a><br><b>Keynote</b> · 2:05 · the idea and the numbers</td>

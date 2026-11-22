@@ -1,0 +1,307 @@
+1
+00:00:00,500 --> 00:00:07,519
+This small FPGA board is running a neural network. Not on a processor. Built directly into the hardware.
+
+2
+00:00:07,833 --> 00:00:12,228
+It drove a robot nineteen thousand two hundred times without a single wrong answer.
+
+3
+00:00:12,533 --> 00:00:16,288
+And with one small file, it can become a completely different product.
+
+4
+00:00:16,600 --> 00:00:24,195
+In the next few minutes, I'll show you how it works, step by step, with real numbers, and the one place where my laptop still beats it.
+
+5
+00:00:24,500 --> 00:00:26,527
+I'm Nitish, and this is NetSilcon.
+
+6
+00:00:27,267 --> 00:00:32,195
+Look around you. A ceiling fan, a water pump, an electric scooter, a battery pack.
+
+7
+00:00:32,500 --> 00:00:37,257
+Almost every device measures something: current, voltage, temperature, distance.
+
+8
+00:00:37,567 --> 00:00:47,167
+But measuring is not deciding. Is this motor current normal, or is the bearing about to fail? Is this battery cell healthy, or getting dangerously hot?
+
+9
+00:00:47,467 --> 00:00:50,731
+Today, a small microcontroller usually makes that call.
+
+10
+00:00:51,033 --> 00:00:59,887
+And a microcontroller is like a clerk with one pen. It reads one instruction, does one multiplication, writes it down, and moves to the next.
+
+11
+00:01:00,200 --> 00:01:03,507
+Even a tiny neural network costs it thousands of steps.
+
+12
+00:01:04,267 --> 00:01:11,349
+So what is a neural network, really? Forget the hype for a moment, and think about how you decide whether to carry an umbrella.
+
+13
+00:01:11,633 --> 00:01:15,580
+You look at the clouds, you check the humidity, you remember the weather report.
+
+14
+00:01:15,867 --> 00:01:21,840
+Each clue gets a weight in your mind. Dark clouds count a lot. A slightly humid morning counts a little.
+
+15
+00:01:22,133 --> 00:01:26,869
+You add up the weighted clues, and if the total crosses a line, you take the umbrella.
+
+16
+00:01:27,167 --> 00:01:32,735
+That is one neuron. Multiply each input by a weight, add them up, add a bias, and decide.
+
+17
+00:01:33,033 --> 00:01:38,367
+A neural network is just many of these neurons, in layers, passing their answers forward.
+
+18
+00:01:38,667 --> 00:01:44,085
+And here is the important part. All of it is multiplication and addition. Nothing else.
+
+19
+00:01:44,833 --> 00:01:53,601
+A processor does those multiplications one after another, like one cook preparing a wedding dinner alone, following the recipe line by line.
+
+20
+00:01:53,900 --> 00:02:00,577
+An FPGA lets you build the kitchen itself. You can put sixty-four cooks in it, all chopping at the same moment.
+
+21
+00:02:00,867 --> 00:02:07,181
+Nothing waits for an instruction. The answer comes out after a fixed number of clock ticks, every single time.
+
+22
+00:02:07,933 --> 00:02:16,381
+But there is a catch. If you wire a network into hardware, it usually does one job forever. Change the job, and you redesign the chip.
+
+23
+00:02:16,667 --> 00:02:23,280
+NetSilcon takes a different path, and the idea comes from a part every electronics student knows: the op-amp.
+
+24
+00:02:23,567 --> 00:02:30,671
+The same op-amp becomes an amplifier, a filter or a comparator, depending on a few resistor values around it.
+
+25
+00:02:30,967 --> 00:02:38,881
+NetSilcon does the same with neural networks. The shape of the network is fixed in hardware: how many inputs, layers and neurons.
+
+26
+00:02:39,167 --> 00:02:45,417
+The numbers, the weights, the biases and the scaling, are loaded at run time over a simple serial cable.
+
+27
+00:02:45,733 --> 00:02:48,336
+Fix the shape. Load the numbers. New job.
+
+28
+00:02:49,100 --> 00:02:57,463
+The first engine, NetSilcon six by four, is tiny on purpose: four inputs, four hidden layers of six neurons, and two outputs.
+
+29
+00:02:57,767 --> 00:03:04,209
+That is one hundred and seventy parameters in total. And it answers in fifteen clock cycles, every time.
+
+30
+00:03:04,500 --> 00:03:11,668
+Without touching the hardware, the same board has been a motor fault detector, an irrigation controller, and a rover driver.
+
+31
+00:03:11,967 --> 00:03:14,719
+Only a two hundred and one byte file changed.
+
+32
+00:03:15,033 --> 00:03:23,652
+And every answer matched the Python model exactly: five hundred seventy-six out of five hundred seventy-six test cases, for every job.
+
+33
+00:03:24,400 --> 00:03:30,608
+You can even watch the rover version drive in your browser, using the exact same integer maths as the chip.
+
+34
+00:03:30,900 --> 00:03:36,041
+The network sees four distances, and decides speed and steering, twenty times a second.
+
+35
+00:03:36,800 --> 00:03:40,789
+Of course, people asked the obvious question. Does this idea scale?
+
+36
+00:03:41,100 --> 00:03:49,249
+So I built NetSilcon sixty-four by six. Sixteen inputs, six hidden layers of sixty-four neurons, and sixteen outputs.
+
+37
+00:03:49,533 --> 00:03:57,085
+Twenty-two thousand nine hundred and twenty-eight parameters. About one hundred and thirty-five times bigger, on the very same board.
+
+38
+00:03:57,833 --> 00:04:04,745
+Wiring every neuron separately would never fit. So the design changed, and here is a classroom way to picture it.
+
+39
+00:04:05,033 --> 00:04:09,236
+Imagine a teacher reading one question aloud to sixty-four students.
+
+40
+00:04:09,533 --> 00:04:16,829
+Every student hears the same question at the same moment, but each one has a personal answer key, and adds to their own score.
+
+41
+00:04:17,133 --> 00:04:28,035
+That is exactly what happens inside. Every clock, one input value is broadcast to sixty-four multiply-and-add lanes. Each lane reads its own weight from block memory.
+
+42
+00:04:28,333 --> 00:04:39,213
+When a layer is finished, one shared unit cleans up all sixty-four results. It removes negatives, rounds, scales and limits them, and they become the inputs of the next layer.
+
+43
+00:04:39,500 --> 00:04:49,377
+The surprise? This much bigger network uses less of the FPGA's logic than the small one, because the same sixty-four lanes are reused for every layer.
+
+44
+00:04:50,133 --> 00:04:57,536
+Changing the model must also be safe. A new model is twenty-three thousand bytes, and it arrives in about two seconds.
+
+45
+00:04:57,833 --> 00:05:04,788
+Think of a railway station with two tracks. The train keeps running on track one, while the new train is prepared on track two.
+
+46
+00:05:05,100 --> 00:05:09,537
+Only when everything is checked, do we switch the points, in a single clock tick.
+
+47
+00:05:09,833 --> 00:05:18,900
+The check is a CRC, like a seal on a parcel. If even one byte is damaged, the upload is refused, and the old model simply keeps working.
+
+48
+00:05:19,633 --> 00:05:26,375
+Now, the numbers. NetSilcon sixty-four by six needs four hundred and forty-eight clock cycles per answer.
+
+49
+00:05:26,667 --> 00:05:33,344
+My laptop CPU, running the same network in optimised C code, needs about fourteen thousand one hundred.
+
+50
+00:05:33,633 --> 00:05:36,108
+That is thirty-one times fewer clock cycles.
+
+51
+00:05:36,867 --> 00:05:44,248
+But here is the honest part. My laptop runs at four gigahertz. This FPGA runs at twenty-seven megahertz.
+
+52
+00:05:44,533 --> 00:05:49,888
+So the laptop still finishes first: three and a half microseconds, against sixteen and a half.
+
+53
+00:05:50,200 --> 00:05:54,723
+Then why do cycles matter? Because cycles are what carry over to a real chip.
+
+54
+00:05:55,033 --> 00:06:04,932
+The same design at about one hundred and thirty megahertz would match the laptop. And a small custom chip at five hundred megahertz would be almost four times faster.
+
+55
+00:06:05,667 --> 00:06:10,979
+Numbers are nice, but can it do a real job? Its first trained model drives a robot.
+
+56
+00:06:11,267 --> 00:06:19,715
+The robot sees the world through a three hundred and sixty degree LiDAR, split into sixteen slices. The network decides speed and steering.
+
+57
+00:06:20,000 --> 00:06:29,493
+It learned the way a new driver learns. First by copying an instructor's rules, and then by driving on its own, while the instructor corrected its mistakes.
+
+58
+00:06:29,800 --> 00:06:35,475
+And it trained only in rooms generated at random, so it could not simply memorise the test tracks.
+
+59
+00:06:36,233 --> 00:06:41,972
+Then came the real test: hardware in the loop. The same trick pilots use in flight simulators.
+
+60
+00:06:42,267 --> 00:06:48,837
+The computer simulates the room and the sensor, but every single decision is made by the real FPGA.
+
+61
+00:06:49,133 --> 00:06:54,915
+Nineteen thousand two hundred decisions. Zero mismatches with the Python model. Zero crashes.
+
+62
+00:06:55,200 --> 00:07:02,837
+To be fair, a small safety stop and supervisor still run on the computer. Moving them into the FPGA is the next step.
+
+63
+00:07:03,600 --> 00:07:08,933
+How do I know the hardware is right? Every step was checked against a Python model, bit for bit.
+
+64
+00:07:09,233 --> 00:07:15,164
+First the Python model, then the Verilog, then simulation, then synthesis, and only then the board.
+
+65
+00:07:15,467 --> 00:07:20,203
+Three thousand two hundred test vectors on the FPGA. Zero mismatches.
+
+66
+00:07:20,500 --> 00:07:27,881
+I even broke my own design on purpose, eleven different ways, to make sure the tests would catch it. They caught all eleven.
+
+67
+00:07:28,633 --> 00:07:35,993
+And one lesson I will never forget. Replies from the board were getting corrupted, and I blamed the FPGA for days.
+
+68
+00:07:36,300 --> 00:07:43,745
+The real bug was in my PC script. Changing a serial timeout on Windows was resetting the board's USB bridge.
+
+69
+00:07:44,033 --> 00:07:47,191
+Always check the whole chain, before you blame the hardware.
+
+70
+00:07:47,933 --> 00:07:54,397
+So where does this fit? Anywhere a device needs a fast, repeatable decision from a handful of sensor readings.
+
+71
+00:07:54,700 --> 00:08:04,300
+Motor and pump fault detection. Battery cell monitoring. Vibration health checks on fans and machines. Obstacle decisions on robots and drones.
+
+72
+00:08:04,600 --> 00:08:12,109
+It is not meant for images or language. It is meant for the millions of small decisions that happen right next to a sensor.
+
+73
+00:08:12,867 --> 00:08:20,888
+Everything is open source: the Verilog, the Python tools, the trained models, and every hardware log. The links are in the description.
+
+74
+00:08:21,200 --> 00:08:29,627
+New network shapes and new trained models are coming. Then support for more FPGA boards. And one day, a real NetSilcon chip.
+
+75
+00:08:29,933 --> 00:08:36,632
+And here is where you come in. Tell me in the comments: what decision would you give it? Up to sixteen sensor readings in.
+
+76
+00:08:36,933 --> 00:08:39,600
+The best ideas will become the next trained model.
+
+77
+00:08:39,900 --> 00:08:46,193
+If this helped you understand neural networks on FPGA, subscribe, and I'll see you in the next build.

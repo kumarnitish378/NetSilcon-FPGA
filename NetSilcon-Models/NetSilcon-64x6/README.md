@@ -86,6 +86,12 @@ Needs `python3-numpy` and `iverilog` (`sudo apt install iverilog python3-numpy`)
 | [`models/synthetic/`](models/synthetic/) (built into bank 0) | random weights, shifts calibrated so ~30 % of hidden activations are 0, <1 % saturate, the rest in between; ~7 % of outputs hit +127/−128 | 7 9 8 8 8 8 7 | 6F4225BF |
 | [`models/stress/`](models/stress/) | weights only −128/+127, biases at ±32767/−32768, layer-2 sums up to 1,008,128 (21 bits) | 0 15 13 1 17 9 7 | 732C18C9 |
 
+## Trained applications
+
+| Model | What it does | Result | CRC-32 |
+|---|---|---|---|
+| [`models/rover/`](models/rover/) | rover obstacle avoidance from 16 LiDAR sectors → speed, steering | int8 89.8 % action agreement with teacher; simulation with supervisor + safety stop: 0/80 crashes, 0/80 stuck, 46.9 m; 40 unseen worlds 0 crashes, 37.9 m (6x4: 33.3 m). Verilog 1000/1000 bit-exact | 3A81C867 |
+
 Activation statistics per layer: `gen/model_report.txt`.
 
 ## Layout
@@ -97,8 +103,9 @@ board/    tangnano20k_ns64.v (UART top), ns64_loader.v (CRC-32, two banks), ns_u
 host/     ns64_host.py (PC tool: info, inference, upload, golden/random tests, logs)
 docs/     protocol.md, gowin_build.md
 tb/       tb_engine.v, tb_requant.v, tb_top.v
-model/    ns64.py (reference math, image, CRC-32, RAM layout), make_synthetic.py
-models/   synthetic.json, stress.json
+model/    ns64.py (reference math, image, CRC-32, RAM layout), make_synthetic.py, train_rover.py
+models/   <application>/<application>.json + README (synthetic, stress, rover)
+rover_sim/ rover64.py (16-sector rover simulator, teacher, HIL), eval_rover64.py, results_rover64.txt
 gen/      wmem_00..31.mem (built-in RAM contents), tb/ (testbench RAMs), golden vectors, *.vh
 scripts/  run_sim_engine.sh, run_sim_top.sh, mutation_test*.sh, make_tb_load.py, build_opensource.sh
 probe/    step-0 resource probe

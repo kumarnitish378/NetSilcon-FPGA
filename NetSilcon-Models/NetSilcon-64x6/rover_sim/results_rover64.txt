@@ -1,0 +1,17 @@
+NetSilcon-64x6 rover controller evaluation  2026-11-22T09:08:11
+model: models/rover/rover.json  CRC-32 3A81C867  (golden vectors verified bit-exact)
+network inputs: 16 LiDAR sectors; safety stop ON in every run
+
+driver / setup                                       crashes   stuck   avg m
+standard test: 4 worlds x 20 starts x 120 s = 80 drives (none of these worlds used in training)
+64x6 network + supervisor                              0/80    0/80     46.9   (100 s)
+64x6 network, no supervisor                            0/80   68/80     13.0   (80 s)
+64x6 network + supervisor, 2 cm sensor noise           0/80    0/80     46.4   (99 s)
+teacher rules + supervisor (reference)                 0/80    0/80     47.7   (96 s)
+6x4 rover v2 (4 sectors) + supervisor                  0/80    0/80     49.2   (75 s)
+6x4 rover v2 (4 sectors), no supervisor                0/80   72/80     11.9   (60 s)
+
+unseen test: 40 random worlds never used in training x 1 start x 120 s
+64x6 network + supervisor                              0/40    1/40     37.9   (54 s)
+teacher rules + supervisor (reference)                 0/40    0/40     38.2   (55 s)
+6x4 rover v2 (4 sectors) + supervisor                  0/40    0/40     33.3   (43 s)

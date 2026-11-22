@@ -2,6 +2,9 @@
 
 **One fixed neural-network shape in hardware. Load new numbers and it does a new job.**
 
+Repository: **NetSilcon-FPGA**, the FPGA prototypes of the NetSilcon engines. The NetSilcon
+website lives in the separate `NetSilcon` repository.
+
 NetSilcon is a family of small neural-network inference engines for edge devices, prototyped on
 a **Sipeed Tang Nano 20K** FPGA (Gowin GW2AR-18). In every model the network **shape** is built
 into the logic, and everything else (weights, biases, per-layer shifts) is **loadable at run time**

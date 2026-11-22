@@ -1,0 +1,24 @@
+CPU comparison, measured 22 Nov 2026 on the user's laptop (Linux VM, 2 vCPUs, single thread)
+CPU: 13th Gen Intel Core i7-13650HX; gcc 11.4; Python 3.10 + numpy 2.2.6
+Network: NetSilcon-64x6 synthetic model, 22,528 int8 MACs per inference, bit-exact math
+
+C, gcc -O3 -march=native (SIMD)   3.4-3.5 us per inference   (1000 golden vectors, 0 wrong)
+C, gcc -O2 -march=native          7.4-7.6 us per inference
+numpy, one input at a time        62.6 us
+numpy, batch of 1000              13.5 us per inference
+plain Python                      3,023 us
+
+FPGA (Tang Nano 20K, hardware counter)   448 clocks = 16.6 us at 27 MHz
+                                          (Gowin Fmax 61.5 MHz -> ~7.3 us possible, not tested)
+FPGA end to end over USB-UART             ~16.5 ms per round trip (USB-dominated)
+
+Clock cycles required per inference (CPU clock 4.09 GHz from Windows Task Manager, same session)
+FPGA NetSilcon-64x6                 448 cycles      (50.3 multiply-adds per cycle)
+CPU C -O3 -march=native        ~ 14,100 cycles      (1.6 multiply-adds per cycle)
+CPU C -O2 -march=native        ~ 30,700 cycles
+numpy batch / single           ~ 55,000 / 256,000 cycles
+plain Python                   ~ 12.4 million cycles
+
+FPGA needs 31x fewer cycles than the best CPU code (20-38x for a CPU clock of 2.6-4.9 GHz).
+CPU clock is 151x higher (4,090 MHz / 27 MHz) -> CPU 4.8x faster in wall-clock time on this board.
+Break-even FPGA clock: 448 cycles / 3.45 us = 130 MHz.

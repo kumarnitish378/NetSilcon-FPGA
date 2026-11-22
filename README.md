@@ -20,7 +20,29 @@ op-amp, which becomes an amplifier, a filter or a comparator depending on a few 
 
 > **Status:** working FPGA prototypes, verified on real hardware. Not a fabricated chip.
 
-Videos: [demo](media/NetSilcon_Demo.mp4) · [keynote](media/NetSilcon_Keynote.mp4) (in [`media/`](media/)). Datasheet: [NetSilcon-6x4 (preliminary, PDF)](NetSilcon-Models/NetSilcon-6x4/docs/NetSilcon-6x4_Datasheet.pdf).
+<table>
+  <tr>
+    <td width="50%"><img src="media/social/01_cycles_31x.png" alt="NetSilcon-64x6 needs 448 clock cycles per inference, a laptop CPU about 14,100 for the same network"></td>
+    <td width="50%"><img src="media/social/02_fix_shape_new_job.png" alt="One bitstream, three model files, three jobs: motor fault detector, irrigation controller, rover driver"></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="media/social/03_fpga_drove_rover.png" alt="Hardware in the loop: the FPGA drove a simulated rover for 19,200 decisions with 0 mismatches and 0 crashes"></td>
+    <td width="50%"><img src="media/social/04_two_engines.png" alt="NetSilcon-6x4 with 170 parameters and NetSilcon-64x6 with 22,928 parameters on the same Tang Nano 20K"></td>
+  </tr>
+</table>
+
+## Videos and documents
+
+<table>
+  <tr>
+    <td width="50%" align="center"><a href="media/NetSilcon_Demo.mp4"><img src="media/NetSilcon_Demo.jpg" alt="NetSilcon demo video"></a><br><b>Demo</b> · 2:07 · the Tang Nano 20K at work</td>
+    <td width="50%" align="center"><a href="media/NetSilcon_Keynote.mp4"><img src="media/NetSilcon_Keynote.jpg" alt="NetSilcon keynote video"></a><br><b>Keynote</b> · 2:05 · the idea and the numbers</td>
+  </tr>
+</table>
+
+- Datasheets (preliminary, PDF): [NetSilcon-6x4](NetSilcon-Models/NetSilcon-6x4/docs/NetSilcon-6x4_Datasheet.pdf) · [NetSilcon-64x6](NetSilcon-Models/NetSilcon-64x6/docs/NetSilcon-64x6_Datasheet.pdf)
+- Test report: [NetSilcon-64x6](NetSilcon-Models/NetSilcon-64x6/docs/test_report.md) · Results: [NetSilcon-6x4](NetSilcon-Models/NetSilcon-6x4/docs/results.md)
+- Everything for sharing (images, posts, datasheets): [`media/launch/`](media/launch/)
 
 ## Models
 

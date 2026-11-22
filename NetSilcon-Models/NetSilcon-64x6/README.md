@@ -4,6 +4,13 @@
 >
 > Part of the [NetSilcon](../../README.md) family. Smaller model: [NetSilcon-6x4](../NetSilcon-6x4/).
 
+<table>
+  <tr>
+    <td width="50%"><img src="../../media/social/01_cycles_31x.png" alt="448 clock cycles per inference vs about 14,100 on a laptop CPU"></td>
+    <td width="50%"><img src="../../media/social/03_fpga_drove_rover.png" alt="The FPGA drove a simulated rover for 19,200 decisions, 0 mismatches"></td>
+  </tr>
+</table>
+
 A larger NetSilcon engine for the Sipeed Tang Nano 20K (GW2AR-18):
 **16 → 64 → 64 → 64 → 64 → 64 → 64 → 16**, int8. The shape is fixed in hardware.
 The weights (22,528), biases (400), together **22,928 parameters**, and per-layer shifts (7) live in block RAM and

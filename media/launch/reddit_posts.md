@@ -1,7 +1,6 @@
 # Reddit posts
 
 Read each subreddit's rules first (r/MachineLearning needs the [P] tag). Post as yourself, one subreddit per day, r/FPGA first, and stay to answer comments.
-Replace `[GitHub link]` with https://github.com/kumarnitish378/NetSilcon-FPGA once the repo is public.
 
 ---
 
@@ -23,7 +22,7 @@ Two things that bit me: Gowin built my byte-enable RAM out of ~81k logic cells i
 
 Questions: would you pipeline across inferences or across layers next? Anyone run something similar on Gowin with the PLL above 60 MHz?
 
-Code, logs, test report: [GitHub link]. Write-up: https://kumarnitish378.github.io/NetSilcon/netsilcon-64x6/
+Code, logs, test report: https://github.com/kumarnitish378/NetSilcon-FPGA Write-up: https://kumarnitish378.github.io/NetSilcon/netsilcon-64x6/
 
 ---
 

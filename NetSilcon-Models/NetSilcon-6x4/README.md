@@ -16,6 +16,13 @@ uploaded in about 31 ms.
 
 ![Rover simulator driven by the NetSilcon int8 network](docs/images/rover_simulator.png)
 
+<table>
+  <tr>
+    <td width="50%"><img src="../../media/social/02_fix_shape_new_job.png" alt="One bitstream, three model files, three jobs"></td>
+    <td width="50%"><img src="docs/images/netsilcon_waveform.png" alt="NetSilcon-6x4 simulation waveform: first answer after 10 clocks, then one every 2 clocks"></td>
+  </tr>
+</table>
+
 More: [preliminary datasheet (PDF)](docs/NetSilcon-6x4_Datasheet.pdf) · [simulation waveform](docs/images/netsilcon_waveform.png) · [demo video](../../media/NetSilcon_Demo.mp4) · [keynote video](../../media/NetSilcon_Keynote.mp4)
 
 ---

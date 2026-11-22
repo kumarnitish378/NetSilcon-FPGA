@@ -15,5 +15,5 @@ Everything for the NetSilcon-64x6 launch in one place.
 | `reddit_posts.md` | r/FPGA, r/embedded, r/MachineLearning | Reddit, one per day |
 | `NetSilcon-6x4_Datasheet.pdf`, `NetSilcon-64x6_Datasheet.pdf` | preliminary datasheets | attach or link when people ask |
 
-Before posting: make the NetSilcon-FPGA GitHub repo public, or its links will show a 404.
+Repository (public): https://github.com/kumarnitish378/NetSilcon-FPGA
 Order: LinkedIn post (Tue/Wed 9–10 IST) → X thread the same day → article two days later → Reddit over the next week.

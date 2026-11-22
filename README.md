@@ -202,7 +202,8 @@ models/     motor_fault, irrigation, rover (v2), rover_v1
 host/       netsilcon_host.py                      PC tool: inference, upload, tests, logs
 rover_sim/  rover_sim.py, rover_simulator.html     simulator, batch tests, hardware-in-the-loop
 scripts/    run_all_tests.sh, build_opensource.sh, ...
-docs/       architecture.md, protocol.md, results.md, logs/ (hardware runs)
+docs/       architecture.md, protocol.md, results.md, benchmarks.md, logs/ (hardware runs)
+bench/      Same-network CPU and Cortex-M4 benchmark code (see docs/benchmarks.md)
 ```
 
 ## Limitations

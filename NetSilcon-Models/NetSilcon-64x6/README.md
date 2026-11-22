@@ -6,7 +6,7 @@
 
 A larger NetSilcon engine for the Sipeed Tang Nano 20K (GW2AR-18):
 **16 → 64 → 64 → 64 → 64 → 64 → 64 → 16**, int8. The shape is fixed in hardware.
-The weights (22,528), biases (400) and per-layer shifts (7) live in block RAM and
+The weights (22,528), biases (400), together **22,928 parameters**, and per-layer shifts (7) live in block RAM and
 are loadable over UART with a CRC-32 (23,335-byte model), verified on hardware.
 
 Same neuron math as [NetSilcon-6x4](../NetSilcon-6x4/):

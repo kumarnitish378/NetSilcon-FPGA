@@ -8,6 +8,7 @@ Uploaded at run time; verified on hardware: 576 / 576 golden vectors bit-exact, 
 |---|---|
 | Files | `irrigation.json` |
 | Kind | classifier |
+| Parameters | **170** (144 int8 weights + 26 int16 biases) + 5 layer shifts; network 4 → 6 → 6 → 6 → 6 → 2 |
 | int8 accuracy (vs training rules) | 97.4 % |
 | Shifts | 7 6 7 7 5 |
 | CRC-16 of the 201-byte image | 8F33 |

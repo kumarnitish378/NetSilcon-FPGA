@@ -57,7 +57,7 @@ Regression (rover): value = y / 127 in -1..+1.
 | | NetSilcon-6x4 | NetSilcon-64x6 |
 |---|---|---|
 | Shape | 4 -> 6 -> 6 -> 6 -> 6 -> 2 | 16 -> 64 -> 64 -> 64 -> 64 -> 64 -> 64 -> 16 |
-| Parameters | 144 w (int8), 26 b (int16), 5 shifts (0..15) | 22,528 w, 400 b, 7 shifts (0..23) |
+| Parameters | 170 = 144 w (int8) + 26 b (int16); 5 shifts (0..15) | 22,928 = 22,528 w + 400 b; 7 shifts (0..23) |
 | Accumulator | 20-bit | 24-bit |
 | Weights in | registers | 32 BSRAM SDPB 1K x 16, two banks (0 built-in, 1 upload) |
 | Compute | 72 multipliers, 2 phases | 64 MAC lanes, 1 input broadcast per clock, 1 shared requantizer |

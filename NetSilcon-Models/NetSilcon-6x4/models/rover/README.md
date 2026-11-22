@@ -8,6 +8,7 @@ Drives the 2D rover simulator in `python/rover_sim/`, also in hardware-in-the-lo
 |---|---|
 | Files | `rover.json`, `rover_v1.json` |
 | Kind | regression |
+| Parameters | **170** (144 int8 weights + 26 int16 biases) + 5 layer shifts; network 4 → 6 → 6 → 6 → 6 → 2 |
 | int8 accuracy (vs training rules) | 91.5 % |
 | Shifts | 8 6 6 5 4 |
 | CRC-16 of the 201-byte image | 295B |

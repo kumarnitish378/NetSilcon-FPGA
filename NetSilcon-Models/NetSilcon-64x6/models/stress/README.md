@@ -7,6 +7,7 @@ Weights only −128 / +127, biases at the int16 limits, shifts 0..17, layer-2 su
 | Item | Value |
 |---|---|
 | File | `stress.json` |
+| Parameters | **22,928** (22,528 int8 weights + 400 int16 biases) + 7 layer shifts |
 | Shifts | 0 15 13 1 17 9 7 |
 | CRC-32 of the 23,335-byte image | 732C18C9 |
 | Golden test vectors | 200 |

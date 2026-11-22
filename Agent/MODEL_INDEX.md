@@ -1,8 +1,8 @@
 # Model index
 
-Every trained model in this repository. Regenerate the facts with `python tools/sync_website.py`.
+Every trained model in this repository. Parameters = weights + biases (the layer shifts are counted separately); every model of a shape has the same count. Regenerate the facts with `python tools/sync_website.py`.
 
-## NetSilcon-6x4 (4 inputs, 2 outputs, 201-byte image, CRC-16)
+## NetSilcon-6x4 (4 inputs, 2 outputs, 170 parameters, 201-byte image, CRC-16)
 
 | Application | File | CRC-16 | Golden vectors | Result |
 |---|---|---|---|---|
@@ -11,7 +11,7 @@ Every trained model in this repository. Regenerate the facts with `python tools/
 | Rover driver v2 (4 LiDAR corner sectors) | `models/rover/rover.json` | 295B | 576 | 91.5 % action agreement; HIL 9,600 decisions, 0 mismatches |
 | Rover driver v1 | `models/rover/rover_v1.json` | F5C2 | 576 | 95.5 % agreement; drives worse in closed loop than v2 |
 
-## NetSilcon-64x6 (16 inputs, 16 outputs, 23,335-byte image, CRC-32)
+## NetSilcon-64x6 (16 inputs, 16 outputs, 22,928 parameters, 23,335-byte image, CRC-32)
 
 | Application | File | CRC-32 | Golden vectors | Result |
 |---|---|---|---|---|

@@ -7,6 +7,7 @@ Random int8 weights with biases and shifts calibrated so most activations fall b
 | Item | Value |
 |---|---|
 | File | `synthetic.json` |
+| Parameters | **22,928** (22,528 int8 weights + 400 int16 biases) + 7 layer shifts |
 | Shifts | 7 9 8 8 8 8 7 |
 | CRC-32 of the 23,335-byte image | 6F4225BF |
 | Golden test vectors | 1000 |

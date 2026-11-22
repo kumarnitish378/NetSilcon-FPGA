@@ -10,6 +10,7 @@ one sees 16 sectors all the way round.
 |---|---|
 | File | `rover.json` (upload over UART; no FPGA rebuild) |
 | Shape | 16 → 64 → 64 → 64 → 64 → 64 → 64 → 16, int8 weights, int16 biases |
+| Parameters | **22,928** (22,528 int8 weights + 400 int16 biases) + 7 layer shifts |
 | Shifts | 7 7 6 6 5 6 4 |
 | CRC-32 of the 23,335-byte image | **3A81C867** |
 | Golden test vectors | 1000 (5 edge cases + 995 held-out scans) |

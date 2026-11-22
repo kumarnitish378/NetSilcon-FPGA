@@ -46,7 +46,7 @@ svg text { font-family: 'Liberation Sans', Arial, sans-serif; }
 <h2><span class="n">1</span>Features</h2>
 <ul>
 <li><b>Hardware neural network:</b> fixed 16 → 64 → 64 → 64 → 64 → 64 → 64 → 16 architecture: 16 inputs, 6 hidden layers of 64 neurons, 16 outputs</li>
-<li><b>Loadable model:</b> 22,528 int8 weights, 400 int16 biases and 7 per-layer shifts in a 23,335-byte model image</li>
+<li><b>Loadable model:</b> 22,928 parameters (22,528 int8 weights and 400 int16 biases) plus 7 per-layer shifts, in a 23,335-byte model image</li>
 <li><b>Predictable latency:</b> 448 clock cycles per inference, every inference (16.6 µs at 27 MHz)</li>
 <li><b>64 MAC lanes:</b> one input broadcast per clock to 64 multiply-accumulate lanes; 50.3 multiply-adds per clock on average</li>
 <li><b>Bit-exact:</b> results match the Python integer reference model bit for bit (3,200 test vectors on hardware)</li>
@@ -73,7 +73,7 @@ svg text { font-family: 'Liberation Sans', Arial, sans-serif; }
 <h2><span class="n">3</span>Description</h2>
 <p>NetSilcon-64x6 runs a 7-layer neural network in dedicated FPGA hardware. The network shape is fixed in the logic. The weights, biases and shifts are uploaded over UART, so the same bitstream does a different job by loading a different 23,335-byte model.</p>
 <p>The host sends 16 input bytes and receives 16 signed outputs, the index of the largest output and the measured latency. There is no instruction fetch, no operating system and no cache: every inference takes exactly 448 clock cycles.</p>
-<p>NetSilcon-64x6 is the larger member of the NetSilcon family. NetSilcon-6x4 (4 → 6×4 → 2, 15 cycles) wires every neuron in parallel; NetSilcon-64x6 instead keeps its weights in block RAM and reuses 64 lanes for every layer, which lets a network with about 130 times more parameters fit in less logic on the same FPGA.</p>
+<p>NetSilcon-64x6 is the larger member of the NetSilcon family. NetSilcon-6x4 (4 → 6×4 → 2, 15 cycles) wires every neuron in parallel; NetSilcon-64x6 instead keeps its weights in block RAM and reuses 64 lanes for every layer, which lets a network with 22,928 parameters, about 135 times the 6x4's 170, fit in less logic on the same FPGA.</p>
 </div>
 </div>
 
@@ -144,7 +144,7 @@ svg text { font-family: 'Liberation Sans', Arial, sans-serif; }
 <p class="cap">Table 6-2. Timing</p>
 <table><thead><tr><th>Parameter</th><th>Condition</th><th>Value</th><th class="b">Basis</th></tr></thead><tbody>
 <tr><td>Inference latency</td><td>engine start to result, hardware counter, every inference</td><td>448 clock cycles = 16.6 µs</td><td class="b">M</td></tr>
-<tr><td>Multiply-adds per inference</td><td></td><td>22,528</td><td class="b">M</td></tr>
+<tr><td>Multiply-adds per inference</td><td>one per weight</td><td>22,528</td><td class="b">M</td></tr>
 <tr><td>Multiply-adds per clock</td><td>average over one inference</td><td>50.3</td><td class="b">M</td></tr>
 <tr><td>Inference transaction, UART</td><td>17 bytes in, 20 bytes out at 115 200 baud</td><td>3.2 ms on the wire</td><td class="b">E</td></tr>
 <tr><td>Inference round trip, PC</td><td>Windows 11, USB-C bridge, pyserial</td><td>16.9 ms average, 17.3 ms maximum</td><td class="b">M</td></tr>
@@ -180,6 +180,7 @@ svg text { font-family: 'Liberation Sans', Arial, sans-serif; }
 <tr><td>2 – 6</td><td class="r">64</td><td class="r">64</td><td class="r">4,096 each</td><td class="r">64 each</td><td>ReLU</td><td>0 … 127</td></tr>
 <tr><td>7 (output)</td><td class="r">64</td><td class="r">16</td><td class="r">1,024</td><td class="r">16</td><td>none</td><td>−128 … 127</td></tr>
 <tr><td><b>Total</b></td><td></td><td class="r">400</td><td class="r"><b>22,528</b></td><td class="r"><b>400</b></td><td></td><td></td></tr></tbody></table>
+<p>Total: <b>22,928 parameters</b> (weights + biases), plus 7 layer shifts. Every model for NetSilcon-64x6 has exactly this size.</p>
 
 <h3>7.3 Lane datapath</h3>
 <p>Lane <i>j</i> is neuron <i>j</i> of every layer. Each clock, one input value <i>x<sub>i</sub></i> is broadcast to all 64 lanes, and each lane adds <i>x<sub>i</sub> · w<sub>j,i</sub></i>, its own weight, to its 24-bit accumulator. For a layer with <i>N</i><sub>in</sub> inputs:</p>
@@ -326,7 +327,7 @@ y   = clamp(v, −128, 127)        output layer</div>
 <tr><td>y2 … y15</td><td>Unused, exactly 0</td></tr></tbody></table>
 <p class="cap">Table 12-2. Rover model results</p>
 <table><thead><tr><th>Test</th><th>Result</th><th class="b">Basis</th></tr></thead><tbody>
-<tr><td>Model file</td><td><code>models/rover/rover.json</code>, CRC-32 3A81C867, shifts 7 7 6 6 5 6 4</td><td class="b">M</td></tr>
+<tr><td>Model file</td><td><code>models/rover/rover.json</code>: 22,928 parameters, CRC-32 3A81C867, shifts 7 7 6 6 5 6 4</td><td class="b">M</td></tr>
 <tr><td>Agreement with the teacher rules, held-out scans</td><td>float 92.7 %, int8 89.8 %</td><td class="b">M</td></tr>
 <tr><td>Simulation, 80 drives in 4 standard worlds, supervisor and safety stop on</td><td>0 crashes, 0 stuck, 46.9 m per drive</td><td class="b">M</td></tr>
 <tr><td>Simulation, 40 unseen random worlds</td><td>0 crashes, 1 stuck, 37.9 m per drive (NetSilcon-6x4 rover: 33.3 m)</td><td class="b">M</td></tr>

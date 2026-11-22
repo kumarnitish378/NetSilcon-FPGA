@@ -27,7 +27,7 @@ Videos: [demo](media/NetSilcon_Demo.mp4) · [keynote](media/NetSilcon_Keynote.mp
 | | [NetSilcon-6x4](NetSilcon-Models/NetSilcon-6x4/) | [NetSilcon-64x6](NetSilcon-Models/NetSilcon-64x6/) |
 |---|---|---|
 | Network | 4 → 6 → 6 → 6 → 6 → 2 | 16 → 64 → 64 → 64 → 64 → 64 → 64 → 16 |
-| Parameters | 144 weights, 26 biases, 5 shifts | 22,528 weights, 400 biases, 7 shifts |
+| Parameters (total) | **170**: 144 weights + 26 biases (+ 5 shifts) | **22,928**: 22,528 weights + 400 biases (+ 7 shifts) |
 | Model size (upload) | 201 bytes, CRC-16 | 23,335 bytes, CRC-32 |
 | Where the weights live | registers | 32 block RAMs, two banks |
 | Compute | 72 multipliers, all neurons in parallel | 64 MAC lanes, one input per clock |

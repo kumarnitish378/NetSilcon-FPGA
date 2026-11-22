@@ -3,7 +3,7 @@
 **Device:** Sipeed Tang Nano 20K (Gowin GW2AR-LV18QN88C8/I7), 27 MHz
 **Design:** NetSilcon-64x6, int8 network 16 → 64 → 64 → 64 → 64 → 64 → 64 → 16
 **Date of the first successful hardware test:** 22 November 2026
-**Commits:** `77c9773` (first successful hardware test); this report and the CPU benchmark were added in the next commit
+**Commits:** `461e231` (first successful hardware test); this report and the CPU benchmark were added in the next commit
 **Author:** Nitish Kumar Sharma
 
 ---

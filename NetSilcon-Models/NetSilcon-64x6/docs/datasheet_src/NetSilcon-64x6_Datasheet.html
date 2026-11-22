@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>NetSilcon-64x6 Datasheet</title>
+<style>
+@page { size: A4; margin: 22mm 16mm 20mm 16mm; }
+* { box-sizing: border-box; }
+body { font-family: 'Liberation Sans', Arial, sans-serif; font-size: 9.6pt; line-height: 1.45; color: #111; margin: 0; }
+h1 { font-size: 19pt; margin: 6px 0 2px; }
+h1 + .subt { font-size: 12.5pt; color: #333; margin-bottom: 14px; }
+h2 { font-size: 13pt; margin: 22px 0 8px; break-after: avoid; padding-bottom: 3px; border-bottom: 1.5px solid #00706A; break-after: avoid; }
+h2 .n { color: #00706A; margin-right: 6px; }
+h3 { font-size: 10.6pt; margin: 14px 0 6px; break-after: avoid; }
+p { margin: 0 0 7px; }
+.brandrow { display: flex; justify-content: space-between; align-items: baseline; }
+.brand { font-size: 20pt; font-weight: 400; } .brand b { color: #00706A; font-weight: 700; }
+.badge { display: inline-block; background: #111; color: #fff; font-weight: 700; font-size: 8pt; letter-spacing: .12em; padding: 3px 8px; margin-top: 10px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
+ul { margin: 0 0 8px; padding-left: 14px; } li { margin-bottom: 3px; }
+table { border-collapse: collapse; width: 100%; margin: 4px 0 10px; font-size: 8.8pt; break-inside: auto; }
+tr { break-inside: avoid; }
+th, td { border: 1px solid #999; padding: 3px 6px; text-align: left; vertical-align: top; }
+thead th { background: #E6EFEE; }
+td.b, th.b { width: 34px; text-align: center; font-weight: 700; }
+td.r { text-align: right; }
+.cap { font-weight: 700; font-size: 8.8pt; margin: 8px 0 2px; }
+.fig { text-align: center; margin: 8px 0 12px; break-inside: avoid; }
+.fig .fc { font-weight: 700; font-size: 8.8pt; margin-top: 4px; }
+.formula { break-inside: avoid; font-family: 'Liberation Mono', monospace; background: #F3F6F8; border-left: 3px solid #00706A; padding: 6px 10px; margin: 6px 0 10px; white-space: pre; font-size: 8.8pt; }
+code { font-family: 'Liberation Mono', monospace; font-size: 8.6pt; }
+.note { border: 1px solid #00706A; background: #F2F8F7; padding: 6px 10px; margin: 8px 0; font-size: 9pt; }
+.pb { break-before: page; }
+.toc { columns: 2; column-gap: 24px; } .toc div { break-inside: avoid; padding: 2px 0; } .toc b { color: #00706A; display: inline-block; width: 22px; }
+svg text { font-family: 'Liberation Sans', Arial, sans-serif; }
+.box { fill: #fff; stroke: #333; stroke-width: 1; }
+.hl { fill: #E6F2F1; stroke: #00706A; stroke-width: 1.4; }
+.ln { stroke: #333; stroke-width: 1; fill: none; }
+.t { font-size: 10px; font-weight: 700; } .s { font-size: 8.5px; fill: #444; }
+</style></head><body>
+
+<div class="brandrow"><span class="brand">Net<b>Silcon</b></span><span>NS64X6-REF | Rev 0.1 | November 2026</span></div>
+<span class="badge">PRELIMINARY – FPGA REFERENCE IMPLEMENTATION</span>
+<h1>NetSilcon-64x6 Neural-Network Inference Engine</h1>
+<div class="subt">with 22,528 Loadable Weights, Block-RAM Weight Banks and UART Interface</div>
+
+<div class="two">
+<div>
+<h2><span class="n">1</span>Features</h2>
+<ul>
+<li><b>Hardware neural network:</b> fixed 16 → 64 → 64 → 64 → 64 → 64 → 64 → 16 architecture: 16 inputs, 6 hidden layers of 64 neurons, 16 outputs</li>
+<li><b>Loadable model:</b> 22,528 int8 weights, 400 int16 biases and 7 per-layer shifts in a 23,335-byte model image</li>
+<li><b>Predictable latency:</b> 448 clock cycles per inference, every inference (16.6 µs at 27 MHz)</li>
+<li><b>64 MAC lanes:</b> one input broadcast per clock to 64 multiply-accumulate lanes; 50.3 multiply-adds per clock on average</li>
+<li><b>Bit-exact:</b> results match the Python integer reference model bit for bit (3,200 test vectors on hardware)</li>
+<li><b>Two weight banks:</b> a new model is written into the inactive bank while the running model keeps working; the banks swap in one clock</li>
+<li><b>Safe model update:</b> image protected by CRC-32; a damaged, incomplete or out-of-range image is refused and the running model is untouched</li>
+<li><b>Host interface:</b> UART, 115 200 baud, 8N1; inference, model upload, model information and link-test commands</li>
+<li><b>Status LEDs:</b> heartbeat, answer, upload, active bank, uploaded model, error</li>
+<li><b>Small footprint:</b> 35 % of the logic of a Gowin GW2AR-18; 32 block RAMs, 16 DSP blocks</li>
+<li><b>Timing margin:</b> 61.5 MHz maximum frequency in the Gowin timing analysis, against 27 MHz used</li>
+<li><b>Open source:</b> RTL, tools, models and test logs under the Apache License 2.0</li>
+</ul>
+</div>
+<div>
+<h2><span class="n">2</span>Applications</h2>
+<ul>
+<li>Robot and rover obstacle avoidance from multi-sector LiDAR or range-sensor arrays</li>
+<li>Multi-class fault classification (up to 16 classes) in motor drives, pumps and compressors</li>
+<li>Battery-pack monitoring across up to 16 cells or features</li>
+<li>Vibration and acoustic feature classification for predictive maintenance</li>
+<li>Multi-sensor fusion and plausibility checks beside a safety MCU</li>
+<li>Gesture and activity recognition from IMU feature vectors</li>
+<li>Small control policies with up to 16 outputs</li>
+</ul>
+<h2><span class="n">3</span>Description</h2>
+<p>NetSilcon-64x6 runs a 7-layer neural network in dedicated FPGA hardware. The network shape is fixed in the logic. The weights, biases and shifts are uploaded over UART, so the same bitstream does a different job by loading a different 23,335-byte model.</p>
+<p>The host sends 16 input bytes and receives 16 signed outputs, the index of the largest output and the measured latency. There is no instruction fetch, no operating system and no cache: every inference takes exactly 448 clock cycles.</p>
+<p>NetSilcon-64x6 is the larger member of the NetSilcon family. NetSilcon-6x4 (4 → 6×4 → 2, 15 cycles) wires every neuron in parallel; NetSilcon-64x6 instead keeps its weights in block RAM and reuses 64 lanes for every layer, which lets a network with about 130 times more parameters fit in less logic on the same FPGA.</p>
+</div>
+</div>
+
+<div class="fig">
+<svg width="660" height="170" viewBox="0 0 660 170">
+  <rect class="box" x="5" y="20" width="120" height="56"/><text class="t" x="65" y="42" text-anchor="middle">UART interface</text><text class="s" x="65" y="58" text-anchor="middle">115 200 baud, 8N1</text>
+  <rect class="box" x="160" y="20" width="135" height="56"/><text class="t" x="227" y="42" text-anchor="middle">Frame decoder</text><text class="s" x="227" y="58" text-anchor="middle">A5 · C3 · C5 · D1 · D2</text>
+  <rect class="hl" x="330" y="20" width="160" height="56"/><text class="t" x="410" y="38" text-anchor="middle">Neural engine</text><text class="s" x="410" y="52" text-anchor="middle">16→64×6→16, 64 MAC lanes</text><text class="s" x="410" y="66" text-anchor="middle">shared requantizer · 448 clk</text>
+  <rect class="box" x="525" y="20" width="130" height="56"/><text class="t" x="590" y="42" text-anchor="middle">Reply builder</text><text class="s" x="590" y="58" text-anchor="middle">y0…y15, argmax, latency</text>
+  <rect class="box" x="160" y="105" width="135" height="56"/><text class="t" x="227" y="127" text-anchor="middle">Model loader</text><text class="s" x="227" y="143" text-anchor="middle">CRC-32, lane pairing</text>
+  <rect class="hl" x="330" y="105" width="160" height="56"/><text class="t" x="410" y="125" text-anchor="middle">Weight RAM</text><text class="s" x="410" y="139" text-anchor="middle">32 × BSRAM 1K×16</text><text class="s" x="410" y="152" text-anchor="middle">bank 0 built-in · bank 1 upload</text>
+  <rect class="box" x="525" y="105" width="130" height="56"/><text class="t" x="590" y="127" text-anchor="middle">Status</text><text class="s" x="590" y="143" text-anchor="middle">6 LEDs, bank bit</text>
+  <path class="ln" d="M125 48 H160 M295 48 H330 M490 48 H525 M227 76 V105 M295 133 H330 M410 105 V76 M490 133 H525"/>
+</svg>
+<div class="fc">Simplified block diagram</div>
+</div>
+
+<p class="cap">Device information</p>
+<table><thead><tr><th>Part number</th><th>Implementation</th><th>Platform</th><th>Status</th></tr></thead>
+<tbody><tr><td>NS64X6-REF</td><td>FPGA reference implementation (RTL, bitstream build, tools)</td><td>Sipeed Tang Nano 20K, Gowin GW2AR-LV18QN88C8/I7</td><td>Available</td></tr></tbody></table>
+<p>See Section 17 for ordering information. No silicon version of NetSilcon-64x6 is defined yet.</p>
+
+<div class="pb"></div>
+<p><b>How to read the values in this datasheet.</b> Each specification carries a basis code:</p>
+<table style="width:70%"><thead><tr><th class="b">Code</th><th>Meaning</th></tr></thead><tbody>
+<tr><td class="b">M</td><td>Measured on the NetSilcon-64x6 reference implementation (Tang Nano 20K, 27 MHz) or in its testbenches</td></tr>
+<tr><td class="b">E</td><td>Estimated by design tools (Gowin EDA) from the reference implementation</td></tr>
+<tr><td class="b">T</td><td>Design target, not yet built or not yet characterised</td></tr></tbody></table>
+<p>Every measured value comes from a log file in the NetSilcon-FPGA repository, folder <code>NetSilcon-Models/NetSilcon-64x6/results/logs/</code>, indexed in the test report (<code>docs/test_report.md</code>).</p>
+
+<h2>Table of contents</h2>
+<div class="toc">
+<div><b>1</b>Features</div><div><b>2</b>Applications</div><div><b>3</b>Description</div><div><b>4</b>Revision history</div><div><b>5</b>Pin configuration and functions</div><div><b>6</b>Specifications</div><div><b>7</b>Detailed description</div><div><b>8</b>Mathematical model</div><div><b>9</b>Host interface</div><div><b>10</b>Memory map and model image format</div><div><b>11</b>Toolchain</div><div><b>12</b>Application and implementation</div><div><b>13</b>Verification</div><div><b>14</b>Performance comparison</div><div><b>15</b>Reliability and safety</div><div><b>16</b>Road to silicon</div><div><b>17</b>Ordering information</div><div><b>18</b>Glossary</div><div><b>19</b>Important notice</div>
+</div>
+
+<h2><span class="n">4</span>Revision history</h2>
+<p class="cap">Table 4-1. Revision history</p>
+<table><thead><tr><th>Revision</th><th>Date</th><th>Changes</th></tr></thead><tbody>
+<tr><td>0.1 (Preliminary)</td><td>22 November 2026</td><td>First release. FPGA reference implementation verified on hardware; first trained model (rover controller).</td></tr></tbody></table>
+
+<h2><span class="n">5</span>Pin configuration and functions</h2>
+<p>The reference implementation runs on the Sipeed Tang Nano 20K. All signals are LVCMOS 3.3 V. The UART reaches the PC through the board's USB-C connector and its BL616 USB bridge, which appears as a serial port.</p>
+<p class="cap">Table 5-1. FPGA pins used (Tang Nano 20K)</p>
+<table><thead><tr><th>FPGA pin</th><th>Signal</th><th>Dir.</th><th>Description</th></tr></thead><tbody>
+<tr><td>4</td><td>clk</td><td>I</td><td>27 MHz board oscillator; the whole design runs in this one clock domain</td></tr>
+<tr><td>69</td><td>uart_tx</td><td>O</td><td>UART data to the host (through the USB bridge)</td></tr>
+<tr><td>70</td><td>uart_rx</td><td>I</td><td>UART data from the host, internal pull-up</td></tr>
+<tr><td>15</td><td>LED0</td><td>O</td><td>Heartbeat (active low)</td></tr>
+<tr><td>16</td><td>LED1</td><td>O</td><td>Toggles on every answer</td></tr>
+<tr><td>17</td><td>LED2</td><td>O</td><td>Model upload in progress</td></tr>
+<tr><td>18</td><td>LED3</td><td>O</td><td>Weight RAM bank 1 is active</td></tr>
+<tr><td>19</td><td>LED4</td><td>O</td><td>An uploaded model is running</td></tr>
+<tr><td>20</td><td>LED5</td><td>O</td><td>A frame error or failed upload has been seen; stays on until reset</td></tr></tbody></table>
+<p>The pin assignment matches NetSilcon-6x4, so both engines use the same board, cable and host connection.</p>
+
+<h2><span class="n">6</span>Specifications</h2>
+<h3>6.1 Operating conditions (reference implementation)</h3>
+<p class="cap">Table 6-1. Operating conditions</p>
+<table><thead><tr><th>Parameter</th><th>Value</th><th class="b">Basis</th></tr></thead><tbody>
+<tr><td>FPGA</td><td>Gowin GW2AR-LV18QN88C8/I7 (GW2AR-18C)</td><td class="b">M</td></tr>
+<tr><td>Board</td><td>Sipeed Tang Nano 20K, powered from USB-C</td><td class="b">M</td></tr>
+<tr><td>Clock</td><td>27 MHz board oscillator, no PLL</td><td class="b">M</td></tr>
+<tr><td>I/O standard</td><td>LVCMOS 3.3 V</td><td class="b">M</td></tr>
+<tr><td>Configuration</td><td>SRAM programming with Gowin Programmer (USB Debugger A, 0.9 MHz)</td><td class="b">M</td></tr>
+<tr><td>Model at power-up</td><td>built-in model in bank 0 (synthetic test model, CRC-32 6F4225BF)</td><td class="b">M</td></tr></tbody></table>
+
+<h3>6.2 Timing characteristics (27 MHz)</h3>
+<p class="cap">Table 6-2. Timing</p>
+<table><thead><tr><th>Parameter</th><th>Condition</th><th>Value</th><th class="b">Basis</th></tr></thead><tbody>
+<tr><td>Inference latency</td><td>engine start to result, hardware counter, every inference</td><td>448 clock cycles = 16.6 µs</td><td class="b">M</td></tr>
+<tr><td>Multiply-adds per inference</td><td></td><td>22,528</td><td class="b">M</td></tr>
+<tr><td>Multiply-adds per clock</td><td>average over one inference</td><td>50.3</td><td class="b">M</td></tr>
+<tr><td>Inference transaction, UART</td><td>17 bytes in, 20 bytes out at 115 200 baud</td><td>3.2 ms on the wire</td><td class="b">E</td></tr>
+<tr><td>Inference round trip, PC</td><td>Windows 11, USB-C bridge, pyserial</td><td>16.9 ms average, 17.3 ms maximum</td><td class="b">M</td></tr>
+<tr><td>Model upload</td><td>23,340-byte frame at 115 200 baud</td><td>2.04 s</td><td class="b">M</td></tr>
+<tr><td>Bank swap</td><td>after a good CRC-32, after any running inference finishes</td><td>1 clock cycle</td><td class="b">M</td></tr>
+<tr><td>Frame timeout</td><td>gap inside a frame</td><td>about 10 ms, frame dropped</td><td class="b">M</td></tr>
+<tr><td>Maximum clock frequency</td><td>Gowin timing analysis, 0 setup / 0 hold violations</td><td>61.5 MHz</td><td class="b">E</td></tr>
+<tr><td>Latency at maximum frequency</td><td>448 cycles at 61.5 MHz (not tested)</td><td>7.3 µs</td><td class="b">E</td></tr></tbody></table>
+
+<h3>6.3 Resource utilization</h3>
+<p class="cap">Table 6-3. Gowin EDA V1.9.11.03, top module tangnano20k_ns64</p>
+<table><thead><tr><th>Resource</th><th class="r">Used</th><th class="r">Available</th><th class="r">Use</th><th class="b">Basis</th></tr></thead><tbody>
+<tr><td>Logic (LUT + ALU + RAM16)</td><td class="r">7,252</td><td class="r">20,736</td><td class="r">35 %</td><td class="b">M</td></tr>
+<tr><td>Registers</td><td class="r">5,399</td><td class="r">15,750</td><td class="r">35 %</td><td class="b">M</td></tr>
+<tr><td>Block RAM (SDPB 1K × 16)</td><td class="r">32</td><td class="r">46</td><td class="r">70 %</td><td class="b">M</td></tr>
+<tr><td>DSP blocks (64 × MULT9X9)</td><td class="r">16</td><td class="r">24</td><td class="r">67 %</td><td class="b">M</td></tr></tbody></table>
+<p>Open-source cross-check (yosys + nextpnr-himbaechel): 64 / 96 MULT9X9, 32 / 46 BSRAM, LUT4 8,159 (39 %), DFF 5,474 (35 %), timing estimate 114 MHz.</p>
+
+<h3>6.4 Power</h3>
+<p class="cap">Table 6-4. Power</p>
+<table><thead><tr><th>Parameter</th><th>Value</th><th class="b">Basis</th></tr></thead><tbody>
+<tr><td>Whole FPGA, Gowin power estimate</td><td>about 0.26 W</td><td class="b">E</td></tr>
+<tr><td>Measured supply current</td><td>not yet measured</td><td class="b">–</td></tr></tbody></table>
+<p>The Gowin estimate does not reflect the weight-RAM read enable, which keeps the RAMs idle between inferences, so real power is expected to be lower. A measurement is planned.</p>
+
+<h2><span class="n">7</span>Detailed description</h2>
+<h3>7.1 Overview</h3>
+<p>NetSilcon-64x6 has five functional blocks: the UART interface, a frame decoder, the model loader, the neural engine with its weight RAM, and the reply builder. All run in one 27 MHz clock domain. The engine is idle until an inference request arrives and computes one inference at a time.</p>
+<h3>7.2 Network architecture</h3>
+<p class="cap">Table 7-1. Layers</p>
+<table><thead><tr><th>Layer</th><th class="r">Inputs</th><th class="r">Neurons</th><th class="r">Weights</th><th class="r">Biases</th><th>Activation</th><th>Output range</th></tr></thead><tbody>
+<tr><td>1</td><td class="r">16</td><td class="r">64</td><td class="r">1,024</td><td class="r">64</td><td>ReLU</td><td>0 … 127</td></tr>
+<tr><td>2 – 6</td><td class="r">64</td><td class="r">64</td><td class="r">4,096 each</td><td class="r">64 each</td><td>ReLU</td><td>0 … 127</td></tr>
+<tr><td>7 (output)</td><td class="r">64</td><td class="r">16</td><td class="r">1,024</td><td class="r">16</td><td>none</td><td>−128 … 127</td></tr>
+<tr><td><b>Total</b></td><td></td><td class="r">400</td><td class="r"><b>22,528</b></td><td class="r"><b>400</b></td><td></td><td></td></tr></tbody></table>
+
+<h3>7.3 Lane datapath</h3>
+<p>Lane <i>j</i> is neuron <i>j</i> of every layer. Each clock, one input value <i>x<sub>i</sub></i> is broadcast to all 64 lanes, and each lane adds <i>x<sub>i</sub> · w<sub>j,i</sub></i>, its own weight, to its 24-bit accumulator. For a layer with <i>N</i><sub>in</sub> inputs:</p>
+<p class="cap">Table 7-2. Clock schedule of one layer</p>
+<table><thead><tr><th>Clock</th><th>Weight RAM word read</th><th>Lane operation</th></tr></thead><tbody>
+<tr><td>t = 0</td><td>bias, low byte</td><td>acc = bias_lo</td></tr>
+<tr><td>t = 1</td><td>bias, high byte</td><td>acc += bias_hi × 256</td></tr>
+<tr><td>t = 2 … N<sub>in</sub> + 1</td><td>weight i = t − 2</td><td>acc += x<sub>i</sub> × w<sub>i</sub></td></tr>
+<tr><td>t = N<sub>in</sub> + 2, N<sub>in</sub> + 3</td><td>–</td><td>pipeline drain</td></tr></tbody></table>
+<p>Each layer therefore takes N<sub>in</sub> + 4 clocks: (16 + 4) + 6 × (64 + 4) = 428 clocks for the seven layers, plus 19 clocks to pass the 16 outputs through the requantizer and 1 clock of control, giving 448.</p>
+
+<div class="fig">
+<svg width="640" height="200" viewBox="0 0 640 200">
+  <rect class="box" x="10" y="80" width="90" height="40"/><text class="t" x="55" y="98" text-anchor="middle">input x_i</text><text class="s" x="55" y="112" text-anchor="middle">1 per clock</text>
+  <g>
+    <rect class="box" x="170" y="10" width="170" height="26"/><text class="s" x="255" y="27" text-anchor="middle">lane 0: acc += x_i · w_0,i</text>
+    <rect class="box" x="170" y="44" width="170" height="26"/><text class="s" x="255" y="61" text-anchor="middle">lane 1: acc += x_i · w_1,i</text>
+    <rect class="box" x="170" y="78" width="170" height="26"/><text class="s" x="255" y="95" text-anchor="middle">lane 2: acc += x_i · w_2,i</text>
+    <rect class="box" x="170" y="112" width="170" height="26" style="stroke-dasharray:3 2"/><text class="s" x="255" y="129" text-anchor="middle">lanes 3 … 63</text>
+  </g>
+  <path class="ln" d="M100 100 L170 23 M100 100 L170 57 M100 100 L170 91 M100 100 L170 125"/>
+  <rect class="hl" x="170" y="155" width="170" height="34"/><text class="s" x="255" y="170" text-anchor="middle">weight RAM: 512 bits per clock</text><text class="s" x="255" y="182" text-anchor="middle">(32 RAMs × 16 bits, 2 lanes each)</text>
+  <rect class="box" x="400" y="40" width="100" height="60"/><text class="t" x="450" y="62" text-anchor="middle">shift chain</text><text class="s" x="450" y="78" text-anchor="middle">64 × 24 bit</text><text class="s" x="450" y="90" text-anchor="middle">1 sum per clock</text>
+  <rect class="hl" x="530" y="40" width="100" height="60"/><text class="t" x="580" y="62" text-anchor="middle">requantizer</text><text class="s" x="580" y="78" text-anchor="middle">ReLU · round</text><text class="s" x="580" y="90" text-anchor="middle">shift · clamp</text>
+  <path class="ln" d="M340 70 H400 M500 70 H530 M580 100 V140 H55 V120"/>
+  <text class="s" x="320" y="152" text-anchor="middle">int8 result = next layer's input x_i</text>
+</svg>
+<div class="fc">Figure 7-1. Lane datapath and the layer-to-layer loop</div>
+</div>
+
+<h3>7.4 Shared requantizer</h3>
+<p>At the start of the next layer all 64 sums are copied in one clock into a 64 × 24-bit shift chain. The chain feeds one sum per clock into a single two-stage requantizer (ReLU and rounding constant, then arithmetic shift and clamp). Its int8 output arrives exactly when the matching weight of the next layer is read. One requantizer instead of 64 saves 63 barrel shifters.</p>
+
+<h3>7.5 Weight memory and banks</h3>
+<p>The 22,528 weights and 400 biases live in 32 simple-dual-port block RAMs of 1K × 16 bits. Each 16-bit word holds the bytes of two lanes (lane 2k in the low byte, lane 2k + 1 in the high byte), so one shared read address delivers 512 bits per clock, a byte for every lane. Address bit 9 selects the bank: bank 0 holds the built-in model from the bitstream, bank 1 receives uploads. The read enable is active only while the engine computes.</p>
+
+<h3>7.6 Model upload and bank swap</h3>
+<p>The loader writes an incoming image straight into the inactive bank, pairing lanes into full 16-bit words, while the running model stays usable. It computes the CRC-32 over the received bytes. Only if the CRC matches, all 23,335 bytes arrived and every shift is 0 … 23 does it flip the bank bit, in one clock, after any running inference finishes. Inference requests are not accepted while an upload is in progress.</p>
+
+<h3>7.7 Integrity and fault handling</h3>
+<p class="cap">Table 7-3. Faults and responses</p>
+<table><thead><tr><th>Event</th><th>Response</th><th class="b">Basis</th></tr></thead><tbody>
+<tr><td>Upload with a wrong CRC-32</td><td>status 1, running model unchanged, LED5 on</td><td class="b">M</td></tr>
+<tr><td>Upload stops before 23,340 bytes</td><td>status 2 after the frame timeout, running model unchanged</td><td class="b">M</td></tr>
+<tr><td>Good CRC but a shift above 23</td><td>status 3, running model unchanged</td><td class="b">M</td></tr>
+<tr><td>Incomplete inference frame</td><td>dropped after about 10 ms, decoder waits for a new header</td><td class="b">M</td></tr>
+<tr><td>Unknown header byte</td><td>ignored</td><td class="b">M</td></tr></tbody></table>
+
+<h2><span class="n">8</span>Mathematical model</h2>
+<h3>8.1 Neuron equation</h3>
+<p>Every neuron computes, in integer arithmetic identical to the Python reference model <code>python/model/ns64.py</code>:</p>
+<div class="formula">acc = b + Σ (x_i × w_i)          x_i, w_i : int8     b : int16     acc : 24-bit signed
+a   = max(acc, 0)                hidden layers (ReLU); output layer: a = acc
+v   = (a + 2^(s−1)) >>> s        s = layer shift 0 … 23; no rounding constant when s = 0
+y   = clamp(v, 0, 127)           hidden layers
+y   = clamp(v, −128, 127)        output layer</div>
+<p>Inputs to the device are 0 … 127. A real-world value is scaled as <code>q = round(value / full_scale × 127)</code>.</p>
+<h3>8.2 Accumulator range</h3>
+<p>A hidden-layer neuron adds 64 products of at most 127 × 127 plus a 16-bit bias, so its sum needs at most 21 bits plus sign; the accumulator has 24. The stress test model (all weights −128 or +127, biases at the int16 limits) reaches layer sums of 1,008,128 and still matches the reference on hardware (200 / 200 vectors).</p>
+<h3>8.3 Quantization</h3>
+<p>Models are trained in floating point and converted after training:</p>
+<ol>
+<li>Each layer's weights are scaled by K = 127 / max|W| and rounded to int8.</li>
+<li>Biases are scaled with the same factors and stored as int16.</li>
+<li>Each layer's shift s is the smallest that keeps 99.99 % of that layer's activations within 0 … 127 on calibration data.</li>
+<li>For regression outputs, the last layer is scaled so that the output equals value × 127.</li>
+</ol>
+<h3>8.4 Outputs</h3>
+<p>The device returns all 16 signed outputs and their argmax (index of the largest, the first if several are equal, like <code>numpy.argmax</code>). Classifiers use the argmax; regression models read <code>y / 127</code> as a value from −1 to +1. Unused outputs can be set to exactly 0 by zero weights and biases.</p>
+<h3>8.5 Latency and clock cycles</h3>
+<p>Latency in microseconds is 448 / f<sub>clk</sub>: 16.6 µs at 27 MHz, 7.3 µs at the 61.5 MHz timing limit (E). The cycle count does not depend on the input values or the model.</p>
+
+<h2><span class="n">9</span>Host interface</h2>
+<h3>9.1 UART</h3>
+<p>115 200 baud, 8 data bits, no parity, 1 stop bit. All multi-byte numbers are little endian. A frame that stalls for about 10 ms is dropped.</p>
+<h3>9.2 Command set</h3>
+<p class="cap">Table 9-1. Commands</p>
+<table><thead><tr><th>Command</th><th>Host → device</th><th>Device → host</th></tr></thead><tbody>
+<tr><td>Inference</td><td><code>A5 x0 … x15</code> (17 bytes), x = 0 … 127</td><td><code>5A y0 … y15 argmax lat_lo lat_hi</code> (20 bytes); y signed int8, lat = clocks</td></tr>
+<tr><td>Load model</td><td><code>C3</code>, 23,335-byte image, CRC-32 (4 bytes, LE): 23,340 bytes</td><td><code>3C status crc32(4) loads</code> (7 bytes)</td></tr>
+<tr><td>Model information</td><td><code>C5</code></td><td><code>5C crc32(4) source loads</code> (7 bytes); source 0 = built-in, 1 = uploaded</td></tr>
+<tr><td>Link settings</td><td><code>D1 s d</code>: s = 0 one stop bit, 1 two stop bits; reply delay d × 256 clocks</td><td><code>1D s d</code></td></tr>
+<tr><td>Link test pattern</td><td><code>D2 n k</code>: n bytes; k = 0 → 00, 1 → FF, 2 → 0,1,2,…, 3 → 55</td><td><code>2D</code> + n pattern bytes</td></tr></tbody></table>
+<p class="cap">Table 9-2. Load status codes</p>
+<table><thead><tr><th>Status</th><th>Meaning</th><th>Running model</th></tr></thead><tbody>
+<tr><td>0</td><td>Loaded</td><td>replaced by the new image (bank swap)</td></tr>
+<tr><td>1</td><td>CRC error</td><td>unchanged</td></tr>
+<tr><td>2</td><td>Timeout, frame incomplete</td><td>unchanged</td></tr>
+<tr><td>3</td><td>CRC good but a shift above 23</td><td>unchanged</td></tr></tbody></table>
+<p><code>crc32</code> in the load reply is what the device computed over the bytes it received; <code>loads</code> counts successful uploads since power-up.</p>
+<h3>9.3 Example transactions</h3>
+<div class="formula">→ C5
+← 5C BF 25 42 6F 00 00          built-in model, CRC-32 6F4225BF, 0 uploads
+→ C3 &lt;23,335 bytes&gt; 67 C8 81 3A    rover model, CRC-32 3A81C867
+← 3C 00 67 C8 81 3A 02          status 0 (loaded), loads = 2 in this session
+→ A5 5D 74 36 7C 13 16 25 3D 5C 3D 36 36 38 46 14 16
+← 5A 6C E4 00 … 00 00 C0 01     y0 = 108 (speed), y1 = −28 (steering), latency 0x01C0 = 448</div>
+<p>Values taken from the hardware logs of 22 November 2026; the inference example is the first step of the rover hardware-in-the-loop run; the byte before C0 01 is the argmax (0).</p>
+
+<h2><span class="n">10</span>Memory map and model image format</h2>
+<h3>10.1 Image map</h3>
+<p class="cap">Table 10-1. Model image (23,335 bytes)</p>
+<table><thead><tr><th>Bytes</th><th>Content</th><th>Format</th></tr></thead><tbody>
+<tr><td>0 – 22,527</td><td>22,528 weights, layer by layer</td><td>int8</td></tr>
+<tr><td>22,528 – 23,327</td><td>400 biases, layer by layer</td><td>int16, little endian</td></tr>
+<tr><td>23,328 – 23,334</td><td>7 layer shifts, layer 1 first</td><td>uint8, 0 … 23</td></tr></tbody></table>
+<p>The CRC-32 (IEEE 802.3, identical to Python <code>zlib.crc32(image)</code>) is sent after the image and is not part of it.</p>
+<h3>10.2 Address of each parameter</h3>
+<p class="cap">Table 10-2. Offsets</p>
+<table><thead><tr><th>Layer</th><th>N<sub>in</sub> × N<sub>out</sub></th><th>First weight byte</th><th>First bias byte</th><th>Shift byte</th></tr></thead><tbody>
+<tr><td>1</td><td>16 × 64</td><td>0</td><td>22,528</td><td>23,328</td></tr>
+<tr><td>2</td><td>64 × 64</td><td>1,024</td><td>22,656</td><td>23,329</td></tr>
+<tr><td>3</td><td>64 × 64</td><td>5,120</td><td>22,784</td><td>23,330</td></tr>
+<tr><td>4</td><td>64 × 64</td><td>9,216</td><td>22,912</td><td>23,331</td></tr>
+<tr><td>5</td><td>64 × 64</td><td>13,312</td><td>23,040</td><td>23,332</td></tr>
+<tr><td>6</td><td>64 × 64</td><td>17,408</td><td>23,168</td><td>23,333</td></tr>
+<tr><td>7</td><td>64 × 16</td><td>21,504</td><td>23,296</td><td>23,334</td></tr></tbody></table>
+<p>Inside a layer, the weight of neuron <i>j</i> for input <i>i</i> is at <code>first_weight + j × N_in + i</code>; the bias of neuron <i>j</i> is at <code>first_bias + 2 j</code> (low byte first).</p>
+<h3>10.3 Built-in model</h3>
+<p>Bank 0 is initialised from the bitstream with the synthetic test model (CRC-32 6F4225BF): random weights with shifts calibrated so that about 30 % of hidden activations are 0, under 1 % saturate and about 7 % of outputs reach +127 or −128. It exists to prove the hardware. Uploaded models live in block RAM and are lost at power-off.</p>
+
+<h2><span class="n">11</span>Toolchain</h2>
+<p>The open-source Python tools in <code>NetSilcon-Models/NetSilcon-64x6/python/</code> take a model from data to a verified upload. Only numpy is needed (pyserial for the board).</p>
+<p class="cap">Table 11-1. Tools</p>
+<table><thead><tr><th>Tool</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><code>model/ns64.py</code></td><td>Bit-exact integer reference: inference, image packing, CRC-32, RAM layout, self-check</td></tr>
+<tr><td><code>model/make_synthetic.py</code></td><td>Builds the synthetic and stress test models, the RAM initialisation files and the golden vectors</td></tr>
+<tr><td><code>model/train_rover.py</code></td><td>Trains, quantizes and packs the rover controller (dataset, DAgger, int8 conversion)</td></tr>
+<tr><td><code>host/ns64_host.py</code></td><td>PC tool: model info, inference, upload, golden and random tests, link tests; logs every run as .log + .csv</td></tr>
+<tr><td><code>rover_sim/rover64.py</code></td><td>16-sector rover simulator; hardware-in-the-loop mode where the FPGA drives</td></tr>
+<tr><td><code>bench/</code></td><td>The same network in C, for the CPU clock-cycle comparison</td></tr></tbody></table>
+<p>Every model file (<code>models/&lt;app&gt;/&lt;app&gt;.json</code>) carries its weights, biases, shifts, CRC-32 and golden test vectors. The host tool recognises the running model by its CRC and checks every answer against the reference.</p>
+
+<h2><span class="n">12</span>Application and implementation</h2>
+<h3>12.1 Typical application</h3>
+<p>A host (a PC in the reference set-up, an MCU in a product) scales up to 16 features to 0 … 127, sends them with <code>A5</code> and reads back 16 outputs and the argmax. A new model is uploaded once with <code>C3</code> and stays active until power-off.</p>
+<h3>12.2 Example design: rover obstacle avoidance</h3>
+<p>The first trained NetSilcon-64x6 model drives a differential-drive rover from a 360° LiDAR scan. The scan is reduced to 16 sectors of 22.5°; each input is the smallest distance in its sector, measured from the rover's body edge, with 0 … 4 m mapped to 0 … 127 (about 3.1 cm per step).</p>
+<p class="cap">Table 12-1. Rover model inputs and outputs</p>
+<table><thead><tr><th>Signal</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>x0 … x15</td><td>Sectors S00 … S15, centres −168.75° (behind) to +168.75° in steps of 22.5°; S07 and S08 point straight ahead</td></tr>
+<tr><td>y0</td><td>Speed × 127, −1 … +1 (negative = reverse)</td></tr>
+<tr><td>y1</td><td>Steering × 127, positive = left</td></tr>
+<tr><td>y2 … y15</td><td>Unused, exactly 0</td></tr></tbody></table>
+<p class="cap">Table 12-2. Rover model results</p>
+<table><thead><tr><th>Test</th><th>Result</th><th class="b">Basis</th></tr></thead><tbody>
+<tr><td>Model file</td><td><code>models/rover/rover.json</code>, CRC-32 3A81C867, shifts 7 7 6 6 5 6 4</td><td class="b">M</td></tr>
+<tr><td>Agreement with the teacher rules, held-out scans</td><td>float 92.7 %, int8 89.8 %</td><td class="b">M</td></tr>
+<tr><td>Simulation, 80 drives in 4 standard worlds, supervisor and safety stop on</td><td>0 crashes, 0 stuck, 46.9 m per drive</td><td class="b">M</td></tr>
+<tr><td>Simulation, 40 unseen random worlds</td><td>0 crashes, 1 stuck, 37.9 m per drive (NetSilcon-6x4 rover: 33.3 m)</td><td class="b">M</td></tr>
+<tr><td>Hardware in the loop, 8 drives × 120 s</td><td>19,200 inferences, 0 mismatches; 0 crashes, 0 stuck, 48.1 m per drive</td><td class="b">M</td></tr></tbody></table>
+<p>The safety stop and the 3-point-turn supervisor ran on the PC in these tests; only the network ran on the FPGA.</p>
+<h3>12.3 Other applications</h3>
+<p>Any job with up to 16 inputs and up to 16 outputs fits: multi-class fault classification, battery-cell monitoring, vibration features, sensor fusion. These are application ideas; trained models for them do not exist yet (T).</p>
+
+<h2><span class="n">13</span>Verification</h2>
+<p class="cap">Table 13-1. Verification summary</p>
+<table><thead><tr><th>Test</th><th>Result</th><th class="b">Basis</th></tr></thead><tbody>
+<tr><td>Python reference self-check</td><td>two independent implementations agree; image round trip; all 23,335 byte addresses</td><td class="b">M</td></tr>
+<tr><td>Requantizer, every shift 0 … 23, ReLU on and off</td><td>21,216 values, 0 mismatches</td><td class="b">M</td></tr>
+<tr><td>Engine vs reference (Icarus Verilog)</td><td>1,200 vectors (1,000 synthetic + 200 stress), 0 mismatches, 448 clocks</td><td class="b">M</td></tr>
+<tr><td>Complete board design over UART (simulation)</td><td>168 checks, 0 errors: uploads, refused uploads, bank swaps, stray bytes, link commands</td><td class="b">M</td></tr>
+<tr><td>Mutation tests (deliberate bugs)</td><td>engine 6 / 6, loader and top 5 / 5 detected</td><td class="b">M</td></tr>
+<tr><td>Hardware, built-in model</td><td>1,000 golden + 2,000 random vectors, 0 mismatches</td><td class="b">M</td></tr>
+<tr><td>Hardware, stress model upload</td><td>loaded (CRC-32 732C18C9, 2.04 s), 200 vectors, 0 mismatches</td><td class="b">M</td></tr>
+<tr><td>Hardware, damaged upload</td><td>refused with CRC error, old model kept and still exact</td><td class="b">M</td></tr>
+<tr><td>Hardware, UART link</td><td>4,000 replies, 0 damaged</td><td class="b">M</td></tr>
+<tr><td>Hardware, rover model</td><td>1,000 golden vectors and 19,200 in-the-loop inferences, 0 mismatches</td><td class="b">M</td></tr></tbody></table>
+
+<h2><span class="n">14</span>Performance comparison</h2>
+<p>The same bit-exact network, compared by clock cycles per inference so that the result does not depend on how fast each chip is clocked. CPU: single thread, laptop Linux virtual machine, 1,000 golden vectors with 0 wrong outputs; the CPU clock (4.09 GHz) was read from Windows Task Manager during the session.</p>
+<p class="cap">Table 14-1. Clock cycles per inference</p>
+<table><thead><tr><th>Implementation</th><th>Clock</th><th>Time per inference</th><th class="r">Cycles</th><th class="r">MACs per cycle</th><th class="b">Basis</th></tr></thead><tbody>
+<tr><td><b>NetSilcon-64x6 on FPGA</b></td><td>27 MHz</td><td>16.6 µs</td><td class="r"><b>448</b></td><td class="r">50.3</td><td class="b">M</td></tr>
+<tr><td>CPU i7-13650HX, C -O3 -march=native</td><td>4.09 GHz</td><td>3.45 µs</td><td class="r">≈ 14,100</td><td class="r">1.6</td><td class="b">M</td></tr>
+<tr><td>CPU i7-13650HX, C -O2 -march=native</td><td>4.09 GHz</td><td>7.5 µs</td><td class="r">≈ 30,700</td><td class="r">0.73</td><td class="b">M</td></tr>
+<tr><td>NumPy, one input at a time</td><td>4.09 GHz</td><td>62.6 µs</td><td class="r">≈ 256,000</td><td class="r">–</td><td class="b">M</td></tr>
+<tr><td>Plain Python</td><td>4.09 GHz</td><td>3,023 µs</td><td class="r">≈ 12.4 million</td><td class="r">–</td><td class="b">M</td></tr></tbody></table>
+<p>The engine needs <b>31× fewer clock cycles</b> than the best CPU code (20 – 38× across the CPU's base-to-turbo clock range). At 27 MHz the CPU, clocked 151× higher, still finishes first (3.45 µs vs 16.6 µs).</p>
+<p class="cap">Table 14-2. Clock needed to match the CPU (448 cycles)</p>
+<table><thead><tr><th>Engine clock</th><th>Time per inference</th><th>Compared with the CPU (3.45 µs)</th><th class="b">Basis</th></tr></thead><tbody>
+<tr><td>27 MHz (tested)</td><td>16.6 µs</td><td>CPU 4.8× faster</td><td class="b">M</td></tr>
+<tr><td>61.5 MHz (Gowin Fmax, not tested)</td><td>7.3 µs</td><td>CPU 2.1× faster</td><td class="b">E</td></tr>
+<tr><td>130 MHz</td><td>3.45 µs</td><td>equal</td><td class="b">E</td></tr>
+<tr><td>500 MHz (typical small ASIC, assumption)</td><td>0.9 µs</td><td>engine 3.9× faster</td><td class="b">T</td></tr></tbody></table>
+<div class="note">Limits: the CPU ran one thread (20 threads could run 20 inferences in parallel; the engine is not pipelined across inferences). Power was not measured. A microcontroller comparison (STM32 with CMSIS-NN) has not been done for NetSilcon-64x6. Over USB-UART the end-to-end time is dominated by USB (about 16.5 ms); 448 cycles is what a sensor or MCU wired directly to the engine would see.</div>
+
+<h2><span class="n">15</span>Reliability and safety</h2>
+<h3>15.1 Built-in safety features</h3>
+<ul>
+<li>CRC-32 over every uploaded image; refused uploads never touch the running model.</li>
+<li>Two weight banks: no half-loaded state is ever used for inference.</li>
+<li>Shift range check (0 … 23) before a model goes live.</li>
+<li>Frame timeout: a stalled frame cannot lock the interface.</li>
+<li>Fixed latency: 448 cycles regardless of input or model.</li>
+<li>Error LED latched until reset.</li>
+</ul>
+<h3>15.2 Use in safety-related systems</h3>
+<p>NetSilcon-64x6 is a prototype. It is not designed or certified as the sole protection in life-support, automotive, aviation or other safety-critical systems. Use it beside proper safety logic. In the rover tests, the safety stop that prevents collisions is separate fixed logic, not the network.</p>
+
+<h2><span class="n">16</span>Road to silicon</h2>
+<p>No silicon version of NetSilcon-64x6 is specified yet. The following items are planned (T):</p>
+<p class="cap">Table 16-1. Planned work</p>
+<table><thead><tr><th>Item</th><th>Purpose</th><th class="b">Basis</th></tr></thead><tbody>
+<tr><td>Model storage in flash, loaded at power-up with a CRC check</td><td>keep an uploaded model across power cycles</td><td class="b">T</td></tr>
+<tr><td>Higher clock through the PLL (timing allows about 61 MHz)</td><td>halve the latency on the same board</td><td class="b">T</td></tr>
+<tr><td>SPI host interface</td><td>direct connection to an MCU without USB</td><td class="b">T</td></tr>
+<tr><td>Safety stop and supervisor in FPGA logic</td><td>the complete rover controller on the board</td><td class="b">T</td></tr>
+<tr><td>Power measurement and an MCU comparison</td><td>replace estimates with measurements</td><td class="b">T</td></tr>
+<tr><td>Support for more FPGA boards</td><td>run the same engine beyond the Tang Nano 20K</td><td class="b">T</td></tr>
+<tr><td>A chip on a shared multi-project wafer</td><td>the long-term goal of the NetSilcon family</td><td class="b">T</td></tr></tbody></table>
+
+<h2><span class="n">17</span>Ordering information</h2>
+<p class="cap">Table 17-1. Ordering information</p>
+<table><thead><tr><th>Part number</th><th>Description</th><th>Delivery</th><th>Status</th></tr></thead><tbody>
+<tr><td>NS64X6-REF</td><td>FPGA reference implementation for the Sipeed Tang Nano 20K: RTL, bitstream build scripts, Python tools, trained models, test logs</td><td>Open source, download</td><td>Available</td></tr>
+<tr><td>NS64X6 silicon</td><td>Integrated circuit</td><td>–</td><td>Not yet defined</td></tr></tbody></table>
+<p>Source: <code>github.com/kumarnitish378/NetSilcon-FPGA</code>, folder <code>NetSilcon-Models/NetSilcon-64x6</code>. Website: <code>kumarnitish378.github.io/NetSilcon</code>. Contact: nitish.ns378@gmail.com.</p>
+
+<h2><span class="n">18</span>Glossary</h2>
+<table><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>argmax</td><td>Index of the largest output</td></tr>
+<tr><td>Bank</td><td>One of two copies of the weight memory; one runs while the other receives an upload</td></tr>
+<tr><td>BSRAM</td><td>Gowin block static RAM, here configured as simple dual port 1K × 16</td></tr>
+<tr><td>Bit-exact</td><td>Every output identical, bit for bit, to the reference model</td></tr>
+<tr><td>CRC-32</td><td>32-bit cyclic redundancy check (IEEE 802.3) protecting the model image</td></tr>
+<tr><td>DAgger</td><td>Dataset aggregation: training on the states the network itself visits, labelled by a teacher</td></tr>
+<tr><td>HIL</td><td>Hardware in the loop: a simulator drives real hardware with simulated sensor data</td></tr>
+<tr><td>int8 / int16</td><td>Signed 8-bit / 16-bit integers</td></tr>
+<tr><td>Lane</td><td>One multiply-accumulate unit; lane j computes neuron j of every layer</td></tr>
+<tr><td>MAC</td><td>Multiply-accumulate</td></tr>
+<tr><td>Mutation test</td><td>A test that changes the design on purpose to prove that the testbench detects the error</td></tr>
+<tr><td>ReLU</td><td>Rectified linear unit: max(x, 0)</td></tr>
+<tr><td>Requantizer</td><td>The unit that applies ReLU, rounding, the layer shift and clamping to produce int8 activations</td></tr>
+<tr><td>Shift</td><td>Per-layer power-of-two scale: v = (a + 2^(s−1)) >>> s</td></tr></tbody></table>
+
+<h2><span class="n">19</span>Important notice</h2>
+<p>This is a preliminary datasheet. It describes an FPGA reference implementation in development. Values marked M were measured on the NetSilcon-64x6 reference implementation or in its testbenches, values marked E are design-tool estimates, and values marked T are targets; all are stated with their conditions.</p>
+<p>The reference implementation (RTL, Python tools, models and test logs) is open source under the Apache License 2.0. NetSilcon-64x6 is not designed or certified as the sole protection in life-support, automotive, aviation or other safety-critical systems (Section 15.2).</p>
+<p>NetSilcon is a project name of Nitish Kumar Sharma. All other trademarks belong to their owners.</p>
+</body></html>

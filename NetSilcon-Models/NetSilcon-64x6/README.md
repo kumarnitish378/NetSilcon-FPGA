@@ -1,5 +1,7 @@
 # NetSilcon-64x6
 
+> **Datasheet:** [NetSilcon-64x6 preliminary datasheet (PDF, 12 pages)](docs/NetSilcon-64x6_Datasheet.pdf)
+>
 > Part of the [NetSilcon](../../README.md) family. Smaller model: [NetSilcon-6x4](../NetSilcon-6x4/).
 
 A larger NetSilcon engine for the Sipeed Tang Nano 20K (GW2AR-18):

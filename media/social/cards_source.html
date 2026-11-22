@@ -1,0 +1,134 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(../../website/src/assets/fonts/space-grotesk-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:SG;src:url(../../website/src/assets/fonts/space-grotesk-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:PS;src:url(../../website/src/assets/fonts/ibm-plex-sans-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:PS;src:url(../../website/src/assets/fonts/ibm-plex-sans-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:PM;src:url(../../website/src/assets/fonts/ibm-plex-mono-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:PM;src:url(../../website/src/assets/fonts/ibm-plex-mono-latin-500-normal.woff2);font-weight:500}
+:root{--ink:#0B1220;--ink2:#121C30;--paper:#F2F5F9;--mut:#9AAAC1;--rule:#2A3852;--acc:#2DD4BF;--acc2:#00706A;--warm:#FBBF24}
+*{box-sizing:border-box;margin:0}
+body{background:#333;padding:20px;display:grid;gap:20px}
+.card{width:1200px;height:1200px;position:relative;overflow:hidden;font-family:PS;color:var(--paper);background:var(--ink);padding:84px 88px}
+.card.light{background:var(--paper);color:var(--ink)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(242,245,249,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(242,245,249,.045) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.light .grid{background-image:linear-gradient(rgba(11,18,32,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(11,18,32,.06) 1px,transparent 1px)}
+.top{display:flex;justify-content:space-between;align-items:center;font:500 22px PM;color:var(--mut);position:relative}
+.light .top{color:#4A586E}
+.brand{display:flex;gap:12px;align-items:center;color:var(--paper);font:700 28px SG}
+.light .brand{color:var(--ink)}
+.brand i{width:30px;height:30px;border:3px solid var(--acc);display:inline-block;position:relative}
+.light .brand i{border-color:var(--acc2)}
+.brand i:after{content:"";position:absolute;inset:6px;background:var(--acc)}
+.light .brand i:after{background:var(--acc2)}
+h1{font:700 76px/1.04 SG;letter-spacing:-.02em;margin-top:70px;position:relative}
+h1 em{font-style:normal;color:var(--acc)}
+.light h1 em{color:var(--acc2)}
+.sub{font:400 30px/1.4 PS;color:var(--mut);margin-top:26px;max-width:960px;position:relative}
+.light .sub{color:#4A586E}
+.foot{position:absolute;left:88px;right:88px;bottom:70px;display:flex;justify-content:space-between;font:500 21px PM;color:var(--mut);border-top:1px solid var(--rule);padding-top:22px}
+.light .foot{border-color:#C9D2DE;color:#4A586E}
+/* card 1 bars */
+.bars{margin-top:110px;position:relative;display:grid;gap:44px}
+.bar .lab{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.bar .lab b{font:600 30px PS}
+.bar .lab span{font:500 26px PM;color:var(--mut)}
+.track{height:64px;background:var(--ink2);border-radius:0 6px 6px 0;position:relative}
+.fill{height:64px;border-radius:0 6px 6px 0}
+.num{font:500 150px/1 PM;letter-spacing:-.04em}
+.big{display:flex;gap:28px;align-items:baseline;margin-top:58px;position:relative}
+.big small{font:500 34px PM;color:var(--mut)}
+.note{font:400 26px/1.45 PS;color:var(--mut);margin-top:60px;max-width:980px;position:relative}
+/* card 2 jobs */
+.flow{position:relative;margin-top:70px;height:560px}
+.chip{position:absolute;left:0;top:150px;width:330px;height:260px;border:3px solid var(--ink);background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px}
+.chip b{font:700 38px SG}
+.chip span{font:500 22px PM;color:#4A586E;text-align:center}
+.pins{position:absolute;left:30px;right:30px;height:14px;background:repeating-linear-gradient(90deg,var(--ink) 0 10px,transparent 10px 30px)}
+.job{position:absolute;left:600px;width:424px;height:150px;border:2px solid #C9D2DE;background:#fff;padding:22px 26px}
+.job .f{font:500 21px PM;color:var(--acc2)}
+.job h3{font:700 34px SG;margin-top:8px}
+.job p{font:400 21px PS;color:#4A586E;margin-top:4px}
+svg.arrows{position:absolute;inset:0}
+/* card 3 */
+.loop{position:relative;margin-top:60px;display:grid;grid-template-columns:1fr 160px 1fr;align-items:center}
+.box{border:2px solid var(--rule);background:var(--ink2);padding:30px;height:250px}
+.box.fp{border-color:var(--acc)}
+.box h3{font:700 36px SG}
+.box p{font:400 23px/1.45 PS;color:var(--mut);margin-top:12px}
+.mid{text-align:center;font:500 20px PM;color:var(--mut);line-height:1.6}
+.mid .a{font-size:40px;color:var(--acc);line-height:1}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:62px;border-top:2px solid var(--paper);position:relative}
+.stats div{padding:26px 22px 0 0}
+.stats .n{font:500 84px/1 PM;letter-spacing:-.03em}
+.stats .n.z{color:var(--acc)}
+.stats .k{font:400 23px/1.4 PS;color:var(--mut);margin-top:12px}
+/* card 4 */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:64px;border-top:2px solid var(--paper);position:relative}
+.vs > div{padding:34px 34px 0 0}
+.vs > div + div{border-left:1px solid var(--rule);padding-left:40px}
+.vs h3{font:700 44px SG}
+.vs .sh{font:500 22px PM;color:var(--acc);margin-top:8px}
+.vs dl{margin-top:10px}
+.vs dt{font:500 19px PM;color:var(--mut);margin-top:26px}
+.vs dd{font:500 40px PM;margin-top:2px}
+.dots{position:relative;height:120px;margin-top:20px}
+</style></head><body>
+
+<!-- 1: hook -->
+<section class="card" id="c1"><div class="grid"></div>
+  <div class="top"><span class="brand"><i></i>NetSilcon</span><span>NetSilcon-64x6 · measured</span></div>
+  <h1>My FPGA needs <em>31× fewer</em><br>clock cycles than<br>my laptop CPU.</h1>
+  <div class="bars">
+    <div class="bar"><div class="lab"><b>NetSilcon-64x6 on a Tang Nano 20K</b><span>448 cycles</span></div><div class="track"><div class="fill" style="width:3.2%;background:var(--acc)"></div></div></div>
+    <div class="bar"><div class="lab"><b>Laptop CPU, i7-13650HX, optimised C</b><span>≈ 14,100 cycles</span></div><div class="track"><div class="fill" style="width:100%;background:#4A586E"></div></div></div>
+  </div>
+  <p class="note">Same int8 neural network (22,528 weights), answers bit-for-bit identical. Honest part: at 27 MHz the 4 GHz laptop still finishes first. Cycles are what carry over to a real chip.</p>
+  <div class="foot"><span>clock cycles per inference · lower is better</span><span>open source · Apache-2.0</span></div>
+</section>
+
+<!-- 2: idea -->
+<section class="card light" id="c2"><div class="grid"></div>
+  <div class="top"><span class="brand"><i></i>NetSilcon</span><span>the idea</span></div>
+  <h1>Fix the shape.<br>Load the numbers.<br><em>New job.</em></h1>
+  <div class="flow">
+    <svg class="arrows" viewBox="0 0 1024 560"><g stroke="#00706A" stroke-width="3" fill="none"><path d="M330 280 C470 280 460 75 600 75"/><path d="M330 280 H600"/><path d="M330 280 C470 280 460 485 600 485"/></g><g fill="#00706A"><path d="M600 75 l-16 -9 v18z"/><path d="M600 280 l-16 -9 v18z"/><path d="M600 485 l-16 -9 v18z"/></g></svg>
+    <div class="chip"><div class="pins" style="top:-17px"></div><b>one bitstream</b><span>network shape<br>fixed in hardware</span><div class="pins" style="bottom:-17px"></div></div>
+    <div class="job" style="top:0"><div class="f">+ motor_fault.json · 201 B</div><h3>Motor fault detector</h3><p>94.5 % int8 accuracy</p></div>
+    <div class="job" style="top:205px"><div class="f">+ irrigation.json · 201 B</div><h3>Irrigation controller</h3><p>97.4 % int8 accuracy</p></div>
+    <div class="job" style="top:410px"><div class="f">+ rover.json · 201 B</div><h3>Rover driver</h3><p>9,600 decisions on the FPGA</p></div>
+  </div>
+  <div class="foot"><span>like an op-amp: a few values decide what it becomes</span><span>NetSilcon-6x4 · 15 clocks</span></div>
+</section>
+
+<!-- 3: rover HIL -->
+<section class="card" id="c3"><div class="grid"></div>
+  <div class="top"><span class="brand"><i></i>NetSilcon</span><span>hardware-in-the-loop · measured</span></div>
+  <h1>The FPGA drove the robot.<br><em>19,200 times.</em></h1>
+  <div class="loop">
+    <div class="box"><h3>PC: simulated world</h3><p>A rover in a room, a 360° LiDAR. Every 50 ms: 16 distances.</p></div>
+    <div class="mid"><div class="a">→</div>16 sectors<br><br>speed, steer<div class="a">←</div></div>
+    <div class="box fp"><h3>FPGA: the brain</h3><p>NetSilcon-64x6 on a Tang Nano 20K decides in 448 clock cycles.</p></div>
+  </div>
+  <div class="stats">
+    <div><div class="n z">0</div><div class="k">mismatches with the Python model</div></div>
+    <div><div class="n z">0</div><div class="k">crashes in 8 drives</div></div>
+    <div><div class="n">48 m</div><div class="k">driven per 2-minute run</div></div>
+  </div>
+  <div class="foot"><span>trained only on random rooms · safety stop on the PC</span><span>CRC-32 3A81C867</span></div>
+</section>
+
+<!-- 4: family -->
+<section class="card" id="c4"><div class="grid"></div>
+  <div class="top"><span class="brand"><i></i>NetSilcon</span><span>same board · two engines</span></div>
+  <h1>130× more parameters.<br><em>Same small FPGA.</em></h1>
+  <div class="vs">
+    <div><h3>NetSilcon-6x4</h3><div class="sh">4 → 6×4 → 2</div>
+      <dl><dt>weights</dt><dd>144</dd><dt>latency</dt><dd>15 clocks</dd><dt>model upload</dt><dd>201 bytes</dd><dt>trained jobs</dt><dd>3</dd></dl></div>
+    <div><h3>NetSilcon-64x6</h3><div class="sh">16 → 64×6 → 16</div>
+      <dl><dt>weights</dt><dd>22,528</dd><dt>latency</dt><dd>448 clocks</dd><dt>model upload</dt><dd>23,335 bytes</dd><dt>bit-exact on the FPGA</dt><dd>3,200 / 3,200</dd></dl></div>
+  </div>
+  <div class="foot"><span>Sipeed Tang Nano 20K · Gowin GW2AR-18 · 27 MHz</span><span>more shapes coming</span></div>
+</section>
+</body></html>

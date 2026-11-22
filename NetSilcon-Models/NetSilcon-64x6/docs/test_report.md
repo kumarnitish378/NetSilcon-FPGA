@@ -25,7 +25,7 @@
 | **Hardware: trained rover controller** | uploaded (CRC-32 3A81C867), golden 1000/1000, **HIL 19,200 inferences, 0 mismatches**; 8 drives 0 crashes, 0 stuck (section 7.1) |
 | **Clock cycles per inference** | FPGA **448** vs laptop CPU ≈ **14,100** (best C code): **31× fewer cycles** (section 8) |
 
-Every hardware number in this report comes from a log file in `logs/` (index in section 10).
+Every hardware number in this report comes from a log file in `results/logs/` (index in section 10).
 
 ## 2. Test setup
 
@@ -38,7 +38,7 @@ Every hardware number in this report comes from a log file in `logs/` (index in 
 | FPGA tools | Gowin EDA V1.9.11.03 Education; yosys + nextpnr-himbaechel (open-source cross-check) |
 | Simulation | Icarus Verilog 12 (Linux; the engine tests and mutation tests were re-run by the user in WSL Ubuntu with the same results) |
 | Host PC | Windows 11 (10.0.26300), Python 3.14.4, pyserial 3.5 |
-| Host tool | `host/ns64_host.py` (logs every run to `logs/` as `.log` + `.csv`) |
+| Host tool | `python/host/ns64_host.py` (logs every run to `results/logs/` as `.log` + `.csv`) |
 
 ## 3. Design under test
 
@@ -47,7 +47,7 @@ Every hardware number in this report comes from a log file in `logs/` (index in 
   two banks (bank 0 = built-in model, bank 1 = upload slot).
 - One shared requantizer fed by a 64 × 24-bit shift chain (ReLU, round, shift 0..23, clamp).
 - Math: `acc = bias16 + Σ x·w` (24-bit), ReLU on hidden layers, `y = (acc + 2^(s−1)) >>> s`,
-  clamp 0..127 (hidden) / −128..127 (output). Identical to `model/ns64.py`.
+  clamp 0..127 (hidden) / −128..127 (output). Identical to `python/model/ns64.py`.
 - Model upload over UART: 23,335-byte image + CRC-32, written into the inactive bank, swapped
   in one clock only if the CRC is good. Protocol: `docs/protocol.md`.
 
@@ -62,13 +62,13 @@ Every hardware number in this report comes from a log file in `logs/` (index in 
 
 | Test | Script | Result |
 |---|---|---|
-| Requantizer, every shift 0..23, ReLU on/off, corner values + random | `scripts/run_sim_engine.sh` | 21,216 values, 0 mismatches |
+| Requantizer, every shift 0..23, ReLU on/off, corner values + random | `fpga/scripts/run_sim_engine.sh` | 21,216 values, 0 mismatches |
 | Engine vs Python, synthetic model | same | 1,000 vectors, 0 mismatches, 448 clocks |
 | Engine vs Python, stress model | same | 200 vectors, 0 mismatches |
-| Engine mutation test (rounding, ReLU, bias high byte, layer shift, output clamp, last weight) | `scripts/mutation_test.sh` | 6 / 6 detected |
-| Board top over UART: info, inference, damaged / interrupted / shift-24 uploads refused, two good uploads with bank swaps, stray bytes, D1/D2 link commands | `scripts/run_sim_top.sh` | 168 checks, 0 errors |
-| Loader / top mutation test (ignore CRC, write active bank, bias bytes swapped, lane pair swapped, keep old shifts) | `scripts/mutation_test_loader.sh` | 5 / 5 detected |
-| Link-only top (no engine, echo) | `tb/tb_linkonly.v` | PASS |
+| Engine mutation test (rounding, ReLU, bias high byte, layer shift, output clamp, last weight) | `fpga/scripts/mutation_test.sh` | 6 / 6 detected |
+| Board top over UART: info, inference, damaged / interrupted / shift-24 uploads refused, two good uploads with bank swaps, stray bytes, D1/D2 link commands | `fpga/scripts/run_sim_top.sh` | 168 checks, 0 errors |
+| Loader / top mutation test (ignore CRC, write active bank, bias bytes swapped, lane pair swapped, keep old shifts) | `fpga/scripts/mutation_test_loader.sh` | 5 / 5 detected |
+| Link-only top (no engine, echo) | `fpga/tb/tb_linkonly.v` | PASS |
 
 The first mutation run found a gap: no test model ever drove an output past ±127, so a broken
 output clamp went unnoticed. Both models were changed so outputs saturate; the clamp bug is now caught.
@@ -191,14 +191,14 @@ uploaded to the same bitstream without a rebuild.
 
 The replay with the bit-exact Python model produced the same 19,200 inputs and outputs. The drive
 outcome is therefore the board's: 0/8 crashes, 0/8 stuck, 48.1 m per drive
-(`rover_sim/results_hil64.txt`). The supervisor and the safety stop ran on the PC.
+(`results/results_hil64.txt`). The supervisor and the safety stop ran on the PC.
 
 ## 8. Performance: clock cycles required per inference
 
 The network needs 22,528 int8 multiply-adds per inference. Compared by **clock cycles required**,
 so that the result does not depend on how fast each chip is clocked.
 
-**Measured (22 Nov 2026).** CPU runs: same bit-exact math in C (`bench/bench.c`), 1,000 golden
+**Measured (22 Nov 2026).** CPU runs: same bit-exact math in C (`python/bench/bench.c`), 1,000 golden
 vectors with 0 wrong outputs, single thread, laptop Linux VM. CPU clock from Windows Task Manager
 during the session: **4.09 GHz**.
 
@@ -241,7 +241,7 @@ during the session: **4.09 GHz**.
 - Over USB-UART the end-to-end time is about 16.5 ms, dominated by USB. The 448-cycle figure is
   what a sensor or MCU wired directly to the FPGA would see.
 
-Raw numbers: `bench/results_2026-11-22.txt`. Reproduce: `cd bench && python3 make_net_h.py &&
+Raw numbers: `results/bench_results_2026-11-22.txt`. Reproduce: `cd python/bench && python3 make_net_h.py &&
 gcc -O3 -march=native -o bench bench.c && ./bench`.
 
 ## 9. Not yet verified / open items
@@ -263,28 +263,28 @@ gcc -O3 -march=native -o bench bench.c && ./bench`.
 Simulation (WSL Ubuntu):
 
 ```bash
-cd /mnt/c/fpga/NetSilcon-64x6
-python3 model/make_synthetic.py
-bash scripts/run_sim_engine.sh
-bash scripts/mutation_test.sh
-bash scripts/run_sim_top.sh
-bash scripts/mutation_test_loader.sh
+cd /mnt/c/fpga/NetSilcon-6x4-github/NetSilcon-Models/NetSilcon-64x6
+python3 python/model/make_synthetic.py
+bash fpga/scripts/run_sim_engine.sh
+bash fpga/scripts/mutation_test.sh
+bash fpga/scripts/run_sim_top.sh
+bash fpga/scripts/mutation_test_loader.sh
 ```
 
 Hardware (after programming `ns64.fs`, Windows):
 
 ```
-cd C:\fpga\NetSilcon-64x6\host
+cd C:\fpga\NetSilcon-6x4-github\NetSilcon-Models\NetSilcon-64x6\python\host
 python ns64_host.py COM7 --info
 python ns64_host.py COM7 --linktest 2000
 python ns64_host.py COM7 --test
 python ns64_host.py COM7 --random 2000
-python ns64_host.py COM7 --load ..\models\stress\stress.json --corrupt
-python ns64_host.py COM7 --load ..\models\stress\stress.json
+python ns64_host.py COM7 --load ..\..\models\stress\stress.json --corrupt
+python ns64_host.py COM7 --load ..\..\models\stress\stress.json
 python ns64_host.py COM7 --test
 ```
 
-### Log index (`logs/`)
+### Log index (`results/logs/`)
 
 | Log | Command | Result |
 |---|---|---|

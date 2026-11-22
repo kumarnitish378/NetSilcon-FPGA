@@ -31,6 +31,6 @@ Classifier decision: `y1 > y0`.
 ## Rebuild and upload
 
 ```bash
-cd ../../model && python make_model.py irrigation      # writes models/irrigation/irrigation.json
-python ../host/netsilcon_host.py COM7 --load ../models/irrigation/irrigation.json
+cd ../../python/model && python make_model.py irrigation      # writes models/irrigation/irrigation.json
+python ../host/netsilcon_host.py COM7 --load ../../models/irrigation/irrigation.json
 ```

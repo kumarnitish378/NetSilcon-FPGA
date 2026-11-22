@@ -20,14 +20,14 @@ y = clamp 0..127 (hidden) / −128..127 (output)
 
 | Step | State | Result |
 |---|---|---|
-| 0. Resource probe (64 MACs + 32 BSRAM) | open-source done, **Gowin pending** | yosys/nextpnr: 64/96 MULT9X9, 32/46 BSRAM, byte enables + init files inferred. See `probe/README_probe.md` |
-| 1. Python bit-exact model | done | `model/ns64.py`. Self-check PASS |
+| 0. Resource probe (64 MACs + 32 BSRAM) | open-source done, **Gowin pending** | yosys/nextpnr: 64/96 MULT9X9, 32/46 BSRAM, byte enables + init files inferred. See [`fpga/probe/README_probe.md`](fpga/probe/README_probe.md) |
+| 1. Python bit-exact model | done | `python/model/ns64.py`. Self-check PASS |
 | 2. Engine RTL + Icarus | done (simulation) | 1,000 synthetic + 200 stress vectors, **0 mismatches**, **448 clocks = 16.6 µs at 27 MHz**. Requantizer 21,216 values, 0 mismatches. Mutation test 6/6 |
 | 3. UART top + loader (CRC-32, two banks) | done (simulation) | `tb_top` over the real UART pins: 152 checks, 0 errors (info, inference, damaged / interrupted / shift-24 uploads refused with the old model still exact, two good uploads with bank swaps). Loader mutation test 5/5 (incl. lanes of a pair swapped) |
-| 4. Host tool | written, tested against a simulated port only | `host/ns64_host.py`, logs to `logs/` |
+| 4. Host tool | written, tested against a simulated port only | `python/host/ns64_host.py`, logs to `results/logs/` |
 | 5a. Open-source synthesis of the full design | done | see table below; bitstream builds |
 | 5b. Gowin EDA synthesis + timing | **done** | Logic 7,091/20,736 (35 %), registers 5,318 (34 %), BSRAM 32/46 (SDPB), DSP 16/24 = 64 MULT9X9. **Fmax 58.6 MHz vs 27 MHz, 0 setup / 0 hold violations.** 1st try had failed (byte-enable RAM built from LUTs); fixed with plain SDP RAM + lane-pair loader. Reports: `docs/gowin_reports/` |
-| 6. Hardware | **done (22 Nov 2026)** | Built-in model: 1,000 golden + 2,000 random vectors, **0 mismatches**. Stress model uploaded (CRC-32 732C18C9, 2.04 s): 200 vectors, 0 mismatches. Damaged upload refused, old model kept. Latency **448 clocks = 16.6 µs** (hardware counter). Link test 4,000 replies, 0 damaged. Logs: `logs/2026112213*` |
+| 6. Hardware | **done (22 Nov 2026)** | Built-in model: 1,000 golden + 2,000 random vectors, **0 mismatches**. Stress model uploaded (CRC-32 732C18C9, 2.04 s): 200 vectors, 0 mismatches. Damaged upload refused, old model kept. Latency **448 clocks = 16.6 µs** (hardware counter). Link test 4,000 replies, 0 damaged. Logs: `results/logs/2026112213*` |
 | On-chip self-test bitstream | not started | |
 
 ### UART link problem (found and fixed, 22 Nov 2026)
@@ -39,9 +39,9 @@ it re-initialises its UART, damaging the FPGA reply that was arriving. Fix: the 
 once when the port opens (`Chip.read_exact`). The 6x4 tools never changed the timeout, which is
 why the 6x4 was clean. FPGA changes made during the hunt and kept: UART transmitter with optional
 2 stop bits (`D1`, power-up = 1 stop bit like the 6x4), test patterns (`D2`), weight RAMs read only
-while computing (power), and a link-only build (`board/tangnano20k_ns64_linkonly.v`).
+while computing (power), and a link-only build (`fpga/board/tangnano20k_ns64_linkonly.v`).
 
-### Full design, open-source flow (yosys + nextpnr-himbaechel, `scripts/build_opensource.sh`)
+### Full design, open-source flow (yosys + nextpnr-himbaechel, `fpga/scripts/build_opensource.sh`)
 
 | Resource | Used | Available | |
 |---|---|---|---|
@@ -69,12 +69,12 @@ Gowin's timing report and a hardware run count.
 ## Run the tests (WSL Ubuntu)
 
 ```bash
-cd /mnt/c/fpga/NetSilcon-64x6
-python3 model/make_synthetic.py        # models/<name>/<name>.json + gen/ (fixed seeds, same files every time)
-bash scripts/run_sim_engine.sh         # requantizer + engine vs Python, ~2 min. Ends: RESULT: PASS
-bash scripts/mutation_test.sh          # 6 deliberate bugs, each must be caught (~1.5 min)
-bash scripts/run_sim_top.sh            # whole board design over UART, uploads, bank swaps (~2.5 min)
-bash scripts/mutation_test_loader.sh   # 4 deliberate loader/top bugs, each must be caught (~10 min)
+cd /mnt/c/fpga/NetSilcon-6x4-github/NetSilcon-Models/NetSilcon-64x6
+python3 python/model/make_synthetic.py      # models/<name>/<name>.json + fpga/gen/ (fixed seeds, same files every time)
+bash fpga/scripts/run_sim_engine.sh         # requantizer + engine vs Python, ~2 min. Ends: RESULT: PASS
+bash fpga/scripts/mutation_test.sh          # 6 deliberate bugs, each must be caught (~1.5 min)
+bash fpga/scripts/run_sim_top.sh            # whole board design over UART, uploads, bank swaps (~2.5 min)
+bash fpga/scripts/mutation_test_loader.sh   # 4 deliberate loader/top bugs, each must be caught (~10 min)
 ```
 
 Needs `python3-numpy` and `iverilog` (`sudo apt install iverilog python3-numpy`).
@@ -92,24 +92,28 @@ Needs `python3-numpy` and `iverilog` (`sudo apt install iverilog python3-numpy`)
 |---|---|---|---|
 | [`models/rover/`](models/rover/) | rover obstacle avoidance from 16 LiDAR sectors → speed, steering | int8 89.8 % action agreement with teacher; simulation with supervisor + safety stop: 0/80 crashes, 0/80 stuck, 46.9 m; 40 unseen worlds 0 crashes, 37.9 m (6x4: 33.3 m). Verilog 1000/1000 bit-exact. **Hardware HIL: 19,200 inferences, 0 mismatches; 8 drives 0 crashes, 0 stuck** | 3A81C867 |
 
-Activation statistics per layer: `gen/model_report.txt`.
+Activation statistics per layer: `fpga/gen/model_report.txt`.
 
 ## Layout
 
 ```
-rtl/      ns64_engine.v, ns64_requant.v, ns64_wram.v
-board/    tangnano20k_ns64.v (UART top), ns64_loader.v (CRC-32, two banks), ns_uart.v (from 6x4),
-          tangnano20k_ns64.cst, tangnano20k.sdc
-host/     ns64_host.py (PC tool: info, inference, upload, golden/random tests, logs)
-docs/     protocol.md, gowin_build.md
-tb/       tb_engine.v, tb_requant.v, tb_top.v
-model/    ns64.py (reference math, image, CRC-32, RAM layout), make_synthetic.py, train_rover.py
-models/   <application>/<application>.json + README (synthetic, stress, rover)
-rover_sim/ rover64.py (16-sector rover simulator, teacher, HIL), eval_rover64.py, results_rover64.txt
-gen/      wmem_00..31.mem (built-in RAM contents), tb/ (testbench RAMs), golden vectors, *.vh
-scripts/  run_sim_engine.sh, run_sim_top.sh, mutation_test*.sh, make_tb_load.py, build_opensource.sh
-probe/    step-0 resource probe
-logs/     host-tool runs (later)
+models/      <application>/<application>.json + README (rover, synthetic, stress)
+fpga/
+  rtl/       ns64_engine.v, ns64_requant.v, ns64_wram.v
+  board/     tangnano20k_ns64.v (UART top), ns64_loader.v (CRC-32, two banks), ns_uart.v (from 6x4),
+             tangnano20k_ns64.cst, tangnano20k.sdc
+  tb/        tb_engine.v, tb_requant.v, tb_top.v
+  gen/       wmem_00..31.mem (built-in RAM contents), tb/ (testbench RAMs), golden vectors, *.vh
+  scripts/   run_sim_engine.sh, run_sim_top.sh, mutation_test*.sh, make_tb_load.py, build_opensource.sh
+             (sim/ and build/ are created here)
+  probe/     step-0 resource probe
+python/
+  model/     ns64.py (reference math, image, CRC-32, RAM layout), make_synthetic.py, train_rover.py
+  host/      ns64_host.py (PC tool: info, inference, upload, golden/random tests, logs)
+  rover_sim/ rover64.py (16-sector rover simulator, teacher, HIL), eval_rover64.py
+  bench/     bench.c, make_net_h.py (CPU cycle comparison)
+docs/        test_report.md, protocol.md, gowin_build.md, gowin_reports/
+results/     logs/ (every host-tool run), results_rover64.txt, results_hil64.txt, bench results
 ```
 
 [Apache License 2.0](../../LICENSE). Copyright 2026 Nitish Kumar Sharma.

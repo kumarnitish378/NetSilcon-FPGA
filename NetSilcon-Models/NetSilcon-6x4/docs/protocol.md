@@ -46,7 +46,7 @@ old model keeps running. `loads` counts the successful uploads since power-up.
 | FPGA → PC | `5C crc_lo crc_hi source loads` |
 
 `source`: `0` = the built-in model from the bitstream (the CRC then reads `0000`; the host
-tool computes the built-in CRC itself from `gen/`), `1` = an uploaded model (the CRC is its
+tool computes the built-in CRC itself from `fpga/gen/`), `1` = an uploaded model (the CRC is its
 CRC-16).
 
 ## LEDs (active low)

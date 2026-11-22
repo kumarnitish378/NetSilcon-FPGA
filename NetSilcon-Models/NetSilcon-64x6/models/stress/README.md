@@ -14,6 +14,6 @@ Weights only −128 / +127, biases at the int16 limits, shifts 0..17, layer-2 su
 ## Rebuild and upload
 
 ```bash
-cd ../../model && python3 make_synthetic.py     # writes both test models and gen/
-python3 ../host/ns64_host.py COM7 --load ../models/stress/stress.json
+cd ../../python/model && python3 make_synthetic.py     # writes both test models and fpga/gen/
+python3 ../host/ns64_host.py COM7 --load ../../models/stress/stress.json
 ```

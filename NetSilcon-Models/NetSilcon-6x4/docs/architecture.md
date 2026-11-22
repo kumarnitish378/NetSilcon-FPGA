@@ -23,13 +23,13 @@ comparator depending on a few resistor values. Here the weights play the role of
 - Accumulator: 20-bit signed, enough for the worst case `32767 + 6 × 127 × 127 = 129,541`.
 - After each layer: round, arithmetic shift right by the layer's shift `s`, then clamp
   (hidden layers 0..127 after ReLU, output layer −128..127).
-- The quantizer ([`model/make_model.py`](../model/make_model.py)) chooses one power-of-two
+- The quantizer ([`python/model/make_model.py`](../python/model/make_model.py)) chooses one power-of-two
   shift per layer. For regression models it scales the last layer so that the chip's output
   is exactly `value × 127`.
 
 ## Pipeline
 
-Each layer ([`rtl/nn_layer.v`](../rtl/nn_layer.v)) has one multiply-accumulate tree per
+Each layer ([`fpga/rtl/nn_layer.v`](../fpga/rtl/nn_layer.v)) has one multiply-accumulate tree per
 neuron, so all neurons of a layer work at the same time. With `PHASES = 2` each neuron has
 `N_in / 2` multipliers and uses them on two consecutive clocks:
 
@@ -46,7 +46,7 @@ still meets 27 MHz in Gowin EDA, with 2.7 ns of slack.
 
 ## Model loader
 
-[`board/ns_loader.v`](../board/ns_loader.v):
+[`fpga/board/ns_loader.v`](../fpga/board/ns_loader.v):
 
 1. Bytes after the `C3` header go into a 201-byte **staging RAM**, which maps to one block
    RAM. The CRC-16 is computed on the fly.

@@ -2,7 +2,7 @@
 
 NetSilcon-6x4 application `rover` (network 4 → 6 → 6 → 6 → 6 → 2, int8).
 
-Drives the 2D rover simulator in `rover_sim/`, also in hardware-in-the-loop with the real FPGA (9,600 decisions, 0 mismatches). `rover.json` is v2 (used by default), `rover_v1.json` the first version. v2 copies its training rules less exactly than v1 but drives better in closed loop; results in the main README and `rover_sim/batch_results.txt`.
+Drives the 2D rover simulator in `python/rover_sim/`, also in hardware-in-the-loop with the real FPGA (9,600 decisions, 0 mismatches). `rover.json` is v2 (used by default), `rover_v1.json` the first version. v2 copies its training rules less exactly than v1 but drives better in closed loop; results in the main README and `results/rover_batch_results.txt`.
 
 | Item | Value |
 |---|---|
@@ -31,6 +31,6 @@ Regression: value = y / 127 (−1 … +1).
 ## Rebuild and upload
 
 ```bash
-cd ../../model && python make_model.py rover      # writes models/rover/rover.json
-python ../host/netsilcon_host.py COM7 --load ../models/rover/rover.json
+cd ../../python/model && python make_model.py rover      # writes models/rover/rover.json
+python ../host/netsilcon_host.py COM7 --load ../../models/rover/rover.json
 ```

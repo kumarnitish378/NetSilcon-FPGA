@@ -14,6 +14,6 @@ Random int8 weights with biases and shifts calibrated so most activations fall b
 ## Rebuild and upload
 
 ```bash
-cd ../../model && python3 make_synthetic.py     # writes both test models and gen/
-python3 ../host/ns64_host.py COM7 --load ../models/synthetic/synthetic.json
+cd ../../python/model && python3 make_synthetic.py     # writes both test models and fpga/gen/
+python3 ../host/ns64_host.py COM7 --load ../../models/synthetic/synthetic.json
 ```

@@ -8,9 +8,9 @@ build/
 # Gowin EDA project folders
 impl/
 *.gprj.user
-# run logs (curated examples live in docs/logs/)
-host/logs/
-rover_sim/logs/
+# raw run logs of NetSilcon-6x4 (curated examples live in results/logs/) and HIL CSVs
+results/logs/host/
+results/logs/hil/
 # Python
 __pycache__/
 *.pyc

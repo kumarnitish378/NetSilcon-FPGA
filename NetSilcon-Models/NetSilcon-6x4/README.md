@@ -16,12 +16,14 @@ uploaded in about 31 ms.
 
 ![Rover simulator driven by the NetSilcon int8 network](docs/images/rover_simulator.png)
 
+More: [preliminary datasheet (PDF)](docs/NetSilcon-6x4_Datasheet.pdf) · [simulation waveform](docs/images/netsilcon_waveform.png) · [demo video](../../media/NetSilcon_Demo.mp4) · [keynote video](../../media/NetSilcon_Keynote.mp4)
+
 ---
 
 ## Measured results
 
 Measured on a Tang Nano 20K at 27 MHz unless stated otherwise. The raw logs are in
-[`docs/logs/`](docs/logs/).
+[`results/logs/`](results/logs/).
 
 | What | Result |
 |---|---|
@@ -59,8 +61,8 @@ flowchart LR
     LD -- "only if CRC is good" --> NN
 ```
 
-**The math in every neuron** is identical in Verilog ([`rtl/nn_layer.v`](rtl/nn_layer.v))
-and Python ([`host/netsilcon_host.py`](host/netsilcon_host.py)):
+**The math in every neuron** is identical in Verilog ([`fpga/rtl/nn_layer.v`](fpga/rtl/nn_layer.v))
+and Python ([`python/host/netsilcon_host.py`](python/host/netsilcon_host.py)):
 
 ```
 acc = bias16 + Σ x_i · w_i          int8 inputs × int8 weights, 20-bit signed accumulator
@@ -90,8 +92,8 @@ continues. Details: [`docs/architecture.md`](docs/architecture.md),
 You need Python 3 with numpy, and [Icarus Verilog](https://steveicarus.github.io/iverilog/).
 
 ```bash
-bash scripts/run_all_tests.sh        # network vs Python, live UART, model upload
-# Windows without bash:  scripts\run_sim.bat
+bash fpga/scripts/run_all_tests.sh   # network vs Python, live UART, model upload
+# Windows without bash:  fpga\scripts\run_sim.bat
 ```
 
 Every test ends with `RESULT: PASS`.
@@ -101,9 +103,9 @@ Every test ends with `RESULT: PASS`.
 **Gowin EDA (Education edition)**
 
 1. New project, device **GW2AR-LV18QN88C8/I7**.
-2. Add `rtl/*.v`, `board/ns_uart.v`, `board/ns_loader.v`, `board/tangnano20k_uart.v`,
-   `board/tangnano20k_uart.cst` and `board/tangnano20k.sdc`. Set the top module to
-   `tangnano20k_uart`, add `gen/` to the include path, and copy `gen/*.mem` into the
+2. Add `fpga/rtl/*.v`, `fpga/board/ns_uart.v`, `fpga/board/ns_loader.v`, `fpga/board/tangnano20k_uart.v`,
+   `fpga/board/tangnano20k_uart.cst` and `fpga/board/tangnano20k.sdc`. Set the top module to
+   `tangnano20k_uart`, add `fpga/gen/` to the include path, and copy `fpga/gen/*.mem` into the
    project folder.
 3. Synthesize, then Place & Route. Program with **SRAM Program**: cable *USB Debugger A*,
    0.9 MHz, device GW2AR-18C.
@@ -112,39 +114,39 @@ Every test ends with `RESULT: PASS`.
 
 ```bash
 pip install yowasp-yosys yowasp-nextpnr-himbaechel-gowin apycula
-bash scripts/build_opensource.sh uart          # → build/netsilcon_uart.fs
-openFPGALoader -b tangnano20k build/netsilcon_uart.fs
+bash fpga/scripts/build_opensource.sh uart     # → fpga/build/netsilcon_uart.fs
+openFPGALoader -b tangnano20k fpga/build/netsilcon_uart.fs
 ```
 
-`bash scripts/build_opensource.sh selftest` builds a stand-alone self-test instead. It runs
+`bash fpga/scripts/build_opensource.sh selftest` builds a stand-alone self-test instead. It runs
 all golden vectors on the board and shows PASS or FAIL on the LEDs and the serial port.
 
 ### 3. Talk to it from the PC
 
 ```bash
 pip install pyserial
-cd host
+cd python/host
 python netsilcon_host.py COM7 --info                                   # which model is running?
 python netsilcon_host.py COM7 --values 10 24 3500 65                   # one reading in real units
-python netsilcon_host.py COM7 --load ../models/irrigation/irrigation.json --corrupt   # must be REFUSED
-python netsilcon_host.py COM7 --load ../models/irrigation/irrigation.json         # give it a new job
+python netsilcon_host.py COM7 --load ../../models/irrigation/irrigation.json --corrupt   # must be REFUSED
+python netsilcon_host.py COM7 --load ../../models/irrigation/irrigation.json         # give it a new job
 python netsilcon_host.py COM7 --demo                                   # the model's demo scenarios
 python netsilcon_host.py COM7 --test                                   # 576 vectors, bit-exact check
 ```
 
-Every run writes a `.log` and a `.csv` file to `host/logs/`.
+Every run writes a `.log` and a `.csv` file to `results/logs/host/` (not committed; curated examples are in `results/logs/`).
 
 ---
 
 ## Make your own model
 
 Any job with 4 inputs and 2 outputs fits. Add an entry to
-[`model/apps.py`](model/apps.py): input names, units and ranges, output labels, a data
+[`python/model/apps.py`](python/model/apps.py): input names, units and ranges, output labels, a data
 generator and demo scenarios. Then:
 
 ```bash
-cd model
-python make_model.py <name>          # trains, quantizes to int8 and writes models/<name>.json
+cd python/model
+python make_model.py <name>          # trains, quantizes to int8 and writes models/<name>/<name>.json
 ```
 
 The `.json` file holds the weights, biases, shifts, the CRC of the 201-byte image, the
@@ -155,14 +157,14 @@ Regression models (like the rover) read `y / 127` as a value from −1 to +1.
 
 ## Rover simulator and hardware in the loop
 
-`rover_sim/` holds a 2D simulator of an Ackermann rover with a 360° LiDAR, reduced to 4
+`python/rover_sim/` holds a 2D simulator of an Ackermann rover with a 360° LiDAR, reduced to 4
 corner sectors. The `rover.json` network drives it, wrapped in two small fixed-logic blocks:
 a **predictive safety stop** (blocks a move only if the body would touch an obstacle within
 0.4 s) and a **3-point-turn supervisor** (steps in when the robot makes no progress, because
 the network has no memory of what it just did).
 
 ```bash
-cd rover_sim
+cd python/rover_sim
 python rover_sim.py --sensors scanner --unstick           # 20 random starts × 4 worlds
 python rover_sim.py --hil COM7 --map clutter --view       # the REAL FPGA drives, live window
 python rover_sim.py --hil COM7 --noise 0.02               # HIL batch with sensor noise
@@ -172,7 +174,7 @@ python rover_sim.py --hil COM7 --noise 0.02               # HIL batch with senso
 raw outputs and every neuron's activation, and lets you switch between models v1 and v2.
 
 80 simulated drives per setup (20 starts × 4 worlds × 90 s), from
-[`rover_sim/batch_results.txt`](rover_sim/batch_results.txt):
+[`results/rover_batch_results.txt`](results/rover_batch_results.txt):
 
 | Setup | Crashes | Stuck | Avg distance |
 |---|---|---|---|
@@ -191,21 +193,24 @@ dead ends. Training on the situations the robot actually met in the simulator fi
 ## Repository layout
 
 ```
-rtl/        nn_layer.v, netsilcon_top.v           the network (shape fixed, numbers loadable)
-board/      tangnano20k_uart.v                     board top: UART protocol, latency counter, LEDs
-            ns_uart.v, ns_loader.v                 UART RX/TX, model loader with CRC-16
-            tangnano20k_selftest.v                 stand-alone on-board self-test
-            *.cst, *.sdc                           pins and 27 MHz clock constraint
-tb/         testbenches (network, board self-test, UART, model upload)
-gen/        built-in model (motor fault): weights.mem, biases.mem, shifts, golden vectors
-model/      data.py, train.py, quantize.py         built-in model pipeline (numpy only)
-            apps.py, make_model.py                 any app → models/<name>.json
-models/     motor_fault, irrigation, rover (v2), rover_v1
-host/       netsilcon_host.py                      PC tool: inference, upload, tests, logs
-rover_sim/  rover_sim.py, rover_simulator.html     simulator, batch tests, hardware-in-the-loop
-scripts/    run_all_tests.sh, build_opensource.sh, ...
-docs/       architecture.md, protocol.md, results.md, benchmarks.md, logs/ (hardware runs)
-bench/      Same-network CPU and Cortex-M4 benchmark code (see docs/benchmarks.md)
+models/             motor_fault/, irrigation/, rover/ (v2 + v1)   one folder per application
+fpga/
+  rtl/              nn_layer.v, netsilcon_top.v           the network (shape fixed, numbers loadable)
+  board/            tangnano20k_uart.v                     board top: UART protocol, latency counter, LEDs
+                    ns_uart.v, ns_loader.v                 UART RX/TX, model loader with CRC-16
+                    tangnano20k_selftest.v                 stand-alone on-board self-test
+                    *.cst, *.sdc                           pins and 27 MHz clock constraint
+  tb/               testbenches (network, board self-test, UART, model upload)
+  gen/              built-in model (motor fault): weights.mem, biases.mem, shifts, golden vectors
+  scripts/          run_all_tests.sh, build_opensource.sh, ...  (sim/ and build/ are created here)
+python/
+  model/            data.py, train.py, quantize.py         built-in model pipeline (numpy only)
+                    apps.py, make_model.py                 any app → models/<name>/<name>.json
+  host/             netsilcon_host.py                      PC tool: inference, upload, tests, logs
+  rover_sim/        rover_sim.py, rover_simulator.html     simulator, batch tests, hardware-in-the-loop
+  bench/            same-network CPU and Cortex-M4 benchmark code (see docs/benchmarks.md)
+docs/               architecture.md, protocol.md, results.md, benchmarks.md, datasheet, images/
+results/            logs/ (curated hardware runs), rover_batch_results.txt
 ```
 
 ## Limitations

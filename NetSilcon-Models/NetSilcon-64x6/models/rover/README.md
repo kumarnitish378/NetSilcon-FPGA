@@ -41,7 +41,7 @@ smallest distance from the rover's body edge. 0–4 m maps to 0..127, so one ste
 
 ## How it was made
 
-1. **Teacher.** A hand-written rule driver (`rover_sim/rover64.py`, `teacher()`):
+1. **Teacher.** A hand-written rule driver (`python/rover_sim/rover64.py`, `teacher()`):
    - It scores the open gaps ahead.
    - It steers towards the best gap.
    - It slows down, and reverses, as the space in front closes.
@@ -65,7 +65,7 @@ The network runs inside the same controller as the 6x4 rover:
   same scan;
 - a predictive safety stop that checks the path ahead before every move.
 
-## Simulation results (2026-11-22, `rover_sim/results_rover64.txt`)
+## Simulation results (2026-11-22, `results/results_rover64.txt`)
 
 The safety stop is on in every run. Each drive lasts 120 s.
 
@@ -97,13 +97,13 @@ What the table shows:
 
 The simulator sent every scan to the board over UART. The FPGA's speed and steering drove the
 simulated rover. Command: `rover64.py --hil COM7 --unstick --runs 2` (4 standard worlds × 2 starts
-× 120 s). Summary: `rover_sim/results_hil64.txt`.
+× 120 s). Summary: `results/results_hil64.txt`.
 
 | Check | Result |
 |---|---|
-| Upload | LOADED, chip CRC-32 3A81C867, 2.04 s (`logs/20261122_151939_load.log`) |
-| Golden test | 1000/1000, 0 mismatches, 0 link errors (`logs/20261122_151950_test.*`) |
-| HIL inferences | **19,200, 0 mismatches** with the Python model (`logs/20261122_152042_hil64.csv.gz`) |
+| Upload | LOADED, chip CRC-32 3A81C867, 2.04 s (`results/logs/20261122_151939_load.log`) |
+| Golden test | 1000/1000, 0 mismatches, 0 link errors (`results/logs/20261122_151950_test.*`) |
+| HIL inferences | **19,200, 0 mismatches** with the Python model (`results/logs/20261122_152042_hil64.csv.gz`) |
 | Chip latency | 448 clocks = 16.6 µs on every step |
 | USB round trip | 15.3 ms average, 17.8 ms maximum (the 20 Hz loop allows 50 ms) |
 | Unused outputs y2..y15 | 0 in every answer |
@@ -128,20 +128,20 @@ network runs on the FPGA.
 ## Rebuild
 
 ```bash
-cd ../../model
+cd ../../python/model
 python3 train_rover.py --fresh --dagger 2      # dataset, training, DAgger, quantize, writes rover.json
 cd ../rover_sim
-python3 eval_rover64.py                         # writes results_rover64.txt (about 15 min)
+python3 eval_rover64.py                         # writes results/results_rover64.txt (about 15 min)
 python3 rover64.py --map room --runs 2          # simulated drives with the int8 model
 ```
 
 ## Upload and test on the board (normal ns64 bitstream)
 
 ```bash
-python host/ns64_host.py COM7 --load models/rover/rover.json   # expect LOADED, CRC-32 3A81C867
-python host/ns64_host.py COM7 --test                           # 1000 golden vectors
-python rover_sim/rover64.py --hil COM7 --unstick --runs 2      # simulator drives, the FPGA decides
+python python/host/ns64_host.py COM7 --load models/rover/rover.json   # expect LOADED, CRC-32 3A81C867
+python python/host/ns64_host.py COM7 --test                           # 1000 golden vectors
+python python/rover_sim/rover64.py --hil COM7 --unstick --runs 2      # simulator drives, the FPGA decides
 ```
 
 In HIL mode the simulator sends every scan to the board. It checks each answer against the
-bit-exact Python model and logs it to `rover_sim/logs/<time>_hil64.csv`.
+bit-exact Python model and logs it to `results/logs/hil/<time>_hil64.csv`.

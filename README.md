@@ -20,6 +20,8 @@ op-amp, which becomes an amplifier, a filter or a comparator depending on a few 
 
 > **Status:** working FPGA prototypes, verified on real hardware. Not a fabricated chip.
 
+Videos: [demo](media/NetSilcon_Demo.mp4) · [keynote](media/NetSilcon_Keynote.mp4) (in [`media/`](media/)). Datasheet: [NetSilcon-6x4 (preliminary, PDF)](NetSilcon-Models/NetSilcon-6x4/docs/NetSilcon-6x4_Datasheet.pdf).
+
 ## Models
 
 | | [NetSilcon-6x4](NetSilcon-Models/NetSilcon-6x4/) | [NetSilcon-64x6](NetSilcon-Models/NetSilcon-64x6/) |
@@ -52,11 +54,22 @@ op-amp, which becomes an amplifier, a filter or a comparator depending on a few 
 ```
 LICENSE, NOTICE            Apache License 2.0 (applies to everything in this repository)
 README.md                  this overview
+media/                     demo and keynote videos
 NetSilcon-Models/
-  NetSilcon-6x4/           4 → 6×4 → 2 engine: rtl, board, tb, model, models/<app>/, host,
-                           rover_sim, bench, scripts, docs
-  NetSilcon-64x6/          16 → 64×6 → 16 engine: rtl, board, tb, model, models/<app>/, host,
-                           bench, probe, scripts, docs (test report), logs
+  NetSilcon-6x4/           4 → 6×4 → 2 engine
+  NetSilcon-64x6/          16 → 64×6 → 16 engine
+```
+
+Every model folder is grouped the same way:
+
+```
+NetSilcon-<shape>/
+  README.md                overview, quick start, results
+  models/<application>/    trained applications: <application>.json + README
+  fpga/                    rtl/, board/, tb/, gen/ (built-in RAM contents), scripts/ (sim + build)
+  python/                  model/ (bit-exact reference, training), host/ (PC tool), rover_sim/, bench/
+  docs/                    protocol, architecture, test report, datasheet, images
+  results/                 logs/ (hardware runs), result summaries (simulation, HIL, benchmarks)
 ```
 
 Each model folder is a complete project with its own README, quick start, tests and hardware logs.
@@ -64,7 +77,7 @@ Run its scripts from inside that folder, for example:
 
 ```bash
 cd NetSilcon-Models/NetSilcon-64x6
-bash scripts/run_sim_engine.sh
+bash fpga/scripts/run_sim_engine.sh
 ```
 
 ### Applications: one folder per job
@@ -83,9 +96,9 @@ The host tools find models in all subfolders, so a new application only needs it
 
 ### Adding a new model (new network shape)
 
-Create `NetSilcon-Models/NetSilcon-<shape>/` with the same structure (`rtl/`, `board/`, `tb/`,
-`model/` with a bit-exact Python reference, `models/<application>/`, `host/`, `scripts/`, `docs/`,
-`README.md`), add it to the table above, and link the root `LICENSE` from its README.
+Create `NetSilcon-Models/NetSilcon-<shape>/` with the same grouping (`models/<application>/`,
+`fpga/`, `python/` with a bit-exact Python reference, `docs/`, `results/`, `README.md`), add it to
+the table above, and link the root `LICENSE` from its README.
 
 ## Roadmap
 

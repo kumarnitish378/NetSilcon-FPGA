@@ -1,11 +1,13 @@
 # NetSilcon-64x6
 
+> Part of the [NetSilcon](../../README.md) family. Smaller model: [NetSilcon-6x4](../NetSilcon-6x4/).
+
 A larger NetSilcon engine for the Sipeed Tang Nano 20K (GW2AR-18):
 **16 → 64 → 64 → 64 → 64 → 64 → 64 → 16**, int8. The shape is fixed in hardware.
 The weights (22,528), biases (400) and per-layer shifts (7) live in block RAM and
-will be loadable over UART with a CRC-32 (23,335-byte model).
+are loadable over UART with a CRC-32 (23,335-byte model), verified on hardware.
 
-Same neuron math as NetSilcon-6x4 (`C:\fpga\NetSilcon-6x4`, which is not touched by this project):
+Same neuron math as [NetSilcon-6x4](../NetSilcon-6x4/):
 
 ```
 acc = bias16 + Σ x_i · w_i            int8 × int8, 24-bit signed accumulator
@@ -103,4 +105,4 @@ probe/    step-0 resource probe
 logs/     host-tool runs (later)
 ```
 
-Apache License 2.0. Copyright 2026 Nitish Kumar Sharma.
+[Apache License 2.0](../../LICENSE). Copyright 2026 Nitish Kumar Sharma.

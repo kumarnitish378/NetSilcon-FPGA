@@ -204,7 +204,24 @@ rover_sim/  rover_sim.py, rover_simulator.html     simulator, batch tests, hardw
 scripts/    run_all_tests.sh, build_opensource.sh, ...
 docs/       architecture.md, protocol.md, results.md, benchmarks.md, logs/ (hardware runs)
 bench/      Same-network CPU and Cortex-M4 benchmark code (see docs/benchmarks.md)
+NetSilcon-64x6/  the larger 16 → 64×6 → 16 engine (own README, RTL, tests, logs)
 ```
+
+## NetSilcon-64x6: the larger engine
+
+[`NetSilcon-64x6/`](NetSilcon-64x6/) is the next step from the roadmap, built on the same idea and
+the same board: the network **16 → 64 → 64 → 64 → 64 → 64 → 64 → 16** (22,528 weights, 400 biases,
+7 shifts, 23.3 KB per model) with the same neuron math. The weights live in 32 block RAMs with
+two banks; a model is uploaded over UART with a CRC-32 and swapped in one clock.
+
+| What (measured on the Tang Nano 20K, 22 Nov 2026) | Result |
+|---|---|
+| Hardware vs Python int8 model | **bit-exact**: 1,000 golden + 2,000 random vectors (built-in model), 200 vectors after an upload |
+| Latency | **448 clocks = 16.6 µs** at 27 MHz (64 MAC lanes) |
+| Model upload | 23,340 bytes in 2.04 s; a damaged upload is refused and the old model keeps running |
+| FPGA resources (Gowin EDA) | logic 35 %, BSRAM 32 / 46, DSP 16 / 24; Fmax 61.5 MHz |
+
+Details, issues found and the full test record: [`NetSilcon-64x6/docs/test_report.md`](NetSilcon-64x6/docs/test_report.md).
 
 ## Limitations
 
@@ -222,7 +239,7 @@ bench/      Same-network CPU and Cortex-M4 benchmark code (see docs/benchmarks.m
 1. Safety stop + supervisor in FPGA logic beside the network, then HIL of the complete controller
 2. Store the uploaded model in flash and load it at power-up with a CRC check
 3. Benchmark against a microcontroller (STM32 with CMSIS-NN): cycles and energy
-4. A larger engine (16 → 64×6 → 16) with weights streamed from block RAM
+4. ~~A larger engine (16 → 64×6 → 16) with weights streamed from block RAM~~ **done:** see [NetSilcon-64x6](#netsilcon-64x6-the-larger-engine)
 5. Long term: tape out on a shared multi-project wafer
 
 ## License

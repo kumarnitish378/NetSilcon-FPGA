@@ -53,9 +53,9 @@ op-amp, which becomes an amplifier, a filter or a comparator depending on a few 
 LICENSE, NOTICE            Apache License 2.0 (applies to everything in this repository)
 README.md                  this overview
 NetSilcon-Models/
-  NetSilcon-6x4/           4 → 6×4 → 2 engine: rtl, board, tb, model, models, host,
+  NetSilcon-6x4/           4 → 6×4 → 2 engine: rtl, board, tb, model, models/<app>/, host,
                            rover_sim, bench, scripts, docs
-  NetSilcon-64x6/          16 → 64×6 → 16 engine: rtl, board, tb, model, models, host,
+  NetSilcon-64x6/          16 → 64×6 → 16 engine: rtl, board, tb, model, models/<app>/, host,
                            bench, probe, scripts, docs (test report), logs
 ```
 
@@ -67,11 +67,25 @@ cd NetSilcon-Models/NetSilcon-64x6
 bash scripts/run_sim_engine.sh
 ```
 
-### Adding a new model
+### Applications: one folder per job
+
+Each model folder keeps its trained applications in `models/<application>/`: the loadable model
+file (`<application>.json`: weights, biases, shifts, CRC, golden vectors) and a `README.md`
+(inputs, outputs, accuracy, how it was made). Every application of a model runs on the **same
+bitstream**; uploading its file gives the chip a new job.
+
+```
+NetSilcon-6x4/models/    motor_fault/   irrigation/   rover/ (v2 + v1)
+NetSilcon-64x6/models/   synthetic/     stress/       (test models; trained applications to follow)
+```
+
+The host tools find models in all subfolders, so a new application only needs its own folder.
+
+### Adding a new model (new network shape)
 
 Create `NetSilcon-Models/NetSilcon-<shape>/` with the same structure (`rtl/`, `board/`, `tb/`,
-`model/` with a bit-exact Python reference, `models/`, `host/`, `scripts/`, `docs/`, `README.md`),
-add it to the table above, and link the root `LICENSE` from its README.
+`model/` with a bit-exact Python reference, `models/<application>/`, `host/`, `scripts/`, `docs/`,
+`README.md`), add it to the table above, and link the root `LICENSE` from its README.
 
 ## Roadmap
 

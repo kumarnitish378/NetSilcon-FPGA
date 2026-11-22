@@ -70,7 +70,7 @@ Gowin's timing report and a hardware run count.
 
 ```bash
 cd /mnt/c/fpga/NetSilcon-64x6
-python3 model/make_synthetic.py        # models/*.json + gen/ (fixed seeds, same files every time)
+python3 model/make_synthetic.py        # models/<name>/<name>.json + gen/ (fixed seeds, same files every time)
 bash scripts/run_sim_engine.sh         # requantizer + engine vs Python, ~2 min. Ends: RESULT: PASS
 bash scripts/mutation_test.sh          # 6 deliberate bugs, each must be caught (~1.5 min)
 bash scripts/run_sim_top.sh            # whole board design over UART, uploads, bank swaps (~2.5 min)
@@ -83,8 +83,8 @@ Needs `python3-numpy` and `iverilog` (`sudo apt install iverilog python3-numpy`)
 
 | Model | Purpose | Shifts | CRC-32 |
 |---|---|---|---|
-| `models/synthetic.json` (built into bank 0) | random weights, shifts calibrated so ~30 % of hidden activations are 0, <1 % saturate, the rest in between; ~7 % of outputs hit +127/−128 | 7 9 8 8 8 8 7 | 6F4225BF |
-| `models/stress.json` | weights only −128/+127, biases at ±32767/−32768, layer-2 sums up to 1,008,128 (21 bits) | 0 15 13 1 17 9 7 | 732C18C9 |
+| [`models/synthetic/`](models/synthetic/) (built into bank 0) | random weights, shifts calibrated so ~30 % of hidden activations are 0, <1 % saturate, the rest in between; ~7 % of outputs hit +127/−128 | 7 9 8 8 8 8 7 | 6F4225BF |
+| [`models/stress/`](models/stress/) | weights only −128/+127, biases at ±32767/−32768, layer-2 sums up to 1,008,128 (21 bits) | 0 15 13 1 17 9 7 | 732C18C9 |
 
 Activation statistics per layer: `gen/model_report.txt`.
 

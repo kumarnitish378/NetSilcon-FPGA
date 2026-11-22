@@ -3,7 +3,7 @@ Build the hardware test models for NetSilcon-64x6 and the files the Verilog need
 
     python make_synthetic.py            (no arguments; fixed seeds, same output every time)
 
-Models (models/*.json, each with its CRC-32 and golden vectors):
+Models (models/<name>/<name>.json, each with its CRC-32 and golden vectors):
     synthetic  random int8 weights, biases and shifts CALIBRATED so most activations land
                between 0 and 127 (a random network would otherwise sit at 0 or 127 and test
                very little). Built into the bitstream (block-RAM bank 0).
@@ -192,13 +192,14 @@ def main():
     Ys = stats(st, Xs, "stress")
     all_ok &= self_check(st, Xs, Ys, "stress")
 
-    # ---- models/*.json
+    # ---- models/<name>/<name>.json (one folder per application)
     for net, name, title, Xv, Yv in ((syn, "synthetic", "Synthetic hardware test model", X, Y),
                                       (st, "stress", "Stress model (extreme numbers)", Xs, Ys)):
         d = ns64.to_json(net, name, title, {
             "kind": "test",
             "test_vectors": [{"x": x.tolist(), "y": y.tolist()} for x, y in zip(Xv, Yv)]})
-        with open(os.path.join(MODELS, f"{name}.json"), "w") as f:
+        os.makedirs(os.path.join(MODELS, name), exist_ok=True)
+        with open(os.path.join(MODELS, name, f"{name}.json"), "w") as f:
             json.dump(d, f, separators=(",", ":"))
 
     # ---- gen/ for the Verilog

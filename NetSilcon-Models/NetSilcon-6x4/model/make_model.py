@@ -1,4 +1,4 @@
-"""Build a loadable model file for NetSilcon-6x4:  models/<name>.json
+"""Build a loadable model file for NetSilcon-6x4:  models/<name>/<name>.json
 
     python make_model.py irrigation     train + quantize the irrigation app
     python make_model.py motor_fault    package the BUILT-IN motor model from gen/
@@ -10,7 +10,7 @@ The .json holds everything the host needs:
   scenarios and golden test vectors computed with the bit-exact integer model.
 
 Upload it to the running chip with:
-    python ../host/netsilcon_host.py COM7 --load ../models/irrigation.json
+    python ../host/netsilcon_host.py COM7 --load ../models/irrigation/irrigation.json
 """
 import json
 import os
@@ -239,8 +239,8 @@ def build(name):
         demo=app["demo"],
         tests=[[int(v) for v in x] + [int(y[0]), int(y[1])] for x, y in zip(vin, vout)],
     )
-    os.makedirs(OUT, exist_ok=True)
-    path = os.path.join(OUT, f"{name}.json")
+    os.makedirs(os.path.join(OUT, name), exist_ok=True)          # one folder per application
+    path = os.path.join(OUT, name, f"{name}.json")
     with open(path, "w") as fh:
         json.dump(model, fh, indent=1)
     print(f"{app['title']}: int8 accuracy {acc_i * 100:.2f}%  shifts {shifts}  CRC {model['crc16']}")

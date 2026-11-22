@@ -31,7 +31,7 @@ import sys
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-MODEL = os.path.join(HERE, "..", "models", "rover.json")
+MODEL = os.path.join(HERE, "..", "models", "rover", "rover.json")
 
 # ---------------------------------------------------------------- robot (small test rover)
 LENGTH, WIDTH = 0.50, 0.40          # m, body
@@ -587,7 +587,7 @@ if __name__ == "__main__":
     ap.add_argument("--unstick", action="store_true", help="enable the 3-point-turn supervisor")
     ap.add_argument("--no-unstick", action="store_true", help="with --hil: switch the supervisor off")
     ap.add_argument("--compare", action="store_true", help="run all 4 combinations")
-    ap.add_argument("--model", default=MODEL, help="network file (default models/rover.json)")
+    ap.add_argument("--model", default=MODEL, help="network file (default models/rover/rover.json)")
     ap.add_argument("--hil", metavar="PORT", help="hardware-in-the-loop: the real chip on this COM port drives")
     ap.add_argument("--view", action="store_true", help="show a live window (needs matplotlib)")
     ap.add_argument("--fast", action="store_true", help="with --view: do not slow down to real time")

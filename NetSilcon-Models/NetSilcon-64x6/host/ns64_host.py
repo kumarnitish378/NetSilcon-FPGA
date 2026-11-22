@@ -9,8 +9,8 @@ Usage (COM7 = the board's serial port):
     python ns64_host.py COM7 --test --count 200                   only the first 200
     python ns64_host.py COM7 --random 500                         500 random inputs vs the Python model
     python ns64_host.py COM7 --values 0 10 20 ... (16 numbers)    one inference, inputs 0..127
-    python ns64_host.py COM7 --load ../models/stress.json --corrupt   damaged upload: must be REFUSED
-    python ns64_host.py COM7 --load ../models/stress.json         upload a model (about 2 s)
+    python ns64_host.py COM7 --load ../models/stress/stress.json --corrupt   damaged upload: must be REFUSED
+    python ns64_host.py COM7 --load ../models/stress/stress.json         upload a model (about 2 s)
     python ns64_host.py COM7 --linksweep 300                      link diagnosis: every combination of
                                                                   1/2 stop bits x reply delay x reply type
                                                                   (needs the bitstream with D1/D2 commands)
@@ -23,7 +23,7 @@ Usage (COM7 = the board's serial port):
                                                                   counts every damaged reply, no retries
 
 The tool first asks the chip which model it runs (C5, by CRC-32) and finds that model
-in models/*.json. Every chip answer is compared with the bit-exact Python model in
+in models/<app>/*.json. Every chip answer is compared with the bit-exact Python model in
 model/ns64.py.
 
 Every run is recorded in logs/ (next to this folder):
@@ -94,7 +94,7 @@ class Log:
 # ------------------------------------------------------------------ models
 def load_models():
     out = {}
-    for p in sorted(glob.glob(os.path.join(MODELS, "*.json"))):
+    for p in sorted(glob.glob(os.path.join(MODELS, "**", "*.json"), recursive=True)):
         try:
             d = json.load(open(p, encoding="utf-8"))
             net = ns64.from_json(d)

@@ -1,7 +1,7 @@
 # Benchmarks
 
 The same bit-exact int8 network in plain C (`net.h`, weights in `model.h` from
-`models/motor_fault.json`). Results and sources: [`docs/benchmarks.md`](../docs/benchmarks.md).
+`models/motor_fault/motor_fault.json`). Results and sources: [`docs/benchmarks.md`](../docs/benchmarks.md).
 
 ```bash
 # Desktop / laptop CPU, one inference at a time

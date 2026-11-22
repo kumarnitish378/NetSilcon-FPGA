@@ -1,9 +1,9 @@
-"""Write the .mem files tb_load.v needs, from models/*.json (run from sim/)."""
+"""Write the .mem files tb_load.v needs, from models/<app>/<app>.json (run from sim/)."""
 import json, sys
 sys.path.insert(0, "../model")
 from make_model import crc16, image
 for name in ("motor_fault", "irrigation", "rover"):
-    m = json.load(open(f"../models/{name}.json"))
+    m = json.load(open(f"../models/{name}/{name}.json"))
     img = image(m["weights"], m["biases"], m["shifts"])
     c = crc16(img)
     assert f"{c:04X}" == m["crc16"]

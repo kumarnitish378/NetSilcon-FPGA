@@ -54,8 +54,8 @@ Every hardware number in this report comes from a log file in `logs/` (index in 
 
 | Model | Purpose | Shifts | CRC-32 |
 |---|---|---|---|
-| `models/synthetic.json` (built into the bitstream) | random weights, shifts calibrated: ~30 % of hidden activations 0, < 1 % saturated, ~7 % of outputs at +127 / −128 | 7 9 8 8 8 8 7 | 6F4225BF |
-| `models/stress.json` | extreme numbers: weights only −128 / +127, biases ±32767 / −32768, layer-2 sums up to 1,008,128 | 0 15 13 1 17 9 7 | 732C18C9 |
+| `models/synthetic/synthetic.json` (built into the bitstream) | random weights, shifts calibrated: ~30 % of hidden activations 0, < 1 % saturated, ~7 % of outputs at +127 / −128 | 7 9 8 8 8 8 7 | 6F4225BF |
+| `models/stress/stress.json` | extreme numbers: weights only −128 / +127, biases ±32767 / −32768, layer-2 sums up to 1,008,128 | 0 15 13 1 17 9 7 | 732C18C9 |
 
 ## 4. Simulation results (Icarus Verilog)
 
@@ -262,8 +262,8 @@ python ns64_host.py COM7 --info
 python ns64_host.py COM7 --linktest 2000
 python ns64_host.py COM7 --test
 python ns64_host.py COM7 --random 2000
-python ns64_host.py COM7 --load ..\models\stress.json --corrupt
-python ns64_host.py COM7 --load ..\models\stress.json
+python ns64_host.py COM7 --load ..\models\stress\stress.json --corrupt
+python ns64_host.py COM7 --load ..\models\stress\stress.json
 python ns64_host.py COM7 --test
 ```
 

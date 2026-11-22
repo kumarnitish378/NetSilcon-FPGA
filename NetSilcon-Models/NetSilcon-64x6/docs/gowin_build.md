@@ -74,11 +74,11 @@ It is harmless.
 cd C:\fpga\NetSilcon-64x6\host
 python ns64_host.py COM7 --info                                   expect: synthetic 6F4225BF built-in
 python ns64_host.py COM7 --test                                   1000 golden vectors, expect 0 mismatches
-python ns64_host.py COM7 --load ..\models\stress.json --corrupt   expect: REFUSED - CRC error
+python ns64_host.py COM7 --load ..\models\stress\stress.json --corrupt   expect: REFUSED - CRC error
 python ns64_host.py COM7 --test --count 100                       old model still exact
-python ns64_host.py COM7 --load ..\models\stress.json             expect: LOADED 732C18C9 (~2 s)
+python ns64_host.py COM7 --load ..\models\stress\stress.json             expect: LOADED 732C18C9 (~2 s)
 python ns64_host.py COM7 --test                                   200 stress vectors
-python ns64_host.py COM7 --load ..\models\synthetic.json          back to the synthetic model
+python ns64_host.py COM7 --load ..\models\synthetic\synthetic.json          back to the synthetic model
 python ns64_host.py COM7 --random 500                             random inputs vs Python
 ```
 

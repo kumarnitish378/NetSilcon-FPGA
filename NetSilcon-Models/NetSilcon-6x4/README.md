@@ -38,9 +38,9 @@ Measured on a Tang Nano 20K at 27 MHz unless stated otherwise. The raw logs are 
 
 | Model file | Inputs | Outputs | Int8 accuracy |
 |---|---|---|---|
-| `models/motor_fault.json` (built into the bitstream) | current, voltage, speed, temperature | HEALTHY / FAULT | 94.5 % |
-| `models/irrigation.json` | soil moisture, air temperature, humidity, sunlight | SKIP / WATER | 97.4 % |
-| `models/rover.json` (v2) | 4 LiDAR sector distances | speed, steering (continuous) | 91.5 % action agreement* |
+| [`models/motor_fault/`](models/motor_fault/) (built into the bitstream) | current, voltage, speed, temperature | HEALTHY / FAULT | 94.5 % |
+| [`models/irrigation/`](models/irrigation/) | soil moisture, air temperature, humidity, sunlight | SKIP / WATER | 97.4 % |
+| [`models/rover/`](models/rover/) (v2) | 4 LiDAR sector distances | speed, steering (continuous) | 91.5 % action agreement* |
 
 \* The rover model is judged in closed loop, in the simulator, not by accuracy alone.
 v2 copies its training rules less exactly than v1 (95.5 %) but drives better: 0 crashes
@@ -126,8 +126,8 @@ pip install pyserial
 cd host
 python netsilcon_host.py COM7 --info                                   # which model is running?
 python netsilcon_host.py COM7 --values 10 24 3500 65                   # one reading in real units
-python netsilcon_host.py COM7 --load ../models/irrigation.json --corrupt   # must be REFUSED
-python netsilcon_host.py COM7 --load ../models/irrigation.json         # give it a new job
+python netsilcon_host.py COM7 --load ../models/irrigation/irrigation.json --corrupt   # must be REFUSED
+python netsilcon_host.py COM7 --load ../models/irrigation/irrigation.json         # give it a new job
 python netsilcon_host.py COM7 --demo                                   # the model's demo scenarios
 python netsilcon_host.py COM7 --test                                   # 576 vectors, bit-exact check
 ```

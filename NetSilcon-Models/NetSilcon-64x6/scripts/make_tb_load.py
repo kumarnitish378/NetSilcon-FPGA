@@ -1,5 +1,5 @@
 """
-Write the stimulus files tb_top.v needs (into gen/tb/), from models/*.json.
+Write the stimulus files tb_top.v needs (into gen/tb/), from models/<name>/<name>.json.
 
     python3 scripts/make_tb_load.py
 
@@ -39,7 +39,7 @@ def main():
     os.makedirs(GEN_TB, exist_ok=True)
     nets, d = {}, {}
     for name in ("synthetic", "stress"):
-        d[name] = json.load(open(os.path.join(MODELS, f"{name}.json")))
+        d[name] = json.load(open(os.path.join(MODELS, name, f"{name}.json")))
         nets[name] = ns64.from_json(d[name])
 
     syn_img, st_img = nets["synthetic"].image(), nets["stress"].image()

@@ -5,8 +5,8 @@ Install once:   pip install pyserial
 
 Usage (COM7 = the board's port, see Device Manager -> Ports):
     python netsilcon_host.py COM7 --info                         which model is running?
-    python netsilcon_host.py COM7 --load ../models/irrigation.json   give the chip a new job
-    python netsilcon_host.py COM7 --load ../models/irrigation.json --corrupt
+    python netsilcon_host.py COM7 --load ../models/irrigation/irrigation.json   give the chip a new job
+    python netsilcon_host.py COM7 --load ../models/irrigation/irrigation.json --corrupt
                                                                   send a damaged model on purpose:
                                                                   the chip must refuse it
     python netsilcon_host.py COM7 --values 25 35 40 30           one reading in real units
@@ -16,11 +16,11 @@ Usage (COM7 = the board's port, see Device Manager -> Ports):
     python netsilcon_host.py COM7 --interactive                  type readings one by one
 
 The script first asks the chip which model it is running (by CRC) and then uses that
-model's input names, units, labels, demo and test vectors from models/*.json.
+model's input names, units, labels, demo and test vectors from models/<app>/*.json.
 For every answer it also runs the same int8 model in Python and shows whether the
 FPGA result matches it exactly.
 
-Models: models/motor_fault.json (the built-in one), models/irrigation.json, models/rover.json.
+Models: one folder per application in models/: motor_fault/ (the built-in one), irrigation/, rover/.
 Make new ones with  model/make_model.py.
 
 Every run is recorded in host/logs/ :
@@ -133,7 +133,7 @@ def load_model_file(path):
 
 def all_models():
     out = []
-    for p in sorted(glob.glob(os.path.join(MODELS, "*.json"))):
+    for p in sorted(glob.glob(os.path.join(MODELS, "**", "*.json"), recursive=True)):
         try:
             out.append(load_model_file(p))
         except Exception as e:                       # a broken file must not stop the others
@@ -253,7 +253,7 @@ class NetSilcon:
 
 
 def running_model(dev):
-    """Ask the chip which model it runs and find the matching models/*.json."""
+    """Ask the chip which model it runs and find the matching models/<app>/*.json."""
     inf = dev.info()
     crc = builtin_crc() if inf["source"] == 0 else inf["crc"]
     where = "built into the bitstream" if inf["source"] == 0 else "uploaded"
@@ -262,7 +262,7 @@ def running_model(dev):
             print(f"Chip is running: {m.short()}  ({where}, uploads since power-up: {inf['loads']})")
             return m
     raise RuntimeError(f"chip runs a model with CRC {crc:04X} ({where}) that is not in models/. "
-                       "Load a known one with --load, or rebuild models/motor_fault.json with make_model.py")
+                       "Load a known one with --load, or rebuild models/motor_fault/motor_fault.json with make_model.py")
 
 
 def drive_action(speed, steer, stop=0.08, turn=0.25):

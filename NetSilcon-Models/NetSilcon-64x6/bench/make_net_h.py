@@ -1,10 +1,10 @@
-"""Write bench/net.h (weights, biases, shifts, golden vectors of models/synthetic.json) for bench.c.
+"""Write bench/net.h (weights, biases, shifts, golden vectors of models/synthetic/synthetic.json) for bench.c.
     cd bench && python3 make_net_h.py && gcc -O3 -march=native -o bench bench.c && ./bench"""
 import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "model"))
 import ns64
-d = json.load(open(os.path.join(HERE, "..", "models", "synthetic.json")))
+d = json.load(open(os.path.join(HERE, "..", "models", "synthetic", "synthetic.json")))
 net = ns64.from_json(d)
 with open(os.path.join(HERE, "net.h"), "w") as f:
     for l in range(ns64.NL):

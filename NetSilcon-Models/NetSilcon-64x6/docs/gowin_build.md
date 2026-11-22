@@ -12,7 +12,7 @@ A new Gowin project of its own. The 6x4 project in `C:\fpga\gowin\netsilcon` is 
 ## 2. Add the files
 
 **Project → Add Files**, from the `fpga\` folder of NetSilcon-64x6 (on the build laptop:
-`C:\fpga\NetSilcon-6x4-github\NetSilcon-Models\NetSilcon-64x6\fpga`):
+`C:\fpga\NetSilcon-FPGA\NetSilcon-Models\NetSilcon-64x6\fpga`):
 
 | Folder | Files |
 |---|---|
@@ -23,12 +23,16 @@ A new Gowin project of its own. The 6x4 project in `C:\fpga\gowin\netsilcon` is 
 
 Do **not** add anything from `fpga\tb\`, `fpga\probe\` or `fpga\sim\`.
 
+> Checked 22 Nov 2026, 17:10: both Gowin projects (`ns64`, `netsilcon`) build from the repo folder
+> `C:\fpga\NetSilcon-FPGA`. The include paths point at `fpga\gen`, and the `src\` copies match `fpga\`.
+> ns64: logic 35 %, registers 35 %, no errors.
+
 **Important:** Gowin **copies** added files into `C:\fpga\gowin\ns64\src\` and compiles those
 copies. When a file changes in `fpga\`, copy it again before synthesizing
 (PowerShell):
 
 ```powershell
-$S = "C:\fpga\NetSilcon-6x4-github\NetSilcon-Models\NetSilcon-64x6\fpga"; $D = "C:\fpga\gowin\ns64\src"
+$S = "C:\fpga\NetSilcon-FPGA\NetSilcon-Models\NetSilcon-64x6\fpga"; $D = "C:\fpga\gowin\ns64\src"
 copy $S\rtl\ns64_*.v, $S\board\ns_uart.v, $S\board\ns64_uart_tx.v, $S\board\ns64_loader.v, $S\board\tangnano20k_ns64.v, $S\board\tangnano20k_ns64.cst, $S\board\tangnano20k.sdc $D
 dir $D
 ```
@@ -44,7 +48,7 @@ They hold the built-in synthetic model (CRC-32 6F4225BF) in bank 0.
 **Project → Configuration**:
 
 - Synthesize → General → **Top Module/Entity**: `tangnano20k_ns64`
-- Synthesize → General → **Include Path**: `C:\fpga\NetSilcon-6x4-github\NetSilcon-Models\NetSilcon-64x6\fpga\gen` (for `ns64_builtin.vh`)
+- Synthesize → General → **Include Path**: `C:\fpga\NetSilcon-FPGA\NetSilcon-Models\NetSilcon-64x6\fpga\gen` (for `ns64_builtin.vh`)
 - Everything else stays at the defaults (the 6x4 project also uses the defaults: SSPI/MSPI not
   set as regular IO).
 
@@ -72,7 +76,7 @@ It is harmless.
 ## 7. First hardware tests (Windows PowerShell or cmd)
 
 ```
-cd C:\fpga\NetSilcon-6x4-github\NetSilcon-Models\NetSilcon-64x6\python\host
+cd C:\fpga\NetSilcon-FPGA\NetSilcon-Models\NetSilcon-64x6\python\host
 python ns64_host.py COM7 --info                                   expect: synthetic 6F4225BF built-in
 python ns64_host.py COM7 --test                                   1000 golden vectors, expect 0 mismatches
 python ns64_host.py COM7 --load ..\..\models\stress\stress.json --corrupt   expect: REFUSED - CRC error

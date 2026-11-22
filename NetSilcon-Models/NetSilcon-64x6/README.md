@@ -69,7 +69,7 @@ Gowin's timing report and a hardware run count.
 ## Run the tests (WSL Ubuntu)
 
 ```bash
-cd /mnt/c/fpga/NetSilcon-6x4-github/NetSilcon-Models/NetSilcon-64x6
+cd /mnt/c/fpga/NetSilcon-FPGA/NetSilcon-Models/NetSilcon-64x6
 python3 python/model/make_synthetic.py      # models/<name>/<name>.json + fpga/gen/ (fixed seeds, same files every time)
 bash fpga/scripts/run_sim_engine.sh         # requantizer + engine vs Python, ~2 min. Ends: RESULT: PASS
 bash fpga/scripts/mutation_test.sh          # 6 deliberate bugs, each must be caught (~1.5 min)

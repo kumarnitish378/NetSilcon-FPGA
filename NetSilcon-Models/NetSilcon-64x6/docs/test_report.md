@@ -263,7 +263,7 @@ gcc -O3 -march=native -o bench bench.c && ./bench`.
 Simulation (WSL Ubuntu):
 
 ```bash
-cd /mnt/c/fpga/NetSilcon-6x4-github/NetSilcon-Models/NetSilcon-64x6
+cd /mnt/c/fpga/NetSilcon-FPGA/NetSilcon-Models/NetSilcon-64x6
 python3 python/model/make_synthetic.py
 bash fpga/scripts/run_sim_engine.sh
 bash fpga/scripts/mutation_test.sh
@@ -274,7 +274,7 @@ bash fpga/scripts/mutation_test_loader.sh
 Hardware (after programming `ns64.fs`, Windows):
 
 ```
-cd C:\fpga\NetSilcon-6x4-github\NetSilcon-Models\NetSilcon-64x6\python\host
+cd C:\fpga\NetSilcon-FPGA\NetSilcon-Models\NetSilcon-64x6\python\host
 python ns64_host.py COM7 --info
 python ns64_host.py COM7 --linktest 2000
 python ns64_host.py COM7 --test

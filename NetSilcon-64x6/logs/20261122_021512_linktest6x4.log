@@ -1,0 +1,5 @@
+NetSilcon-6x4 link test  2026-11-22T02:15:12  port COM7  Python 3.14.4  pyserial 3.5  Windows-11-10.0.26300-SP0
+info: 2000 replies of 5 bytes, 0 damaged (0 short) = 0.00 %, 0 per million bytes; reference 5c 00 00 00 00; 34.0 s
+inference: 2000 replies of 5 bytes, 0 damaged (0 short) = 0.00 %, 0 per million bytes; reference 5a f1 1f 01 0f; 34.0 s
+RESULT: PASS (no damaged replies)
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_021512_linktest6x4.log and .csv

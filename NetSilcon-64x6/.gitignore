@@ -1,0 +1,12 @@
+# local copies and generated build/simulation output
+backups/
+sim/
+build/
+__pycache__/
+*.pyc
+MANIFEST.txt
+
+# benchmark build output
+bench/net.h
+bench/bench
+bench/bench_*

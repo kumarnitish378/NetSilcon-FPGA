@@ -1,0 +1,4 @@
+NetSilcon-64x6 host  2026-11-22T01:33:44  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: ns64_host.py COM7 --info
+chip runs: synthetic  CRC-32 6F4225BF  source=built-in  uploads since power-up=0   raw 5cbf25426f0000
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_013344_info.log

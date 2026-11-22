@@ -1,0 +1,38 @@
+NetSilcon-64x6 host  2026-11-22T01:54:41  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: ns64_host.py COM7 --linktest 2000
+chip runs: synthetic  CRC-32 6F4225BF  source=built-in  uploads since power-up=0   raw 5cbf25426f0000
+link test: 2000 x C5 (7-byte reply) and 2000 x one fixed inference (20-byte reply), no retries
+  info #48: 6 bytes 5c bf 25 42 6f 00   expected 5c bf 25 42 6f 00 00
+  info #104: 6 bytes 5c bf 25 42 6f 00   expected 5c bf 25 42 6f 00 00
+  info #110: 6 bytes 5c bf c9 68 1b 00   expected 5c bf 25 42 6f 00 00
+  info #113: 6 bytes 5c bf 25 42 00 00   expected 5c bf 25 42 6f 00 00
+  info #115: 6 bytes 5c 25 42 6f 00 00   expected 5c bf 25 42 6f 00 00
+  info #116: 6 bytes 5c bf 25 42 00 00   expected 5c bf 25 42 6f 00 00
+  info #122: 6 bytes 5c bf 25 42 6f 00   expected 5c bf 25 42 6f 00 00
+  info #124: 6 bytes 5c bf 42 6f 00 00   expected 5c bf 25 42 6f 00 00
+  info #248: 6 bytes 5c 57 26 7b 03 00   expected 5c bf 25 42 6f 00 00
+  info #252: 6 bytes 5c bf 25 42 6f 00   expected 5c bf 25 42 6f 00 00
+  info #279: 6 bytes bf 25 42 6f 00 00   expected 5c bf 25 42 6f 00 00
+  info #298: 6 bytes 5c bf 25 42 6f 00   expected 5c bf 25 42 6f 00 00
+  info #302: 6 bytes bf 25 42 6f 00 00   expected 5c bf 25 42 6f 00 00
+  info #410: 6 bytes 5c bf 25 42 6f 00   expected 5c bf 25 42 6f 00 00
+  info #411: 6 bytes 5c bf 25 42 6f 00   expected 5c bf 25 42 6f 00 00
+info: 2000 replies of 7 bytes, 144 damaged (141 short, 0 missing, 3 same length but wrong) = 7.20 % of replies, 10286 per million bytes;  reference reply 5c bf 25 42 6f 00 00;  66.7 s
+  inference #376: 19 bytes 5a d5 42 cc 06 52 d4 ed d4 8d c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #387: 19 bytes 5a d5 42 cc 06 52 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #390: 20 bytes 5a f5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #480: 19 bytes 5a d5 42 cc 06 52 d4 ed d4 5f fc bc bd d2 6a 3f 33 18 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #560: 19 bytes 5a d5 42 9e 30 6a bd 1f bd 8d c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #757: 19 bytes 5a d5 42 cc 30 6a bd fb bd 8d c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #773: 19 bytes 6b f5 68 9e 30 6a bd 1f bd 8d c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #776: 19 bytes 5a d5 42 cc 06 52 d4 ed d4 8d c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #782: 19 bytes 5a 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #787: 19 bytes 5a d5 42 cc 06 52 d4 ed d4 8d c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #877: 19 bytes 5a d5 42 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #889: 19 bytes 5a d5 42 cc 06 52 d4 d4 5f fc c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #894: 19 bytes 5a d5 42 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #975: 19 bytes 5a d5 42 9e 30 6a bd 1f bd 8d c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+  inference #987: 19 bytes 5a d5 42 cc 06 52 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01   expected 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01
+inference: 2000 replies of 20 bytes, 38 damaged (33 short, 0 missing, 5 same length but wrong) = 1.90 % of replies, 950 per million bytes;  reference reply 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01;  42.1 s
+RESULT: LINK ERRORS SEEN
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_015441_linktest.log and C:\fpga\NetSilcon-64x6\host\..\logs\20261122_015441_linktest.csv

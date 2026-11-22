@@ -1,0 +1,22 @@
+NetSilcon-64x6 host  2026-11-22T01:49:11  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: ns64_host.py COM7 --test
+chip runs: synthetic  CRC-32 6F4225BF  source=built-in  uploads since power-up=0   raw 5cbf25426f0000
+  ... 100/1000 done, 0 mismatches
+  ... 200/1000 done, 0 mismatches
+  ... 300/1000 done, 0 mismatches
+  ... 400/1000 done, 0 mismatches
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5a22ec3a16e1dcd10f1c9ff01fa939570fc001; flushing and asking again
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 0: ; flushing and asking again
+  ... 500/1000 done, 0 mismatches
+  ... 600/1000 done, 0 mismatches
+  ... 700/1000 done, 0 mismatches
+  ... 800/1000 done, 0 mismatches
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5a7d12770807043eac091de1803ac7e700c001; flushing and asking again
+  ... 900/1000 done, 0 mismatches
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5a2e7f30425382009a2ebeb0c6cd36de02c001; flushing and asking again
+  ... 1000/1000 done, 0 mismatches
+synthetic golden: 1000 inferences, 0 mismatches
+link errors (replies damaged between FPGA and PC, asked again): 4
+chip latency 448..448 clocks = 16.59 us at 27 MHz;  USB round trip avg 16.8 ms, max 19.0 ms
+RESULT: PASS
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_014911_test.log and C:\fpga\NetSilcon-64x6\host\..\logs\20261122_014911_test.csv

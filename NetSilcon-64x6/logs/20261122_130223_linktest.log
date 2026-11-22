@@ -1,0 +1,8 @@
+NetSilcon-64x6 host  2026-11-22T13:02:23  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: ns64_host.py COM7 --linktest 2000
+chip runs: synthetic  CRC-32 6F4225BF  source=built-in  uploads since power-up=0   raw 5cbf25426f0000
+link test: 2000 x C5 (7-byte reply) and 2000 x one fixed inference (20-byte reply), no retries
+info: 2000 replies of 7 bytes, 0 damaged (0 short, 0 missing, 0 same length but wrong) = 0.00 % of replies, 0 per million bytes;  reference reply 5c bf 25 42 6f 00 00;  34.0 s
+inference: 2000 replies of 20 bytes, 0 damaged (0 short, 0 missing, 0 same length but wrong) = 0.00 % of replies, 0 per million bytes;  reference reply 5a d5 42 cc 06 52 d4 ed d4 5f fc c4 d5 49 52 f6 34 08 c0 01;  34.0 s
+RESULT: PASS (no damaged replies)
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_130223_linktest.log and C:\fpga\NetSilcon-64x6\host\..\logs\20261122_130223_linktest.csv

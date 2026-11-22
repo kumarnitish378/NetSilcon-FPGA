@@ -1,0 +1,48 @@
+NetSilcon-64x6 host  2026-11-22T01:49:41  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: ns64_host.py COM7 --random 2000
+chip runs: synthetic  CRC-32 6F4225BF  source=built-in  uploads since power-up=0   raw 5cbf25426f0000
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5a1b3fd7dffe3a3820b73f564fb4db270bc001; flushing and asking again
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5ad613528004c3f91ade0972bdb31ae00bc001; flushing and asking again
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: d043170ddbf6cefb1ac9d75811047fec0ec001; flushing and asking again
+  ... 100/2000 done, 0 mismatches
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5a61ff4b507fc0f80a6e0ed044e262f605c001; flushing and asking again
+  ... 200/2000 done, 0 mismatches
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5a3a06260dccc6580c1893adf138d84409c001; flushing and asking again
+  ... 300/2000 done, 0 mismatches
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: ec022cdaf214c23f80f19fc78080edae07c001; flushing and asking again
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5aefef99309ad8bfd43f4306eb2b514907c001; flushing and asking again
+  ... 400/2000 done, 0 mismatches
+  ... 500/2000 done, 0 mismatches
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5a0fd615e5f5ffd5f3422f3945840e120cc001; flushing and asking again
+  ... 600/2000 done, 0 mismatches
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 6b73bfee7fdc4412490bf30ff54db9d704c001; flushing and asking again
+  ... 700/2000 done, 0 mismatches
+  ... 800/2000 done, 0 mismatches
+  ... 900/2000 done, 0 mismatches
+  ... 1000/2000 done, 0 mismatches
+  ... 1100/2000 done, 0 mismatches
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5aea199833ef4fd946c511fb1308e1e406c001; flushing and asking again
+  ... 1200/2000 done, 0 mismatches
+  ... 1300/2000 done, 0 mismatches
+  ... 1400/2000 done, 0 mismatches
+  ... 1500/2000 done, 0 mismatches
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5a02f6a21fbadc23eee0bc0ff9c63f120ec001; flushing and asking again
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5ae00f2244cb02c642dbfe086ed82df30cc001; flushing and asking again
+  ... 1600/2000 done, 0 mismatches
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 8a47018005033ccd18bd23fb0df61bc801c001; flushing and asking again
+  ... 1700/2000 done, 0 mismatches
+  MISMATCH #1786: x=[58, 75, 3, 101, 39, 24, 10, 24, 33, 125, 15, 63, 75, 125, 96, 59]
+     chip   [-8, 39, -45, -75, -28, 29, 43, -12, -43, 34, 72, -29, -50, -46, -40, -77] argmax 10
+     python [-8, 39, -45, -75, -28, 29, 43, -47, -43, 34, 72, -29, -50, -46, -40, -77] argmax 10
+  ... 1800/2000 done, 1 mismatches
+  LINK ERROR (attempt 1/3): expected 20 reply bytes, got 19: 5a460fe624022fe14bb53576a0d1aaa709c001; flushing and asking again
+  ... 1900/2000 done, 1 mismatches
+  MISMATCH #1937: x=[51, 8, 49, 114, 45, 73, 100, 20, 35, 58, 68, 44, 9, 41, 3, 1]
+     chip   [107, -103, 49, 101, 126, -51, -69, 10, -128, 28, -55, -24, -128, -8, -80, -128] argmax 0
+     python [91, 44, 22, 42, -13, 53, -69, 10, -128, 28, -55, -24, -128, -8, -80, -128] argmax 0
+  ... 2000/2000 done, 2 mismatches
+synthetic random seed 1: 2000 inferences, 2 mismatches
+link errors (replies damaged between FPGA and PC, asked again): 14
+chip latency 448..448 clocks = 16.59 us at 27 MHz;  USB round trip avg 16.6 ms, max 20.8 ms
+RESULT: FAIL
+log files: C:\fpga\NetSilcon-64x6\host\..\logs\20261122_014941_random.log and C:\fpga\NetSilcon-64x6\host\..\logs\20261122_014941_random.csv

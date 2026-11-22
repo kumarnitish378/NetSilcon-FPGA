@@ -22,6 +22,7 @@
 | **Hardware: damaged upload** | refused with CRC error, old model kept and still exact |
 | **Hardware: latency** | **448 clocks = 16.6 µs** at 27 MHz (hardware counter), every inference |
 | **Hardware: UART link** | 4,000 replies, 0 damaged (after the host-tool fix in section 6.3) |
+| **Hardware: trained rover controller** | uploaded (CRC-32 3A81C867), golden 1000/1000, **HIL 19,200 inferences, 0 mismatches**; 8 drives 0 crashes, 0 stuck (section 7.1) |
 | **Clock cycles per inference** | FPGA **448** vs laptop CPU ≈ **14,100** (best C code): **31× fewer cycles** (section 8) |
 
 Every hardware number in this report comes from a log file in `logs/` (index in section 10).
@@ -176,6 +177,22 @@ Earlier the same day (before the host fix; the results that did arrive were corr
 | Old model after the refused upload | `20261122_013515_test` | 100 vectors, 0 mismatches |
 | Upload synthetic model back | `20261122_013735_load` | LOADED 6F4225BF, loads = 2 (second bank swap) |
 
+### 7.1 Trained rover controller (22 Nov 2026, 15:07–15:20)
+
+The trained 64x6 rover controller (`models/rover/`, 16 LiDAR sectors → speed, steering) was
+uploaded to the same bitstream without a rebuild.
+
+| Test | Log | Result |
+|---|---|---|
+| Upload | 150751_load, 151939_load | LOADED, chip CRC-32 3A81C867, 2.04 s |
+| Golden vectors | 150753_test, 151950_test | 1000/1000, 0 mismatches, 0 link errors, 448 clocks |
+| Hardware-in-the-loop, 8 drives × 120 s | 152042_hil64.csv.gz | **19,200 inferences, 0 mismatches** with Python; latency 448 clocks every step; USB round trip 15.3 ms average, 17.8 ms maximum |
+| Repeat HIL run (15:13) | not kept in the repo | identical inputs and outputs for all 19,200 steps |
+
+The replay with the bit-exact Python model produced the same 19,200 inputs and outputs. The drive
+outcome is therefore the board's: 0/8 crashes, 0/8 stuck, 48.1 m per drive
+(`rover_sim/results_hil64.txt`). The supervisor and the safety stop ran on the PC.
+
 ## 8. Performance: clock cycles required per inference
 
 The network needs 22,528 int8 multiply-adds per inference. Compared by **clock cycles required**,
@@ -239,7 +256,7 @@ gcc -O3 -march=native -o bench bench.c && ./bench`.
   current was not measured.
 - Pin 88 (MODE0) is held low in the 6x4 build and left at the default in the 64x6. It turned
   out unrelated to the link issue but is not yet aligned.
-- No trained model yet: only the synthetic and stress test models have run.
+- Rover controller: the supervisor and the safety stop run on the PC, not in FPGA logic.
 
 ## 10. How to reproduce
 
@@ -288,3 +305,4 @@ python ns64_host.py COM7 --test
 | 124625 | `--linksweep2 200`, link-only build, old host | 218 + 83 + 0 damaged |
 | **125811** | `--linksweep2 200`, link-only build, **fixed host** | **0 / 5,400** |
 | **130223 – 131039** | final runs, real design, fixed host | **all PASS** (section 7) |
+| **150751 – 152042** | rover model: load, golden test, HIL | **all PASS** (section 7.1) |

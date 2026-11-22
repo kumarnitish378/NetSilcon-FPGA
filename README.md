@@ -34,7 +34,7 @@ op-amp, which becomes an amplifier, a filter or a comparator depending on a few 
 | Model upload (measured) | 31 ms | 2.04 s |
 | FPGA resources (Gowin EDA) | logic 49 %, DSP 24 / 24, BSRAM 1 | logic 35 %, DSP 16 / 24, BSRAM 32 / 46 |
 | Max clock (Gowin timing) | 29.1 MHz | 61.5 MHz |
-| Applications run | motor fault, irrigation, rover (incl. hardware-in-the-loop) | rover controller (trained, 16 LiDAR sectors), synthetic and stress test models |
+| Applications run | motor fault, irrigation, rover (incl. hardware-in-the-loop) | rover controller (trained, 16 LiDAR sectors, incl. hardware-in-the-loop), synthetic and stress test models |
 | Details | [README](NetSilcon-Models/NetSilcon-6x4/README.md), [benchmarks](NetSilcon-Models/NetSilcon-6x4/docs/benchmarks.md) | [README](NetSilcon-Models/NetSilcon-64x6/README.md), [test report](NetSilcon-Models/NetSilcon-64x6/docs/test_report.md) |
 
 ### Shared by all models
@@ -92,9 +92,8 @@ Create `NetSilcon-Models/NetSilcon-<shape>/` with the same structure (`rtl/`, `b
 1. Store the uploaded model in flash and load it at power-up with a CRC check
 2. Safety stop and supervisor in FPGA logic beside the 6x4 network, then HIL of the complete controller
 3. Measure the microcontroller comparison on a real STM32 (so far: emulated instruction counts)
-4. Hardware-in-the-loop run of the NetSilcon-64x6 rover controller
-5. Run NetSilcon-64x6 faster with the PLL (Gowin timing allows about 61 MHz)
-6. Long term: tape out on a shared multi-project wafer
+4. Run NetSilcon-64x6 faster with the PLL (Gowin timing allows about 61 MHz)
+5. Long term: tape out on a shared multi-project wafer
 
 ## License
 

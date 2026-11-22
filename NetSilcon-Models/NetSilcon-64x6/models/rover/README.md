@@ -14,6 +14,7 @@ one sees 16 sectors all the way round.
 | CRC-32 of the 23,335-byte image | **3A81C867** |
 | Golden test vectors | 1000 (5 edge cases + 995 held-out scans) |
 | Verilog check | engine testbench, 1000/1000 vectors bit-exact, 448 clocks |
+| **Hardware (Tang Nano 20K)** | uploaded in 2.04 s; golden test 1000/1000; **HIL 19,200 inferences, 0 mismatches**, 8 drives 0 crashes, 0 stuck, 48.1 m per drive |
 | Action agreement with teacher (held-out scans) | float 92.7 %, **int8 89.8 %** |
 
 ## Inputs and outputs
@@ -91,6 +92,38 @@ What the table shows:
   has any memory, so in a dead end they swing back and forth.
 - **The safety stop counts:** 0 crashes is measured with the safety stop on. It is not a
   property of the network alone.
+
+## Hardware-in-the-loop result (Tang Nano 20K, 2026-11-22)
+
+The simulator sent every scan to the board over UART. The FPGA's speed and steering drove the
+simulated rover. Command: `rover64.py --hil COM7 --unstick --runs 2` (4 standard worlds × 2 starts
+× 120 s). Summary: `rover_sim/results_hil64.txt`.
+
+| Check | Result |
+|---|---|
+| Upload | LOADED, chip CRC-32 3A81C867, 2.04 s (`logs/20261122_151939_load.log`) |
+| Golden test | 1000/1000, 0 mismatches, 0 link errors (`logs/20261122_151950_test.*`) |
+| HIL inferences | **19,200, 0 mismatches** with the Python model (`logs/20261122_152042_hil64.csv.gz`) |
+| Chip latency | 448 clocks = 16.6 µs on every step |
+| USB round trip | 15.3 ms average, 17.8 ms maximum (the 20 Hz loop allows 50 ms) |
+| Unused outputs y2..y15 | 0 in every answer |
+| Repeatability | a second HIL run (15:13) gave identical inputs and outputs for all 19,200 steps |
+
+**How the drives turned out.** The HIL log records the network's inputs and outputs, not
+crashes or distance. So the same 8 drives were replayed with the bit-exact Python model. The
+replay produced the same 19,200 inputs and outputs as the board, so these results are what the
+FPGA drove:
+
+| World | Crashes | Stuck | Avg distance |
+|---|---|---|---|
+| room | 0/2 | 0/2 | 57.0 m |
+| corridor | 0/2 | 0/2 | 56.1 m |
+| clutter | 0/2 | 0/2 | 34.7 m |
+| corner_trap | 0/2 | 0/2 | 44.9 m |
+| **Total** | **0/8** | **0/8** | **48.1 m per drive** |
+
+The supervisor and the safety stop run on the PC in this test, beside the simulator. Only the
+network runs on the FPGA.
 
 ## Rebuild
 

@@ -90,7 +90,7 @@ Needs `python3-numpy` and `iverilog` (`sudo apt install iverilog python3-numpy`)
 
 | Model | What it does | Result | CRC-32 |
 |---|---|---|---|
-| [`models/rover/`](models/rover/) | rover obstacle avoidance from 16 LiDAR sectors → speed, steering | int8 89.8 % action agreement with teacher; simulation with supervisor + safety stop: 0/80 crashes, 0/80 stuck, 46.9 m; 40 unseen worlds 0 crashes, 37.9 m (6x4: 33.3 m). Verilog 1000/1000 bit-exact | 3A81C867 |
+| [`models/rover/`](models/rover/) | rover obstacle avoidance from 16 LiDAR sectors → speed, steering | int8 89.8 % action agreement with teacher; simulation with supervisor + safety stop: 0/80 crashes, 0/80 stuck, 46.9 m; 40 unseen worlds 0 crashes, 37.9 m (6x4: 33.3 m). Verilog 1000/1000 bit-exact. **Hardware HIL: 19,200 inferences, 0 mismatches; 8 drives 0 crashes, 0 stuck** | 3A81C867 |
 
 Activation statistics per layer: `gen/model_report.txt`.
 

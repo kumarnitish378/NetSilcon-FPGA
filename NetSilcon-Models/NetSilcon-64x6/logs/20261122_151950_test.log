@@ -1,0 +1,18 @@
+NetSilcon-64x6 host  2026-11-22T15:19:50  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: host\ns64_host.py COM7 --test
+chip runs: rover  CRC-32 3A81C867  source=uploaded  uploads since power-up=3   raw 5c67c8813a0103
+  ... 100/1000 done, 0 mismatches
+  ... 200/1000 done, 0 mismatches
+  ... 300/1000 done, 0 mismatches
+  ... 400/1000 done, 0 mismatches
+  ... 500/1000 done, 0 mismatches
+  ... 600/1000 done, 0 mismatches
+  ... 700/1000 done, 0 mismatches
+  ... 800/1000 done, 0 mismatches
+  ... 900/1000 done, 0 mismatches
+  ... 1000/1000 done, 0 mismatches
+rover golden: 1000 inferences, 0 mismatches
+link errors (replies damaged between FPGA and PC, asked again): 0
+chip latency 448..448 clocks = 16.59 us at 27 MHz;  USB round trip avg 16.7 ms, max 17.6 ms
+RESULT: PASS
+log files: C:\fpga\NetSilcon-6x4-github\NetSilcon-Models\NetSilcon-64x6\host\..\logs\20261122_151950_test.log and C:\fpga\NetSilcon-6x4-github\NetSilcon-Models\NetSilcon-64x6\host\..\logs\20261122_151950_test.csv

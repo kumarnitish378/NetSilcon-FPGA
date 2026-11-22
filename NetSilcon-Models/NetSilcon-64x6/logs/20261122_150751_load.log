@@ -1,0 +1,8 @@
+NetSilcon-64x6 host  2026-11-22T15:07:51  port COM7  Python 3.14.4  Windows-11-10.0.26300-SP0
+command: host\ns64_host.py COM7 --load models\rover\rover.json
+chip runs: stress  CRC-32 732C18C9  source=uploaded  uploads since power-up=1   raw 5cc9182c730101
+model rover: 23335 image bytes, CRC-32 3A81C867, frame 23340 bytes
+chip reply: LOADED  chip CRC-32 3A81C867  loads=2  time 2040 ms   raw 3c0067c8813a02
+RESULT: PASS
+chip runs: rover  CRC-32 3A81C867  source=uploaded  uploads since power-up=2   raw 5c67c8813a0102
+log files: C:\fpga\NetSilcon-6x4-github\NetSilcon-Models\NetSilcon-64x6\host\..\logs\20261122_150751_load.log

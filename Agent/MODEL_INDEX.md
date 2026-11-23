@@ -16,6 +16,7 @@ Every trained model in this repository. Parameters = weights + biases (the layer
 | Application | File | CRC-32 | Golden vectors | Result |
 |---|---|---|---|---|
 | Rover controller (16 LiDAR sectors -> speed, steering) | `models/rover/rover.json` | 3A81C867 | 1000 | 89.8 % int8 action agreement; HIL 19,200 decisions, 0 mismatches; 8 drives 0 crashes |
+| Pump vibration health, EXAMPLE (synthetic data, 16 features -> 4 classes), `train_csv.py` | `models/pump_health/pump_health.json` | 6579E12F | 1000 | int8 95.2 % on 2,000 held-out rows (float 95.5 %); Verilog 1,200 vectors bit-exact. Not run on hardware yet |
 | Synthetic test model (built into the bitstream) | `models/synthetic/synthetic.json` | 6F4225BF | 1000 | 1,000 golden + 2,000 random vectors, 0 mismatches |
 | Stress test model (extreme weights and biases) | `models/stress/stress.json` | 732C18C9 | 200 | 200 vectors, 0 mismatches; proves the 24-bit accumulator |
 

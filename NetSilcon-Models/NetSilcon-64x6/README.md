@@ -95,10 +95,24 @@ Needs `python3-numpy` and `iverilog` (`sudo apt install iverilog python3-numpy`)
 | [`models/synthetic/`](models/synthetic/) (built into bank 0) | random weights, shifts calibrated so ~30 % of hidden activations are 0, <1 % saturate, the rest in between; ~7 % of outputs hit +127/−128 | 7 9 8 8 8 8 7 | 6F4225BF |
 | [`models/stress/`](models/stress/) | weights only −128/+127, biases at ±32767/−32768, layer-2 sums up to 1,008,128 (21 bits) | 0 15 13 1 17 9 7 | 732C18C9 |
 
+## Train your own model
+
+From any CSV table (up to 16 input columns; one class column with up to 16 classes, or up to 16
+numeric targets). Full walk-through: [GUIDE.md](../../GUIDE.md#7-train-your-own-model-netsilcon-64x6).
+
+```bash
+python3 python/model/example_pump_data.py         # synthetic example table: data/pump_vibration.csv
+python3 python/model/train_csv.py data/pump_vibration.csv --name pump_health --target state
+bash fpga/scripts/run_sim_model.sh models/pump_health/pump_health.json   # Verilog vs Python, no board
+python python/host/ns64_host.py COM7 --load models/pump_health/pump_health.json
+python python/host/app_example.py --model models/pump_health/pump_health.json --sim --csv data/pump_vibration.csv
+```
+
 ## Trained applications
 
 | Model | What it does | Result | CRC-32 |
 |---|---|---|---|
+| [`models/pump_health/`](models/pump_health/) | **example**: pump vibration health from 16 features → normal / imbalance / misalignment / bearing. Synthetic data, made by `example_pump_data.py` | int8 95.2 % on 2,000 held-out rows (float 95.5 %). Verilog 1,200 vectors bit-exact. Not run on hardware yet | 6579E12F |
 | [`models/rover/`](models/rover/) | rover obstacle avoidance from 16 LiDAR sectors → speed, steering | int8 89.8 % action agreement with teacher; simulation with supervisor + safety stop: 0/80 crashes, 0/80 stuck, 46.9 m; 40 unseen worlds 0 crashes, 37.9 m (6x4: 33.3 m). Verilog 1000/1000 bit-exact. **Hardware HIL: 19,200 inferences, 0 mismatches; 8 drives 0 crashes, 0 stuck** | 3A81C867 |
 
 Activation statistics per layer: `fpga/gen/model_report.txt`.
@@ -113,12 +127,15 @@ fpga/
              tangnano20k_ns64.cst, tangnano20k.sdc
   tb/        tb_engine.v, tb_requant.v, tb_top.v
   gen/       wmem_00..31.mem (built-in RAM contents), tb/ (testbench RAMs), golden vectors, *.vh
-  scripts/   run_sim_engine.sh, run_sim_top.sh, mutation_test*.sh, make_tb_load.py, build_opensource.sh
+  scripts/   run_sim_engine.sh, run_sim_top.sh, run_sim_model.sh (any model file), mutation_test*.sh,
+             make_tb_load.py, make_sim_model.py, build_opensource.sh
              (sim/ and build/ are created here)
   probe/     step-0 resource probe
 python/
-  model/     ns64.py (reference math, image, CRC-32, RAM layout), make_synthetic.py, train_rover.py
-  host/      ns64_host.py (PC tool: info, inference, upload, golden/random tests, logs)
+  model/     ns64.py (reference math, image, CRC-32, RAM layout), make_synthetic.py, train_rover.py,
+             train_csv.py (your own model from a CSV), example_pump_data.py (example table)
+  host/      ns64_host.py (PC tool: info, inference, upload, golden/random tests, logs),
+             app_example.py (use a model in your own program, board or bit-exact Python)
   rover_sim/ rover64.py (16-sector rover simulator, teacher, HIL), eval_rover64.py
   bench/     bench.c, make_net_h.py (CPU cycle comparison)
 docs/        test_report.md, protocol.md, gowin_build.md, gowin_reports/

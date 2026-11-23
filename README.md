@@ -70,7 +70,7 @@ op-amp, which becomes an amplifier, a filter or a comparator depending on a few 
 | Model upload (measured) | 31 ms | 2.04 s |
 | FPGA resources (Gowin EDA) | logic 49 %, DSP 24 / 24, BSRAM 1 | logic 35 %, DSP 16 / 24, BSRAM 32 / 46 |
 | Max clock (Gowin timing) | 29.1 MHz | 61.5 MHz |
-| Applications run | motor fault, irrigation, rover (incl. hardware-in-the-loop) | rover controller (trained, 16 LiDAR sectors, incl. hardware-in-the-loop), synthetic and stress test models |
+| Applications run | motor fault, irrigation, rover (incl. hardware-in-the-loop) | rover controller (trained, 16 LiDAR sectors, incl. hardware-in-the-loop), pump-health example (synthetic data, simulation only), synthetic and stress test models |
 | Details | [README](NetSilcon-Models/NetSilcon-6x4/README.md), [benchmarks](NetSilcon-Models/NetSilcon-6x4/docs/benchmarks.md) | [README](NetSilcon-Models/NetSilcon-64x6/README.md), [test report](NetSilcon-Models/NetSilcon-64x6/docs/test_report.md) |
 
 ### Shared by all models
@@ -82,6 +82,19 @@ op-amp, which becomes an amplifier, a filter or a comparator depending on a few 
 - **UART protocol family:** `A5` inference, `C3` model upload, `C5` "which model is running?"
 - **Safe updates:** a damaged or interrupted upload is refused and the running model keeps working.
 - **Same board and pins:** Tang Nano 20K, 27 MHz clock on pin 4, UART on pins 69 / 70, LEDs on 15–20.
+
+## How to use it
+
+**[GUIDE.md](GUIDE.md)** walks through everything in order: clone, simulate without a board, build and
+program the Tang Nano 20K, run the applications, **train your own model from a CSV table**, test it in
+Python, in Verilog simulation and on the board, and use it from your own program.
+
+```bash
+cd NetSilcon-Models/NetSilcon-64x6
+python3 python/model/example_pump_data.py                                   # example table
+python3 python/model/train_csv.py data/pump_vibration.csv --name pump_health --target state
+bash fpga/scripts/run_sim_model.sh models/pump_health/pump_health.json      # Verilog, bit-exact
+```
 
 ## Working with an AI coding agent
 
@@ -104,6 +117,7 @@ or open an issue.
 ```
 LICENSE, NOTICE            Apache License 2.0 (applies to everything in this repository)
 README.md                  this overview
+GUIDE.md                   how to use it: clone to application, training, testing
 AGENTS.md, CLAUDE.md       entry points for AI coding agents
 Agent/                     text summary of the project and a setup prompt for AI agents
 media/                     demo and keynote videos

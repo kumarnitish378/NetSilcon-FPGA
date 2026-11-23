@@ -75,7 +75,7 @@ module tangnano20k_uart #(
     reg  [31:0] x_buf   = 0;
     reg  [31:0] x_in    = 0;
     reg         in_valid = 0;
-    reg  [18:0] idle    = 0;
+    reg  [$clog2(TIMEOUT+1)-1:0] idle = 0;
     reg         frame_err = 0;
     reg         info_req  = 0;
 

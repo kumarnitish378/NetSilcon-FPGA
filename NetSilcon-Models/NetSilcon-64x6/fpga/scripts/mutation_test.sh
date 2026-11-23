@@ -10,7 +10,7 @@ declare -A MUT
 MUT[rounding]="s/(25'sd1 <<< (s - 5'd1))/25'sd0/"
 MUT[relu]="s/(relu \&\& acc_in\[23\])/(1'b0)/"
 MUT[bias_hi]="s/K_HI:    p_v\[j\*16 +: 16\] <= {rdata\[j\*8 +: 8\], 8'h00};/K_HI: p_v[j*16 +: 16] <= 16'd0;/"
-MUT[layer_shift]="s/wire \[2:0\] src  = outph ? 3'd6 : layer - 3'd1;/wire [2:0] src  = outph ? 3'd6 : layer;/"
+MUT[layer_shift]="s/(layer == 3'd0) ? 3'd0 : layer - 3'd1;/(layer == 3'd0) ? 3'd0 : layer;/"
 MUT[out_clamp]="s/(v < -25'sd128) ? 8'h80 : v\[7:0\]/v[7:0]/"
 MUT[last_weight]="s/(t < n_in + 7'd2) ? K_W : K_NONE/(t < n_in + 7'd1) ? K_W : K_NONE/"
 ALL=1

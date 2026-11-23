@@ -48,7 +48,7 @@ module ns_loader #(
     reg [7:0]  stage [0:IMG-1];             // staging buffer (infers block/distributed RAM)
     reg [7:0]  cnt  = 0;                    // bytes received
     reg [15:0] crc  = 16'hFFFF;
-    reg [18:0] idle = 0;
+    reg [$clog2(TIMEOUT+1)-1:0] idle = 0;
     reg        check = 0;
 
     // copy phase: read stage[p] (1 clock), then write it to the network

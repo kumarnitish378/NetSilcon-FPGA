@@ -86,7 +86,7 @@ module nn_layer #(
             wire signed [19:0] act = (RELU && acc_f[19]) ? 20'sd0 : acc_f;   // ReLU: sign bit set -> 0
             wire signed [19:0] v   = (act + $signed(halfu)) >>> shift;
             wire        [7:0]  q   = RELU ? ((v > 127)  ? 8'd127 : v[7:0])
-                                          : ((v > 127)  ? 8'sd127 :
+                                          : ((v > 127)  ? 8'h7F   :
                                              (v < -128) ? 8'h80   : v[7:0]);
 
             always @(posedge clk)

@@ -99,7 +99,7 @@ module ns64_engine (
 
     // the chain carries layer (layer-1)'s sums while layer `layer` runs; in the
     // output phase it carries layer 7's sums (no ReLU, signed clamp)
-    wire [2:0] src  = outph ? 3'd6 : layer - 3'd1;
+    wire [2:0] src  = outph ? 3'd6 : (layer == 3'd0) ? 3'd0 : layer - 3'd1;   // layer 0: unused, keep in range
     wire [4:0] s_rq = shifts[src*5 +: 5];
     ns64_requant u_rq (.clk(clk), .acc_in(chain[23:0]), .s(s_rq), .relu(!outph), .y(xq));
 

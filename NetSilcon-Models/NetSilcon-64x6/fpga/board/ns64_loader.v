@@ -64,7 +64,7 @@ module ns64_loader #(
     reg [31:0] crc  = 32'hFFFFFFFF;
     reg [31:0] rx_crc = 32'd0;
     reg        bad_shift = 1'b0;
-    reg [18:0] idle = 19'd0;
+    reg [$clog2(TIMEOUT+1)-1:0] idle = 0;
     reg        check = 1'b0;
     reg [7:0]  pbuf [0:63];                 // pair buffer: even neuron's bytes (weights; biases use 0/1)
 
@@ -81,12 +81,12 @@ module ns64_loader #(
         check <= 1'b0;
 
         if (start) begin
-            active <= 1'b1; busy <= 1'b1; idle <= 19'd0;
+            active <= 1'b1; busy <= 1'b1; idle <= 0;
             ph <= P_W; l <= 3'd0; j <= 6'd0; i <= 6'd0; bsel <= 1'b0; cc <= 2'd0;
             crc <= 32'hFFFFFFFF; bad_shift <= 1'b0;
         end else if (active) begin
             if (rx_valid) begin
-                idle <= 19'd0;
+                idle <= 0;
                 if (ph != P_C) crc <= crc32_byte(crc, rx_data);
                 case (ph)
                     P_W: begin
@@ -133,7 +133,7 @@ module ns64_loader #(
                 endcase
             end else if (idle == TIMEOUT) begin
                 active <= 1'b0; busy <= 1'b0; status <= 2'd2; done <= 1'b1;
-            end else idle <= idle + 19'd1;
+            end else idle <= idle + 1'b1;
         end
 
         if (check) begin

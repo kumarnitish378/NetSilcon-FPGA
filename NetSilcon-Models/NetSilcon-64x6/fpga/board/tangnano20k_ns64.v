@@ -77,7 +77,7 @@ module tangnano20k_ns64 #(
     reg  [4:0]   nbytes = 5'd0;            // 0 = waiting for header, 1..16 = inputs received
     reg  [127:0] x_buf  = 128'd0;
     reg          x_ready = 1'b0;           // a complete input frame waits for the engine
-    reg  [18:0]  idle   = 19'd0;
+    reg  [$clog2(TIMEOUT+1)-1:0] idle = 0;
     reg          frame_err = 1'b0;
     reg          info_req  = 1'b0;
     reg  [7:0]   hdr       = 8'h00;        // header of the frame being received (A5, D1, D2)
@@ -94,7 +94,7 @@ module tangnano20k_ns64 #(
         if (ld_active || ld_busy || ld_start) begin
             // bytes belong to the model loader
         end else if (rx_valid) begin
-            idle <= 19'd0;
+            idle <= 0;
             if (nbytes == 5'd0) begin
                 if      (rx_data == 8'hA5) begin nbytes <= 5'd1; hdr <= rx_data; end
                 else if (rx_data == 8'hD1 || rx_data == 8'hD2) begin nbytes <= 5'd1; hdr <= rx_data; end
@@ -113,8 +113,8 @@ module tangnano20k_ns64 #(
                 else nbytes <= nbytes + 5'd1;
             end
         end else if (nbytes != 5'd0) begin
-            if (idle == TIMEOUT) begin nbytes <= 5'd0; frame_err <= 1'b1; idle <= 19'd0; end
-            else idle <= idle + 19'd1;
+            if (idle == TIMEOUT) begin nbytes <= 5'd0; frame_err <= 1'b1; idle <= 0; end
+            else idle <= idle + 1'b1;
         end
         if (eng_start) x_ready <= 1'b0;
     end

@@ -1,14 +1,17 @@
-# I put a neural network on a small FPGA. Then I made it 135 times bigger.
+# Most AI is software. I built mine as a circuit.
 
-*What I learned building NetSilcon: neural networks on FPGA with a fixed shape and loadable weights.*
+*What I learned building NetSilcon: AI on FPGA, as a neural network built into the hardware of a small Tang Nano 20K board, with loadable weights and a way for anyone to train their own model.*
 
-Cover image: `04_two_engines.png`. Put `03_fpga_drove_rover.png` after the rover section and `01_cycles_31x.png` after the clock-cycle section.
+SEO title (LinkedIn article settings, if your editor offers it): AI on FPGA: How I Built a Neural Network as a Circuit (Tang Nano 20K)
+SEO description: An open-source neural network on FPGA: 22,928 parameters on a Tang Nano 20K, 448 clock cycles per answer, a robot driven 19,200 times, and how to train your own model.
+
+Cover image: `media/youtube/NetSilcon_YouTube_thumbnail.jpg` (landscape, real board photo). In the text: `photos/board_top_leds.jpg` after "Version one", `04_two_engines.png` after "Version two", `01_cycles_31x.png` after the clock-cycle section, `03_fpga_drove_rover.png` after the rover section.
 
 ---
 
 Every device around us measures something: the current in a motor, the voltage of a battery cell, the distance to a wall. Very few of them can decide what those numbers mean, fast and on their own.
 
-A microcontroller can run a small neural network, but it does it one instruction at a time. A fully custom chip is fast, but it can only ever do one job. I wanted something in between.
+A microcontroller can run a small neural network, but it does it one instruction at a time. A fully custom chip is fast, but it can only ever do one job. I wanted something in between: a neural network on FPGA that can change its job.
 
 ## The idea: fix the shape, load the numbers
 
@@ -26,7 +29,7 @@ It answers in **15 clock cycles**, every single time. Without changing the hardw
 
 The question I kept hearing was fair: does this scale?
 
-## Version two: NetSilcon-64x6
+## Version two: a 22,928-parameter neural network on FPGA
 
 The new engine has 16 inputs, six hidden layers of 64 neurons and 16 outputs: **22,928 parameters** (22,528 weights and 400 biases), on the same board.
 
@@ -36,15 +39,15 @@ The surprise: the bigger network uses **less** of the FPGA's logic (35 %) than t
 
 A new model is 23,335 bytes. It uploads over USB in about 2 seconds into a second memory bank while the old model keeps running. The banks switch in one clock, and only after the CRC-32 checks out.
 
-## The number I am proudest of, and the one I have to explain
+## FPGA vs CPU: the number I am proudest of, and the one I have to explain
 
 NetSilcon-64x6 needs **448 clock cycles** per answer. My laptop CPU, running the same network in optimised C, needs about **14,100**. That is 31 times fewer cycles.
 
 But the laptop runs at 4 GHz and the FPGA at 27 MHz. So the laptop still finishes first: 3.45 microseconds against 16.6.
 
-Why do the cycles matter, then? Because cycles are what carry over to a real chip. The same design clocked at around 130 MHz would match the laptop. A custom chip at a few hundred MHz would beat it, at a tiny fraction of the power. That is the long-term direction.
+Why do the cycles matter, then? Because cycles are what carry over to a real chip. The same design clocked at around 130 MHz would match the laptop. A custom chip at a few hundred MHz would beat it. Low power in silicon is the goal, but I have not measured power yet, so I won't claim a number. That is the long-term direction.
 
-## Its first job: driving a robot
+## Edge AI in action: the FPGA drives a robot
 
 I trained a rover controller for the new engine. It sees a 360° LiDAR scan as 16 sectors and decides speed and steering. It learned from hand-written driving rules, then from its own mistakes, using only randomly generated rooms.
 
@@ -56,6 +59,16 @@ Then the real FPGA drove. The PC simulated the room and the sensor; every scan w
 
 The safety stop and a small supervisor still run on the PC. Moving them into the FPGA is next.
 
+## Now you can train your own AI model for the FPGA
+
+The question after "does it scale?" was "can I use it for my problem?" Now you can.
+
+It works like a small FPGA AI accelerator you can retrain. Give it a CSV table: one row per moment, up to 16 columns of sensor readings and one column with the answer. One command trains the network, converts it to the chip's integer maths and tests it on rows it never saw. A second command runs your model through the real Verilog, bit for bit. A third uploads it to the board.
+
+As an example I trained a pump-health model on synthetic vibration data (16 features, four states: normal, imbalance, misalignment, bearing fault). With the chip's int8 maths it scored 95.2 % on 2,000 held-out rows, against 95.5 % in floating point, and the Verilog simulation matched Python on all 1,200 test vectors. It has not run on the board yet; that is the next test.
+
+There is a written guide from `git clone` to a running application, and a 5-minute video that walks through every step.
+
 ## Three lessons
 
 1. **Write the Python model first.** Every hardware answer was compared bit for bit with an integer Python model. When the two disagree, you know exactly where to look.
@@ -64,7 +77,12 @@ The safety stop and a small supervisor still run on the PC. Moving them into the
 
 ## What is next, and how you can help
 
-NetSilcon is open source: Verilog, Python tools, trained models and every hardware log. The website explains it from idea to use: https://kumarnitish378.github.io/NetSilcon/
+NetSilcon is open source: Verilog, Python tools, trained models and every hardware log.
+
+- Website: https://kumarnitish378.github.io/NetSilcon/
+- AI on FPGA, and how to train your own model: https://kumarnitish378.github.io/NetSilcon/ai-on-fpga/
+- Code and logs: https://github.com/kumarnitish378/NetSilcon-FPGA
+- Video, how it works: https://youtu.be/BayvnxEG5I8
 
 New network shapes and new trained models are coming, and support for more FPGA boards after that.
 
@@ -72,4 +90,4 @@ I want the next model to solve a real problem. If you have a decision that a dev
 
 *Nitish Kumar Sharma, building NetSilcon*
 
-#FPGA #EdgeAI #TinyML #Verilog #EmbeddedSystems #NeuralNetworks
+#FPGA #AI #EdgeAI #Verilog #EmbeddedSystems #NeuralNetworks

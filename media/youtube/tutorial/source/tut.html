@@ -1,0 +1,257 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(fonts/space-grotesk-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:SG;src:url(fonts/space-grotesk-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:PS;src:url(fonts/ibm-plex-sans-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:PS;src:url(fonts/ibm-plex-sans-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:PM;src:url(fonts/ibm-plex-mono-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:PM;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2);font-weight:500}
+:root{--ink:#0B1220;--ink2:#121C30;--ink3:#1A2742;--paper:#F2F5F9;--mut:#9AAAC1;--rule:#2A3852;--acc:#2DD4BF;--warm:#FBBF24;--red:#F87171;--blue:#60A5FA;--grn:#34D399}
+*{box-sizing:border-box;margin:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--ink);color:var(--paper);font-family:PS}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(242,245,249,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(242,245,249,.035) 1px,transparent 1px);background-size:60px 60px}
+section{position:absolute;inset:0;display:none;padding:64px 110px}
+section.on{display:block}
+.chap{font:500 22px PM;color:var(--acc);letter-spacing:.06em;text-transform:uppercase}
+h1{font:700 60px/1.08 SG;letter-spacing:-.015em;margin-top:8px}
+h1 em{font-style:normal;color:var(--acc)}
+.st{opacity:0}.st.vis{opacity:1}
+.cap{position:absolute;left:50%;transform:translateX(-50%);bottom:36px;max-width:1560px;background:rgba(11,18,32,.9);border:1px solid var(--rule);padding:12px 26px;font:400 31px/1.35 PS;text-align:center;color:#fff;border-radius:6px}
+.prog{position:absolute;left:0;bottom:0;height:6px;background:var(--acc)}
+.brand{position:absolute;right:110px;top:68px;font:700 26px SG;display:flex;gap:10px;align-items:center}
+.brand i{width:24px;height:24px;border:3px solid var(--acc);display:inline-block;position:relative}.brand i:after{content:"";position:absolute;inset:5px;background:var(--acc)}
+.abs{position:absolute}
+.card{background:var(--ink2);border:2px solid var(--rule);border-radius:10px;padding:22px 28px}
+.card.a{border-color:var(--acc)}.card.w{border-color:var(--warm)}.card.r{border-color:var(--red)}
+.card h3{font:700 32px SG}.card p{font:400 24px/1.4 PS;color:var(--mut);margin-top:6px}
+.k{font:400 26px PS;color:var(--mut)}
+.row{display:flex;gap:26px;align-items:center}
+.tag{display:inline-block;font:500 22px PM;padding:6px 14px;border:2px solid var(--acc);color:var(--acc);border-radius:20px}
+code,.mono{font-family:PM}
+/* terminal */
+.term{position:absolute;background:#070C16;border:2px solid var(--rule);border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.term .bar{height:44px;background:#111A2C;display:flex;align-items:center;gap:9px;padding:0 16px;font:500 19px PM;color:var(--mut)}
+.term .bar i{width:13px;height:13px;border-radius:50%;background:#F87171;display:inline-block}.term .bar i:nth-child(2){background:#FBBF24}.term .bar i:nth-child(3){background:#34D399}
+.term .bar span{margin-left:14px}
+.term .bar b{margin-left:auto;font:500 17px PM;color:var(--warm);border:1px solid var(--warm);padding:2px 10px;border-radius:12px}
+.term .body{position:absolute;top:44px;left:0;right:0;bottom:0;padding:16px 24px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;font:400 24px/1.5 PM;white-space:pre;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 46px);mask-image:linear-gradient(to bottom,transparent 0,#000 46px)}
+.term .ln{display:none}.term .ln.vis{display:block}
+.term .ln.c::before{content:"$ ";color:var(--acc)}
+.term .ln.w::before{content:"> ";color:var(--acc)}
+.term .ln.c,.term .ln.w{color:#fff}
+.term .o{color:#B7C3D6}.term .dim{color:#5E6E88}.term .ok{color:var(--grn)}.term .bad{color:var(--red)}.term .hl{background:rgba(45,212,191,.16);color:#fff}.term .yl{color:var(--warm)}
+.chk{display:flex;gap:16px;align-items:flex-start;font:400 28px/1.35 PS;margin-bottom:18px}
+.chk .n{flex:0 0 auto;min-width:46px;padding:0 8px;height:46px;border-radius:23px;border:2px solid var(--acc);color:var(--acc);display:flex;align-items:center;justify-content:center;font:700 22px SG}
+.chips span{display:inline-block;font:400 21px PM;background:var(--ink3);border:1px solid var(--rule);padding:4px 12px;border-radius:6px;margin:4px 6px 4px 0}
+.photo{border-radius:12px;border:2px solid var(--rule);background-size:cover;background-position:center}
+</style></head><body><div class="grid"></div>
+<div class="brand"><i></i>NetSilcon</div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="chap">Tutorial · AI on FPGA</div>
+  <h1>From <em>git clone</em> to your own<br>AI model on an FPGA</h1>
+  <div class="abs st" data-s="0" style="left:110px;top:330px;width:760px;height:428px"><div class="photo" style="width:760px;height:428px;background-image:url(photos/board_usb_leds.jpg)"></div><p class="k" style="margin-top:10px">Sipeed Tang Nano 20K · Gowin GW2AR-18</p></div>
+  <div class="abs st" data-s="1" style="left:940px;top:330px;width:870px">
+    <div class="chk"><span class="n">1</span>Get the code</div>
+    <div class="chk"><span class="n">2</span>Simulate, no board needed</div>
+    <div class="chk"><span class="n">3–4</span>Build and program the board</div>
+    <div class="chk"><span class="n">5</span>Talk to the chip, run an application</div>
+    <div class="chk"><span class="n">6–7</span>Train and test <b style="color:var(--acc)">your own model</b></div>
+    <div class="chk"><span class="n">8</span>Use it in your program</div>
+  </div>
+  <div class="abs st" data-s="2" style="left:940px;top:800px"><span class="tag" style="border-color:var(--warm);color:var(--warm);font-size:26px">every output on screen is real, from actual runs</span></div>
+</section>
+
+<!-- NEED -->
+<section id="need">
+  <div class="chap">Before you start</div><h1>What you <em>need</em></h1>
+  <div class="abs" style="left:110px;top:290px;display:grid;grid-template-columns:repeat(2,820px);gap:26px">
+    <div class="card st" data-s="0"><h3>A PC</h3><p>Windows, Linux or macOS. On Windows, run the test scripts in WSL Ubuntu (or Git Bash).</p></div>
+    <div class="card st" data-s="1"><h3>Python 3 + numpy · Icarus Verilog</h3><p>for training and simulation · pyserial for the board</p></div>
+    <div class="card st" data-s="2"><h3>Sipeed Tang Nano 20K</h3><p>FPGA Gowin GW2AR-18, connects over USB-C</p></div>
+    <div class="card st" data-s="2"><h3>Gowin EDA, Education edition</h3><p>free, builds the bitstream</p></div>
+  </div>
+  <div class="abs st" data-s="3" style="left:110px;top:640px;right:110px"><div class="card a" style="text-align:center;padding:30px"><div style="font:700 50px SG">Steps 1, 2, 6 and 7 need <span style="color:var(--acc)">no board at all</span></div></div></div>
+</section>
+
+<!-- CLONE -->
+<section id="clone">
+  <div class="chap">Step 1</div><h1>Get the <em>code</em> and the tools</h1>
+  <div class="term" style="left:110px;top:250px;width:1700px;height:560px"><div class="bar"><i></i><i></i><i></i><span>terminal · Linux / WSL Ubuntu</span></div><div class="body">
+<div class="ln c st" data-s="0">git clone https://github.com/kumarnitish378/NetSilcon-FPGA.git</div>
+<div class="ln c st" data-s="0">cd NetSilcon-FPGA</div>
+<div class="ln o st dim" data-s="1"> </div>
+<div class="ln c st" data-s="1">sudo apt install iverilog python3-numpy python3-pip</div>
+<div class="ln c st" data-s="1">pip install pyserial</div>
+<div class="ln o st dim" data-s="2"> </div>
+<div class="ln c st" data-s="2">iverilog -V</div>
+<div class="ln o st ok" data-s="2">Icarus Verilog version 12.0 (stable)</div>
+<div class="ln c st" data-s="2">python3 -c "import numpy, serial"</div>
+<div class="ln o st dim" data-s="2">(no output = all good)</div>
+  </div></div>
+</section>
+
+<!-- SIM -->
+<section id="sim">
+  <div class="chap">Step 2</div><h1>Simulate: <em>no board needed</em></h1>
+  <div class="term" style="left:110px;top:250px;width:1700px;height:600px"><div class="bar"><i></i><i></i><i></i><span>NetSilcon-Models/NetSilcon-64x6</span></div><div class="body">
+<div class="ln c st" data-s="0">cd NetSilcon-Models/NetSilcon-64x6</div>
+<div class="ln c st" data-s="1">python3 python/model/make_synthetic.py</div>
+<div class="ln o st" data-s="1">  self-check synthetic: PASS (numpy vs plain Python on 40 vectors, image round trip, 23335 byte addresses)</div>
+<div class="ln o st" data-s="1">  self-check stress: PASS (numpy vs plain Python on 8 vectors, image round trip, 23335 byte addresses)</div>
+<div class="ln o st ok" data-s="1">RESULT: PASS</div>
+<div class="ln c st" data-s="2">bash fpga/scripts/run_sim_engine.sh</div>
+<div class="ln o st" data-s="2">  ... 1 vectors done, 0 mismatches, latency 448 clocks</div>
+<div class="ln o st" data-s="3">  ... 1000 vectors done, 0 mismatches, latency 448 clocks</div>
+<div class="ln o st hl" data-s="3">synthetic model: 1000 vectors, 0 mismatches</div>
+<div class="ln o st hl" data-s="3">stress model   : 200 vectors, total mismatches 0</div>
+<div class="ln o st yl" data-s="4">latency start->done: 448..448 clocks (16.59 us at 27 MHz)</div>
+<div class="ln o st ok" data-s="5">RESULT: PASS</div>
+  </div></div>
+</section>
+
+<!-- BUILD -->
+<section id="build">
+  <div class="chap">Step 3</div><h1>Build the bitstream in <em>Gowin EDA</em></h1>
+  <div class="abs" style="left:110px;top:250px;width:1700px">
+    <div class="chk st" data-s="1"><span class="n">1</span><div>New project · device <b class="mono">GW2AR-LV18QN88C8/I7</b> (GW2AR-18C)</div></div>
+    <div class="chk st" data-s="2"><span class="n">2</span><div>Add files<div class="chips" style="margin-top:6px"><span>rtl/ns64_requant.v</span><span>rtl/ns64_wram.v</span><span>rtl/ns64_engine.v</span><span>board/ns_uart.v</span><span>board/ns64_uart_tx.v</span><span>board/ns64_loader.v</span><span>board/tangnano20k_ns64.v</span><span>board/tangnano20k_ns64.cst</span><span>board/tangnano20k.sdc</span></div></div></div>
+    <div class="chk st" data-s="3"><span class="n">3</span><div>Copy <b class="mono">fpga/gen/wmem_00.mem … wmem_31.mem</b> next to the .gprj file (the built-in model)</div></div>
+    <div class="chk st" data-s="4"><span class="n">4</span><div>Top module <b class="mono">tangnano20k_ns64</b> · include path <b class="mono">fpga/gen</b> · Synthesize → Place &amp; Route</div></div>
+  </div>
+  <div class="abs card w st" data-s="5" style="left:110px;top:760px;width:1700px"><h3 style="color:var(--warm)">Trap: Gowin compiles its own copies in src/</h3><p>Changed a .v file in the repo? Copy it into the Gowin project again before you synthesize.</p></div>
+  <div class="abs st" data-s="0" style="right:110px;top:150px"><span class="tag">expected: logic 35 % · BSRAM 32 / 46 · DSP 16 / 24</span></div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="chap">Step 4</div><h1>Program the <em>board</em></h1>
+  <div class="abs st photo" data-s="0" style="left:110px;top:260px;width:900px;height:506px;background-image:url(photos/board_angle_leds.jpg)"></div>
+  <div class="abs" style="left:1070px;top:270px;width:740px">
+    <div class="card st" data-s="1"><h3>Tools → Programmer</h3><p class="mono" style="font-size:22px;line-height:1.7">Cable: USB Debugger A · 0.9 MHz<br>Device: GW2AR-18C<br>Operation: SRAM Program<br>File: impl/pnr/ns64.fs</p></div>
+    <div class="card a st" data-s="2" style="margin-top:22px"><h3><span style="display:inline-block;width:22px;height:22px;border-radius:50%;background:var(--warm);margin-right:12px;box-shadow:0 0 18px var(--warm)"></span>LED0 blinks = alive</h3></div>
+    <div class="card w st" data-s="3" style="margin-top:22px"><h3>SRAM is lost at power-off</h3><p>after unplugging, program it again</p></div>
+  </div>
+</section>
+
+<!-- TALK -->
+<section id="talk">
+  <div class="chap">Step 5</div><h1>Talk to the <em>chip</em></h1>
+  <div class="term" style="left:110px;top:240px;width:1700px;height:640px"><div class="bar"><i></i><i></i><i></i><span>Windows · python\host</span><b>real board output · 22 Nov 2026</b></div><div class="body">
+<div class="ln w st" data-s="0">python ns64_host.py COM7 --info</div>
+<div class="ln o st hl" data-s="1">chip runs: synthetic  CRC-32 6F4225BF  source=built-in  uploads since power-up=0</div>
+<div class="ln w st" data-s="2">python ns64_host.py COM7 --load ..\..\models\stress\stress.json --corrupt</div>
+<div class="ln o st" data-s="2">  --corrupt: flipped bit 4 of byte 12345 (a layer-2 weight). The chip must refuse it.</div>
+<div class="ln o st bad" data-s="2">chip reply: REFUSED - CRC error</div>
+<div class="ln o st ok" data-s="2">RESULT: PASS (refused as expected)</div>
+<div class="ln w st" data-s="3">python ns64_host.py COM7 --load ..\..\models\rover\rover.json</div>
+<div class="ln o st" data-s="3">model rover: 23335 image bytes, CRC-32 3A81C867, frame 23340 bytes</div>
+<div class="ln o st hl" data-s="3">chip reply: LOADED  chip CRC-32 3A81C867  loads=3  time 2039 ms</div>
+<div class="ln w st" data-s="4">python ns64_host.py COM7 --test</div>
+<div class="ln o st" data-s="4">  ... 1000/1000 done, 0 mismatches</div>
+<div class="ln o st hl" data-s="4">rover golden: 1000 inferences, 0 mismatches</div>
+<div class="ln o st yl" data-s="4">chip latency 448..448 clocks = 16.59 us at 27 MHz</div>
+<div class="ln o st ok" data-s="4">RESULT: PASS</div>
+  </div></div>
+</section>
+
+<!-- HIL -->
+<section id="hil">
+  <div class="chap">Run an application</div><h1>The FPGA <em>drives a robot</em></h1>
+  <div class="term" style="left:110px;top:240px;width:1700px;height:640px"><div class="bar"><i></i><i></i><i></i><span>hardware in the loop</span><b>real board output · 22 Nov 2026</b></div><div class="body">
+<div class="ln w st" data-s="0">python python\rover_sim\rover64.py --hil COM7 --unstick --runs 2</div>
+<div class="ln o st" data-s="0">model rover CRC-32 3A81C867 (uploaded), port COM7</div>
+<div class="ln o st hl" data-s="1">FPGA inferences          19200</div>
+<div class="ln o st hl" data-s="1">mismatches vs Python     0</div>
+<div class="ln o st yl" data-s="1">chip latency (clocks)    448 = 16.6 us at 27 MHz</div>
+<div class="ln o st" data-s="1">  room         crashes 0/2   stuck 0/2</div>
+<div class="ln o st" data-s="1">  corridor     crashes 0/2   stuck 0/2</div>
+<div class="ln o st" data-s="1">  clutter      crashes 0/2   stuck 0/2</div>
+<div class="ln o st" data-s="1">  corner_trap  crashes 0/2   stuck 0/2</div>
+<div class="ln o st ok" data-s="1">TOTAL: 8 drives, crashes 0, stuck 0, avg 48.1 m per drive</div>
+<div class="ln o st dim" data-s="2"> </div>
+<div class="ln o st dim" data-s="2"># no board: the bit-exact Python model drives</div>
+<div class="ln w st" data-s="2">python python\rover_sim\rover64.py --unstick</div>
+  </div></div>
+</section>
+
+<!-- TRAIN -->
+<section id="train">
+  <div class="chap">Step 6</div><h1>Train <em>your own</em> model</h1>
+  <div class="abs card st" data-s="1" style="left:110px;top:240px;width:1700px;padding:16px 22px">
+    <div class="mono" style="font-size:19px;line-height:1.55;color:#B7C3D6;white-space:pre;overflow:hidden"><span style="color:var(--acc)">rpm,current_a,temp_c,pressure_bar,band_1x,band_2x,...,kurtosis,crest_factor,</span><span style="color:var(--warm)">state</span>
+2679.8,8.46,51.93,2.28,1.42,0.61,...,5.00,4.70,<span style="color:var(--warm)">bearing</span>
+2897.7,9.53,47.98,2.66,1.40,2.98,...,2.81,3.32,<span style="color:var(--warm)">misalignment</span></div>
+    <p class="k" style="margin-top:6px">one row per moment · up to <b style="color:var(--acc)">16 input columns</b> · one <b style="color:var(--warm)">answer column</b></p>
+  </div>
+  <div class="term st" data-s="2" style="left:110px;top:470px;width:1700px;height:420px"><div class="bar"><i></i><i></i><i></i><span>NetSilcon-64x6</span></div><div class="body" style="font-size:21px">
+<div class="ln c st" data-s="2">python3 python/model/example_pump_data.py</div>
+<div class="ln o st" data-s="2">wrote 20000 rows to data/pump_vibration.csv  (synthetic example data, 16 inputs, target 'state')</div>
+<div class="ln c st" data-s="3">python3 python/model/train_csv.py data/pump_vibration.csv --name pump_health --target state</div>
+<div class="ln o st" data-s="4">target 'state': 4 classes ['bearing', 'imbalance', 'misalignment', 'normal']</div>
+<div class="ln o st" data-s="4">training: 16000 rows, validation 2000, test 2000 (never used for training)</div>
+<div class="ln o st" data-s="4">shifts [9, 7, 8, 8, 8, 8, 8]   CRC-32 6579E12F</div>
+<div class="ln o st hl" data-s="5">test accuracy: float 95.5 %   int8 (= FPGA) 95.2 %   int8 agrees with float on 99.2 % of rows</div>
+<div class="ln o st yl" data-s="6">     bearing  imbalance misalignme     normal</div>
+<div class="ln o st" data-s="6">         540          0          0          0   bearing</div>
+<div class="ln o st" data-s="6">           0        421          0  <span class="bad">       51</span>   imbalance</div>
+<div class="ln o st" data-s="6">           0          0        507          0   misalignment</div>
+<div class="ln o st" data-s="6">           0  <span class="bad">       45</span>          0        436   normal</div>
+<div class="ln o st ok" data-s="6">saved models/pump_health/pump_health.json  (and README.md)</div>
+  </div></div>
+</section>
+
+<!-- TEST -->
+<section id="test">
+  <div class="chap">Step 7</div><h1>Test it, <em>level by level</em></h1>
+  <div class="term" style="left:110px;top:240px;width:1700px;height:640px"><div class="bar"><i></i><i></i><i></i><span>NetSilcon-64x6</span></div><div class="body" style="font-size:22px">
+<div class="ln o st dim" data-s="1"># 1 · Verilog simulation of YOUR model (no board)</div>
+<div class="ln c st" data-s="1">bash fpga/scripts/run_sim_model.sh models/pump_health/pump_health.json</div>
+<div class="ln o st hl" data-s="2">pump_health (bank 0): 1000 vectors, 0 mismatches</div>
+<div class="ln o st hl" data-s="2">pump_health (bank 1): 200 vectors, total mismatches 0</div>
+<div class="ln o st yl" data-s="2">latency start->done: 448..448 clocks (16.59 us at 27 MHz)</div>
+<div class="ln o st ok" data-s="2">RESULT: PASS</div>
+<div class="ln o st dim" data-s="3"># 2 · on the board</div>
+<div class="ln c st" data-s="3">python python/host/ns64_host.py COM7 --load models/pump_health/pump_health.json</div>
+<div class="ln c st" data-s="3">python python/host/ns64_host.py COM7 --test          <span class="dim"># expect 0 mismatches</span></div>
+<div class="ln o st dim" data-s="4"># 3 · use it (here without a board: --sim)</div>
+<div class="ln c st" data-s="4">python python/host/app_example.py --model models/pump_health/pump_health.json --sim --csv data/pump_vibration.csv --rows 8</div>
+<div class="ln o st" data-s="4">  bearing                                  (true: bearing)   0.19 ms</div>
+<div class="ln o st" data-s="4">  misalignment                             (true: misalignment)   0.07 ms</div>
+<div class="ln o st dim" data-s="4">  ...</div>
+<div class="ln o st ok" data-s="4">8 of 8 rows correct</div>
+  </div></div>
+</section>
+
+<!-- CODE -->
+<section id="code">
+  <div class="chap">Step 8</div><h1>Use it in <em>your program</em></h1>
+  <div class="abs row" style="left:110px;top:260px;gap:24px;align-items:stretch">
+    <div class="card a st" data-s="0" style="width:550px"><h3 class="mono" style="font-size:28px">scale_inputs()</h3><p>real readings → 16 inputs 0..127, using the ranges stored in the model file</p></div>
+    <div class="card a st" data-s="0" style="width:550px"><h3 class="mono" style="font-size:28px">chip.infer()</h3><p>send the 16 inputs over UART, read 16 outputs back</p></div>
+    <div class="card a st" data-s="0" style="width:550px"><h3 class="mono" style="font-size:28px">decode()</h3><p>outputs → class name, or values in real units</p></div>
+  </div>
+  <div class="abs st" data-s="1" style="left:110px;top:500px;font:500 30px PM;color:var(--acc)">readings → scale → send → decode → decision</div>
+  <div class="abs card st" data-s="2" style="left:110px;top:580px;width:1090px"><p class="mono" style="font-size:24px;color:#fff;line-height:1.8">send:  A5 x0 … x15            <span style="color:var(--mut)">(17 bytes)</span><br>reply: 5A y0 … y15 argmax lat <span style="color:var(--mut)">(20 bytes)</span><br><span style="color:var(--mut)">any UART · 115200 baud · 8N1 · PC, STM32, ESP32, Arduino</span></p></div>
+  <div class="abs card w st" data-s="3" style="left:1240px;top:580px;width:570px"><h3 style="color:var(--warm)">Windows tip</h3><p>set the serial timeout once, never change it: each change resets the board's USB bridge</p></div>
+</section>
+
+<!-- OUTRO -->
+<section id="outro">
+  <div class="chap">Wrap up</div><h1>Clone · simulate · program · <em>train · test · run</em></h1>
+  <div class="abs st photo" data-s="1" style="left:110px;top:270px;width:1000px;height:659px;background-image:url(guide_page.jpg);background-position:top center"></div>
+  <div class="abs" style="left:1160px;top:280px;width:650px">
+    <div class="card st" data-s="1"><h3>The full guide</h3><p class="mono" style="font-size:21px;color:var(--acc)">kumarnitish378.github.io/NetSilcon<br>/docs/complete-guide/</p><p class="mono" style="font-size:21px">GUIDE.md in the repository</p></div>
+    <div class="card a st" data-s="2" style="margin-top:22px"><h3>Your turn</h3><p>train it on your own data · tell me in the comments what it learned to decide</p></div>
+    <div class="card st" data-s="3" style="margin-top:22px;text-align:center"><div style="font:700 44px SG">Subscribe</div><p>for the next build</p></div>
+  </div>
+</section>
+
+<div class="cap" id="cap"></div><div class="prog" id="prog"></div>
+<script>
+function show(id,step,cap,prog){document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id==id));
+ const sec=document.getElementById(id);sec.querySelectorAll('.st').forEach(e=>e.classList.toggle('vis',(+e.dataset.s)<=step));
+ const c=document.getElementById('cap');c.textContent=cap;c.style.display=cap?'block':'none';document.getElementById('prog').style.width=(prog*100)+'%';}
+window.show=show;
+</script></body></html>

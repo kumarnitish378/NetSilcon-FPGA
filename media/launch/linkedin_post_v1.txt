@@ -1,0 +1,33 @@
+My FPGA needs 31× fewer clock cycles than my laptop CPU.
+And my laptop still wins. Let me explain.
+
+NetSilcon started as one tiny neural network on a small FPGA board: 144 weights, an answer in 15 clock cycles.
+
+The question I kept getting: does the idea scale?
+
+Today I can answer it. Meet NetSilcon-64x6:
+
+→ 22,528 int8 weights on the same Tang Nano 20K board
+→ 448 clock cycles per decision. Every single time.
+→ 3,200 test vectors, bit-for-bit identical to the Python model
+→ Its first trained model drives a robot: 19,200 decisions with the real FPGA in the loop. 0 mismatches. 0 crashes.
+
+Now the honest part.
+My laptop runs at 4 GHz. The FPGA runs at 27 MHz. So the laptop finishes first.
+But it needs about 14,100 clock cycles. The FPGA needs 448.
+
+Cycles are what carry over to a real chip. And a chip is where NetSilcon is going.
+
+The idea hasn't changed:
+Fix the network's shape in hardware.
+Load the numbers.
+New job.
+
+The same small board has already been a motor-fault detector, an irrigation controller and a rover driver. Only the model file changed.
+
+Everything is open: Verilog, Python, the trained models and every hardware log.
+
+I want the next trained model to solve a real problem.
+What decision would you give it? Up to 16 sensor readings in. Tell me in the comments or message me.
+
+#FPGA #EdgeAI #TinyML #Verilog #EmbeddedSystems

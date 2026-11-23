@@ -1,2 +1,5 @@
-Specs, results and the clock-cycle comparison: https://kumarnitish378.github.io/NetSilcon/netsilcon-64x6/
-How a neural network on an FPGA works, step by step: https://kumarnitish378.github.io/NetSilcon/neural-network-on-fpga/
+Links, so the post stays readable:
+▶ Step-by-step tutorial (5 min): <add your YouTube tutorial link>
+▶ Full explainer (9 min): <add your YouTube explainer link>
+▶ How to train and run your own AI on FPGA: https://kumarnitish378.github.io/NetSilcon/ai-on-fpga/
+▶ Code, models and every hardware log: https://github.com/kumarnitish378/NetSilcon-FPGA

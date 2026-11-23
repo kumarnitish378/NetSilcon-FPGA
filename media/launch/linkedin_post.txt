@@ -1,33 +1,39 @@
-My FPGA needs 31× fewer clock cycles than my laptop CPU.
-And my laptop still wins. Let me explain.
+Most AI is software.
+I built mine as a circuit.
+It drove a virtual robot 19,200 times. Zero mistakes.
 
-NetSilcon started as one tiny neural network on a small FPGA board: 144 weights, an answer in 15 clock cycles.
+No processor runs it.
+Every answer takes exactly 448 clock cycles. Every single time.
 
-The question I kept getting: does the idea scale?
+I call it NetSilcon. It runs on a Tang Nano 20K FPGA board, smaller than a credit card.
 
-Today I can answer it. Meet NetSilcon-64x6:
+Software AI is one worker following instructions, one step at a time.
+NetSilcon is 64 neurons doing their maths in the same clock tick.
 
-→ 22,528 int8 weights on the same Tang Nano 20K board
-→ 448 clock cycles per decision. Every single time.
-→ 3,200 test vectors, bit-for-bit identical to the Python model
-→ Its first trained model drives a robot: 19,200 decisions with the real FPGA in the loop. 0 mismatches. 0 crashes.
+The robot test:
+The robot and its LiDAR live in a simulator on my PC.
+But every single driving decision came from the real FPGA.
+19,200 decisions, bit-for-bit identical to the Python model.
+8 drives. 0 crashes.
 
-Now the honest part.
-My laptop runs at 4 GHz. The FPGA runs at 27 MHz. So the laptop finishes first.
+What it is:
+→ 22,928 parameters, built into the logic
+→ 16 sensor readings in, 16 answers out
+→ a new model uploads in 2 seconds. No rebuild of the chip.
+
+The honest part: at 27 MHz, my 4 GHz laptop still answers first.
 But it needs about 14,100 clock cycles. The FPGA needs 448.
+31× fewer. And cycles are what carry over to a real chip.
 
-Cycles are what carry over to a real chip. And a chip is where NetSilcon is going.
-
-The idea hasn't changed:
+The idea is simple:
 Fix the network's shape in hardware.
 Load the numbers.
 New job.
 
-The same small board has already been a motor-fault detector, an irrigation controller and a rover driver. Only the model file changed.
+And now anyone can do it. Give it a CSV table, train a model in one command, run it on the board. All open source, with a step-by-step video.
 
-Everything is open: Verilog, Python, the trained models and every hardware log.
+So tell me:
+What decision would you put on a chip?
+Up to 16 sensor readings in. The best idea becomes the next trained model.
 
-I want the next trained model to solve a real problem.
-What decision would you give it? Up to 16 sensor readings in. Tell me in the comments or message me.
-
-#FPGA #EdgeAI #TinyML #Verilog #EmbeddedSystems
+#FPGA #EdgeAI #AI #Verilog #EmbeddedSystems

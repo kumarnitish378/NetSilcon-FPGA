@@ -1,0 +1,219 @@
+1
+00:00:00,500 --> 00:00:06,623
+In this tutorial, you'll go from an empty folder to your own AI model running on an FPGA.
+
+2
+00:00:06,933 --> 00:00:14,336
+We'll get the code, test it without any board, put it on a Tang Nano 20K, and then train a brand new model from a simple table.
+
+3
+00:00:14,633 --> 00:00:18,516
+Every output you see on screen is real, taken from actual runs.
+
+4
+00:00:18,800 --> 00:00:19,781
+Let's start.
+
+5
+00:00:20,533 --> 00:00:23,989
+Here's what you need. A PC with Windows, Linux or a Mac.
+
+6
+00:00:24,300 --> 00:00:28,225
+Python 3 with numpy, and Icarus Verilog for simulation.
+
+7
+00:00:28,533 --> 00:00:34,400
+For the hardware steps, a Sipeed Tang Nano 20K board, and the free Gowin EDA software.
+
+8
+00:00:34,700 --> 00:00:38,732
+And here's the good news. Until step five, you don't need the board at all.
+
+9
+00:00:39,467 --> 00:00:43,563
+Step one. Open a terminal, and clone the repository from GitHub.
+
+10
+00:00:43,867 --> 00:00:50,096
+On Linux or WSL, install Icarus Verilog and numpy with apt, and pyserial with pip.
+
+11
+00:00:50,400 --> 00:00:55,051
+Check it. Icarus prints its version, and Python imports numpy without any error.
+
+12
+00:00:55,800 --> 00:00:59,555
+Step two. Make sure the design works, before touching any hardware.
+
+13
+00:00:59,867 --> 00:01:07,803
+Go into the NetSilcon sixty-four by six folder, and generate the test models. You get exactly the same files every time.
+
+14
+00:01:08,100 --> 00:01:13,007
+Now run the engine simulation. This runs the real Verilog, on your PC.
+
+15
+00:01:13,300 --> 00:01:21,983
+Every answer is compared with the Python model, bit for bit. One thousand normal vectors, then two hundred extreme ones. Zero mismatches.
+
+16
+00:01:22,267 --> 00:01:29,093
+And every answer takes exactly four hundred and forty-eight clock cycles. You'll see the same number on the real board.
+
+17
+00:01:29,400 --> 00:01:31,981
+When you see RESULT PASS, the design is good.
+
+18
+00:01:32,733 --> 00:01:38,131
+Step three. Turn the Verilog into a bitstream for the FPGA, using Gowin EDA.
+
+19
+00:01:38,433 --> 00:01:44,940
+Create a new project, and pick the device shown on screen: the Gowin GW2AR eighteen.
+
+20
+00:01:45,233 --> 00:01:53,553
+Add the three files from the RTL folder, and the board files: the UART, the loader, the top level, the pin file, and the timing file.
+
+21
+00:01:53,867 --> 00:01:58,709
+Copy the thirty-two memory files next to the project. They hold the built-in model.
+
+22
+00:01:59,000 --> 00:02:02,307
+Set the top module, then synthesize, and place and route.
+
+23
+00:02:02,600 --> 00:02:09,747
+One trap to remember. Gowin compiles its own copies of your files. If you change a file in the repo, copy it again.
+
+24
+00:02:10,500 --> 00:02:14,319
+Step four. Program the board. Plug in the USB-C cable.
+
+25
+00:02:14,633 --> 00:02:19,028
+In the Gowin programmer, choose SRAM Program, and select the bitstream file.
+
+26
+00:02:19,333 --> 00:02:22,747
+When LED zero starts blinking, the network is alive.
+
+27
+00:02:23,033 --> 00:02:28,409
+SRAM programming is lost at power-off. So after unplugging, simply program it again.
+
+28
+00:02:29,167 --> 00:02:35,716
+Step five. Talk to the network from your PC. The board shows up as a serial port. Here, it's COM seven.
+
+29
+00:02:35,000 --> 00:02:42,485
+Ask which model is running. The chip answers with its model's CRC. It's the built-in synthetic model.
+
+30
+00:02:42,800 --> 00:02:50,416
+Now upload a model that is damaged on purpose, with one bit flipped. The chip refuses it, and keeps the old model running.
+
+31
+00:02:50,700 --> 00:02:55,969
+Upload the rover model properly. Twenty-three thousand bytes, loaded in about two seconds.
+
+32
+00:02:56,267 --> 00:03:04,309
+Then run the golden test. One thousand answers from the real FPGA, all identical to Python. Zero mismatches.
+
+33
+00:03:05,067 --> 00:03:14,027
+Now a real application, the rover. Your PC simulates a robot and its LiDAR, but every driving decision comes from the FPGA.
+
+34
+00:03:14,333 --> 00:03:20,285
+Nineteen thousand two hundred decisions. Zero mismatches. And in eight drives, zero crashes.
+
+35
+00:03:20,600 --> 00:03:25,251
+No board? Leave out the port, and the bit-exact Python model drives instead.
+
+36
+00:03:26,000 --> 00:03:29,072
+Step six. The exciting part. Train your own model.
+
+37
+00:03:29,367 --> 00:03:37,025
+All you need is a table. Each row is one moment. Up to sixteen columns of sensor readings, and one column with the answer.
+
+38
+00:03:37,333 --> 00:03:48,533
+For this demo, we'll make an example table: pump vibration, with four states. Normal, imbalance, misalignment, and a bearing fault. The data is synthetic, just to show the steps.
+
+39
+00:03:48,833 --> 00:03:53,889
+Now, one command. Train CSV, with the file, a name, and the target column.
+
+40
+00:03:54,200 --> 00:04:01,688
+It trains the network, converts it to integers that match the hardware exactly, and tests it on two thousand rows it never saw.
+
+41
+00:04:02,000 --> 00:04:11,003
+Ninety-five point two percent with the chip's integer maths, against ninety-five point five in floating point. The conversion cost almost nothing.
+
+42
+00:04:11,300 --> 00:04:18,639
+This table shows the mistakes. Some early imbalance looks like normal running. Better data fixes that, not a bigger chip.
+
+43
+00:04:19,400 --> 00:04:22,131
+Step seven. Test your model, level by level.
+
+44
+00:04:22,433 --> 00:04:27,553
+First, the Verilog simulation. Your new model goes into the real hardware design.
+
+45
+00:04:27,867 --> 00:04:33,691
+Twelve hundred answers, all identical to Python, at four hundred and forty-eight cycles each.
+
+46
+00:04:34,000 --> 00:04:38,693
+Next, upload it to the board with the load command, and run the golden test again.
+
+47
+00:04:39,000 --> 00:04:46,083
+Finally, use it. The app example takes real sensor values, and prints a decision. Eight rows, eight correct.
+
+48
+00:04:46,833 --> 00:04:50,972
+To use NetSilcon in your own program, you need only three small functions.
+
+49
+00:04:51,267 --> 00:04:54,211
+Scale the inputs. Send them. And decode the answer.
+
+50
+00:04:54,500 --> 00:05:02,116
+The protocol is tiny. Send A5 and sixteen bytes, and get twenty bytes back. Any microcontroller with a UART can do it.
+
+51
+00:05:02,400 --> 00:05:07,733
+One tip from experience. On Windows, set the serial timeout once, and never change it.
+
+52
+00:05:08,467 --> 00:05:12,797
+That's the whole path. Clone, simulate, program, train, test, and run.
+
+53
+00:05:13,100 --> 00:05:18,156
+Every command is in the guide, with its expected output. The link is in the description.
+
+54
+00:05:18,467 --> 00:05:23,117
+Try it with your own data, and tell me in the comments what your model learned to decide.
+
+55
+00:05:23,433 --> 00:05:26,036
+Thanks for watching, and see you in the next build.

@@ -112,6 +112,7 @@ python python/host/app_example.py --model models/pump_health/pump_health.json --
 
 | Model | What it does | Result | CRC-32 |
 |---|---|---|---|
+| [`models/maze/`](models/maze/) | maze driver from the same 16 LiDAR sectors → speed, steering; learned the right-hand rule | simulation: **72/80 unseen mazes solved, 0 crashes** (rover model 38/80); retrains byte-identical; Verilog 1,200 vectors bit-exact. Not run on hardware yet | CA0156C9 |
 | [`models/pump_health/`](models/pump_health/) | **example**: pump vibration health from 16 features → normal / imbalance / misalignment / bearing. Synthetic data, made by `example_pump_data.py` | int8 95.2 % on 2,000 held-out rows (float 95.5 %). Verilog 1,200 vectors bit-exact. Not run on hardware yet | 6579E12F |
 | [`models/rover/`](models/rover/) | rover obstacle avoidance from 16 LiDAR sectors → speed, steering | int8 89.8 % action agreement with teacher; simulation with supervisor + safety stop: 0/80 crashes, 0/80 stuck, 46.9 m; 40 unseen worlds 0 crashes, 37.9 m (6x4: 33.3 m). Verilog 1000/1000 bit-exact. **Hardware HIL: 19,200 inferences, 0 mismatches; 8 drives 0 crashes, 0 stuck** | 3A81C867 |
 
@@ -120,7 +121,7 @@ Activation statistics per layer: `fpga/gen/model_report.txt`.
 ## Layout
 
 ```
-models/      <application>/<application>.json + README (rover, synthetic, stress)
+models/      <application>/<application>.json + README (rover, maze, pump_health, synthetic, stress)
 fpga/
   rtl/       ns64_engine.v, ns64_requant.v, ns64_wram.v
   board/     tangnano20k_ns64.v (UART top), ns64_loader.v (CRC-32, two banks), ns_uart.v (from 6x4),
@@ -137,9 +138,10 @@ python/
   host/      ns64_host.py (PC tool: info, inference, upload, golden/random tests, logs),
              app_example.py (use a model in your own program, board or bit-exact Python)
   rover_sim/ rover64.py (16-sector rover simulator, teacher, HIL), eval_rover64.py
+  maze_sim/  maze_sim.py (mazes, right-hand teacher, drivers), train_maze.py, eval_maze.py
   bench/     bench.c, make_net_h.py (CPU cycle comparison)
 docs/        test_report.md, protocol.md, gowin_build.md, gowin_reports/
-results/     logs/ (every host-tool run), results_rover64.txt, results_hil64.txt, bench results
+results/     logs/ (every host-tool run), results_rover64.txt, results_maze64.txt, results_hil64.txt, bench results
 ```
 
 [Apache License 2.0](../../LICENSE). Copyright 2026 Nitish Kumar Sharma.

@@ -97,6 +97,9 @@ Trained rover controller (16 LiDAR sectors -> speed, steering; CRC-32 3A81C867; 
 agreement): simulation 0/80 crashes, 46.9 m avg; 40 unseen worlds 0 crashes, 37.9 m (6x4: 33.3 m);
 HIL 19,200 decisions, 0 mismatches, 8 drives 0 crashes 0 stuck. Supervisor and safety stop run on
 the PC. Details: `NetSilcon-64x6/docs/test_report.md`.
+Trained maze driver (same 16 inputs, right-hand rule; CRC-32 CA0156C9): simulation 72/80 unseen
+mazes solved, 0 crashes (rover model 38/80); Verilog 1,200 vectors bit-exact; not run on hardware yet.
+Details: `NetSilcon-64x6/models/maze/README.md`.
 
 ## 7. How to verify (no board needed)
 

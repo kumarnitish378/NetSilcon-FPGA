@@ -1,0 +1,7 @@
+Info: 	                 IOB:       9/    384     2%
+Info: 	                LUT4:    7046/  20736    33%
+Info: 	                 ALU:    2000/  15552    12%
+Info: 	                 DFF:    4640/  15552    29%
+Info: 	               BSRAM:      33/     46    71%
+Info: 	             MULT9X9:      64/     96    66%
+Info: Max frequency for clock 'u_lm.clk': 140.19 MHz (PASS at 27.00 MHz)

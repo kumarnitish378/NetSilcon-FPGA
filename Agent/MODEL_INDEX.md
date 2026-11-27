@@ -21,4 +21,10 @@ Every trained model in this repository. Parameters = weights + biases (the layer
 | Synthetic test model (built into the bitstream) | `models/synthetic/synthetic.json` | 6F4225BF | 1000 | 1,000 golden + 2,000 random vectors, 0 mismatches |
 | Stress test model (extreme weights and biases) | `models/stress/stress.json` | 732C18C9 | 200 | 200 vectors, 0 mismatches; proves the 24-bit accumulator |
 
+## NetSilcon-LM-0 (character language model: 32-char context -> next char, 42 symbols, 27,834 parameters)
+
+| Application | File | CRC-32 | Golden vectors | Result |
+|---|---|---|---|---|
+| Pump controller dialogue (synthetic corpus) | `models/pump/pump.json` (built into the bitstream) | 59993775 | 802 contexts + 14-question chat + UART test | int8 next-char 94.01 %; Verilog 802/802 bit-exact, chat 392/392 chars, UART 129/129 bytes. Not run on hardware yet |
+
 Each model folder's `README.md` has inputs, outputs, training method and full results.

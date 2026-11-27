@@ -1,0 +1,11 @@
+RESULT engine vectors=802 mismatches=0 latency=510..510 clocks PASS
+RESULT chat generated_chars=392 mismatches=0 clocks_per_char=511 PASS
+chat text == gen/chat_expected.txt (Python)
+>> q: hello.
+>> a: hello. how can i help?
+>> q: is the pump running?
+>> a: status: running.
+>> motor temp?
+>> a: the motor is at 20 degrees.
+>> 
+RESULT top uart bytes_received=129 expected=129 mismatches=0 PASS

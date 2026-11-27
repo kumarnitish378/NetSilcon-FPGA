@@ -24,6 +24,7 @@ website/                      git submodule: kumarnitish378/NetSilcon (Astro sta
 NetSilcon-Models/
   NetSilcon-6x4/              4 -> 6x4 -> 2 engine
   NetSilcon-64x6/             16 -> 64x6 -> 16 engine
+  NetSilcon-LM-0/             character language model (32-char context, 42 symbols) on the 64x6 datapath
 ```
 
 Every model folder has the same grouping (run all commands from inside the model folder):
@@ -101,6 +102,12 @@ Trained maze driver (same 16 inputs, right-hand rule; CRC-32 CA0156C9): simulati
 mazes solved, 0 crashes (rover model 38/80); Verilog 1,200 vectors bit-exact; not run on hardware yet.
 Details: `NetSilcon-64x6/models/maze/README.md`.
 
+**NetSilcon-LM-0:** char-level LM, 32-char context x 8-dim embedding -> 256 -> 64 -> 64 -> 64 -> 42, 27,834 params,
+CRC-32 59993775, synthetic pump dialogues. int8 test next-char accuracy 94.01 % (float 94.18 %). Icarus: 802
+vectors (42 logits + argmax) 0 mismatches; on-chip autoregressive conversation 392/392 chars = Python; UART top
+129/129 bytes; mutation 8/8; 510 clocks/char. yosys+nextpnr: LUT4 33 %, BSRAM 33/46, MULT9X9 64/96, 140 MHz.
+Not run on hardware, no Gowin EDA build yet. Details: `NetSilcon-LM-0/README.md`.
+
 ## 7. How to verify (no board needed)
 
 ```bash
@@ -127,6 +134,7 @@ python python/rover_sim/rover64.py --hil COM7 --unstick --runs 2
 
 ## 9. Plans
 
+- LM track: LM-0 on hardware, then LM-1 (command -> action + reply), LM-2 (sensor values as inputs).
 - Next: model storage in flash, SPI, supervisor and safety stop in FPGA logic, real sensors,
   STM32 measurement, faster clock with the PLL, more FPGA boards (when funded).
 - Working goal of the author: 2 new network architectures per month and 1 new trained model per

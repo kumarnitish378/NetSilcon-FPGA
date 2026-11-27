@@ -73,6 +73,15 @@ op-amp, which becomes an amplifier, a filter or a comparator depending on a few 
 | Applications run | motor fault, irrigation, rover (incl. hardware-in-the-loop) | rover controller (trained, 16 LiDAR sectors, incl. hardware-in-the-loop), pump-health example (synthetic data, simulation only), synthetic and stress test models |
 | Details | [README](NetSilcon-Models/NetSilcon-6x4/README.md), [benchmarks](NetSilcon-Models/NetSilcon-6x4/docs/benchmarks.md) | [README](NetSilcon-Models/NetSilcon-64x6/README.md), [test report](NetSilcon-Models/NetSilcon-64x6/docs/test_report.md) |
 
+### NetSilcon-LM-0: a language model on the FPGA
+
+[NetSilcon-LM-0](NetSilcon-Models/NetSilcon-LM-0/) is a 27,834-parameter character-level language model.
+It reads the last 32 characters and predicts the next one: 256 → 64 → 64 → 64 → 42, built on the 64x6 datapath.
+The FPGA generates whole answers by itself over UART (`q: is the pump running?` → `a: status: running.`).
+Measured in simulation: Verilog vs Python int8 bit-exact on 802 vectors, a 392-character conversation identical,
+mutation tests 8/8, 510 clocks per character. Open-source P&R for GW2AR-18: BSRAM 33/46, MULT9X9 64/96, LUT4 33 %.
+Training data is synthetic pump dialogues. Not run on the board or built in Gowin EDA yet.
+
 ### Shared by all models
 
 - **Neuron math:** `acc = bias + Σ x·w` (int8 × int8), ReLU on hidden layers,
@@ -126,6 +135,7 @@ website/                   the NetSilcon website (git submodule, kumarnitish378/
 NetSilcon-Models/
   NetSilcon-6x4/           4 → 6×4 → 2 engine
   NetSilcon-64x6/          16 → 64×6 → 16 engine
+  NetSilcon-LM-0/          character language model on the FPGA (32-char context -> next char)
 ```
 
 Every model folder is grouped the same way:

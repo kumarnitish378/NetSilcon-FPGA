@@ -1,0 +1,28 @@
+q: hello.
+a: hello. how can i help?
+q: is the pump running?
+a: status: running.
+q: what is the pressure?
+a: it is 2 bar now.
+q: flow rate?
+a: flow: 30 litres per minute.
+q: how full is the tank?
+a: tank level: 60 percent.
+q: motor temp?
+a: motor temperature: 27 degrees.
+q: start the pump.
+a: ok, starting the pump.
+q: stop the pump.
+a: ok, stopping the pump.
+q: any faults?
+a: all is ok.
+q: next run?
+a: i run at 5:15 every day.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: run time today?
+a: i ran for 10 hours today.
+q: is the pump working?
+a: stathe suas is stopped.

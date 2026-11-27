@@ -1,0 +1,3000 @@
+q: how long did you run today?
+a: i ran for 1 hours today.
+q: run time today?
+a: i ran for 3 hours today.
+q: what is the flow?
+a: the flow is 43 litres per minute.
+q: hello pump.
+a: good morning. the pump is stopped.
+q: why did you stop?
+a: all is ok.
+q: why did you stop?
+a: no faults. all is ok.
+q: motor temp?
+a: motor temperature: 49 degrees.
+q: is there a problem?
+a: all is ok.
+q: what is the flow?
+a: flow: 6 litres per minute.
+q: why did you stop?
+a: all is ok.
+q: tell me the pressure.
+a: it is 4 bar now.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: how long did you run today?
+a: i ran for 8 hours today.
+q: switch on the motor.
+a: ok, starting the pump.
+q: please stop.
+a: ok, the pump is off now.
+q: please stop.
+a: the pump is already stopped.
+q: how much water is flowing?
+a: the flow is 25 litres per minute.
+q: next run?
+a: i run at 7:45 every day.
+q: how much water is flowing?
+a: flow: 36 litres per minute.
+q: when do you run next?
+a: next run at 5:30 for 56 minutes.
+q: is the pump running?
+a: status: stopped.
+q: tank level?
+a: the tank is 75 percent full.
+q: pressure?
+a: the pressure is 3 bar.
+q: are you running?
+a: status: stopped.
+q: pump status?
+a: the pump is stopped.
+q: hello.
+a: hello. how can i help?
+q: is the pump running?
+a: yes, the pump is running.
+q: pump status?
+a: the pump is stopped.
+q: pressure?
+a: it is 6 bar now.
+q: start the pump.
+a: ok, starting the pump.
+q: is the pump running?
+a: the pump is running.
+q: hello.
+a: hi. ask me about the pump.
+q: pump status?
+a: the pump is running.
+q: next run?
+a: next run at 5:30 for 58 minutes.
+q: how much water is flowing?
+a: flow: 10 litres per minute.
+q: are you running?
+a: no, the pump is stopped.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: how much pressure?
+a: pressure: 3 bar.
+q: start the pump.
+a: ok, starting the pump.
+q: tank level?
+a: the tank is 4 percent full.
+q: turn off the pump.
+a: ok, stopping the pump.
+q: flow rate?
+a: the flow is 50 litres per minute.
+q: what is the schedule?
+a: i run at 6:30 every day.
+q: who are you?
+a: i am the pump controller.
+q: turn on the pump.
+a: ok, starting the pump.
+q: is the pump on?
+a: no, the pump is stopped.
+q: what is the pressure?
+a: the pressure is 2 bar.
+q: hello pump.
+a: hi. ask me about the pump.
+q: hello pump.
+a: hello. how can i help?
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: what is your status?
+a: status: running.
+q: turn on the pump.
+a: ok, starting the pump.
+q: please stop.
+a: ok, stopping the pump.
+q: what is your status?
+a: the pump is stopped.
+q: what is the motor temperature?
+a: motor temperature: 39 degrees.
+q: how full is the tank?
+a: tank level: 25 percent.
+q: hello pump.
+a: hi. ask me about the pump.
+q: next run?
+a: next run at 9:00 for 10 minutes.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: how much water is flowing?
+a: flow: 12 litres per minute.
+q: turn off the pump.
+a: ok, the pump is off now.
+q: pump status?
+a: yes, the pump is running.
+q: what is the schedule?
+a: next run at 7:45 for 23 minutes.
+q: hello pump.
+a: hello. how can i help?
+q: please stop.
+a: the pump is already stopped.
+q: how much pressure?
+a: pressure: 3 bar.
+q: switch off the motor.
+a: the pump is already stopped.
+q: tank level?
+a: the tank is 50 percent full.
+q: is the tank full?
+a: the tank is 70 percent full.
+q: how long did you run today?
+a: i ran for 10 hours today.
+q: pressure?
+a: pressure: 5 bar.
+q: who are you?
+a: i am the pump controller.
+q: tank level?
+a: tank level: 49 percent.
+q: why did you stop?
+a: no faults. all is ok.
+q: what is your name?
+a: i am the pump controller.
+q: how much water is flowing?
+a: flow: 50 litres per minute.
+q: pressure?
+a: pressure: 4 bar.
+q: is the motor hot?
+a: the motor is at 70 degrees.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: what is the pressure?
+a: pressure: 4 bar.
+q: is the tank full?
+a: tank level: 90 percent.
+q: why did you stop?
+a: no faults. all is ok.
+q: how long did you run today?
+a: i ran for 12 hours today.
+q: how much water is flowing?
+a: flow: 30 litres per minute.
+q: hello.
+a: hi. ask me about the pump.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: are you running?
+a: no, the pump is stopped.
+q: next run?
+a: next run at 8:15 for 16 minutes.
+q: what is the schedule?
+a: next run at 9:15 for 41 minutes.
+q: hello pump.
+a: hi. ask me about the pump.
+q: when do you run next?
+a: next run at 6:45 for 55 minutes.
+q: stop the pump.
+a: ok, the pump is off now.
+q: motor temp?
+a: motor temperature: 49 degrees.
+q: what is your status?
+a: the pump is running.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: who are you?
+a: i am the pump controller.
+q: switch on the motor.
+a: the pump is already running.
+q: is the tank full?
+a: the tank is 71 percent full.
+q: are you ok?
+a: all is ok.
+q: run time today?
+a: i ran for 11 hours today.
+q: how much pressure?
+a: the pressure is 4 bar.
+q: motor temp?
+a: motor temperature: 39 degrees.
+q: start the pump.
+a: ok, starting the pump.
+q: is there a problem?
+a: all is ok.
+q: tank level?
+a: tank level: 5 percent.
+q: why did you stop?
+a: no faults. all is ok.
+q: is the motor on?
+a: the pump is stopped.
+q: flow rate?
+a: the flow is 25 litres per minute.
+q: motor temp?
+a: motor temperature: 30 degrees.
+q: turn off the pump.
+a: the pump is already stopped.
+q: flow rate?
+a: the flow is 22 litres per minute.
+q: what is the flow?
+a: flow: 35 litres per minute.
+q: pressure?
+a: pressure: 2 bar.
+q: hello pump.
+a: hi. ask me about the pump.
+q: help.
+a: i can start, stop and report the pump.
+q: next run?
+a: i run at 9:30 every day.
+q: hello.
+a: hi. ask me about the pump.
+q: turn off the pump.
+a: ok, the pump is off now.
+q: motor temp?
+a: the motor is at 48 degrees.
+q: tell me the pressure.
+a: the pressure is 3 bar.
+q: pump status?
+a: no, the pump is stopped.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: is the motor hot?
+a: motor temperature: 35 degrees.
+q: turn off the pump.
+a: the pump is already stopped.
+q: stop the pump.
+a: ok, stopping the pump.
+q: what is the motor temperature?
+a: motor temperature: 36 degrees.
+q: pump status?
+a: yes, the pump is running.
+q: how much water is flowing?
+a: the flow is 51 litres per minute.
+q: is the motor hot?
+a: the motor is at 61 degrees.
+q: tell me the pressure.
+a: pressure: 1 bar.
+q: what is the pressure?
+a: pressure: 3 bar.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: are you running?
+a: the pump is running.
+q: how long did you run today?
+a: i ran for 6 hours today.
+q: are you ok?
+a: low voltage. please check the supply.
+q: turn off the pump.
+a: the pump is already stopped.
+q: stop the pump.
+a: ok, stopping the pump.
+q: what is the schedule?
+a: next run at 6:00 for 53 minutes.
+q: how full is the tank?
+a: tank level: 58 percent.
+q: what is the motor temperature?
+a: the motor is at 34 degrees.
+q: hello.
+a: hi. ask me about the pump.
+q: hello pump.
+a: hello. how can i help?
+q: turn off the pump.
+a: ok, stopping the pump.
+q: any faults?
+a: dry run detected. please check the water.
+q: any faults?
+a: no faults. all is ok.
+q: what is your status?
+a: the pump is running.
+q: flow rate?
+a: flow: 13 litres per minute.
+q: any faults?
+a: dry run detected. please check the water.
+q: what is the flow?
+a: the flow is 56 litres per minute.
+q: is the motor hot?
+a: motor temperature: 59 degrees.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: how long did you run today?
+a: i ran for 3 hours today.
+q: flow rate?
+a: flow: 24 litres per minute.
+q: how much pressure?
+a: pressure: 4 bar.
+q: any faults?
+a: low voltage. please check the supply.
+q: are you ok?
+a: high temperature. the motor needs rest.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: is there a problem?
+a: dry run detected. please check the water.
+q: when do you run next?
+a: i run at 5:15 every day.
+q: stop the pump.
+a: ok, stopping the pump.
+q: when do you run next?
+a: next run at 7:00 for 54 minutes.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: is the motor on?
+a: the pump is stopped.
+q: flow rate?
+a: flow: 15 litres per minute.
+q: any faults?
+a: low voltage. please check the supply.
+q: hello.
+a: hi. ask me about the pump.
+q: run time today?
+a: i ran for 2 hours today.
+q: is the pump on?
+a: the pump is stopped.
+q: are you ok?
+a: all is ok.
+q: what is the flow?
+a: the flow is 32 litres per minute.
+q: switch off the motor.
+a: the pump is already stopped.
+q: next run?
+a: i run at 7:15 every day.
+q: please stop.
+a: ok, the pump is off now.
+q: is the motor hot?
+a: motor temperature: 58 degrees.
+q: next run?
+a: next run at 9:15 for 53 minutes.
+q: how long did you run today?
+a: i ran for 5 hours today.
+q: how long did you run today?
+a: i ran for 1 hours today.
+q: pump status?
+a: status: stopped.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: are you running?
+a: the pump is stopped.
+q: pump status?
+a: status: stopped.
+q: what is the flow?
+a: flow: 14 litres per minute.
+q: hello pump.
+a: hi. ask me about the pump.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: tank level?
+a: tank level: 29 percent.
+q: help.
+a: i can start, stop and report the pump.
+q: what is the flow?
+a: flow: 40 litres per minute.
+q: tell me the pressure.
+a: pressure: 5 bar.
+q: switch off the motor.
+a: ok, the pump is off now.
+q: please start.
+a: ok, starting the pump.
+q: what is your status?
+a: status: running.
+q: what is your status?
+a: status: stopped.
+q: are you running?
+a: status: stopped.
+q: flow rate?
+a: the flow is 37 litres per minute.
+q: motor temp?
+a: the motor is at 53 degrees.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: are you running?
+a: yes, the pump is running.
+q: how much pressure?
+a: the pressure is 2 bar.
+q: when do you run next?
+a: next run at 6:30 for 58 minutes.
+q: pressure?
+a: the pressure is 4 bar.
+q: good morning.
+a: hi. ask me about the pump.
+q: why did you stop?
+a: high temperature. the motor needs rest.
+q: what is your status?
+a: the pump is stopped.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: good morning.
+a: hi. ask me about the pump.
+q: is there a problem?
+a: no faults. all is ok.
+q: start the pump.
+a: the pump is already running.
+q: any faults?
+a: no faults. all is ok.
+q: are you ok?
+a: low voltage. please check the supply.
+q: who are you?
+a: i am the pump controller.
+q: what is your status?
+a: status: stopped.
+q: hi.
+a: hi. ask me about the pump.
+q: how long did you run today?
+a: i ran for 1 hours today.
+q: what is the flow?
+a: flow: 30 litres per minute.
+q: what is the schedule?
+a: next run at 5:15 for 24 minutes.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: tank level?
+a: the tank is 74 percent full.
+q: are you ok?
+a: low voltage. please check the supply.
+q: tell me the pressure.
+a: the pressure is 2 bar.
+q: is the motor hot?
+a: the motor is at 23 degrees.
+q: switch off the motor.
+a: the pump is already stopped.
+q: when do you run next?
+a: i run at 6:30 every day.
+q: tell me the pressure.
+a: it is 6 bar now.
+q: switch off the motor.
+a: the pump is already stopped.
+q: please start.
+a: ok, starting the pump.
+q: hello.
+a: hi. ask me about the pump.
+q: are you running?
+a: the pump is stopped.
+q: what is your status?
+a: the pump is stopped.
+q: good morning.
+a: hello. how can i help?
+q: please stop.
+a: ok, the pump is off now.
+q: how much water is flowing?
+a: the flow is 40 litres per minute.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: hi.
+a: good morning. the pump is running.
+q: hello pump.
+a: hello. how can i help?
+q: switch off the motor.
+a: ok, stopping the pump.
+q: run time today?
+a: i ran for 7 hours today.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: how much water is flowing?
+a: the flow is 47 litres per minute.
+q: turn off the pump.
+a: ok, the pump is off now.
+q: motor temp?
+a: motor temperature: 56 degrees.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: start the pump.
+a: ok, starting the pump.
+q: is the pump running?
+a: the pump is running.
+q: motor temp?
+a: the motor is at 66 degrees.
+q: what is the motor temperature?
+a: motor temperature: 70 degrees.
+q: what is the flow?
+a: the flow is 33 litres per minute.
+q: tank level?
+a: the tank is 63 percent full.
+q: switch on the motor.
+a: ok, starting the pump.
+q: hi.
+a: hello. how can i help?
+q: motor temp?
+a: motor temperature: 30 degrees.
+q: switch on the motor.
+a: ok, the pump is on now.
+q: what is your status?
+a: no, the pump is stopped.
+q: flow rate?
+a: the flow is 28 litres per minute.
+q: is there a problem?
+a: dry run detected. please check the water.
+q: flow rate?
+a: the flow is 30 litres per minute.
+q: tell me the pressure.
+a: pressure: 1 bar.
+q: hi.
+a: good morning. the pump is stopped.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: what is the schedule?
+a: next run at 5:15 for 23 minutes.
+q: are you running?
+a: status: running.
+q: tell me the pressure.
+a: it is 3 bar now.
+q: pump status?
+a: no, the pump is stopped.
+q: when do you run next?
+a: next run at 7:45 for 34 minutes.
+q: tell me the pressure.
+a: it is 2 bar now.
+q: what is the pressure?
+a: it is 4 bar now.
+q: how full is the tank?
+a: the tank is 36 percent full.
+q: how much pressure?
+a: pressure: 2 bar.
+q: run time today?
+a: i ran for 1 hours today.
+q: is the pump on?
+a: yes, the pump is running.
+q: motor temp?
+a: the motor is at 60 degrees.
+q: what is the pressure?
+a: pressure: 2 bar.
+q: pump status?
+a: yes, the pump is running.
+q: how long did you run today?
+a: i ran for 12 hours today.
+q: turn on the pump.
+a: the pump is already running.
+q: is the pump running?
+a: the pump is stopped.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: help.
+a: i can start, stop and report the pump.
+q: please stop.
+a: the pump is already stopped.
+q: hi.
+a: good morning. the pump is running.
+q: how long did you run today?
+a: i ran for 2 hours today.
+q: how long did you run today?
+a: i ran for 12 hours today.
+q: who are you?
+a: i am the pump controller.
+q: how much water is flowing?
+a: the flow is 41 litres per minute.
+q: is the pump on?
+a: status: stopped.
+q: start the pump.
+a: the pump is already running.
+q: please stop.
+a: ok, stopping the pump.
+q: is the motor on?
+a: no, the pump is stopped.
+q: turn on the pump.
+a: the pump is already running.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: what is the schedule?
+a: next run at 9:15 for 22 minutes.
+q: is the motor hot?
+a: the motor is at 28 degrees.
+q: switch off the motor.
+a: ok, the pump is off now.
+q: flow rate?
+a: the flow is 8 litres per minute.
+q: what is the schedule?
+a: next run at 5:30 for 32 minutes.
+q: what is the flow?
+a: the flow is 7 litres per minute.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: is the motor on?
+a: the pump is running.
+q: stop the pump.
+a: ok, stopping the pump.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: is the pump on?
+a: the pump is running.
+q: how long did you run today?
+a: i ran for 3 hours today.
+q: tank level?
+a: tank level: 32 percent.
+q: switch on the motor.
+a: the pump is already running.
+q: please start.
+a: ok, the pump is on now.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: switch off the motor.
+a: the pump is already stopped.
+q: what is the schedule?
+a: i run at 5:30 every day.
+q: run time today?
+a: i ran for 9 hours today.
+q: tank level?
+a: tank level: 20 percent.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: is there a problem?
+a: all is ok.
+q: how long did you run today?
+a: i ran for 3 hours today.
+q: turn off the pump.
+a: ok, stopping the pump.
+q: hi.
+a: hello. how can i help?
+q: any faults?
+a: low voltage. please check the supply.
+q: please start.
+a: ok, starting the pump.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: what is the flow?
+a: flow: 41 litres per minute.
+q: what is the schedule?
+a: i run at 7:15 every day.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: flow rate?
+a: flow: 40 litres per minute.
+q: hello.
+a: hi. ask me about the pump.
+q: stop the pump.
+a: ok, stopping the pump.
+q: help.
+a: i can start, stop and report the pump.
+q: what is the tank level?
+a: the tank is 6 percent full.
+q: flow rate?
+a: flow: 16 litres per minute.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: tell me the pressure.
+a: the pressure is 1 bar.
+q: next run?
+a: next run at 6:00 for 11 minutes.
+q: hello pump.
+a: hi. ask me about the pump.
+q: what is your name?
+a: i am the pump controller.
+q: is the pump on?
+a: no, the pump is stopped.
+q: how long did you run today?
+a: i ran for 9 hours today.
+q: how full is the tank?
+a: the tank is 32 percent full.
+q: pump status?
+a: the pump is stopped.
+q: hi.
+a: hi. ask me about the pump.
+q: how much water is flowing?
+a: flow: 15 litres per minute.
+q: what is your status?
+a: the pump is stopped.
+q: what is the schedule?
+a: next run at 6:00 for 23 minutes.
+q: what is the pressure?
+a: the pressure is 5 bar.
+q: next run?
+a: next run at 6:15 for 28 minutes.
+q: what is the flow?
+a: the flow is 45 litres per minute.
+q: is the motor hot?
+a: the motor is at 51 degrees.
+q: please start.
+a: ok, starting the pump.
+q: run time today?
+a: i ran for 10 hours today.
+q: what is the tank level?
+a: the tank is 69 percent full.
+q: are you running?
+a: status: stopped.
+q: what is the schedule?
+a: i run at 9:30 every day.
+q: start the pump.
+a: ok, starting the pump.
+q: how much water is flowing?
+a: the flow is 44 litres per minute.
+q: what is your status?
+a: yes, the pump is running.
+q: pressure?
+a: pressure: 4 bar.
+q: hi.
+a: hi. ask me about the pump.
+q: pump status?
+a: the pump is stopped.
+q: how much pressure?
+a: pressure: 2 bar.
+q: is the motor on?
+a: no, the pump is stopped.
+q: what is the flow?
+a: flow: 23 litres per minute.
+q: who are you?
+a: i am the pump controller.
+q: is the pump running?
+a: yes, the pump is running.
+q: are you running?
+a: status: running.
+q: start the pump.
+a: ok, starting the pump.
+q: how long did you run today?
+a: i ran for 4 hours today.
+q: help.
+a: i can start, stop and report the pump.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: when do you run next?
+a: next run at 5:15 for 53 minutes.
+q: hello pump.
+a: hi. ask me about the pump.
+q: next run?
+a: next run at 5:15 for 54 minutes.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: flow rate?
+a: flow: 10 litres per minute.
+q: pump status?
+a: status: stopped.
+q: run time today?
+a: i ran for 6 hours today.
+q: flow rate?
+a: flow: 17 litres per minute.
+q: please start.
+a: ok, starting the pump.
+q: switch on the motor.
+a: ok, starting the pump.
+q: start the pump.
+a: ok, the pump is on now.
+q: please stop.
+a: ok, the pump is off now.
+q: turn on the pump.
+a: ok, starting the pump.
+q: what is the flow?
+a: the flow is 60 litres per minute.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: what is the schedule?
+a: next run at 5:15 for 55 minutes.
+q: how much water is flowing?
+a: flow: 7 litres per minute.
+q: how long did you run today?
+a: i ran for 3 hours today.
+q: what is the motor temperature?
+a: motor temperature: 63 degrees.
+q: next run?
+a: next run at 6:00 for 36 minutes.
+q: flow rate?
+a: the flow is 54 litres per minute.
+q: run time today?
+a: i ran for 4 hours today.
+q: help.
+a: i can start, stop and report the pump.
+q: is the pump running?
+a: the pump is stopped.
+q: is there a problem?
+a: low voltage. please check the supply.
+q: turn off the pump.
+a: ok, stopping the pump.
+q: what is the pressure?
+a: it is 6 bar now.
+q: what is the motor temperature?
+a: motor temperature: 66 degrees.
+q: please start.
+a: ok, starting the pump.
+q: how much water is flowing?
+a: flow: 14 litres per minute.
+q: is the pump on?
+a: status: stopped.
+q: what is the motor temperature?
+a: motor temperature: 23 degrees.
+q: what is the pressure?
+a: it is 6 bar now.
+q: pump status?
+a: no, the pump is stopped.
+q: flow rate?
+a: flow: 11 litres per minute.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: next run?
+a: i run at 5:00 every day.
+q: run time today?
+a: i ran for 10 hours today.
+q: pump status?
+a: yes, the pump is running.
+q: how much pressure?
+a: the pressure is 5 bar.
+q: run time today?
+a: i ran for 2 hours today.
+q: what is the motor temperature?
+a: motor temperature: 23 degrees.
+q: tank level?
+a: tank level: 23 percent.
+q: why did you stop?
+a: high temperature. the motor needs rest.
+q: are you ok?
+a: low voltage. please check the supply.
+q: are you running?
+a: no, the pump is stopped.
+q: is there a problem?
+a: no faults. all is ok.
+q: stop the pump.
+a: ok, the pump is off now.
+q: what is the schedule?
+a: i run at 7:45 every day.
+q: motor temp?
+a: the motor is at 60 degrees.
+q: is the pump running?
+a: no, the pump is stopped.
+q: how full is the tank?
+a: tank level: 91 percent.
+q: is the motor on?
+a: the pump is stopped.
+q: turn on the pump.
+a: ok, the pump is on now.
+q: is the tank full?
+a: tank level: 77 percent.
+q: what is the tank level?
+a: the tank is 23 percent full.
+q: flow rate?
+a: flow: 16 litres per minute.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: is the pump running?
+a: no, the pump is stopped.
+q: hello.
+a: hi. ask me about the pump.
+q: is the tank full?
+a: the tank is 25 percent full.
+q: switch on the motor.
+a: ok, the pump is on now.
+q: turn off the pump.
+a: ok, the pump is off now.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: flow rate?
+a: flow: 45 litres per minute.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: what is the tank level?
+a: the tank is 38 percent full.
+q: hello pump.
+a: hello. how can i help?
+q: how long did you run today?
+a: i ran for 3 hours today.
+q: who are you?
+a: i am the pump controller.
+q: hello.
+a: hello. how can i help?
+q: are you ok?
+a: high temperature. the motor needs rest.
+q: pressure?
+a: the pressure is 2 bar.
+q: switch off the motor.
+a: ok, the pump is off now.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: what is your name?
+a: i am the pump controller.
+q: flow rate?
+a: flow: 43 litres per minute.
+q: how much pressure?
+a: it is 3 bar now.
+q: hello.
+a: hello. how can i help?
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: please start.
+a: ok, starting the pump.
+q: hi.
+a: good morning. the pump is stopped.
+q: what is the schedule?
+a: i run at 6:00 every day.
+q: is there a problem?
+a: no faults. all is ok.
+q: good morning.
+a: hello. how can i help?
+q: next run?
+a: next run at 9:30 for 36 minutes.
+q: hello.
+a: good morning. the pump is stopped.
+q: what is your name?
+a: i am the pump controller.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: are you running?
+a: yes, the pump is running.
+q: pump status?
+a: yes, the pump is running.
+q: start the pump.
+a: ok, starting the pump.
+q: turn on the pump.
+a: the pump is already running.
+q: flow rate?
+a: the flow is 57 litres per minute.
+q: how long did you run today?
+a: i ran for 9 hours today.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: please stop.
+a: ok, the pump is off now.
+q: please stop.
+a: ok, stopping the pump.
+q: is there a problem?
+a: high temperature. the motor needs rest.
+q: what is the flow?
+a: the flow is 58 litres per minute.
+q: help.
+a: i can start, stop and report the pump.
+q: how full is the tank?
+a: tank level: 84 percent.
+q: hello pump.
+a: hello. how can i help?
+q: is the motor hot?
+a: the motor is at 53 degrees.
+q: are you ok?
+a: all is ok.
+q: help.
+a: i can start, stop and report the pump.
+q: who are you?
+a: i am the pump controller.
+q: stop the pump.
+a: ok, stopping the pump.
+q: help.
+a: i can start, stop and report the pump.
+q: good morning.
+a: good morning. the pump is running.
+q: hello pump.
+a: good morning. the pump is running.
+q: turn on the pump.
+a: ok, starting the pump.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: are you running?
+a: yes, the pump is running.
+q: how long did you run today?
+a: i ran for 8 hours today.
+q: what is the pressure?
+a: pressure: 1 bar.
+q: how much pressure?
+a: the pressure is 2 bar.
+q: pressure?
+a: it is 2 bar now.
+q: what is the motor temperature?
+a: motor temperature: 22 degrees.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: what is your status?
+a: status: running.
+q: pressure?
+a: it is 5 bar now.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: please start.
+a: ok, the pump is on now.
+q: is the pump on?
+a: status: stopped.
+q: motor temp?
+a: the motor is at 21 degrees.
+q: is the pump on?
+a: the pump is stopped.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: who are you?
+a: i am the pump controller.
+q: switch off the motor.
+a: ok, the pump is off now.
+q: switch off the motor.
+a: the pump is already stopped.
+q: when do you run next?
+a: next run at 7:45 for 29 minutes.
+q: how long did you run today?
+a: i ran for 7 hours today.
+q: how full is the tank?
+a: the tank is 99 percent full.
+q: how much pressure?
+a: it is 3 bar now.
+q: pump status?
+a: status: stopped.
+q: is the pump on?
+a: status: running.
+q: flow rate?
+a: the flow is 5 litres per minute.
+q: please start.
+a: ok, starting the pump.
+q: hello pump.
+a: hello. how can i help?
+q: what is the schedule?
+a: i run at 5:15 every day.
+q: what is your name?
+a: i am the pump controller.
+q: next run?
+a: i run at 8:30 every day.
+q: how long did you run today?
+a: i ran for 4 hours today.
+q: are you ok?
+a: all is ok.
+q: how much pressure?
+a: pressure: 6 bar.
+q: stop the pump.
+a: ok, stopping the pump.
+q: is the motor hot?
+a: the motor is at 65 degrees.
+q: how full is the tank?
+a: tank level: 18 percent.
+q: start the pump.
+a: the pump is already running.
+q: is the tank full?
+a: the tank is 40 percent full.
+q: how full is the tank?
+a: tank level: 8 percent.
+q: how long did you run today?
+a: i ran for 11 hours today.
+q: why did you stop?
+a: all is ok.
+q: start the pump.
+a: ok, the pump is on now.
+q: is the pump on?
+a: no, the pump is stopped.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: any faults?
+a: high temperature. the motor needs rest.
+q: how long did you run today?
+a: i ran for 3 hours today.
+q: turn off the pump.
+a: the pump is already stopped.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: flow rate?
+a: the flow is 21 litres per minute.
+q: next run?
+a: next run at 7:30 for 34 minutes.
+q: good morning.
+a: hello. how can i help?
+q: pump status?
+a: the pump is running.
+q: is there a problem?
+a: low voltage. please check the supply.
+q: hello pump.
+a: hello. how can i help?
+q: are you ok?
+a: high temperature. the motor needs rest.
+q: is the motor hot?
+a: motor temperature: 69 degrees.
+q: what is the schedule?
+a: i run at 7:30 every day.
+q: what is the tank level?
+a: tank level: 82 percent.
+q: what is your name?
+a: i am the pump controller.
+q: hi.
+a: hi. ask me about the pump.
+q: motor temp?
+a: the motor is at 55 degrees.
+q: is the tank full?
+a: tank level: 87 percent.
+q: why did you stop?
+a: high temperature. the motor needs rest.
+q: what is the schedule?
+a: i run at 9:00 every day.
+q: hello.
+a: hello. how can i help?
+q: turn on the pump.
+a: ok, the pump is on now.
+q: please stop.
+a: ok, the pump is off now.
+q: motor temp?
+a: the motor is at 45 degrees.
+q: hello pump.
+a: hello. how can i help?
+q: run time today?
+a: i ran for 4 hours today.
+q: how long did you run today?
+a: i ran for 10 hours today.
+q: turn on the pump.
+a: the pump is already running.
+q: tell me the pressure.
+a: pressure: 5 bar.
+q: switch on the motor.
+a: ok, the pump is on now.
+q: is the pump on?
+a: status: running.
+q: how full is the tank?
+a: the tank is 37 percent full.
+q: pump status?
+a: the pump is stopped.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: how long did you run today?
+a: i ran for 3 hours today.
+q: stop the pump.
+a: ok, stopping the pump.
+q: please start.
+a: ok, the pump is on now.
+q: is there a problem?
+a: all is ok.
+q: is the motor on?
+a: no, the pump is stopped.
+q: how much water is flowing?
+a: flow: 5 litres per minute.
+q: what is the schedule?
+a: i run at 6:00 every day.
+q: switch off the motor.
+a: ok, the pump is off now.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: any faults?
+a: dry run detected. please check the water.
+q: switch on the motor.
+a: ok, the pump is on now.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: are you running?
+a: the pump is running.
+q: please start.
+a: ok, starting the pump.
+q: is there a problem?
+a: high temperature. the motor needs rest.
+q: when do you run next?
+a: next run at 5:30 for 47 minutes.
+q: next run?
+a: next run at 6:45 for 27 minutes.
+q: what is the schedule?
+a: i run at 7:00 every day.
+q: is there a problem?
+a: dry run detected. please check the water.
+q: turn off the pump.
+a: ok, stopping the pump.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: pump status?
+a: the pump is stopped.
+q: hello pump.
+a: good morning. the pump is running.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: next run?
+a: i run at 8:15 every day.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: run time today?
+a: i ran for 12 hours today.
+q: hello.
+a: good morning. the pump is stopped.
+q: what is the pressure?
+a: the pressure is 1 bar.
+q: what is the pressure?
+a: pressure: 5 bar.
+q: is the pump running?
+a: the pump is stopped.
+q: hi.
+a: hi. ask me about the pump.
+q: is the tank full?
+a: the tank is 30 percent full.
+q: motor temp?
+a: motor temperature: 35 degrees.
+q: turn on the pump.
+a: ok, starting the pump.
+q: switch on the motor.
+a: ok, the pump is on now.
+q: switch on the motor.
+a: ok, starting the pump.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: is the pump running?
+a: yes, the pump is running.
+q: hi.
+a: hello. how can i help?
+q: hello.
+a: hi. ask me about the pump.
+q: what is your status?
+a: the pump is stopped.
+q: flow rate?
+a: the flow is 58 litres per minute.
+q: is the tank full?
+a: the tank is 60 percent full.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: switch on the motor.
+a: ok, starting the pump.
+q: how much pressure?
+a: pressure: 1 bar.
+q: what is the pressure?
+a: it is 5 bar now.
+q: pressure?
+a: it is 3 bar now.
+q: what is the schedule?
+a: i run at 5:15 every day.
+q: next run?
+a: next run at 6:15 for 35 minutes.
+q: run time today?
+a: i ran for 7 hours today.
+q: is the tank full?
+a: tank level: 91 percent.
+q: please start.
+a: ok, the pump is on now.
+q: hello.
+a: good morning. the pump is stopped.
+q: is the tank full?
+a: the tank is 34 percent full.
+q: when do you run next?
+a: i run at 8:15 every day.
+q: pump status?
+a: status: stopped.
+q: pump status?
+a: the pump is running.
+q: what is your status?
+a: status: running.
+q: are you running?
+a: no, the pump is stopped.
+q: run time today?
+a: i ran for 3 hours today.
+q: next run?
+a: i run at 7:00 every day.
+q: what is your status?
+a: no, the pump is stopped.
+q: how long did you run today?
+a: i ran for 7 hours today.
+q: is the motor hot?
+a: motor temperature: 47 degrees.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: stop the pump.
+a: the pump is already stopped.
+q: flow rate?
+a: flow: 8 litres per minute.
+q: motor temp?
+a: motor temperature: 23 degrees.
+q: turn on the pump.
+a: ok, starting the pump.
+q: what is the flow?
+a: the flow is 53 litres per minute.
+q: good morning.
+a: hello. how can i help?
+q: how long did you run today?
+a: i ran for 1 hours today.
+q: why did you stop?
+a: high temperature. the motor needs rest.
+q: please start.
+a: ok, the pump is on now.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: how long did you run today?
+a: i ran for 6 hours today.
+q: what is the schedule?
+a: i run at 7:15 every day.
+q: hi.
+a: hi. ask me about the pump.
+q: motor temp?
+a: motor temperature: 58 degrees.
+q: how long did you run today?
+a: i ran for 6 hours today.
+q: hello pump.
+a: hi. ask me about the pump.
+q: pump status?
+a: no, the pump is stopped.
+q: who are you?
+a: i am the pump controller.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: when do you run next?
+a: i run at 8:00 every day.
+q: what is the flow?
+a: the flow is 15 litres per minute.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: when do you run next?
+a: i run at 9:00 every day.
+q: hi.
+a: hi. ask me about the pump.
+q: is the motor hot?
+a: the motor is at 59 degrees.
+q: how long did you run today?
+a: i ran for 5 hours today.
+q: when do you run next?
+a: i run at 9:45 every day.
+q: who are you?
+a: i am the pump controller.
+q: good morning.
+a: hello. how can i help?
+q: tank level?
+a: tank level: 34 percent.
+q: start the pump.
+a: ok, starting the pump.
+q: tell me the pressure.
+a: pressure: 3 bar.
+q: run time today?
+a: i ran for 1 hours today.
+q: start the pump.
+a: the pump is already running.
+q: pressure?
+a: it is 3 bar now.
+q: who are you?
+a: i am the pump controller.
+q: is the tank full?
+a: tank level: 31 percent.
+q: turn on the pump.
+a: ok, starting the pump.
+q: are you running?
+a: no, the pump is stopped.
+q: start the pump.
+a: the pump is already running.
+q: how much pressure?
+a: the pressure is 2 bar.
+q: please start.
+a: ok, starting the pump.
+q: how much water is flowing?
+a: flow: 58 litres per minute.
+q: switch on the motor.
+a: ok, the pump is on now.
+q: who are you?
+a: i am the pump controller.
+q: flow rate?
+a: the flow is 45 litres per minute.
+q: please stop.
+a: the pump is already stopped.
+q: help.
+a: i can start, stop and report the pump.
+q: tell me the pressure.
+a: the pressure is 4 bar.
+q: please stop.
+a: ok, the pump is off now.
+q: what is your status?
+a: status: running.
+q: pump status?
+a: the pump is stopped.
+q: how full is the tank?
+a: the tank is 21 percent full.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: is the tank full?
+a: tank level: 68 percent.
+q: what is the flow?
+a: flow: 45 litres per minute.
+q: next run?
+a: i run at 5:00 every day.
+q: hello pump.
+a: hi. ask me about the pump.
+q: when do you run next?
+a: next run at 5:15 for 60 minutes.
+q: turn off the pump.
+a: the pump is already stopped.
+q: hello.
+a: hi. ask me about the pump.
+q: next run?
+a: next run at 9:30 for 14 minutes.
+q: switch on the motor.
+a: ok, starting the pump.
+q: next run?
+a: next run at 8:00 for 36 minutes.
+q: run time today?
+a: i ran for 8 hours today.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: why did you stop?
+a: dry run detected. please check the water.
+q: is the motor hot?
+a: motor temperature: 33 degrees.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: switch on the motor.
+a: the pump is already running.
+q: start the pump.
+a: ok, starting the pump.
+q: how full is the tank?
+a: tank level: 85 percent.
+q: switch on the motor.
+a: ok, the pump is on now.
+q: motor temp?
+a: the motor is at 74 degrees.
+q: is the pump on?
+a: status: stopped.
+q: motor temp?
+a: the motor is at 60 degrees.
+q: is the pump on?
+a: the pump is stopped.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: hello.
+a: hello. how can i help?
+q: why did you stop?
+a: no faults. all is ok.
+q: pump status?
+a: the pump is running.
+q: motor temp?
+a: the motor is at 33 degrees.
+q: how long did you run today?
+a: i ran for 2 hours today.
+q: run time today?
+a: i ran for 3 hours today.
+q: is the tank full?
+a: the tank is 50 percent full.
+q: is the motor hot?
+a: motor temperature: 22 degrees.
+q: hello pump.
+a: good morning. the pump is running.
+q: stop the pump.
+a: ok, stopping the pump.
+q: what is your name?
+a: i am the pump controller.
+q: is the pump running?
+a: status: running.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: is the tank full?
+a: the tank is 31 percent full.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: what is your status?
+a: status: running.
+q: how long did you run today?
+a: i ran for 5 hours today.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: pump status?
+a: status: stopped.
+q: flow rate?
+a: flow: 46 litres per minute.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: start the pump.
+a: ok, starting the pump.
+q: pump status?
+a: status: running.
+q: what is the pressure?
+a: the pressure is 2 bar.
+q: what is the schedule?
+a: next run at 8:15 for 47 minutes.
+q: next run?
+a: next run at 9:15 for 55 minutes.
+q: motor temp?
+a: motor temperature: 65 degrees.
+q: how long did you run today?
+a: i ran for 7 hours today.
+q: what is the pressure?
+a: pressure: 3 bar.
+q: switch off the motor.
+a: ok, the pump is off now.
+q: what is the motor temperature?
+a: motor temperature: 75 degrees.
+q: is the motor hot?
+a: motor temperature: 58 degrees.
+q: run time today?
+a: i ran for 7 hours today.
+q: what is the schedule?
+a: next run at 9:45 for 23 minutes.
+q: is the pump on?
+a: status: stopped.
+q: is there a problem?
+a: dry run detected. please check the water.
+q: why did you stop?
+a: all is ok.
+q: what is the motor temperature?
+a: the motor is at 71 degrees.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: why did you stop?
+a: all is ok.
+q: run time today?
+a: i ran for 5 hours today.
+q: is the tank full?
+a: tank level: 60 percent.
+q: is the pump running?
+a: the pump is running.
+q: any faults?
+a: all is ok.
+q: turn off the pump.
+a: ok, stopping the pump.
+q: is the pump running?
+a: yes, the pump is running.
+q: what is the pressure?
+a: it is 4 bar now.
+q: are you ok?
+a: low voltage. please check the supply.
+q: turn on the pump.
+a: ok, the pump is on now.
+q: hello pump.
+a: hello. how can i help?
+q: is the pump on?
+a: the pump is running.
+q: what is your status?
+a: yes, the pump is running.
+q: pump status?
+a: status: running.
+q: what is the tank level?
+a: tank level: 93 percent.
+q: pressure?
+a: the pressure is 1 bar.
+q: flow rate?
+a: flow: 6 litres per minute.
+q: what is your name?
+a: i am the pump controller.
+q: is there a problem?
+a: dry run detected. please check the water.
+q: is the pump running?
+a: yes, the pump is running.
+q: pump status?
+a: yes, the pump is running.
+q: what is the motor temperature?
+a: motor temperature: 53 degrees.
+q: tank level?
+a: tank level: 1 percent.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: flow rate?
+a: flow: 8 litres per minute.
+q: what is the flow?
+a: flow: 9 litres per minute.
+q: please stop.
+a: the pump is already stopped.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: is the pump on?
+a: the pump is running.
+q: is the pump on?
+a: status: running.
+q: when do you run next?
+a: next run at 9:45 for 40 minutes.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: what is the motor temperature?
+a: motor temperature: 49 degrees.
+q: please stop.
+a: the pump is already stopped.
+q: good morning.
+a: hello. how can i help?
+q: is the motor on?
+a: the pump is running.
+q: hello.
+a: good morning. the pump is stopped.
+q: what is your name?
+a: i am the pump controller.
+q: is the motor on?
+a: the pump is running.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: how full is the tank?
+a: tank level: 6 percent.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: how full is the tank?
+a: the tank is 87 percent full.
+q: is the motor on?
+a: the pump is running.
+q: are you ok?
+a: dry run detected. please check the water.
+q: tell me the pressure.
+a: the pressure is 1 bar.
+q: how much pressure?
+a: it is 4 bar now.
+q: tank level?
+a: tank level: 12 percent.
+q: run time today?
+a: i ran for 9 hours today.
+q: start the pump.
+a: ok, the pump is on now.
+q: tank level?
+a: the tank is 0 percent full.
+q: how much water is flowing?
+a: the flow is 5 litres per minute.
+q: please start.
+a: ok, starting the pump.
+q: is the pump on?
+a: no, the pump is stopped.
+q: is the tank full?
+a: tank level: 0 percent.
+q: is there a problem?
+a: high temperature. the motor needs rest.
+q: switch off the motor.
+a: ok, the pump is off now.
+q: start the pump.
+a: the pump is already running.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: is the pump on?
+a: status: stopped.
+q: why did you stop?
+a: all is ok.
+q: why did you stop?
+a: no faults. all is ok.
+q: run time today?
+a: i ran for 2 hours today.
+q: please stop.
+a: ok, stopping the pump.
+q: tell me the pressure.
+a: pressure: 4 bar.
+q: hi.
+a: good morning. the pump is stopped.
+q: next run?
+a: i run at 9:00 every day.
+q: what is the tank level?
+a: tank level: 0 percent.
+q: how long did you run today?
+a: i ran for 3 hours today.
+q: what is the tank level?
+a: tank level: 89 percent.
+q: why did you stop?
+a: no faults. all is ok.
+q: please start.
+a: the pump is already running.
+q: when do you run next?
+a: i run at 6:15 every day.
+q: motor temp?
+a: the motor is at 33 degrees.
+q: flow rate?
+a: flow: 13 litres per minute.
+q: switch on the motor.
+a: ok, the pump is on now.
+q: is the motor hot?
+a: motor temperature: 34 degrees.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: hello.
+a: hello. how can i help?
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: pressure?
+a: the pressure is 5 bar.
+q: why did you stop?
+a: low voltage. please check the supply.
+q: how much pressure?
+a: pressure: 5 bar.
+q: what is the motor temperature?
+a: the motor is at 64 degrees.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: motor temp?
+a: the motor is at 45 degrees.
+q: please stop.
+a: ok, the pump is off now.
+q: switch off the motor.
+a: ok, the pump is off now.
+q: is there a problem?
+a: dry run detected. please check the water.
+q: how long did you run today?
+a: i ran for 12 hours today.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: run time today?
+a: i ran for 4 hours today.
+q: tank level?
+a: tank level: 59 percent.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: stop the pump.
+a: ok, the pump is off now.
+q: stop the pump.
+a: ok, stopping the pump.
+q: are you ok?
+a: all is ok.
+q: pump status?
+a: no, the pump is stopped.
+q: how long did you run today?
+a: i ran for 2 hours today.
+q: is the motor on?
+a: the pump is running.
+q: switch on the motor.
+a: ok, starting the pump.
+q: motor temp?
+a: motor temperature: 22 degrees.
+q: is there a problem?
+a: no faults. all is ok.
+q: is the motor on?
+a: status: stopped.
+q: run time today?
+a: i ran for 4 hours today.
+q: is the motor hot?
+a: motor temperature: 49 degrees.
+q: when do you run next?
+a: i run at 5:45 every day.
+q: why did you stop?
+a: no faults. all is ok.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: what is the schedule?
+a: next run at 7:00 for 17 minutes.
+q: hello pump.
+a: hello. how can i help?
+q: how long did you run today?
+a: i ran for 7 hours today.
+q: what is the tank level?
+a: the tank is 79 percent full.
+q: what is the schedule?
+a: i run at 7:15 every day.
+q: hello.
+a: good morning. the pump is running.
+q: are you running?
+a: yes, the pump is running.
+q: flow rate?
+a: the flow is 22 litres per minute.
+q: are you running?
+a: yes, the pump is running.
+q: good morning.
+a: good morning. the pump is stopped.
+q: is there a problem?
+a: no faults. all is ok.
+q: how long did you run today?
+a: i ran for 8 hours today.
+q: good morning.
+a: hello. how can i help?
+q: how long did you run today?
+a: i ran for 4 hours today.
+q: stop the pump.
+a: ok, the pump is off now.
+q: switch off the motor.
+a: ok, the pump is off now.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: motor temp?
+a: the motor is at 35 degrees.
+q: are you ok?
+a: dry run detected. please check the water.
+q: help.
+a: i can start, stop and report the pump.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: pressure?
+a: it is 1 bar now.
+q: good morning.
+a: hello. how can i help?
+q: is the pump on?
+a: the pump is running.
+q: how long did you run today?
+a: i ran for 12 hours today.
+q: pump status?
+a: no, the pump is stopped.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: pressure?
+a: pressure: 2 bar.
+q: pump status?
+a: no, the pump is stopped.
+q: run time today?
+a: i ran for 4 hours today.
+q: how full is the tank?
+a: tank level: 93 percent.
+q: are you ok?
+a: low voltage. please check the supply.
+q: how full is the tank?
+a: the tank is 6 percent full.
+q: next run?
+a: i run at 5:15 every day.
+q: run time today?
+a: i ran for 7 hours today.
+q: is the pump on?
+a: the pump is stopped.
+q: is the pump on?
+a: the pump is running.
+q: how long did you run today?
+a: i ran for 12 hours today.
+q: start the pump.
+a: ok, the pump is on now.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: what is the tank level?
+a: tank level: 90 percent.
+q: how much pressure?
+a: the pressure is 1 bar.
+q: is the tank full?
+a: tank level: 25 percent.
+q: good morning.
+a: good morning. the pump is running.
+q: please start.
+a: ok, starting the pump.
+q: switch off the motor.
+a: the pump is already stopped.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: are you running?
+a: no, the pump is stopped.
+q: is the pump running?
+a: no, the pump is stopped.
+q: what is the motor temperature?
+a: motor temperature: 43 degrees.
+q: pump status?
+a: the pump is running.
+q: what is your name?
+a: i am the pump controller.
+q: is the pump running?
+a: the pump is stopped.
+q: hi.
+a: hi. ask me about the pump.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: are you running?
+a: status: stopped.
+q: what is the pressure?
+a: it is 3 bar now.
+q: is the motor hot?
+a: motor temperature: 57 degrees.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: pressure?
+a: it is 6 bar now.
+q: run time today?
+a: i ran for 1 hours today.
+q: help.
+a: i can start, stop and report the pump.
+q: hello pump.
+a: hello. how can i help?
+q: how long did you run today?
+a: i ran for 5 hours today.
+q: please stop.
+a: the pump is already stopped.
+q: run time today?
+a: i ran for 9 hours today.
+q: tank level?
+a: tank level: 46 percent.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: what is the pressure?
+a: pressure: 2 bar.
+q: is the motor on?
+a: the pump is running.
+q: is the pump on?
+a: status: running.
+q: are you running?
+a: the pump is running.
+q: is the motor hot?
+a: motor temperature: 33 degrees.
+q: how full is the tank?
+a: the tank is 41 percent full.
+q: motor temp?
+a: the motor is at 51 degrees.
+q: what is the flow?
+a: the flow is 48 litres per minute.
+q: how full is the tank?
+a: tank level: 61 percent.
+q: how long did you run today?
+a: i ran for 2 hours today.
+q: help.
+a: i can start, stop and report the pump.
+q: next run?
+a: next run at 7:30 for 32 minutes.
+q: what is the flow?
+a: the flow is 55 litres per minute.
+q: switch on the motor.
+a: ok, the pump is on now.
+q: is the tank full?
+a: the tank is 28 percent full.
+q: is the motor on?
+a: status: stopped.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: are you running?
+a: the pump is running.
+q: what is the flow?
+a: flow: 29 litres per minute.
+q: pressure?
+a: it is 3 bar now.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: good morning.
+a: hi. ask me about the pump.
+q: hi.
+a: hello. how can i help?
+q: good morning.
+a: hi. ask me about the pump.
+q: what is the flow?
+a: flow: 5 litres per minute.
+q: run time today?
+a: i ran for 5 hours today.
+q: how long did you run today?
+a: i ran for 7 hours today.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: what is the schedule?
+a: i run at 6:45 every day.
+q: hello pump.
+a: good morning. the pump is running.
+q: what is the motor temperature?
+a: the motor is at 75 degrees.
+q: help.
+a: i can start, stop and report the pump.
+q: is the motor on?
+a: the pump is stopped.
+q: motor temp?
+a: motor temperature: 45 degrees.
+q: what is your status?
+a: no, the pump is stopped.
+q: turn off the pump.
+a: ok, the pump is off now.
+q: are you ok?
+a: all is ok.
+q: please start.
+a: ok, the pump is on now.
+q: what is the schedule?
+a: i run at 8:15 every day.
+q: are you ok?
+a: low voltage. please check the supply.
+q: is the motor hot?
+a: the motor is at 35 degrees.
+q: is the pump running?
+a: the pump is stopped.
+q: tell me the pressure.
+a: the pressure is 2 bar.
+q: what is the tank level?
+a: the tank is 43 percent full.
+q: run time today?
+a: i ran for 2 hours today.
+q: how much water is flowing?
+a: the flow is 22 litres per minute.
+q: what is the flow?
+a: the flow is 53 litres per minute.
+q: how much pressure?
+a: pressure: 2 bar.
+q: what is the pressure?
+a: it is 6 bar now.
+q: motor temp?
+a: motor temperature: 53 degrees.
+q: what is the pressure?
+a: pressure: 2 bar.
+q: how much water is flowing?
+a: flow: 19 litres per minute.
+q: flow rate?
+a: the flow is 36 litres per minute.
+q: what is your status?
+a: status: stopped.
+q: motor temp?
+a: motor temperature: 33 degrees.
+q: is the motor on?
+a: no, the pump is stopped.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: what is your name?
+a: i am the pump controller.
+q: motor temp?
+a: motor temperature: 25 degrees.
+q: what is the motor temperature?
+a: the motor is at 69 degrees.
+q: what is your name?
+a: i am the pump controller.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: what is the tank level?
+a: the tank is 69 percent full.
+q: is the pump on?
+a: status: stopped.
+q: run time today?
+a: i ran for 1 hours today.
+q: what is the tank level?
+a: the tank is 6 percent full.
+q: switch off the motor.
+a: the pump is already stopped.
+q: is the tank full?
+a: tank level: 94 percent.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: hello.
+a: hello. how can i help?
+q: turn on the pump.
+a: the pump is already running.
+q: how much water is flowing?
+a: flow: 30 litres per minute.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: how much pressure?
+a: the pressure is 5 bar.
+q: is the motor on?
+a: the pump is stopped.
+q: next run?
+a: i run at 6:00 every day.
+q: what is the pressure?
+a: it is 1 bar now.
+q: is the pump running?
+a: the pump is stopped.
+q: start the pump.
+a: the pump is already running.
+q: help.
+a: i can start, stop and report the pump.
+q: how much water is flowing?
+a: the flow is 20 litres per minute.
+q: how much water is flowing?
+a: flow: 13 litres per minute.
+q: hi.
+a: hello. how can i help?
+q: turn on the pump.
+a: ok, starting the pump.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: help.
+a: i can start, stop and report the pump.
+q: tell me the pressure.
+a: pressure: 3 bar.
+q: is the tank full?
+a: tank level: 16 percent.
+q: what is the motor temperature?
+a: motor temperature: 54 degrees.
+q: any faults?
+a: all is ok.
+q: what is your status?
+a: status: running.
+q: how much water is flowing?
+a: the flow is 26 litres per minute.
+q: when do you run next?
+a: i run at 8:45 every day.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: how long did you run today?
+a: i ran for 10 hours today.
+q: what is the motor temperature?
+a: motor temperature: 23 degrees.
+q: tell me the pressure.
+a: the pressure is 4 bar.
+q: hello pump.
+a: hello. how can i help?
+q: how much pressure?
+a: pressure: 6 bar.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: motor temp?
+a: motor temperature: 31 degrees.
+q: what is the tank level?
+a: the tank is 19 percent full.
+q: next run?
+a: i run at 7:45 every day.
+q: any faults?
+a: all is ok.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: good morning.
+a: hello. how can i help?
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: pump status?
+a: status: stopped.
+q: is the motor on?
+a: yes, the pump is running.
+q: pressure?
+a: it is 2 bar now.
+q: is there a problem?
+a: no faults. all is ok.
+q: are you ok?
+a: all is ok.
+q: what is the schedule?
+a: next run at 5:45 for 12 minutes.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: who are you?
+a: i am the pump controller.
+q: pump status?
+a: the pump is stopped.
+q: switch on the motor.
+a: ok, starting the pump.
+q: is the pump on?
+a: status: running.
+q: is there a problem?
+a: no faults. all is ok.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: when do you run next?
+a: next run at 5:45 for 19 minutes.
+q: what is your status?
+a: the pump is running.
+q: is there a problem?
+a: no faults. all is ok.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: what is the schedule?
+a: i run at 5:30 every day.
+q: when do you run next?
+a: i run at 8:00 every day.
+q: please start.
+a: ok, the pump is on now.
+q: how long did you run today?
+a: i ran for 10 hours today.
+q: tell me the pressure.
+a: the pressure is 6 bar.
+q: flow rate?
+a: flow: 36 litres per minute.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: how long did you run today?
+a: i ran for 4 hours today.
+q: hi.
+a: good morning. the pump is stopped.
+q: hello.
+a: good morning. the pump is running.
+q: please start.
+a: the pump is already running.
+q: tell me the pressure.
+a: pressure: 2 bar.
+q: tell me the pressure.
+a: it is 1 bar now.
+q: run time today?
+a: i ran for 5 hours today.
+q: help.
+a: i can start, stop and report the pump.
+q: why did you stop?
+a: low voltage. please check the supply.
+q: are you ok?
+a: no faults. all is ok.
+q: is the pump on?
+a: status: stopped.
+q: why did you stop?
+a: no faults. all is ok.
+q: what is the flow?
+a: flow: 50 litres per minute.
+q: tank level?
+a: the tank is 45 percent full.
+q: is the pump on?
+a: the pump is stopped.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: next run?
+a: next run at 6:45 for 43 minutes.
+q: please stop.
+a: the pump is already stopped.
+q: how much pressure?
+a: pressure: 4 bar.
+q: good morning.
+a: good morning. the pump is stopped.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: tell me the pressure.
+a: it is 6 bar now.
+q: are you ok?
+a: high temperature. the motor needs rest.
+q: help.
+a: i can start, stop and report the pump.
+q: stop the pump.
+a: ok, stopping the pump.
+q: hello.
+a: good morning. the pump is stopped.
+q: turn off the pump.
+a: ok, stopping the pump.
+q: is the motor hot?
+a: motor temperature: 28 degrees.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: any faults?
+a: dry run detected. please check the water.
+q: any faults?
+a: low voltage. please check the supply.
+q: is the motor hot?
+a: motor temperature: 53 degrees.
+q: how full is the tank?
+a: tank level: 18 percent.
+q: are you ok?
+a: all is ok.
+q: turn on the pump.
+a: the pump is already running.
+q: how long did you run today?
+a: i ran for 8 hours today.
+q: are you running?
+a: no, the pump is stopped.
+q: is the motor hot?
+a: motor temperature: 32 degrees.
+q: what is the motor temperature?
+a: motor temperature: 23 degrees.
+q: tank level?
+a: the tank is 32 percent full.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: stop the pump.
+a: ok, stopping the pump.
+q: tank level?
+a: the tank is 94 percent full.
+q: hi.
+a: hi. ask me about the pump.
+q: flow rate?
+a: the flow is 52 litres per minute.
+q: how full is the tank?
+a: tank level: 4 percent.
+q: is the motor hot?
+a: the motor is at 59 degrees.
+q: help.
+a: i can start, stop and report the pump.
+q: next run?
+a: i run at 5:30 every day.
+q: are you ok?
+a: low voltage. please check the supply.
+q: when do you run next?
+a: i run at 9:30 every day.
+q: are you ok?
+a: no faults. all is ok.
+q: next run?
+a: i run at 8:15 every day.
+q: is the motor on?
+a: status: stopped.
+q: what is the tank level?
+a: tank level: 96 percent.
+q: hello.
+a: good morning. the pump is running.
+q: turn on the pump.
+a: the pump is already running.
+q: is there a problem?
+a: no faults. all is ok.
+q: what is the schedule?
+a: next run at 5:45 for 58 minutes.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: is the pump on?
+a: status: running.
+q: is the motor on?
+a: the pump is stopped.
+q: is the motor on?
+a: status: stopped.
+q: who are you?
+a: i am the pump controller.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: flow rate?
+a: the flow is 10 litres per minute.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: turn off the pump.
+a: ok, stopping the pump.
+q: motor temp?
+a: motor temperature: 42 degrees.
+q: run time today?
+a: i ran for 6 hours today.
+q: pressure?
+a: it is 1 bar now.
+q: is the pump running?
+a: status: stopped.
+q: is the pump running?
+a: status: running.
+q: motor temp?
+a: the motor is at 48 degrees.
+q: stop the pump.
+a: the pump is already stopped.
+q: run time today?
+a: i ran for 5 hours today.
+q: tank level?
+a: the tank is 24 percent full.
+q: why did you stop?
+a: high temperature. the motor needs rest.
+q: next run?
+a: next run at 7:00 for 51 minutes.
+q: how much pressure?
+a: pressure: 6 bar.
+q: is the pump on?
+a: the pump is stopped.
+q: are you running?
+a: yes, the pump is running.
+q: next run?
+a: next run at 8:45 for 51 minutes.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: tank level?
+a: tank level: 31 percent.
+q: why did you stop?
+a: high temperature. the motor needs rest.
+q: what is the tank level?
+a: tank level: 1 percent.
+q: are you ok?
+a: all is ok.
+q: what is the motor temperature?
+a: motor temperature: 48 degrees.
+q: when do you run next?
+a: i run at 5:30 every day.
+q: stop the pump.
+a: ok, the pump is off now.
+q: start the pump.
+a: ok, starting the pump.
+q: stop the pump.
+a: ok, the pump is off now.
+q: flow rate?
+a: flow: 28 litres per minute.
+q: flow rate?
+a: the flow is 48 litres per minute.
+q: is the pump running?
+a: status: stopped.
+q: pressure?
+a: it is 3 bar now.
+q: any faults?
+a: no faults. all is ok.
+q: tank level?
+a: tank level: 65 percent.
+q: what can i ask?
+a: i can start, stop and report the pump.
+q: what is your status?
+a: yes, the pump is running.
+q: run time today?
+a: i ran for 4 hours today.
+q: what is the pressure?
+a: pressure: 2 bar.
+q: when do you run next?
+a: next run at 7:45 for 50 minutes.
+q: turn on the pump.
+a: ok, the pump is on now.
+q: when do you run next?
+a: i run at 8:45 every day.
+q: is the tank full?
+a: tank level: 72 percent.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: next run?
+a: next run at 9:30 for 51 minutes.
+q: any faults?
+a: high temperature. the motor needs rest.
+q: is there a problem?
+a: low voltage. please check the supply.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: pressure?
+a: the pressure is 6 bar.
+q: what is the pressure?
+a: it is 3 bar now.
+q: hello pump.
+a: hi. ask me about the pump.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: what is your name?
+a: i am the pump controller.
+q: is the motor on?
+a: yes, the pump is running.
+q: is the tank full?
+a: tank level: 2 percent.
+q: what is your status?
+a: yes, the pump is running.
+q: is the motor on?
+a: the pump is stopped.
+q: what is your name?
+a: i am the pump controller.
+q: how much water is flowing?
+a: flow: 49 litres per minute.
+q: stop the pump.
+a: ok, stopping the pump.
+q: switch on the motor.
+a: ok, the pump is on now.
+q: is the motor hot?
+a: the motor is at 63 degrees.
+q: what is your name?
+a: i am the pump controller.
+q: how much water is flowing?
+a: the flow is 60 litres per minute.
+q: motor temp?
+a: motor temperature: 26 degrees.
+q: who are you?
+a: i am the pump controller.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: are you running?
+a: status: running.
+q: how much water is flowing?
+a: the flow is 11 litres per minute.
+q: hello.
+a: hi. ask me about the pump.
+q: what is your status?
+a: no, the pump is stopped.
+q: what is the pressure?
+a: the pressure is 2 bar.
+q: how much water is flowing?
+a: the flow is 34 litres per minute.
+q: please stop.
+a: the pump is already stopped.
+q: is the tank full?
+a: tank level: 51 percent.
+q: are you running?
+a: status: stopped.
+q: hi.
+a: hi. ask me about the pump.
+q: when do you run next?
+a: i run at 9:15 every day.
+q: what is the motor temperature?
+a: motor temperature: 20 degrees.
+q: is there a problem?
+a: no faults. all is ok.
+q: how much water is flowing?
+a: flow: 22 litres per minute.
+q: motor temp?
+a: motor temperature: 20 degrees.
+q: turn on the pump.
+a: ok, starting the pump.
+q: what is the flow?
+a: the flow is 39 litres per minute.
+q: why did you stop?
+a: all is ok.
+q: is the pump on?
+a: yes, the pump is running.
+q: turn on the pump.
+a: ok, the pump is on now.
+q: hello pump.
+a: hi. ask me about the pump.
+q: please stop.
+a: ok, stopping the pump.
+q: stop the pump.
+a: ok, the pump is off now.
+q: run time today?
+a: i ran for 4 hours today.
+q: turn on the pump.
+a: ok, starting the pump.
+q: is the pump running?
+a: the pump is running.
+q: please stop.
+a: ok, stopping the pump.
+q: what is the pressure?
+a: pressure: 4 bar.
+q: turn on the pump.
+a: ok, the pump is on now.
+q: help.
+a: i can start, stop and report the pump.
+q: who are you?
+a: i am the pump controller.
+q: motor temp?
+a: motor temperature: 22 degrees.
+q: good morning.
+a: hello. how can i help?
+q: who are you?
+a: i am the pump controller.
+q: what is your status?
+a: no, the pump is stopped.
+q: flow rate?
+a: the flow is 31 litres per minute.
+q: turn on the pump.
+a: ok, starting the pump.
+q: is the motor hot?
+a: the motor is at 26 degrees.
+q: how much pressure?
+a: pressure: 2 bar.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: please stop.
+a: ok, stopping the pump.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: is there a problem?
+a: all is ok.
+q: tank level?
+a: tank level: 98 percent.
+q: any faults?
+a: dry run detected. please check the water.
+q: next run?
+a: next run at 6:15 for 58 minutes.
+q: is the pump on?
+a: status: running.
+q: when do you run next?
+a: i run at 7:15 every day.
+q: are you running?
+a: no, the pump is stopped.
+q: is the pump on?
+a: the pump is stopped.
+q: start the pump.
+a: ok, the pump is on now.
+q: motor temp?
+a: the motor is at 22 degrees.
+q: hello.
+a: hi. ask me about the pump.
+q: any faults?
+a: all is ok.
+q: turn off the pump.
+a: ok, stopping the pump.
+q: tank level?
+a: the tank is 80 percent full.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: run time today?
+a: i ran for 5 hours today.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: what is the schedule?
+a: next run at 8:45 for 13 minutes.
+q: is the motor hot?
+a: the motor is at 42 degrees.
+q: are you ok?
+a: all is ok.
+q: are you running?
+a: yes, the pump is running.
+q: what can you do?
+a: ask me about pressure, flow, tank and faults.
+q: next run?
+a: next run at 7:15 for 20 minutes.
+q: flow rate?
+a: the flow is 16 litres per minute.
+q: hello pump.
+a: hello. how can i help?
+q: help.
+a: i can start, stop and report the pump.
+q: what is the pressure?
+a: it is 1 bar now.
+q: is the pump on?
+a: yes, the pump is running.
+q: switch on the motor.
+a: the pump is already running.
+q: is the pump running?
+a: the pump is stopped.
+q: why did you stop?
+a: low voltage. please check the supply.
+q: help.
+a: i can start, stop and report the pump.
+q: are you ok?
+a: low voltage. please check the supply.
+q: motor temp?
+a: motor temperature: 62 degrees.
+q: what is your status?
+a: no, the pump is stopped.
+q: pump status?
+a: status: stopped.
+q: are you running?
+a: no, the pump is stopped.
+q: switch on the motor.
+a: ok, starting the pump.
+q: flow rate?
+a: the flow is 58 litres per minute.
+q: switch on the motor.
+a: the pump is already running.
+q: are you running?
+a: yes, the pump is running.
+q: what is your name?
+a: i am the pump controller.
+q: any faults?
+a: all is ok.
+q: please stop.
+a: ok, the pump is off now.
+q: switch off the motor.
+a: ok, the pump is off now.
+q: are you ok?
+a: high temperature. the motor needs rest.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: please start.
+a: ok, the pump is on now.
+q: what is the schedule?
+a: next run at 7:15 for 33 minutes.
+q: is the motor hot?
+a: motor temperature: 72 degrees.
+q: tank level?
+a: the tank is 70 percent full.
+q: what is the tank level?
+a: tank level: 53 percent.
+q: what is your name?
+a: i am the pump controller.
+q: how much pressure?
+a: it is 1 bar now.
+q: hi.
+a: good morning. the pump is stopped.
+q: hello.
+a: good morning. the pump is running.
+q: hi.
+a: hi. ask me about the pump.
+q: is the motor on?
+a: the pump is stopped.
+q: is the motor hot?
+a: motor temperature: 30 degrees.
+q: start the pump.
+a: ok, the pump is on now.
+q: run time today?
+a: i ran for 5 hours today.
+q: is there a problem?
+a: high temperature. the motor needs rest.
+q: tell me the pressure.
+a: it is 5 bar now.
+q: what is the flow?
+a: the flow is 51 litres per minute.
+q: what is your name?
+a: i am the pump controller.
+q: tank level?
+a: the tank is 38 percent full.
+q: tank level?
+a: tank level: 23 percent.
+q: is there a problem?
+a: low voltage. please check the supply.
+q: motor temp?
+a: motor temperature: 57 degrees.
+q: start the pump.
+a: ok, starting the pump.
+q: run time today?
+a: i ran for 10 hours today.
+q: is the tank full?
+a: the tank is 74 percent full.
+q: is the motor hot?
+a: motor temperature: 43 degrees.
+q: is the motor hot?
+a: motor temperature: 30 degrees.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: tank level?
+a: the tank is 78 percent full.
+q: what is your name?
+a: i am the pump controller.
+q: start the pump.
+a: ok, the pump is on now.
+q: is the motor on?
+a: no, the pump is stopped.
+q: switch on the motor.
+a: ok, the pump is on now.
+q: tank level?
+a: tank level: 72 percent.
+q: who are you?
+a: i am the pump controller.
+q: what is the tank level?
+a: the tank is 99 percent full.
+q: motor temp?
+a: the motor is at 55 degrees.
+q: flow rate?
+a: the flow is 51 litres per minute.
+q: is the motor on?
+a: the pump is stopped.
+q: what is your status?
+a: yes, the pump is running.
+q: how long did you run today?
+a: i ran for 9 hours today.
+q: is the motor on?
+a: yes, the pump is running.
+q: switch on the motor.
+a: the pump is already running.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: what is the flow?
+a: the flow is 29 litres per minute.
+q: what is the flow?
+a: flow: 7 litres per minute.
+q: any faults?
+a: all is ok.
+q: switch off the motor.
+a: the pump is already stopped.
+q: is the pump running?
+a: status: running.
+q: hello pump.
+a: hello. how can i help?
+q: turn on the pump.
+a: ok, starting the pump.
+q: what is your status?
+a: no, the pump is stopped.
+q: motor temp?
+a: motor temperature: 20 degrees.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: what is the flow?
+a: the flow is 49 litres per minute.
+q: what is the schedule?
+a: i run at 6:30 every day.
+q: switch on the motor.
+a: ok, starting the pump.
+q: is there a problem?
+a: low voltage. please check the supply.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: hello.
+a: hi. ask me about the pump.
+q: hello pump.
+a: good morning. the pump is stopped.
+q: how long did you run today?
+a: i ran for 12 hours today.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: how full is the tank?
+a: the tank is 88 percent full.
+q: hi.
+a: hello. how can i help?
+q: how full is the tank?
+a: tank level: 68 percent.
+q: next run?
+a: i run at 7:00 every day.
+q: tank level?
+a: tank level: 96 percent.
+q: run time today?
+a: i ran for 2 hours today.
+q: is the pump on?
+a: yes, the pump is running.
+q: is the tank full?
+a: tank level: 53 percent.
+q: run time today?
+a: i ran for 1 hours today.
+q: are you ok?
+a: low voltage. please check the supply.
+q: what is the pressure?
+a: the pressure is 3 bar.
+q: switch on the motor.
+a: ok, starting the pump.
+q: what is the tank level?
+a: the tank is 80 percent full.
+q: run time today?
+a: i ran for 3 hours today.
+q: how long did you run today?
+a: i ran for 9 hours today.
+q: is the motor hot?
+a: the motor is at 29 degrees.
+q: pump status?
+a: status: running.
+q: who are you?
+a: i am the pump controller.
+q: pump status?
+a: yes, the pump is running.
+q: run time today?
+a: i ran for 4 hours today.
+q: what is the pressure?
+a: it is 1 bar now.
+q: how much pressure?
+a: pressure: 1 bar.
+q: how long did you run today?
+a: i ran for 12 hours today.
+q: how much water is flowing?
+a: flow: 36 litres per minute.
+q: are you running?
+a: status: running.
+q: what is the flow?
+a: the flow is 9 litres per minute.
+q: is the motor on?
+a: status: stopped.
+q: is the tank full?
+a: tank level: 22 percent.
+q: is there a problem?
+a: dry run detected. please check the water.
+q: please stop.
+a: ok, stopping the pump.
+q: is the motor on?
+a: status: stopped.
+q: what is the tank level?
+a: the tank is 39 percent full.
+q: good morning.
+a: hello. how can i help?
+q: pump status?
+a: the pump is stopped.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: what is your status?
+a: the pump is running.
+q: hello.
+a: hi. ask me about the pump.
+q: flow rate?
+a: flow: 29 litres per minute.
+q: run time today?
+a: i ran for 11 hours today.
+q: how full is the tank?
+a: tank level: 57 percent.
+q: flow rate?
+a: the flow is 32 litres per minute.
+q: what is the flow?
+a: the flow is 30 litres per minute.
+q: run time today?
+a: i ran for 6 hours today.
+q: what is the flow?
+a: flow: 53 litres per minute.
+q: hello.
+a: hi. ask me about the pump.
+q: when do you run next?
+a: i run at 5:15 every day.
+q: how full is the tank?
+a: the tank is 72 percent full.
+q: how long did you run today?
+a: i ran for 12 hours today.
+q: how much water is flowing?
+a: flow: 11 litres per minute.
+q: flow rate?
+a: flow: 22 litres per minute.
+q: hi.
+a: good morning. the pump is running.
+q: please stop.
+a: ok, stopping the pump.
+q: hello.
+a: good morning. the pump is stopped.
+q: run time today?
+a: i ran for 1 hours today.
+q: are you running?
+a: status: running.
+q: how full is the tank?
+a: the tank is 15 percent full.
+q: when do you run next?
+a: i run at 8:45 every day.
+q: what is the schedule?
+a: i run at 5:30 every day.
+q: motor temp?
+a: the motor is at 20 degrees.
+q: is the motor on?
+a: no, the pump is stopped.
+q: good morning.
+a: good morning. the pump is stopped.
+q: hello.
+a: hello. how can i help?
+q: what is the pressure?
+a: pressure: 2 bar.
+q: how full is the tank?
+a: the tank is 37 percent full.
+q: who are you?
+a: i am the pump controller.
+q: what is your name?
+a: i am the pump controller.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: what is your status?
+a: status: running.
+q: is the motor on?
+a: yes, the pump is running.
+q: any faults?
+a: all is ok.
+q: help.
+a: i can start, stop and report the pump.
+q: is the motor hot?
+a: the motor is at 20 degrees.
+q: hello pump.
+a: good morning. the pump is stopped.
+q: flow rate?
+a: flow: 11 litres per minute.
+q: how long did you run today?
+a: i ran for 3 hours today.
+q: what is the schedule?
+a: i run at 8:45 every day.
+q: are you running?
+a: the pump is stopped.
+q: flow rate?
+a: flow: 35 litres per minute.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: is the pump running?
+a: the pump is running.
+q: what is the tank level?
+a: tank level: 87 percent.
+q: what is your status?
+a: status: stopped.
+q: is the motor hot?
+a: the motor is at 71 degrees.
+q: what is your status?
+a: status: running.
+q: what can you do?
+a: i can start, stop and report the pump.
+q: are you running?
+a: the pump is running.
+q: is the pump on?
+a: status: running.
+q: tank level?
+a: the tank is 100 percent full.
+q: what is the tank level?
+a: tank level: 9 percent.
+q: what is your status?
+a: no, the pump is stopped.
+q: who are you?
+a: i am the pump controller.
+q: what is the pressure?
+a: it is 5 bar now.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: how long did you run today?
+a: i ran for 12 hours today.
+q: good morning.
+a: hi. ask me about the pump.
+q: how long did you run today?
+a: i ran for 7 hours today.
+q: is there a problem?
+a: all is ok.
+q: pressure?
+a: the pressure is 6 bar.
+q: how full is the tank?
+a: the tank is 51 percent full.
+q: is the pump running?
+a: no, the pump is stopped.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: help.
+a: i can start, stop and report the pump.
+q: who are you?
+a: i am the pump controller.
+q: is the tank full?
+a: the tank is 77 percent full.
+q: is the motor on?
+a: no, the pump is stopped.
+q: hi.
+a: good morning. the pump is running.
+q: please stop.
+a: ok, the pump is off now.
+q: what is your status?
+a: the pump is running.
+q: what is your name?
+a: i am the pump controller.
+q: is the pump on?
+a: the pump is running.
+q: please start.
+a: ok, the pump is on now.
+q: tell me the pressure.
+a: pressure: 1 bar.
+q: pump status?
+a: the pump is stopped.
+q: what can i ask?
+a: ask me about pressure, flow, tank and faults.
+q: who are you?
+a: i am netsilcon, the pump brain.
+q: switch off the motor.
+a: ok, the pump is off now.
+q: run time today?
+a: i ran for 10 hours today.
+q: turn on the pump.
+a: ok, the pump is on now.
+q: is the tank full?
+a: tank level: 68 percent.
+q: pressure?
+a: pressure: 5 bar.
+q: is the tank full?
+a: tank level: 10 percent.
+q: run time today?
+a: i ran for 7 hours today.
+q: are you running?
+a: status: running.
+q: are you running?
+a: the pump is stopped.
+q: switch off the motor.
+a: ok, stopping the pump.
+q: what is your name?
+a: i am netsilcon, the pump brain.
+q: run time today?
+a: i ran for 4 hours today.
+q: what is the tank level?
+a: tank level: 89 percent.
+q: what is the tank level?
+a: tank level: 21 percent.
+q: how long did you run today?
+a: i ran for 3 hours today.
+q: is the pump on?
+a: the pump is running.
+q: why did you stop?
+a: low voltage. please check the supply.
+q: pressure?
+a: pressure: 3 bar.
+q: switch on the motor.
+a: ok, starting the pump.
+q: switch on the motor.
+a: ok, starting the pump.
+q: hello pump.
+a: good morning. the pump is stopped.
+q: what is the motor temperature?
+a: motor temperature: 53 degrees.
+q: what is the flow?
+a: the flow is 15 litres per minute.
+q: run time today?
+a: i ran for 11 hours today.
+q: switch off the motor.
+a: the pump is already stopped.
+q: pump status?
+a: no, the pump is stopped.
+q: is the motor hot?
+a: motor temperature: 70 degrees.
+q: any faults?
+a: low voltage. please check the supply.
+q: any faults?
+a: no faults. all is ok.
+q: motor temp?
+a: the motor is at 64 degrees.
+q: how much pressure?
+a: it is 3 bar now.
+q: flow rate?
+a: flow: 12 litres per minute.
+q: help.
+a: ask me about pressure, flow, tank and faults.
+q: how much water is flowing?
+a: flow: 60 litres per minute.
+q: when do you run next?
+a: next run at 9:45 for 12 minutes.
+q: run time today?
+a: i ran for 4 hours today.
+q: pressure?
+a: pressure: 1 bar.
+q: how long did you run today?
+a: i ran for 3 hours today.
+q: pressure?
+a: pressure: 5 bar.
+q: switch off the motor.
+a: ok, the pump is off now.

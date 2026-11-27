@@ -1,0 +1,32 @@
+== exp01_w1440  Fri Nov 27 09:42:37 IST 2026
+== 1) Icarus bit-exact test vs Python golden vectors
+RESULT vectors=4096 mismatches=0 PASS
+== 2) yosys synth_gowin of the CORE alone (no wrapper)
+      498   ALU
+       32   IBUF
+     1072   LUT1
+      949   LUT2
+     1204   LUT3
+     4160   LUT4
+     2380   MUX2_LUT5
+      941   MUX2_LUT6
+      387   MUX2_LUT7
+      134   MUX2_LUT8
+        5   OBUF
+== 3) place & route the timing wrapper on GW2AR-LV18QN88C8/I7 (Tang Nano 20K) @27 MHz
+Info: 	                 IOB:       3/    384     0%
+Info: 	                LUT4:   10549/  20736    50%
+Info: 	           MUX2_LUT5:    3139/  10368    30%
+Info: 	           MUX2_LUT6:    1258/   5184    24%
+Info: 	           MUX2_LUT7:     524/   2592    20%
+Info: 	           MUX2_LUT8:     177/   2592     6%
+Info: 	                 ALU:     822/  15552     5%
+Info: 	                 DFF:      37/  15552     0%
+Info: 	           RAM16SDP4:       0/    648     0%
+Info: 	               BSRAM:       0/     46     0%
+Info: 	              ALU54D:       0/     24     0%
+Info: 	     MULTADDALU18X18:       0/     24     0%
+Info: 	        MULTALU18X18:       0/     24     0%
+Info: 	        MULTALU36X18:       0/     24     0%
+Info: 	           MULT18X18:       0/     48     0%
+Info: Max frequency for clock 'clk_IBUF_I_O': 32.19 MHz (PASS at 27.00 MHz)

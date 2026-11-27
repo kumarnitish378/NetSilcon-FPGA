@@ -1,0 +1,32 @@
+{
+  "name": "exp01_w180",
+  "width": 180,
+  "depth": 4,
+  "group": 20,
+  "tau": 3.3333333333333335,
+  "in_bits": 124,
+  "gates_total": 720,
+  "test_speed_acc": 0.9,
+  "test_steer_acc": 0.83325,
+  "test_both_acc": 0.745125,
+  "epochs": 80,
+  "seed": 0,
+  "gate_histogram": {
+    "FALSE": 28,
+    "AND": 36,
+    "A_AND_NOT_B": 47,
+    "A": 62,
+    "NOT_A_AND_B": 41,
+    "B": 75,
+    "XOR": 24,
+    "OR": 38,
+    "NOR": 36,
+    "XNOR": 33,
+    "NOT_B": 92,
+    "A_OR_NOT_B": 29,
+    "NOT_A": 90,
+    "NOT_A_OR_B": 31,
+    "NAND": 36,
+    "TRUE": 22
+  }
+}

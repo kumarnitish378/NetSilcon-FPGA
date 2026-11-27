@@ -1,0 +1,10 @@
+{
+  "model": "MLP 4-6-6-6-6-9 (weights)",
+  "params": 219,
+  "float_speed": 0.903625,
+  "float_steer": 0.99875,
+  "float_both": 0.902375,
+  "int8_speed": 0.89975,
+  "int8_steer": 0.97025,
+  "int8_both": 0.87225
+}

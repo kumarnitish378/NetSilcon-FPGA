@@ -73,6 +73,15 @@ op-amp, which becomes an amplifier, a filter or a comparator depending on a few 
 | Applications run | motor fault, irrigation, rover (incl. hardware-in-the-loop) | rover controller (trained, 16 LiDAR sectors, incl. hardware-in-the-loop), pump-health example (synthetic data, simulation only), synthetic and stress test models |
 | Details | [README](NetSilcon-Models/NetSilcon-6x4/README.md), [benchmarks](NetSilcon-Models/NetSilcon-6x4/docs/benchmarks.md) | [README](NetSilcon-Models/NetSilcon-64x6/README.md), [test report](NetSilcon-Models/NetSilcon-64x6/docs/test_report.md) |
 
+### Experimental series: NetSilcon-6x4-LGNs
+
+[NetSilcon-6x4-LGNs](NetSilcon-Models/NetSilcon-6x4-LGNs/) trains the **circuit itself** instead of weights:
+a logic gate network (each node learns which 2-input gate it is) with the 6x4 interface (4 inputs, 2 outputs,
+4 logic layers), exported as pure combinational Verilog. Exp-01 (rover obstacle avoidance, synthetic labels):
+Python vs Verilog bit-exact on 4,096 vectors, core uses **0 registers, 0 BSRAM, 0 DSP** (yosys synth_gowin);
+best accuracy 83.0 % both outputs correct vs 87.2 % for the int8 weights MLP of the same shape on the same data.
+Simulation and open-source synthesis only; not run on the board or in Gowin EDA yet.
+
 ### Shared by all models
 
 - **Neuron math:** `acc = bias + Σ x·w` (int8 × int8), ReLU on hidden layers,
@@ -126,6 +135,7 @@ website/                   the NetSilcon website (git submodule, kumarnitish378/
 NetSilcon-Models/
   NetSilcon-6x4/           4 → 6×4 → 2 engine
   NetSilcon-64x6/          16 → 64×6 → 16 engine
+  NetSilcon-6x4-LGNs/      experiment series: trained logic-gate circuits, no weights
 ```
 
 Every model folder is grouped the same way:

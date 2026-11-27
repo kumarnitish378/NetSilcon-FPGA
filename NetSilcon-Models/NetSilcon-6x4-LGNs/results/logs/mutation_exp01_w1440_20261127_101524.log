@@ -1,0 +1,6 @@
+mutant l3_0 inverted: RESULT vectors=4096 mismatches=9 FAIL
+mutant l3_1 inverted: RESULT vectors=4096 mismatches=8 FAIL
+mutant l3_2 inverted: RESULT vectors=4096 mismatches=8 FAIL
+mutant l3_3 inverted: RESULT vectors=4096 mismatches=10 FAIL
+mutant l3_4 inverted: RESULT vectors=4096 mismatches=7 FAIL
+MUTATION exp01_w1440: 5/5 mutants caught

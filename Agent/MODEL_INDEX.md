@@ -21,4 +21,18 @@ Every trained model in this repository. Parameters = weights + biases (the layer
 | Synthetic test model (built into the bitstream) | `models/synthetic/synthetic.json` | 6F4225BF | 1000 | 1,000 golden + 2,000 random vectors, 0 mismatches |
 | Stress test model (extreme weights and biases) | `models/stress/stress.json` | 732C18C9 | 200 | 200 vectors, 0 mismatches; proves the 24-bit accumulator |
 
+## NetSilcon-6x4-LGNs (experiment series: 4 inputs, 2 outputs, logic gate networks, no weights)
+
+Each model is a frozen gate netlist (`models/<model>/netlist.npz`) exported to combinational Verilog; there is
+no model upload or CRC because the circuit is the bitstream.
+
+| Model | Gates (4 layers) | Golden vectors | Result |
+|---|---|---|---|
+| `exp01_w180` | 720 | 4096 | 74.5 % both correct; Icarus 0 mismatches; core 875 LUT, 0 FF/BSRAM/DSP |
+| `exp01_w360` | 1440 | 4096 | 80.5 %; Icarus 0 mismatches; core 1985 LUT, 0 FF/BSRAM/DSP |
+| `exp01_w720` | 2880 | 4096 | 82.9 %; Icarus 0 mismatches; core 3914 LUT, 0 FF/BSRAM/DSP |
+| `exp01_w1440` | 5760 | 4096 | 83.0 %; Icarus 0 mismatches; core 7385 LUT, 0 FF/BSRAM/DSP |
+
+Simulation and yosys/nextpnr only; not built in Gowin EDA or run on hardware yet.
+
 Each model folder's `README.md` has inputs, outputs, training method and full results.

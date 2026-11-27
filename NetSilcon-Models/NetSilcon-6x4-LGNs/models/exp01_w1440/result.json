@@ -1,0 +1,32 @@
+{
+  "name": "exp01_w1440",
+  "width": 1440,
+  "depth": 4,
+  "group": 160,
+  "tau": 26.666666666666668,
+  "in_bits": 124,
+  "gates_total": 5760,
+  "test_speed_acc": 0.919125,
+  "test_steer_acc": 0.906375,
+  "test_both_acc": 0.83025,
+  "epochs": 60,
+  "seed": 0,
+  "gate_histogram": {
+    "FALSE": 258,
+    "AND": 319,
+    "A_AND_NOT_B": 350,
+    "A": 646,
+    "NOT_A_AND_B": 311,
+    "B": 641,
+    "XOR": 221,
+    "OR": 213,
+    "NOR": 337,
+    "XNOR": 245,
+    "NOT_B": 654,
+    "A_OR_NOT_B": 250,
+    "NOT_A": 627,
+    "NOT_A_OR_B": 245,
+    "NAND": 217,
+    "TRUE": 226
+  }
+}

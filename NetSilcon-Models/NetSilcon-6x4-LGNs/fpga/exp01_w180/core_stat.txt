@@ -1,0 +1,28 @@
+
+3. Printing statistics.
+
+=== netsilcon_6x4_lgn_exp01_w180 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1587 wires
+     2304 wire bits
+     1587 public wires
+     2304 public wire bits
+        6 ports
+       37 port bits
+     1581 cells
+      326   ALU
+        1   GND
+       32   IBUF
+       94   LUT1
+      166   LUT2
+      215   LUT3
+      400   LUT4
+      216   MUX2_LUT5
+       84   MUX2_LUT6
+       32   MUX2_LUT7
+        9   MUX2_LUT8
+        5   OBUF
+        1   VCC
+

@@ -1,0 +1,11 @@
+{
+  "module": "netsilcon_6x4_lgn_exp01_w1440",
+  "vectors": 4096,
+  "depth": 4,
+  "heads": [
+    4,
+    5
+  ],
+  "group": 160,
+  "golden_vs_teacher_both": 0.83154296875
+}

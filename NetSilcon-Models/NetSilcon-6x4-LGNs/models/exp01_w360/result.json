@@ -1,0 +1,32 @@
+{
+  "name": "exp01_w360",
+  "width": 360,
+  "depth": 4,
+  "group": 40,
+  "tau": 6.666666666666667,
+  "in_bits": 124,
+  "gates_total": 1440,
+  "test_speed_acc": 0.903875,
+  "test_steer_acc": 0.894,
+  "test_both_acc": 0.804875,
+  "epochs": 80,
+  "seed": 0,
+  "gate_histogram": {
+    "FALSE": 61,
+    "AND": 80,
+    "A_AND_NOT_B": 76,
+    "A": 171,
+    "NOT_A_AND_B": 105,
+    "B": 170,
+    "XOR": 50,
+    "OR": 57,
+    "NOR": 82,
+    "XNOR": 62,
+    "NOT_B": 155,
+    "A_OR_NOT_B": 61,
+    "NOT_A": 149,
+    "NOT_A_OR_B": 59,
+    "NAND": 44,
+    "TRUE": 58
+  }
+}

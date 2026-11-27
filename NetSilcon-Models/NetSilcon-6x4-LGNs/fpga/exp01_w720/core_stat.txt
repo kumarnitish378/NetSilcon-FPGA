@@ -1,0 +1,28 @@
+
+3. Printing statistics.
+
+=== netsilcon_6x4_lgn_exp01_w720 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     5839 wires
+     8381 wire bits
+     5839 public wires
+     8381 public wire bits
+        6 ports
+       37 port bits
+     6504 cells
+      465   ALU
+        1   GND
+       32   IBUF
+      583   LUT1
+      544   LUT2
+      642   LUT3
+     2145   LUT4
+     1272   MUX2_LUT5
+      528   MUX2_LUT6
+      219   MUX2_LUT7
+       67   MUX2_LUT8
+        5   OBUF
+        1   VCC
+

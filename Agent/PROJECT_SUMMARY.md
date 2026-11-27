@@ -24,6 +24,7 @@ website/                      git submodule: kumarnitish378/NetSilcon (Astro sta
 NetSilcon-Models/
   NetSilcon-6x4/              4 -> 6x4 -> 2 engine
   NetSilcon-64x6/             16 -> 64x6 -> 16 engine
+  NetSilcon-6x4-LGNs/         experiment series: logic gate networks (circuit is the model, no weights)
 ```
 
 Every model folder has the same grouping (run all commands from inside the model folder):
@@ -100,6 +101,12 @@ the PC. Details: `NetSilcon-64x6/docs/test_report.md`.
 Trained maze driver (same 16 inputs, right-hand rule; CRC-32 CA0156C9): simulation 72/80 unseen
 mazes solved, 0 crashes (rover model 38/80); Verilog 1,200 vectors bit-exact; not run on hardware yet.
 Details: `NetSilcon-64x6/models/maze/README.md`.
+
+**NetSilcon-6x4-LGNs (experiment series):** Exp-01 rover obstacle avoidance (synthetic teacher, 4 sensors ->
+speed 4 classes + steer 5 classes), logic gate networks of width 180/360/720/1440 x 4 layers. Icarus 4,096
+vectors 0 mismatches for all; mutation test 5/5 per model caught; yosys synth_gowin core 0 FF, 0 BSRAM, 0 DSP;
+best 83.0 % both-correct (w1440), int8 MLP 4-6-6-6-6-9 baseline 87.2 %. No Gowin EDA build, no hardware run yet.
+Details: `NetSilcon-6x4-LGNs/README.md`.
 
 ## 7. How to verify (no board needed)
 

@@ -1,0 +1,32 @@
+{
+  "name": "exp01_w720",
+  "width": 720,
+  "depth": 4,
+  "group": 80,
+  "tau": 13.333333333333334,
+  "in_bits": 124,
+  "gates_total": 2880,
+  "test_speed_acc": 0.91675,
+  "test_steer_acc": 0.907625,
+  "test_both_acc": 0.829125,
+  "epochs": 80,
+  "seed": 0,
+  "gate_histogram": {
+    "FALSE": 118,
+    "AND": 142,
+    "A_AND_NOT_B": 158,
+    "A": 326,
+    "NOT_A_AND_B": 169,
+    "B": 296,
+    "XOR": 110,
+    "OR": 137,
+    "NOR": 151,
+    "XNOR": 114,
+    "NOT_B": 321,
+    "A_OR_NOT_B": 132,
+    "NOT_A": 343,
+    "NOT_A_OR_B": 134,
+    "NAND": 118,
+    "TRUE": 111
+  }
+}

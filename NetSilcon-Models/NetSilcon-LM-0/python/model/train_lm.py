@@ -11,11 +11,13 @@ import argparse, json, os, sys, time
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nslm
+import grade as GR
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--epochs", type=int, default=8)
 ap.add_argument("--seed", type=int, default=0)
 ap.add_argument("--load", action="store_true", help="skip training, load models/pump/float_params.npz")
+ap.add_argument("--qat-epochs", type=int, default=4, help="quantization-aware fine-tuning epochs (0 = off)")
 args = ap.parse_args()
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HERE))
 LOGD = os.path.join(ROOT, "results", "logs"); os.makedirs(LOGD, exist_ok=True)
@@ -53,6 +55,8 @@ te_txt = open(os.path.join(ROOT, "python", "data", "pump_test.txt")).read()
 rng0 = np.random.default_rng(args.seed + 7)
 Xtr, Ytr = windows(tr_txt, 0.3, rng0); Xte, Yte = windows(te_txt)
 XteB, YteB = windows(te_txt, 1.0, rng0)   # every test window starts from a blank context
+un_txt = open(os.path.join(ROOT, "python", "data", "pump_unseen.txt")).read()
+Xun, Yun = windows(un_txt)                   # questions worded in ways never seen in training
 log(f"train {len(Ytr)} chars, test {len(Yte)} chars, params ~{nslm.V*8 + sum(a*b+b for a,b in zip(nslm.SIZES[:-1], nslm.SIZES[1:]))}")
 
 rng = np.random.default_rng(args.seed)
@@ -112,7 +116,7 @@ if not args.load: np.savez(FP, **P)
 def quantize(calib_ctx, q_act=0.9999, w_clip=1.0, q_out=0.999):
     Eq = np.clip(np.round(P["E"] * 127), 0, 127).astype(np.int64)
     a = Eq[calib_ctx].reshape(len(calib_ctx), -1)
-    S_prev = 127.0; W_int, B_int, SH = [], [], []
+    S_prev = 127.0; W_int, B_int, SH = [], [], []; KS, SIN = [], []
     for l in range(nslm.NL):
         Wf, bf = P[f"W{l}"].T, P[f"b{l}"]; last = l == nslm.NL - 1
         if not last:
@@ -135,9 +139,68 @@ def quantize(calib_ctx, q_act=0.9999, w_clip=1.0, q_out=0.999):
             w = np.clip(np.round(Wf * K), -128, 127).astype(np.int64)
             b = np.clip(np.round(K * S_prev * bf), -32768, 32767).astype(np.int64)
             acc = a @ w.T + b
-        W_int.append(w); B_int.append(b); SH.append(s)
+        W_int.append(w); B_int.append(b); SH.append(s); KS.append(K); SIN.append(S_prev if last else S_prev * (1 << s) / K)
         a = np.clip((acc + (1 << s >> 1)) >> s, 0 if not last else -128, 127)
+    m = nslm.LM(Eq, W_int, B_int, SH)
+    m.K, m.Sin, m.T = KS, SIN, KS[-1] * SIN[-1] / (1 << SH[-1])   # weight scales, input scales, int8 per logit
+    return m
+
+
+def build_int(K, Sin, SH):
+    """integer model from the CURRENT float parameters with FIXED scales and shifts"""
+    Eq = np.clip(np.round(np.clip(P["E"], 0, 1) * 127), 0, 127).astype(np.int64)
+    W_int = [np.clip(np.round(P[f"W{l}"].T * K[l]), -128, 127).astype(np.int64) for l in range(nslm.NL)]
+    B_int = [np.clip(np.round(K[l] * Sin[l] * P[f"b{l}"]), -32768, 32767).astype(np.int64) for l in range(nslm.NL)]
     return nslm.LM(Eq, W_int, B_int, SH)
+
+
+def qat(lm0, epochs, Xv, Yv):
+    """Quantization-aware fine-tuning: the forward pass is the exact integer model (round, int8 clip,
+    shift, clamp, computed in float64), the backward pass treats rounding as identity
+    (straight-through). Scales and shifts stay fixed, so the final integers are what was trained."""
+    K, Sin, SH, T = lm0.K, lm0.Sin, lm0.S, lm0.T
+    M2 = {k: np.zeros_like(v) for k, v in P.items()}; V2 = {k: np.zeros_like(v) for k, v in P.items()}
+    best = ((lm0.forward(Xv).argmax(1) == Yv).mean(), lm0, -1); tq = 0
+    log(f"QAT start: validation int8 {best[0]*100:.2f}%")
+    for ep in range(epochs):
+        perm = rng.permutation(len(Ytr)); tl = 0; nb = 0
+        lr = 3e-4 * 0.5 * (1 + np.cos(np.pi * ep / epochs))
+        for i in range(0, len(perm), 256):
+            b = perm[i:i + 256]; ctx = Xtr[b]; y = Ytr[b]; n = len(b)
+            x = np.round(np.clip(P["E"], 0, 1) * 127)[ctx].reshape(n, -1); xs = [x]; cache = []
+            for l in range(nslm.NL):
+                wq = np.clip(np.round(P[f"W{l}"].T * K[l]), -128, 127)
+                bq = np.clip(np.round(K[l] * Sin[l] * P[f"b{l}"]), -32768, 32767)
+                acc = x @ wq.T + bq; hid = l < nslm.NL - 1
+                if hid: acc = np.maximum(acc, 0)
+                v = np.floor((acc + (1 << SH[l] >> 1)) / (1 << SH[l]))
+                lo = 0 if hid else -128
+                gate = (v > lo) & (v < 127) if hid else (v >= -128) & (v <= 127)
+                if hid: gate &= acc > 0
+                x = np.clip(v, lo, 127); cache.append((wq, gate)); xs.append(x)
+            z = x / T; pz = softmax(z)
+            tl += -np.log(pz[np.arange(n), y] + 1e-9).mean(); nb += 1
+            g = pz; g[np.arange(n), y] -= 1; g /= n; g = g / T
+            G = {}
+            for l in reversed(range(nslm.NL)):
+                wq, gate = cache[l]
+                ga = g * gate / (1 << SH[l])
+                G[f"W{l}"] = K[l] * (ga.T @ xs[l]).T
+                G[f"b{l}"] = K[l] * Sin[l] * ga.sum(0)
+                g = ga @ wq
+            gE = np.zeros_like(P["E"])
+            np.add.at(gE, ctx.reshape(-1), 127 * g.reshape(n * nslm.CTX, nslm.EMB)); G["E"] = gE
+            tq += 1
+            for k in P:
+                M2[k] = 0.9 * M2[k] + 0.1 * G[k]; V2[k] = 0.999 * V2[k] + 0.001 * G[k] ** 2
+                P[k] -= lr * (M2[k] / (1 - 0.9 ** tq)) / (np.sqrt(V2[k] / (1 - 0.999 ** tq)) + 1e-8)
+            P["E"] = np.clip(P["E"], 0, 1)
+        cand = build_int(K, Sin, SH)
+        va = (cand.forward(Xv).argmax(1) == Yv).mean()
+        log(f"QAT epoch {ep+1} loss {tl/nb:.4f} validation int8 {va*100:.2f}%")
+        csvf.write(f"qat{ep+1},{tl/nb:.5f},{va:.5f}\n"); csvf.flush()
+        if va > best[0]: best = (va, cand, ep)
+    return best[1]
 
 
 # calibration search on a VALIDATION slice of the training text (the test set is not used)
@@ -152,13 +215,21 @@ for q_act in (0.99, 0.995, 0.999, 0.9999):
             log(f"  calib q_act={q_act} w_clip={w_clip} q_out={q_out}: validation int8 acc {va*100:.2f}%")
             if best is None or va > best[0]: best = (va, cand, (q_act, w_clip, q_out))
 lm = best[1]; log(f"chosen calibration {best[2]} (validation {best[0]*100:.2f}%)")
-acc_f = (fwd(Xte)[-1].argmax(1) == Yte).mean()
+acc_f = (fwd(Xte)[-1].argmax(1) == Yte).mean(); pf = fwd(Xte)[-1].argmax(1)   # float model, before QAT
+_c = build_int(lm.K, lm.Sin, lm.S)
+assert all((a == b).all() for a, b in zip(_c.W + _c.B + [_c.E], lm.W + lm.B + [lm.E])), "build_int != quantize"
+if args.qat_epochs:
+    lm = qat(lm, args.qat_epochs, Xv, Yv)
+    np.savez(os.path.join(ROOT, "models", "pump", "qat_params.npz"), **P)
 yq = lm.forward(Xte); acc_q = (yq.argmax(1) == Yte).mean()
-agree = (yq.argmax(1) == fwd(Xte)[-1].argmax(1)).mean()
+agree = (yq.argmax(1) == pf).mean()
 log(f"int8: shifts {lm.S}  params {lm.params()}  CRC-32 {lm.crc32():08X}")
 log(f"test next-char accuracy: float {acc_f*100:.2f}%  int8 {acc_q*100:.2f}%  (int8 vs float agreement {agree*100:.2f}%)")
 acc_qb = (lm.forward(XteB).argmax(1) == YteB).mean()
 log(f"test next-char accuracy, conversation started from a blank context: int8 {acc_qb*100:.2f}%")
+acc_un = (lm.forward(Xun).argmax(1) == Yun).mean()
+log(f"next-char accuracy on held-out wordings (pump_unseen.txt): int8 {acc_un*100:.2f}%")
+G = GR.grade(lm); log("answer grader (int8, blank context, 260 questions each):"); GR.report(G, log)
 
 QUESTIONS = ["is the pump running?", "what is the pressure?", "flow rate?", "how full is the tank?",
              "motor temp?", "start the pump.", "stop the pump.", "any faults?", "next run?", "hello.",
@@ -172,7 +243,9 @@ for qtext in QUESTIONS:
     log(f"  q: {qtext}\n  -> {ans.rstrip()}")
 
 mdir = os.path.join(ROOT, "models", "pump"); os.makedirs(mdir, exist_ok=True)
-json.dump(lm.to_json("pump", dict(test_acc_float=float(acc_f), test_acc_int8=float(acc_q), test_acc_int8_blank=float(acc_qb),
+json.dump(lm.to_json("pump", dict(test_acc_float=float(acc_f), test_acc_int8=float(acc_q), test_acc_int8_blank=float(acc_qb), unseen_acc_int8=float(acc_un),
+                                  grade_seen=[G["seen"]["correct"], G["seen"]["total"]],
+                                  grade_unseen=[G["unseen"]["correct"], G["unseen"]["total"]],
                                   epochs=args.epochs, seed=args.seed, qa=qa)),
           open(os.path.join(mdir, "pump.json"), "w"))
 rep = ["# LM-0 pump model: training report (auto-generated by train_lm.py)", "",
@@ -180,6 +253,13 @@ rep = ["# LM-0 pump model: training report (auto-generated by train_lm.py)", "",
        f"- parameters: {lm.params():,} (embedding 336 + weights + biases), shifts {lm.S}, CRC-32 `{lm.crc32():08X}`",
        f"- test next-char accuracy: float {acc_f*100:.2f} %, **int8 {acc_q*100:.2f} %**, int8 vs float {agree*100:.2f} %",
        f"- test next-char accuracy when every conversation starts from a blank context (as on the FPGA): int8 {acc_qb*100:.2f} %",
+       f"- next-char accuracy on held-out wordings: int8 {acc_un*100:.2f} %",
+       f"- **answer grader** (blank context, answer must be valid for the question's topic): "
+       f"seen wordings {G['seen']['correct']}/{G['seen']['total']} ({100*G['seen']['correct']/G['seen']['total']:.1f} %), "
+       f"held-out wordings {G['unseen']['correct']}/{G['unseen']['total']} ({100*G['unseen']['correct']/G['unseen']['total']:.1f} %)",
+       "", "| topic | seen | held-out |", "|---|---|---|"] + [
+       f"| {t} | {G['seen']['per_topic'][t][0]}/{G['seen']['per_topic'][t][1]} | {G['unseen']['per_topic'][t][0]}/{G['unseen']['per_topic'][t][1]} |"
+       for t in G["seen"]["per_topic"]] + ["",
        "", "## Answers of the int8 model (greedy, same as the FPGA)", "", "| question | answer |", "|---|---|"]
 rep += [f"| {q} | {a} |" for q, a in qa]
 open(os.path.join(ROOT, "results", "train_report.md"), "w").write("\n".join(rep) + "\n")

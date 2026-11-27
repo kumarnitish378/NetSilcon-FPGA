@@ -25,6 +25,7 @@ Every trained model in this repository. Parameters = weights + biases (the layer
 
 | Application | File | CRC-32 | Golden vectors | Result |
 |---|---|---|---|---|
-| Pump controller dialogue (synthetic corpus) | `models/pump/pump.json` (built into the bitstream) | 59993775 | 802 contexts + 14-question chat + UART test | int8 next-char 94.01 %; Verilog 802/802 bit-exact, chat 392/392 chars, UART 129/129 bytes. Not run on hardware yet |
+| Pump controller dialogue v2 (synthetic corpus, QAT) | `models/pump/pump.json` (built into the bitstream) | 8A7B9204 | 802 contexts + 14-question chat + UART test | Answer grader 96.2 % (trained wordings), 53.1 % (held-out wordings); Verilog 802/802 bit-exact, chat 392/392 chars, UART 137/137 bytes. Not run on hardware yet |
+| Pump controller dialogue v1 (replaced) | `models/pump/pump_v1.json` | 59993775 | - | Answer grader 24.6 % / 11.5 %; kept for comparison |
 
 Each model folder's `README.md` has inputs, outputs, training method and full results.

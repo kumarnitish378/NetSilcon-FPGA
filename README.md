@@ -78,8 +78,9 @@ op-amp, which becomes an amplifier, a filter or a comparator depending on a few 
 [NetSilcon-LM-0](NetSilcon-Models/NetSilcon-LM-0/) is a 27,834-parameter character-level language model.
 It reads the last 32 characters and predicts the next one: 256 → 64 → 64 → 64 → 42, built on the 64x6 datapath.
 The FPGA generates whole answers by itself over UART (`q: is the pump running?` → `a: status: running.`).
-Measured in simulation: Verilog vs Python int8 bit-exact on 802 vectors, a 392-character conversation identical,
-mutation tests 8/8, 510 clocks per character. Open-source P&R for GW2AR-18: BSRAM 33/46, MULT9X9 64/96, LUT4 33 %.
+Model v2 (2.9M chars of synthetic dialogue, quantization-aware training) answers 96.2 % of graded questions
+correctly, and 53.1 % when the wording was never seen in training. Measured in simulation: Verilog vs Python int8
+bit-exact on 802 vectors, a 392-character conversation identical, mutation tests 8/8, 510 clocks per character. Open-source P&R for GW2AR-18: BSRAM 33/46, MULT9X9 64/96, LUT4 33 %.
 Training data is synthetic pump dialogues. Not run on the board or built in Gowin EDA yet.
 
 ### Shared by all models

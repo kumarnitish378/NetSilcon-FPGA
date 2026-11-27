@@ -103,9 +103,10 @@ mazes solved, 0 crashes (rover model 38/80); Verilog 1,200 vectors bit-exact; no
 Details: `NetSilcon-64x6/models/maze/README.md`.
 
 **NetSilcon-LM-0:** char-level LM, 32-char context x 8-dim embedding -> 256 -> 64 -> 64 -> 64 -> 42, 27,834 params,
-CRC-32 59993775, synthetic pump dialogues. int8 test next-char accuracy 94.01 % (float 94.18 %). Icarus: 802
-vectors (42 logits + argmax) 0 mismatches; on-chip autoregressive conversation 392/392 chars = Python; UART top
-129/129 bytes; mutation 8/8; 510 clocks/char. yosys+nextpnr: LUT4 33 %, BSRAM 33/46, MULT9X9 64/96, 140 MHz.
+model v2 CRC-32 8A7B9204, 2.9M chars synthetic pump dialogues, quantization-aware training. Answer grader:
+96.2 % trained wordings, 53.1 % held-out wordings (v1 CRC 59993775: 24.6 % / 11.5 %). Icarus: 802 vectors
+(42 logits + argmax) 0 mismatches; on-chip conversation 392/392 chars = Python; UART top 137/137 bytes;
+mutation 8/8; 510 clocks/char. yosys+nextpnr: LUT4 33 %, BSRAM 33/46, MULT9X9 64/96, 140 MHz.
 Not run on hardware, no Gowin EDA build yet. Details: `NetSilcon-LM-0/README.md`.
 
 ## 7. How to verify (no board needed)

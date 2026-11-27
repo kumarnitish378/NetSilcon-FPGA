@@ -1,0 +1,72 @@
+train 2884864 chars, test 174237 chars, params ~27834
+loaded float parameters /home/claude/netsilcon-fpga/NetSilcon-Models/NetSilcon-LM-0/models/pump/float_params.npz
+  calib q_act=0.99 w_clip=1.0 q_out=0.99: validation int8 acc 86.93%
+  calib q_act=0.99 w_clip=1.0 q_out=0.999: validation int8 acc 87.37%
+  calib q_act=0.99 w_clip=0.9999 q_out=0.99: validation int8 acc 86.42%
+  calib q_act=0.99 w_clip=0.9999 q_out=0.999: validation int8 acc 86.80%
+  calib q_act=0.99 w_clip=0.999 q_out=0.99: validation int8 acc 88.95%
+  calib q_act=0.99 w_clip=0.999 q_out=0.999: validation int8 acc 85.91%
+  calib q_act=0.995 w_clip=1.0 q_out=0.99: validation int8 acc 87.49%
+  calib q_act=0.995 w_clip=1.0 q_out=0.999: validation int8 acc 87.51%
+  calib q_act=0.995 w_clip=0.9999 q_out=0.99: validation int8 acc 86.42%
+  calib q_act=0.995 w_clip=0.9999 q_out=0.999: validation int8 acc 86.80%
+  calib q_act=0.995 w_clip=0.999 q_out=0.99: validation int8 acc 88.95%
+  calib q_act=0.995 w_clip=0.999 q_out=0.999: validation int8 acc 85.91%
+  calib q_act=0.999 w_clip=1.0 q_out=0.99: validation int8 acc 87.49%
+  calib q_act=0.999 w_clip=1.0 q_out=0.999: validation int8 acc 87.51%
+  calib q_act=0.999 w_clip=0.9999 q_out=0.99: validation int8 acc 86.23%
+  calib q_act=0.999 w_clip=0.9999 q_out=0.999: validation int8 acc 86.92%
+  calib q_act=0.999 w_clip=0.999 q_out=0.99: validation int8 acc 89.28%
+  calib q_act=0.999 w_clip=0.999 q_out=0.999: validation int8 acc 85.72%
+  calib q_act=0.9999 w_clip=1.0 q_out=0.99: validation int8 acc 87.37%
+  calib q_act=0.9999 w_clip=1.0 q_out=0.999: validation int8 acc 87.57%
+  calib q_act=0.9999 w_clip=0.9999 q_out=0.99: validation int8 acc 86.48%
+  calib q_act=0.9999 w_clip=0.9999 q_out=0.999: validation int8 acc 86.79%
+  calib q_act=0.9999 w_clip=0.999 q_out=0.99: validation int8 acc 89.18%
+  calib q_act=0.9999 w_clip=0.999 q_out=0.999: validation int8 acc 85.68%
+chosen calibration (0.999, 0.999, 0.99) (validation 89.28%)
+QAT start: validation int8 89.28%
+QAT epoch 1 loss 0.2419 validation int8 91.03%
+QAT epoch 2 loss 0.2446 validation int8 91.42%
+QAT epoch 3 loss 0.2420 validation int8 91.00%
+QAT epoch 4 loss 0.2376 validation int8 91.22%
+int8: shifts [9, 6, 6, 6]  params 27834  CRC-32 8A7B9204
+test next-char accuracy: float 91.96%  int8 91.22%  (int8 vs float agreement 93.22%)
+test next-char accuracy, conversation started from a blank context: int8 91.46%
+next-char accuracy on held-out wordings (pump_unseen.txt): int8 82.10%
+answer grader (int8, blank context, 260 questions each):
+  seen   wordings: 250/260 answers correct (96.2 %)  status 13/20  pressure 20/20  flow 20/20  tank 20/20  temp 20/20  start 20/20  stop 19/20  fault 19/20  schedule 20/20  hello 20/20  help 19/20  name 20/20  time 20/20
+  unseen wordings: 138/260 answers correct (53.1 %)  status 12/20  pressure 0/20  flow 9/20  tank 12/20  temp 13/20  start 17/20  stop 13/20  fault 6/20  schedule 12/20  hello 12/20  help 18/20  name 7/20  time 7/20
+  q: is the pump running?
+  -> a: the pump is running.
+  q: what is the pressure?
+  -> a: the pressure is 1 bar.
+  q: flow rate?
+  -> a: flow: 10 litres per minute.
+  q: how full is the tank?
+  -> a: tank level: 6 percent.
+  q: motor temp?
+  -> a: the motor is at 20 degrees.
+  q: start the pump.
+  -> a: ok, starting the pump.
+  q: stop the pump.
+  -> a: ok, stopping the pump.
+  q: any faults?
+  -> a: dry run detected. please check the water.
+  q: next run?
+  -> a: i run at 8:00 every day.
+  q: hello.
+  -> a: hello. how can i help?
+  q: what can you do?
+  -> a: i run at 8:00 every day.
+  q: who are you?
+  -> a: i rmw od now?
+  q: run time today?
+  -> a: i ran for 1 hours today.
+  q: is the pump working?
+  -> a: no, the pump is stopped.
+  q: what is the water pressure?
+  -> a: it is 2 bar now.
+  q: hi pump.
+  -> a: hi. ask me about the pump.
+wrote models/pump/pump.json and results/train_report.md

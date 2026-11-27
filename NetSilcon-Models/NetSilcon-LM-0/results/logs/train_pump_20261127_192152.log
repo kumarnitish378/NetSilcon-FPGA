@@ -1,0 +1,82 @@
+train 2884864 chars, test 174237 chars, params ~27834
+epoch 1 loss 0.5612 test next-char accuracy (float) 89.93%
+epoch 2 loss 0.2727 test next-char accuracy (float) 90.64%
+epoch 3 loss 0.2500 test next-char accuracy (float) 90.88%
+epoch 4 loss 0.2373 test next-char accuracy (float) 90.90%
+epoch 5 loss 0.2286 test next-char accuracy (float) 91.13%
+epoch 6 loss 0.2220 test next-char accuracy (float) 91.37%
+epoch 7 loss 0.2164 test next-char accuracy (float) 91.58%
+epoch 8 loss 0.2111 test next-char accuracy (float) 91.49%
+epoch 9 loss 0.2065 test next-char accuracy (float) 91.63%
+epoch 10 loss 0.2025 test next-char accuracy (float) 91.67%
+epoch 11 loss 0.1988 test next-char accuracy (float) 91.82%
+epoch 12 loss 0.1956 test next-char accuracy (float) 91.74%
+epoch 13 loss 0.1928 test next-char accuracy (float) 91.83%
+epoch 14 loss 0.1905 test next-char accuracy (float) 91.93%
+epoch 15 loss 0.1887 test next-char accuracy (float) 91.95%
+epoch 16 loss 0.1877 test next-char accuracy (float) 91.96%
+  calib q_act=0.99 w_clip=1.0 q_out=0.99: validation int8 acc 86.88%
+  calib q_act=0.99 w_clip=1.0 q_out=0.999: validation int8 acc 87.45%
+  calib q_act=0.99 w_clip=0.9999 q_out=0.99: validation int8 acc 86.24%
+  calib q_act=0.99 w_clip=0.9999 q_out=0.999: validation int8 acc 87.24%
+  calib q_act=0.99 w_clip=0.999 q_out=0.99: validation int8 acc 89.15%
+  calib q_act=0.99 w_clip=0.999 q_out=0.999: validation int8 acc 86.21%
+  calib q_act=0.995 w_clip=1.0 q_out=0.99: validation int8 acc 87.52%
+  calib q_act=0.995 w_clip=1.0 q_out=0.999: validation int8 acc 87.62%
+  calib q_act=0.995 w_clip=0.9999 q_out=0.99: validation int8 acc 86.24%
+  calib q_act=0.995 w_clip=0.9999 q_out=0.999: validation int8 acc 87.24%
+  calib q_act=0.995 w_clip=0.999 q_out=0.99: validation int8 acc 89.15%
+  calib q_act=0.995 w_clip=0.999 q_out=0.999: validation int8 acc 86.21%
+  calib q_act=0.999 w_clip=1.0 q_out=0.99: validation int8 acc 87.52%
+  calib q_act=0.999 w_clip=1.0 q_out=0.999: validation int8 acc 87.62%
+  calib q_act=0.999 w_clip=0.9999 q_out=0.99: validation int8 acc 86.15%
+  calib q_act=0.999 w_clip=0.9999 q_out=0.999: validation int8 acc 87.21%
+  calib q_act=0.999 w_clip=0.999 q_out=0.99: validation int8 acc 89.40%
+  calib q_act=0.999 w_clip=0.999 q_out=0.999: validation int8 acc 86.07%
+  calib q_act=0.9999 w_clip=1.0 q_out=0.99: validation int8 acc 87.36%
+  calib q_act=0.9999 w_clip=1.0 q_out=0.999: validation int8 acc 87.66%
+  calib q_act=0.9999 w_clip=0.9999 q_out=0.99: validation int8 acc 86.19%
+  calib q_act=0.9999 w_clip=0.9999 q_out=0.999: validation int8 acc 87.24%
+  calib q_act=0.9999 w_clip=0.999 q_out=0.99: validation int8 acc 89.41%
+  calib q_act=0.9999 w_clip=0.999 q_out=0.999: validation int8 acc 86.00%
+chosen calibration (0.9999, 0.999, 0.99) (validation 89.41%)
+int8: shifts [9, 7, 6, 5]  params 27834  CRC-32 DA9F9B41
+test next-char accuracy: float 91.96%  int8 89.11%  (int8 vs float agreement 89.75%)
+test next-char accuracy, conversation started from a blank context: int8 89.58%
+next-char accuracy on held-out wordings (pump_unseen.txt): int8 79.74%
+answer grader (int8, blank context, 260 questions each):
+  seen   wordings: 170/260 answers correct (65.4 %)  status 9/20  pressure 11/20  flow 13/20  tank 7/20  temp 19/20  start 18/20  stop 17/20  fault 18/20  schedule 1/20  hello 20/20  help 18/20  name 19/20  time 0/20
+  unseen wordings: 92/260 answers correct (35.4 %)  status 4/20  pressure 1/20  flow 6/20  tank 4/20  temp 14/20  start 7/20  stop 18/20  fault 5/20  schedule 1/20  hello 10/20  help 18/20  name 4/20  time 0/20
+  q: is the pump running?
+  -> a: no, the pump is stopped.
+  q: what is the pressure?
+  -> a: it is 3 bam now?
+  q: flow rate?
+  -> a: flow: 10 litres per minute.
+  q: how full is the tank?
+  -> a: tank level: 1 percent.
+  q: motor temp?
+  -> a: motor temperature: 20 degrees.
+  q: start the pump.
+  -> a: ok, starting the pump.
+  q: stop the pump.
+  -> a: ok is abe your nam ank now.
+  q: any faults?
+  -> a: all is ok.
+  q: next run?
+  -> a: i run at 5:00 every day ask me about pressure, flow, tank
+  q: hello.
+  -> a: hello. how can i help?
+  q: what can you do?
+  -> a: ask me about pressure, flow, tank and faults.
+  q: who are you?
+  -> a: i ran for 1 hours today now?
+  q: run time today?
+  -> a: i ran for 10 hours today now?
+  q: is the pump working?
+  -> a: no, the motor
+  q: what is the water pressure?
+  -> a: it is 1 bar now.
+  q: hi pump.
+  -> a: hello. how can i help?
+wrote models/pump/pump.json and results/train_report.md

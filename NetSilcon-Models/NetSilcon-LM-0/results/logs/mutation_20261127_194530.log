@@ -1,6 +1,6 @@
   [rounding constant removed] caught: RESULT engine vectors=300 mismatches=300 latency=510..510 clocks FAIL
   [ReLU removed] caught: RESULT engine vectors=300 mismatches=300 latency=510..510 clocks FAIL
-  [argmax ties -> last index] caught: RESULT engine vectors=300 mismatches=17 latency=510..510 clocks FAIL
+  [argmax ties -> last index] caught: RESULT engine vectors=300 mismatches=28 latency=510..510 clocks FAIL
   [embedding dim order swapped] caught: RESULT engine vectors=300 mismatches=300 latency=510..510 clocks FAIL
   [context order reversed] caught: RESULT engine vectors=300 mismatches=300 latency=510..510 clocks FAIL
   [layer 2 base off by one] caught: RESULT engine vectors=300 mismatches=300 latency=510..510 clocks FAIL

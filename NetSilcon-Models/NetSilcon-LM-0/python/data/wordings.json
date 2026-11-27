@@ -1,0 +1,200 @@
+{
+ "seen": {
+  "status": [
+   "are you on",
+   "are you running",
+   "are you working",
+   "is it running",
+   "is the motor on",
+   "is the motor running",
+   "is the pump off",
+   "is the pump on",
+   "is the pump running",
+   "is the pump working",
+   "pump status",
+   "what is the pump doing",
+   "what is your status"
+  ],
+  "pressure": [
+   "current pressure",
+   "give me the pressure",
+   "how high is the pressure",
+   "how much pressure",
+   "line pressure",
+   "pressure",
+   "pressure level",
+   "tell me the pressure",
+   "what is the pressure",
+   "what is the water pressure"
+  ],
+  "flow": [
+   "current flow",
+   "flow rate",
+   "flow reading",
+   "how much water is flowing",
+   "how much water per minute",
+   "water flow",
+   "what is the flow",
+   "what is the flow rate"
+  ],
+  "tank": [
+   "how full is it",
+   "how full is the tank",
+   "is the tank full",
+   "level of the tank",
+   "tank level",
+   "tank status",
+   "water level",
+   "what is the tank level"
+  ],
+  "temp": [
+   "how hot is the motor",
+   "how warm is the motor",
+   "is the motor hot",
+   "is the motor too hot",
+   "motor temp",
+   "motor temperature now",
+   "what is the motor temperature",
+   "what is the temperature"
+  ],
+  "start": [
+   "begin pumping",
+   "power on",
+   "start",
+   "start pumping",
+   "start the motor",
+   "start the pump",
+   "switch on",
+   "switch on the motor",
+   "turn it on",
+   "turn on the pump"
+  ],
+  "stop": [
+   "halt the pump",
+   "power off",
+   "stop",
+   "stop pumping",
+   "stop the motor",
+   "stop the pump",
+   "switch off",
+   "switch off the motor",
+   "turn it off",
+   "turn off the pump"
+  ],
+  "fault": [
+   "any alarm",
+   "any errors",
+   "any faults",
+   "any issue",
+   "are there any problems",
+   "are you ok",
+   "fault status",
+   "is there a problem",
+   "what is wrong",
+   "why did you stop"
+  ],
+  "schedule": [
+   "next run",
+   "next start time",
+   "run schedule",
+   "what is the schedule",
+   "what time do you run",
+   "when do you pump",
+   "when do you run next",
+   "when will you start"
+  ],
+  "hello": [
+   "good afternoon",
+   "good evening",
+   "good morning",
+   "hello",
+   "hello pump",
+   "hey",
+   "hey pump",
+   "hi",
+   "hi pump",
+   "hi there"
+  ],
+  "help": [
+   "commands",
+   "help",
+   "options",
+   "what are your commands",
+   "what can i ask",
+   "what can i say",
+   "what can you do",
+   "what do you know"
+  ],
+  "name": [
+   "introduce yourself",
+   "tell me about you",
+   "what is your name",
+   "who am i talking to",
+   "who are you",
+   "your name"
+  ],
+  "time": [
+   "how long did you run today",
+   "how long have you run",
+   "how many hours today",
+   "run time today",
+   "today run time",
+   "total run time today"
+  ]
+ },
+ "held_out": {
+  "status": [
+   "are you pumping",
+   "is water pumping",
+   "status of the pump"
+  ],
+  "pressure": [
+   "pressure reading",
+   "what pressure do you see"
+  ],
+  "flow": [
+   "flow now",
+   "how fast is the water"
+  ],
+  "tank": [
+   "how much water is in the tank",
+   "is the tank empty"
+  ],
+  "temp": [
+   "motor heat",
+   "temperature"
+  ],
+  "start": [
+   "pump on",
+   "run the pump"
+  ],
+  "stop": [
+   "pump off",
+   "shut down the pump"
+  ],
+  "fault": [
+   "error check",
+   "is something wrong"
+  ],
+  "schedule": [
+   "schedule",
+   "when is the next run"
+  ],
+  "hello": [
+   "hello there",
+   "namaste"
+  ],
+  "help": [
+   "how can you help",
+   "show help"
+  ],
+  "name": [
+   "name please",
+   "what are you"
+  ],
+  "time": [
+   "hours run today",
+   "running hours"
+  ]
+ }
+}

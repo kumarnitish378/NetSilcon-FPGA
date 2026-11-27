@@ -4,8 +4,8 @@ chat text == gen/chat_expected.txt (Python)
 >> q: hello.
 >> a: hello. how can i help?
 >> q: is the pump running?
->> a: status: running.
+>> a: no, the pump is stopped.
 >> motor temp?
 >> a: the motor is at 20 degrees.
 >> 
-RESULT top uart bytes_received=129 expected=129 mismatches=0 PASS
+RESULT top uart bytes_received=137 expected=137 mismatches=0 PASS
